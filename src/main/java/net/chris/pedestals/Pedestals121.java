@@ -1,5 +1,8 @@
 package net.chris.pedestals;
 
+import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.item.ModItemGroups;
+import net.chris.pedestals.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -15,8 +18,8 @@ public class Pedestals121 implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		ModItemGroups.registerItemGroups();
+		ModBlocks.registerModBlocks();
+		ModItems.registerModItems();
 	}
 }

@@ -8,7 +8,5 @@ public class Pedestals121Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModBlocks.registerModBlocks();
-        ModItems.registerModItems();
     }
 }

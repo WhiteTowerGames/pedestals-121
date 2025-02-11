@@ -4,6 +4,7 @@ import net.chris.pedestals.Pedestals121;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.OxidizableBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -16,13 +17,14 @@ import static net.minecraft.block.Blocks.*;
 public class ModBlocks {
 
     public static final Block STONE_BRICK_PEDESTAL = registerBlock("stone_brick_pedestal",
-            new Block(AbstractBlock.Settings.copy(STONE_BRICKS).nonOpaque()));
+            new Block(AbstractBlock.Settings.copy(STONE_BRICKS).nonOpaque().requiresTool()));
 
     public static final Block DEEPSLATE_BRICK_PEDESTAL = registerBlock("deepslate_brick_pedestal",
-            new Block(AbstractBlock.Settings.copy(DEEPSLATE_BRICKS).nonOpaque()));
+            new Block(AbstractBlock.Settings.copy(DEEPSLATE_BRICKS).nonOpaque().requiresTool()));
 
     public static final Block MOSSY_STONE_BRICK_PEDESTAL = registerBlock("mossy_stone_brick_pedestal",
-            new Block(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque()));
+            new Block(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque().requiresTool()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
