@@ -20,6 +20,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
                         entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
                         entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
 
                     }).build());
 

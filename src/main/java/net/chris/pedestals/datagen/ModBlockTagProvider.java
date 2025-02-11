@@ -19,6 +19,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.STONE_BRICK_PEDESTAL)
                 .add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL)
-                .add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
+                .add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL)
+                .add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
     }
 }

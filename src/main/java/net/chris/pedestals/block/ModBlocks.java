@@ -25,6 +25,9 @@ public class ModBlocks {
     public static final Block MOSSY_STONE_BRICK_PEDESTAL = registerBlock("mossy_stone_brick_pedestal",
             new Block(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque().requiresTool()));
 
+    public static final Block DEEPSLATE_TILE_PEDESTAL = registerBlock( "deepslate_tile_pedestal",
+            new Block(AbstractBlock.Settings.copy(DEEPSLATE_TILES).nonOpaque().requiresTool()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -43,6 +46,7 @@ public class ModBlocks {
             entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
             entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
             entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
         });
     }
 }

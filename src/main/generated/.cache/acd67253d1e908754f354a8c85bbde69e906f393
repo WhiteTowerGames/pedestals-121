@@ -1,4 +1,5 @@
-// 1.21	2025-02-11T21:47:09.6787509	Pedestals 1.21/Block Loot Tables
+// 1.21	2025-02-11T23:52:36.7110208	Pedestals 1.21/Block Loot Tables
 c2a922e800e063e53a003fae4d6cb553717360a0 data\pedestals\loot_table\blocks\mossy_stone_brick_pedestal.json
 c940fe816e3d1154831de9fee43d8a581d232af1 data\pedestals\loot_table\blocks\deepslate_brick_pedestal.json
 4c123e1ea1ab7bf4fe726ea5e4a411edb116ac7a data\pedestals\loot_table\blocks\stone_brick_pedestal.json
+7f8927b0680a160d36087c7a0b1d3ecadeb55095 data\pedestals\loot_table\blocks\deepslate_tile_pedestal.json
