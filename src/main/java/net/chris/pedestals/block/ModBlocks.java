@@ -11,8 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static net.minecraft.block.Blocks.DEEPSLATE_BRICKS;
-import static net.minecraft.block.Blocks.STONE_BRICKS;
+import static net.minecraft.block.Blocks.*;
 
 public class ModBlocks {
 
@@ -21,6 +20,9 @@ public class ModBlocks {
 
     public static final Block DEEPSLATE_BRICK_PEDESTAL = registerBlock("deepslate_brick_pedestal",
             new Block(AbstractBlock.Settings.copy(DEEPSLATE_BRICKS).nonOpaque()));
+
+    public static final Block MOSSY_STONE_BRICK_PEDESTAL = registerBlock("mossy_stone_brick_pedestal",
+            new Block(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -35,9 +37,10 @@ public class ModBlocks {
     public static void registerModBlocks(){
         Pedestals121.LOGGER.info("Registering Mod Blocks for Pedestals 1.21 (source: "+Pedestals121.MOD_ID+").");
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-           // entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
-            //entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+            entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
         });
     }
 }
