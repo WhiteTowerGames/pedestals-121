@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "pedestals",
+	"version": "${version}",
+	"name": "Pedestals 1.21",
+	"description": "Craft pedestals out of any rock you can find to display your items in a fancy way!",
+	"authors": [
+		"Chris"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/pedestals/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.chris.pedestals.Pedestals121"
+		],
+		"fabric-datagen": [
+			"net.chris.pedestals.Pedestals121DataGenerator"
+		],
+		"client": [
+			"net.chris.pedestals.Pedestals121Client"
+		]
+	},
+	"mixins": [
+		"pedestals.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
