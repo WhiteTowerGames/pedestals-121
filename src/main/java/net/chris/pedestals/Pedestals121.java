@@ -1,5 +1,6 @@
 package net.chris.pedestals;
 
+import net.chris.pedestals.block.ModBlockEntities;
 import net.chris.pedestals.block.ModBlocks;
 import net.chris.pedestals.item.ModItemGroups;
 import net.chris.pedestals.item.ModItems;
@@ -21,5 +22,6 @@ public class Pedestals121 implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
+		ModBlockEntities.registerModBlockEntities();
 	}
 }
