@@ -45,6 +45,20 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     }
 
     @Override
+    protected boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity){
+            return pedestalBlockEntity.hasStoredItem() ? 15 : 0; //Return a strength of 15 if there is an item; otherwise zero
+        }
+        return 0;
+    }
+
+    @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {

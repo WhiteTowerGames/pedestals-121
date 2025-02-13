@@ -61,6 +61,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.DEEPSLATE_TILE_PEDESTAL, Blocks.DEEPSLATE_TILES);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_GRANITE_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.POLISHED_GRANITE)
+                .criterion(hasItem(Blocks.POLISHED_GRANITE), conditionsFromItem(Blocks.POLISHED_GRANITE))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_GRANITE_PEDESTAL, Blocks.POLISHED_GRANITE);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_GRANITE_PEDESTAL, Blocks.GRANITE);
+
 
 
     }

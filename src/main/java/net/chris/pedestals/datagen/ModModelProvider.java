@@ -1,4 +1,4 @@
 package net.chris.pedestals.datagen;
 
-public class ModModelProvider {
+public class ModModelProvider{
 }

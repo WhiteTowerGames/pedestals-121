@@ -1,8 +1,6 @@
 package net.chris.pedestals;
 
-import net.chris.pedestals.datagen.ModBlockTagProvider;
-import net.chris.pedestals.datagen.ModLootTableProvider;
-import net.chris.pedestals.datagen.ModRecipeProvider;
+import net.chris.pedestals.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -14,5 +12,6 @@ public class Pedestals121DataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModEnglishLanguageProvider::new);
 	}
 }

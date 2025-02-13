@@ -23,10 +23,13 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.copy(DEEPSLATE_BRICKS).nonOpaque().requiresTool()));
 
     public static final Block MOSSY_STONE_BRICK_PEDESTAL = registerBlock("mossy_stone_brick_pedestal",
-            new Block(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque().requiresTool()));
+            new PedestalBlock(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).nonOpaque().requiresTool()));
 
     public static final Block DEEPSLATE_TILE_PEDESTAL = registerBlock( "deepslate_tile_pedestal",
-            new Block(AbstractBlock.Settings.copy(DEEPSLATE_TILES).nonOpaque().requiresTool()));
+            new PedestalBlock(AbstractBlock.Settings.copy(DEEPSLATE_TILES).nonOpaque().requiresTool()));
+
+    public static final Block POLISHED_GRANITE_PEDESTAL = registerBlock( "polished_granite_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_GRANITE).nonOpaque().requiresTool()));
 
     public static final Block PEDESTAL = (PedestalBlock) registerBlock("pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(AMETHYST_BLOCK).nonOpaque().requiresTool()));
@@ -50,6 +53,7 @@ public class ModBlocks {
             entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
             entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
             entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
+            entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
         });
     }
 }

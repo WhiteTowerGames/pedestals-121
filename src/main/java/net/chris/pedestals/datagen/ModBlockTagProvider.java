@@ -20,6 +20,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STONE_BRICK_PEDESTAL)
                 .add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL)
                 .add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL)
-                .add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
+                .add(ModBlocks.DEEPSLATE_TILE_PEDESTAL)
+                .add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
     }
 }

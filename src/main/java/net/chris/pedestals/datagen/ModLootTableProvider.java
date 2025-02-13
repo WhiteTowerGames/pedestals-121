@@ -19,5 +19,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
         addDrop(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
         addDrop(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
+        addDrop(ModBlocks.POLISHED_GRANITE_PEDESTAL);
     }
 }
