@@ -19,12 +19,26 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlock extends Block implements BlockEntityProvider{
     public PedestalBlock(Settings settings) {
         super(settings);
+    }
+
+    private static final VoxelShape BASE_SHAPE = Block.createCuboidShape(0.0,0.0,0.0,16.0,2.0,16.0);
+    private static final VoxelShape PILLAR_SHAPE = Block.createCuboidShape(2.0,2.0,2.0,14.0,18.0,14.0);
+    private static final VoxelShape DISPLAY_SHAPE = Block.createCuboidShape(-1.0,18.0,-1.0,17.0,21.0,17.0);
+
+    private static final VoxelShape FULL_SHAPE = VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE, DISPLAY_SHAPE);
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return FULL_SHAPE;
     }
 
     public SoundEvent getAddItemSound() {
