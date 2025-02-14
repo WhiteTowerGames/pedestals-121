@@ -32,6 +32,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_GRANITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_GRANITE_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_DIORITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_DIORITE_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_ANDESITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_ANDESITE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.CALCITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.CALCITE_PEDESTAL));
 
     }
 

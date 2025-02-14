@@ -23,6 +23,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DEEPSLATE_TILE_PEDESTAL)
                 .add(ModBlocks.POLISHED_GRANITE_PEDESTAL)
                 .add(ModBlocks.POLISHED_DIORITE_PEDESTAL)
+                .add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL)
+                .add(ModBlocks.CALCITE_PEDESTAL)
                 .add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
     }
 }

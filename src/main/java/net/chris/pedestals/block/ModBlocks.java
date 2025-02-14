@@ -37,6 +37,12 @@ public class ModBlocks {
     public static final Block POLISHED_ANDESITE_PEDESTAL = registerBlock( "polished_andesite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_ANDESITE).nonOpaque().requiresTool()));
 
+    public static final Block POLISHED_DEEPSLATE_PEDESTAL = registerBlock( "polished_deepslate_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_DEEPSLATE).nonOpaque().requiresTool()));
+
+    public static final Block CALCITE_PEDESTAL = registerBlock( "calcite_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(CALCITE).nonOpaque().requiresTool()));
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Pedestals121.MOD_ID, name), block);
@@ -58,6 +64,8 @@ public class ModBlocks {
             entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
             entries.add(ModBlocks.POLISHED_DIORITE_PEDESTAL);
             entries.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
+            entries.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL);
+            entries.add(ModBlocks.CALCITE_PEDESTAL);
         });
     }
 }

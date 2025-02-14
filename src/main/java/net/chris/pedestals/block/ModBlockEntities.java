@@ -20,7 +20,9 @@ public class ModBlockEntities {
                     ModBlocks.DEEPSLATE_TILE_PEDESTAL,
                     ModBlocks.POLISHED_GRANITE_PEDESTAL,
                     ModBlocks.POLISHED_DIORITE_PEDESTAL,
-                    ModBlocks.POLISHED_ANDESITE_PEDESTAL
+                    ModBlocks.POLISHED_ANDESITE_PEDESTAL,
+                    ModBlocks.CALCITE_PEDESTAL,
+                    ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 
 

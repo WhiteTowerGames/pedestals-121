@@ -1,7 +1,9 @@
-// 1.21	2025-02-14T02:40:45.451093	Pedestals 1.21/Block Loot Tables
+// 1.21	2025-02-14T02:54:45.571937	Pedestals 1.21/Block Loot Tables
 28af0e555fb2629cb726df65d8e59c0abe44666d data\pedestals\loot_table\blocks\polished_granite_pedestal.json
+bd52afb897cf9724b5be965aaf041fd4fa6e7d2e data\pedestals\loot_table\blocks\polished_deepslate_pedestal.json
 c2a922e800e063e53a003fae4d6cb553717360a0 data\pedestals\loot_table\blocks\mossy_stone_brick_pedestal.json
 c940fe816e3d1154831de9fee43d8a581d232af1 data\pedestals\loot_table\blocks\deepslate_brick_pedestal.json
+0dda1429b8f40235e3b14ee067236dfbe11b0d23 data\pedestals\loot_table\blocks\calcite_pedestal.json
 a7063228f6b8639e572ebee2423542252a803ced data\pedestals\loot_table\blocks\polished_diorite_pedestal.json
 4c123e1ea1ab7bf4fe726ea5e4a411edb116ac7a data\pedestals\loot_table\blocks\stone_brick_pedestal.json
 08774e3b87729911da6b24ad3e2f05a96dc505a1 data\pedestals\loot_table\blocks\polished_andesite_pedestal.json

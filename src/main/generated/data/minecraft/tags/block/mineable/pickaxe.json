@@ -6,6 +6,8 @@
     "pedestals:deepslate_tile_pedestal",
     "pedestals:polished_granite_pedestal",
     "pedestals:polished_diorite_pedestal",
+    "pedestals:polished_deepslate_pedestal",
+    "pedestals:calcite_pedestal",
     "pedestals:polished_andesite_pedestal"
   ]
 }
