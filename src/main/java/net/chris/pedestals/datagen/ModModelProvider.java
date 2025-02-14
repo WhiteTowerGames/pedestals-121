@@ -1,4 +1,56 @@
 package net.chris.pedestals.datagen;
 
-public class ModModelProvider{
+import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.block.PedestalBlock;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.client.*;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
+import net.chris.pedestals.block.PedestalBlock;
+import net.minecraft.util.math.Direction;
+
+import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL;
+import static net.minecraft.block.Block.createCuboidShape;
+
+public class ModModelProvider extends FabricModelProvider {
+
+    public ModModelProvider(FabricDataOutput output) {
+        super(output);
+    }
+
+    @Override
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+
+        registerPedestal(blockStateModelGenerator, ModBlocks.STONE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.STONE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.DEEPSLATE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.DEEPSLATE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.DEEPSLATE_TILE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.DEEPSLATE_TILE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_GRANITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_GRANITE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_DIORITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_DIORITE_PEDESTAL));
+
+    }
+
+    public static void registerPedestal(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
+        Identifier pedestalModel = PEDESTAL_MODEL.upload(pedestalBlock, textures, generator.modelCollector);
+
+        generator.registerParentedItemModel(pedestalBlock, pedestalModel);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
+    }
+
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+
+    }
+
+    @Override
+    public String getName() {
+        return "Mod Model Provider";
+    }
+
+
+
 }

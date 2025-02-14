@@ -1,8 +1,0 @@
-{
-	"credit": "Made with Blockbench",
-	"parent": "pedestals:block/parent_pedestal",
-	"textures": {
-		"0": "pedestals:block/deepslate_brick_pedestal",
-		"particle": "pedestals:block/deepslate_brick_pedestal"
-	}
-}
