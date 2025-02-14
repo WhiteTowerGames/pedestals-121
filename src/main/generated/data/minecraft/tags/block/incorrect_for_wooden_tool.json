@@ -1,0 +1,21 @@
+{
+  "values": [
+    "pedestals:copper_pedestal",
+    "pedestals:weathered_copper_pedestal",
+    "pedestals:oxidized_copper_pedestal",
+    "pedestals:exposed_copper_pedestal",
+    "pedestals:waxed_copper_pedestal",
+    "pedestals:waxed_weathered_copper_pedestal",
+    "pedestals:waxed_oxidized_copper_pedestal",
+    "pedestals:waxed_exposed_copper_pedestal",
+    "pedestals:cut_copper_pedestal",
+    "pedestals:exposed_cut_copper_pedestal",
+    "pedestals:weathered_cut_copper_pedestal",
+    "pedestals:oxidized_cut_copper_pedestal",
+    "pedestals:polished_andesite_pedestal",
+    "pedestals:waxed_cut_copper_pedestal",
+    "pedestals:waxed_weathered_cut_copper_pedestal",
+    "pedestals:waxed_oxidized_cut_copper_pedestal",
+    "pedestals:waxed_exposed_cut_copper_pedestal"
+  ]
+}

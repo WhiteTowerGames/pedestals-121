@@ -1,0 +1,6 @@
+{
+  "parent": "pedestals:block/parent_pedestal",
+  "textures": {
+    "all": "pedestals:block/exposed_copper_pedestal"
+  }
+}
