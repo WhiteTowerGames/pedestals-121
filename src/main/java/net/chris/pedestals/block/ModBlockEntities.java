@@ -22,6 +22,22 @@ public class ModBlockEntities {
                     ModBlocks.POLISHED_DIORITE_PEDESTAL,
                     ModBlocks.POLISHED_ANDESITE_PEDESTAL,
                     ModBlocks.CALCITE_PEDESTAL,
+                    ModBlocks.COPPER_PEDESTAL,
+                    ModBlocks.EXPOSED_COPPER_PEDESTAL,
+                    ModBlocks.WEATHERED_COPPER_PEDESTAL,
+                    ModBlocks.OXIDIZED_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL,
+                    ModBlocks.CUT_COPPER_PEDESTAL,
+                    ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 

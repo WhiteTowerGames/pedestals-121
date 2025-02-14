@@ -141,5 +141,189 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.CALCITE_PEDESTAL, Blocks.CALCITE);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.COPPER_BLOCK)
+                .criterion(hasItem(Blocks.COPPER_BLOCK), conditionsFromItem(Blocks.COPPER_BLOCK))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.COPPER_PEDESTAL, Blocks.COPPER_BLOCK);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EXPOSED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.EXPOSED_COPPER)
+                .criterion(hasItem(Blocks.EXPOSED_COPPER), conditionsFromItem(Blocks.EXPOSED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.EXPOSED_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WEATHERED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WEATHERED_COPPER)
+                .criterion(hasItem(Blocks.WEATHERED_COPPER), conditionsFromItem(Blocks.WEATHERED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WEATHERED_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OXIDIZED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.OXIDIZED_COPPER)
+                .criterion(hasItem(Blocks.OXIDIZED_COPPER), conditionsFromItem(Blocks.OXIDIZED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.OXIDIZED_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_COPPER_BLOCK)
+                .criterion(hasItem(Blocks.WAXED_COPPER_BLOCK), conditionsFromItem(Blocks.WAXED_COPPER_BLOCK))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_EXPOSED_COPPER)
+                .criterion(hasItem(Blocks.WAXED_EXPOSED_COPPER), conditionsFromItem(Blocks.WAXED_EXPOSED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_WEATHERED_COPPER)
+                .criterion(hasItem(Blocks.WAXED_WEATHERED_COPPER), conditionsFromItem(Blocks.WAXED_WEATHERED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_OXIDIZED_COPPER)
+                .criterion(hasItem(Blocks.WAXED_OXIDIZED_COPPER), conditionsFromItem(Blocks.WAXED_OXIDIZED_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.CUT_COPPER)
+                .criterion(hasItem(Blocks.CUT_COPPER), conditionsFromItem(Blocks.CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.CUT_COPPER_PEDESTAL, Blocks.CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.CUT_COPPER_PEDESTAL, Blocks.COPPER_BLOCK, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.EXPOSED_CUT_COPPER)
+                .criterion(hasItem(Blocks.EXPOSED_CUT_COPPER), conditionsFromItem(Blocks.EXPOSED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WEATHERED_CUT_COPPER)
+                .criterion(hasItem(Blocks.WEATHERED_CUT_COPPER), conditionsFromItem(Blocks.WEATHERED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.OXIDIZED_CUT_COPPER)
+                .criterion(hasItem(Blocks.OXIDIZED_CUT_COPPER), conditionsFromItem(Blocks.OXIDIZED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_CUT_COPPER)
+                .criterion(hasItem(Blocks.WAXED_CUT_COPPER), conditionsFromItem(Blocks.WAXED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_EXPOSED_CUT_COPPER)
+                .criterion(hasItem(Blocks.WAXED_EXPOSED_CUT_COPPER), conditionsFromItem(Blocks.WAXED_EXPOSED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_WEATHERED_CUT_COPPER)
+                .criterion(hasItem(Blocks.WAXED_WEATHERED_CUT_COPPER), conditionsFromItem(Blocks.WAXED_WEATHERED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.WAXED_OXIDIZED_CUT_COPPER)
+                .criterion(hasItem(Blocks.WAXED_OXIDIZED_CUT_COPPER), conditionsFromItem(Blocks.WAXED_OXIDIZED_CUT_COPPER))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_CUT_COPPER);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER, 4);
+        
     }
 }

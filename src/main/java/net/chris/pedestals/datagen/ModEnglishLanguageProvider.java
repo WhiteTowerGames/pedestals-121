@@ -32,6 +32,22 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL, "Polished Andesite Pedestal");
         translationBuilder.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, "Polished Deepslate Pedestal");
         translationBuilder.add(ModBlocks.CALCITE_PEDESTAL, "Calcite Pedestal");
+        translationBuilder.add(ModBlocks.COPPER_PEDESTAL, "Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_COPPER_PEDESTAL, "Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_COPPER_PEDESTAL, "Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL, "Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_COPPER_PEDESTAL, "Waxed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL, "Waxed Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL, "Waxed Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL, "Waxed Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.CUT_COPPER_PEDESTAL, "Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, "Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, "Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, "Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL, "Waxed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, "Waxed Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, "Waxed Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, "Waxed Oxidized Cut Copper Pedestal");
 
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
     }

@@ -34,6 +34,22 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_ANDESITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_ANDESITE_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.CALCITE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.CALCITE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.EXPOSED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.EXPOSED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WEATHERED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.WEATHERED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.OXIDIZED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.OXIDIZED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.EXPOSED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.WEATHERED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.OXIDIZED_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL));
 
     }
 

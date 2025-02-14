@@ -22,7 +22,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemStack stack = entity.getStoredItem();// Get the actual stored item
-        Pedestals121.LOGGER.info(entity.getStoredItem() +"");
+        //Pedestals121.LOGGER.info(entity.getStoredItem() +"");
 
         if (!stack.isEmpty()) {
             matrices.push();

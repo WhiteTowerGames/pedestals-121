@@ -43,6 +43,54 @@ public class ModBlocks {
     public static final Block CALCITE_PEDESTAL = registerBlock( "calcite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(CALCITE).nonOpaque().requiresTool()));
 
+    public static final Block COPPER_PEDESTAL = registerBlock( "copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(COPPER_BLOCK).nonOpaque().requiresTool()));
+
+    public static final Block EXPOSED_COPPER_PEDESTAL = registerBlock( "exposed_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(EXPOSED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WEATHERED_COPPER_PEDESTAL = registerBlock( "weathered_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(WEATHERED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block OXIDIZED_COPPER_PEDESTAL = registerBlock( "oxidized_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(OXIDIZED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_COPPER_PEDESTAL = registerBlock( "waxed_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_COPPER_BLOCK).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_EXPOSED_COPPER_PEDESTAL = registerBlock( "waxed_exposed_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_EXPOSED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_WEATHERED_COPPER_PEDESTAL = registerBlock( "waxed_weathered_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_WEATHERED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_OXIDIZED_COPPER_PEDESTAL = registerBlock( "waxed_oxidized_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block CUT_COPPER_PEDESTAL = registerBlock( "cut_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block EXPOSED_CUT_COPPER_PEDESTAL = registerBlock( "exposed_cut_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(EXPOSED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WEATHERED_CUT_COPPER_PEDESTAL = registerBlock( "weathered_cut_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(WEATHERED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "oxidized_cut_copper_pedestal",
+            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(OXIDIZED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_cut_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_EXPOSED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_exposed_cut_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_EXPOSED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_WEATHERED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_weathered_cut_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_WEATHERED_CUT_COPPER).nonOpaque().requiresTool()));
+
+    public static final Block WAXED_OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_oxidized_cut_copper_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_CUT_COPPER).nonOpaque().requiresTool()));
+    
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Pedestals121.MOD_ID, name), block);
@@ -66,6 +114,23 @@ public class ModBlocks {
             entries.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
             entries.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL);
             entries.add(ModBlocks.CALCITE_PEDESTAL);
+            entries.add(ModBlocks.COPPER_PEDESTAL);
+            entries.add(ModBlocks.EXPOSED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WEATHERED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL);
+            entries.add(ModBlocks.CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
+            entries.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
+            
         });
     }
 }

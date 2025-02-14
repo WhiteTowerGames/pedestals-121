@@ -26,7 +26,24 @@ public class ModItemGroups {
                         entries.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
                         entries.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL);
                         entries.add(ModBlocks.CALCITE_PEDESTAL);
-
+                        entries.add(ModBlocks.COPPER_PEDESTAL);
+                        entries.add(ModBlocks.EXPOSED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WEATHERED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
+                        entries.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
+                        
+                        
                     }).build());
 
     public static void registerItemGroups(){
