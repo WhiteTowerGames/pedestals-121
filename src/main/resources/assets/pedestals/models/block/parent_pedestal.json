@@ -2,6 +2,9 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"texture_size": [48, 48],
+	"textures": {
+		"particle": "#all"
+	},
 	"elements": [
 		{
 			"from": [2, 2, 2],

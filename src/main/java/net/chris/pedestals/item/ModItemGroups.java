@@ -23,6 +23,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
                         entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
                         entries.add(ModBlocks.POLISHED_DIORITE_PEDESTAL);
+                        entries.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
 
                     }).build());
 
