@@ -42,7 +42,19 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
                         entries.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
                         entries.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
-                        
+                        entries.add(ModBlocks.BRICK_PEDESTAL);
+                        entries.add(ModBlocks.END_STONE_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.MUD_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.NETHER_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL);
+                        entries.add(ModBlocks.DARK_PRISMARINE_PEDESTAL);
+                        entries.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.PURPUR_BLOCK_PEDESTAL);
+                        entries.add(ModBlocks.QUARTZ_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
+
                         
                     }).build());
 

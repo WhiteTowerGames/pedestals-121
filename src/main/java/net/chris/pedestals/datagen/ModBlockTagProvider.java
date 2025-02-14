@@ -42,6 +42,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
+                .add(ModBlocks.BRICK_PEDESTAL)
+                .add(ModBlocks.END_STONE_BRICK_PEDESTAL)
+                .add(ModBlocks.MUD_BRICK_PEDESTAL)
+                .add(ModBlocks.NETHER_BRICK_PEDESTAL)
+                .add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL)
+                .add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL)
+                .add(ModBlocks.DARK_PRISMARINE_PEDESTAL)
+                .add(ModBlocks.PRISMARINE_BRICK_PEDESTAL)
+                .add(ModBlocks.PURPUR_BLOCK_PEDESTAL)
+                .add(ModBlocks.QUARTZ_BRICK_PEDESTAL)
+                .add(ModBlocks.RED_NETHER_BRICK_PEDESTAL)
+                .add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)

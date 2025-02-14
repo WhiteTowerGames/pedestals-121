@@ -2,8 +2,10 @@ package net.chris.pedestals.block;
 
 import net.chris.pedestals.Pedestals121;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.block.OxidizableBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -44,16 +46,16 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.copy(CALCITE).nonOpaque().requiresTool()));
 
     public static final Block COPPER_PEDESTAL = registerBlock( "copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(COPPER_BLOCK).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(COPPER_BLOCK).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block EXPOSED_COPPER_PEDESTAL = registerBlock( "exposed_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(EXPOSED_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(EXPOSED_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block WEATHERED_COPPER_PEDESTAL = registerBlock( "weathered_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(WEATHERED_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(WEATHERED_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block OXIDIZED_COPPER_PEDESTAL = registerBlock( "oxidized_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(OXIDIZED_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.OXIDIZED, AbstractBlock.Settings.copy(OXIDIZED_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block WAXED_COPPER_PEDESTAL = registerBlock( "waxed_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_COPPER_BLOCK).nonOpaque().requiresTool()));
@@ -68,16 +70,16 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_COPPER).nonOpaque().requiresTool()));
 
     public static final Block CUT_COPPER_PEDESTAL = registerBlock( "cut_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(CUT_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(CUT_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block EXPOSED_CUT_COPPER_PEDESTAL = registerBlock( "exposed_cut_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(EXPOSED_CUT_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(EXPOSED_CUT_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block WEATHERED_CUT_COPPER_PEDESTAL = registerBlock( "weathered_cut_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(WEATHERED_CUT_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(WEATHERED_CUT_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "oxidized_cut_copper_pedestal",
-            new OxidizablePedestalBlock(AbstractBlock.Settings.copy(OXIDIZED_CUT_COPPER).nonOpaque().requiresTool()));
+            new OxidizablePedestalBlock(Oxidizable.OxidationLevel.OXIDIZED  , AbstractBlock.Settings.copy(OXIDIZED_CUT_COPPER).nonOpaque().requiresTool().ticksRandomly()));
 
     public static final Block WAXED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_CUT_COPPER).nonOpaque().requiresTool()));
@@ -90,7 +92,43 @@ public class ModBlocks {
 
     public static final Block WAXED_OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_oxidized_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_CUT_COPPER).nonOpaque().requiresTool()));
-    
+
+    public static final Block BRICK_PEDESTAL = registerBlock( "brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block END_STONE_BRICK_PEDESTAL = registerBlock( "end_stone_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(END_STONE_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block MUD_BRICK_PEDESTAL = registerBlock( "mud_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(MUD_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block NETHER_BRICK_PEDESTAL = registerBlock( "nether_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(NETHER_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block POLISHED_BLACKSTONE_BRICK_PEDESTAL = registerBlock( "polished_blackstone_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_BLACKSTONE_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block POLISHED_BLACKSTONE_PEDESTAL = registerBlock( "polished_blackstone_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_BLACKSTONE).nonOpaque().requiresTool()));
+
+    public static final Block DARK_PRISMARINE_PEDESTAL = registerBlock( "dark_prismarine_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(DARK_PRISMARINE).nonOpaque().requiresTool()));
+
+    public static final Block PRISMARINE_BRICK_PEDESTAL = registerBlock( "prismarine_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(PRISMARINE_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block PURPUR_BLOCK_PEDESTAL = registerBlock( "purpur_block_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(PURPUR_BLOCK).nonOpaque().requiresTool()));
+
+    public static final Block QUARTZ_BRICK_PEDESTAL = registerBlock( "quartz_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(QUARTZ_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block RED_NETHER_BRICK_PEDESTAL = registerBlock( "red_nether_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(RED_NETHER_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block SMOOTH_QUARTZ_PEDESTAL = registerBlock( "smooth_quartz_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(SMOOTH_QUARTZ).nonOpaque().requiresTool()));
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Pedestals121.MOD_ID, name), block);
@@ -99,6 +137,28 @@ public class ModBlocks {
     private static void registerBlockItem(String name, Block block){
         Registry.register(Registries.ITEM, Identifier.of(Pedestals121.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
+    }
+
+    private static void registerOxidationAndWaxing() {
+        
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(COPPER_PEDESTAL, EXPOSED_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_COPPER_PEDESTAL, WEATHERED_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_COPPER_PEDESTAL, OXIDIZED_COPPER_PEDESTAL);
+
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CUT_COPPER_PEDESTAL, EXPOSED_CUT_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_CUT_COPPER_PEDESTAL, WEATHERED_CUT_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_CUT_COPPER_PEDESTAL, OXIDIZED_CUT_COPPER_PEDESTAL);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(COPPER_PEDESTAL, WAXED_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_COPPER_PEDESTAL, WAXED_EXPOSED_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_COPPER_PEDESTAL, WAXED_WEATHERED_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_COPPER_PEDESTAL, WAXED_OXIDIZED_COPPER_PEDESTAL);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CUT_COPPER_PEDESTAL, WAXED_CUT_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_CUT_COPPER_PEDESTAL, WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_CUT_COPPER_PEDESTAL, WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_CUT_COPPER_PEDESTAL, WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
+
     }
 
     public static void registerModBlocks(){
@@ -130,7 +190,22 @@ public class ModBlocks {
             entries.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
             entries.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
             entries.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
-            
+            entries.add(ModBlocks.BRICK_PEDESTAL);
+            entries.add(ModBlocks.END_STONE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.MUD_BRICK_PEDESTAL);
+            entries.add(ModBlocks.NETHER_BRICK_PEDESTAL);
+            entries.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL);
+            entries.add(ModBlocks.DARK_PRISMARINE_PEDESTAL);
+            entries.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.PURPUR_BLOCK_PEDESTAL);
+            entries.add(ModBlocks.QUARTZ_BRICK_PEDESTAL);
+            entries.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL);
+            entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
+
+
+
         });
+        registerOxidationAndWaxing();
     }
 }

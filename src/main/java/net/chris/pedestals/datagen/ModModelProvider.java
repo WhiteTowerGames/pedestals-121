@@ -50,6 +50,19 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.END_STONE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.END_STONE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.MUD_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.MUD_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.NETHER_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.NETHER_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.DARK_PRISMARINE_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.DARK_PRISMARINE_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.PRISMARINE_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.PRISMARINE_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.PURPUR_BLOCK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.PURPUR_BLOCK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.QUARTZ_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.QUARTZ_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.RED_NETHER_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_QUARTZ_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.SMOOTH_QUARTZ_PEDESTAL));
+
 
     }
 
@@ -58,12 +71,14 @@ public class ModModelProvider extends FabricModelProvider {
 
         generator.registerParentedItemModel(pedestalBlock, pedestalModel);
         generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
+        textures.put(TextureKey.PARTICLE, textures.getTexture(TextureKey.ALL));
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 
     }
+
 
     @Override
     public String getName() {

@@ -9,6 +9,7 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -324,6 +325,136 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER, 4);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.BRICKS)
+                .criterion(hasItem(Blocks.BRICKS), conditionsFromItem(Blocks.BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.BRICK_PEDESTAL, Blocks.BRICKS);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.END_STONE_BRICKS)
+                .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.END_STONE_BRICK_PEDESTAL, Blocks.END_STONE_BRICKS);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.END_STONE_BRICK_PEDESTAL, Blocks.END_STONE);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUD_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.MUD_BRICKS)
+                .criterion(hasItem(Blocks.MUD_BRICKS), conditionsFromItem(Blocks.MUD_BRICKS))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.NETHER_BRICKS)
+                .criterion(hasItem(Blocks.NETHER_BRICKS), conditionsFromItem(Blocks.NETHER_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.NETHER_BRICK_PEDESTAL, Blocks.NETHER_BRICKS);
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.POLISHED_BLACKSTONE_BRICKS)
+                .criterion(hasItem(Blocks.POLISHED_BLACKSTONE_BRICKS), conditionsFromItem(Blocks.POLISHED_BLACKSTONE_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE_BRICKS);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.BLACKSTONE);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BLACKSTONE_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.POLISHED_BLACKSTONE)
+                .criterion(hasItem(Blocks.POLISHED_BLACKSTONE), conditionsFromItem(Blocks.POLISHED_BLACKSTONE))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, Blocks.BLACKSTONE);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_PRISMARINE_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.DARK_PRISMARINE)
+                .criterion(hasItem(Blocks.DARK_PRISMARINE), conditionsFromItem(Blocks.DARK_PRISMARINE))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.DARK_PRISMARINE_PEDESTAL, Blocks.DARK_PRISMARINE);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.PRISMARINE_BRICKS)
+                .criterion(hasItem(Blocks.PRISMARINE_BRICKS), conditionsFromItem(Blocks.PRISMARINE_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.PRISMARINE_BRICK_PEDESTAL, Blocks.PRISMARINE_BRICKS);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPUR_BLOCK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.PURPUR_BLOCK)
+                .criterion(hasItem(Blocks.PURPUR_BLOCK), conditionsFromItem(Blocks.PURPUR_BLOCK))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.PURPUR_BLOCK_PEDESTAL, Blocks.PURPUR_BLOCK);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.QUARTZ_BRICKS)
+                .criterion(hasItem(Blocks.QUARTZ_BRICKS), conditionsFromItem(Blocks.QUARTZ_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.QUARTZ_BRICK_PEDESTAL, Blocks.QUARTZ_BRICKS);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.RED_NETHER_BRICKS)
+                .criterion(hasItem(Blocks.RED_NETHER_BRICKS), conditionsFromItem(Blocks.RED_NETHER_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.PRISMARINE_BRICK_PEDESTAL, Blocks.RED_NETHER_BRICKS);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_QUARTZ_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.SMOOTH_QUARTZ)
+                .criterion(hasItem(Blocks.SMOOTH_QUARTZ), conditionsFromItem(Blocks.SMOOTH_QUARTZ))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.PRISMARINE_BRICK_PEDESTAL, Blocks.SMOOTH_QUARTZ);
         
     }
 }

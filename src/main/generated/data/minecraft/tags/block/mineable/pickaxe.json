@@ -25,6 +25,18 @@
     "pedestals:waxed_cut_copper_pedestal",
     "pedestals:waxed_weathered_cut_copper_pedestal",
     "pedestals:waxed_oxidized_cut_copper_pedestal",
+    "pedestals:brick_pedestal",
+    "pedestals:end_stone_brick_pedestal",
+    "pedestals:mud_brick_pedestal",
+    "pedestals:nether_brick_pedestal",
+    "pedestals:polished_blackstone_brick_pedestal",
+    "pedestals:polished_blackstone_pedestal",
+    "pedestals:dark_prismarine_pedestal",
+    "pedestals:prismarine_brick_pedestal",
+    "pedestals:purpur_block_pedestal",
+    "pedestals:quartz_brick_pedestal",
+    "pedestals:red_nether_brick_pedestal",
+    "pedestals:smooth_quartz_pedestal",
     "pedestals:waxed_exposed_cut_copper_pedestal"
   ]
 }

@@ -38,6 +38,18 @@ public class ModBlockEntities {
                     ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL,
                     ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL,
                     ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL,
+                    ModBlocks.BRICK_PEDESTAL,
+                    ModBlocks.END_STONE_BRICK_PEDESTAL,
+                    ModBlocks.NETHER_BRICK_PEDESTAL,
+                    ModBlocks.MUD_BRICK_PEDESTAL,
+                    ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL,
+                    ModBlocks.POLISHED_BLACKSTONE_PEDESTAL,
+                    ModBlocks.DARK_PRISMARINE_PEDESTAL,
+                    ModBlocks.PRISMARINE_BRICK_PEDESTAL,
+                    ModBlocks.PURPUR_BLOCK_PEDESTAL,
+                    ModBlocks.QUARTZ_BRICK_PEDESTAL,
+                    ModBlocks.RED_NETHER_BRICK_PEDESTAL,
+                    ModBlocks.SMOOTH_QUARTZ_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 

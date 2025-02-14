@@ -137,7 +137,9 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
     public static TextureMap pedestalMap(Block block) {
         return new TextureMap()
+                .put(TextureKey.PARTICLE, ModelIds.getBlockSubModelId(block, ""))
                 .put(TextureKey.ALL, ModelIds.getBlockSubModelId(block, ""));
+
     }
 
 }

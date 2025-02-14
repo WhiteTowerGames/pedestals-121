@@ -48,6 +48,18 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, "Waxed Exposed Cut Copper Pedestal");
         translationBuilder.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, "Waxed Weathered Cut Copper Pedestal");
         translationBuilder.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, "Waxed Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.BRICK_PEDESTAL, "Brick Pedestal");
+        translationBuilder.add(ModBlocks.END_STONE_BRICK_PEDESTAL, "End Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.MUD_BRICK_PEDESTAL, "Mud Brick Pedestal");
+        translationBuilder.add(ModBlocks.NETHER_BRICK_PEDESTAL, "Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, "Polished Blackstone Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, "Polished Blackstone Pedestal");
+        translationBuilder.add(ModBlocks.DARK_PRISMARINE_PEDESTAL, "Dark Prismarine Pedestal");
+        translationBuilder.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL, "Prismarine Brick Pedestal");
+        translationBuilder.add(ModBlocks.PURPUR_BLOCK_PEDESTAL, "Purpur Pedestal");
+        translationBuilder.add(ModBlocks.QUARTZ_BRICK_PEDESTAL, "Quartz Brick Pedestal");
+        translationBuilder.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL, "Red Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL, "Smooth Quartz Pedestal");
 
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
     }

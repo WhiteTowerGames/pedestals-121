@@ -40,7 +40,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
         addDrop(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
         addDrop(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
-        
+        addDrop(ModBlocks.BRICK_PEDESTAL);
+        addDrop(ModBlocks.END_STONE_BRICK_PEDESTAL);
+        addDrop(ModBlocks.MUD_BRICK_PEDESTAL);
+        addDrop(ModBlocks.NETHER_BRICK_PEDESTAL);
+        addDrop(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL);
+        addDrop(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL);
+        addDrop(ModBlocks.DARK_PRISMARINE_PEDESTAL);
+        addDrop(ModBlocks.PRISMARINE_BRICK_PEDESTAL);
+        addDrop(ModBlocks.PURPUR_BLOCK_PEDESTAL);
+        addDrop(ModBlocks.QUARTZ_BRICK_PEDESTAL);
+        addDrop(ModBlocks.RED_NETHER_BRICK_PEDESTAL);
+        addDrop(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
+
         
     }
 }
