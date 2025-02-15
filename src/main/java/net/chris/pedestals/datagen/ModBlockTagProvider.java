@@ -60,6 +60,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.BIRCH_LOG_PEDESTAL)
+                .add(ModBlocks.SPRUCE_LOG_PEDESTAL)
+                .add(ModBlocks.JUNGLE_LOG_PEDESTAL)
+                .add(ModBlocks.DARK_OAK_LOG_PEDESTAL)
+                .add(ModBlocks.ACACIA_LOG_PEDESTAL)
+                .add(ModBlocks.MANGROVE_LOG_PEDESTAL)
+                .add(ModBlocks.CHERRY_LOG_PEDESTAL)
+                .add(ModBlocks.BAMBOO_LOG_PEDESTAL)
+                .add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL)
                 .add(ModBlocks.OAK_LOG_PEDESTAL);
 
 

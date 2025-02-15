@@ -84,6 +84,12 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockPos aboveBlock = pos.up();
+
+        if (!world.getBlockState(aboveBlock).isAir()){
+            return ActionResult.FAIL;
+        }
+
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
             ItemStack playerHeldItem = player.getStackInHand(Hand.MAIN_HAND);
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();

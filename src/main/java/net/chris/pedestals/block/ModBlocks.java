@@ -142,7 +142,60 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.WOOD)
                     .nonOpaque()
-                    .requiresTool()
+                    .burnable()));
+
+    public static final Block BIRCH_LOG_PEDESTAL = registerBlock( "birch_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block SPRUCE_LOG_PEDESTAL = registerBlock( "spruce_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block JUNGLE_LOG_PEDESTAL = registerBlock( "jungle_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block DARK_OAK_LOG_PEDESTAL = registerBlock( "dark_oak_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block ACACIA_LOG_PEDESTAL = registerBlock( "acacia_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block MANGROVE_LOG_PEDESTAL = registerBlock( "mangrove_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block CHERRY_LOG_PEDESTAL = registerBlock( "cherry_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block BAMBOO_LOG_PEDESTAL = registerBlock( "bamboo_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.BAMBOO_WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block BAMBOO_MOSAIC_PEDESTAL = registerBlock( "bamboo_mosaic_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.BAMBOO_WOOD)
+                    .nonOpaque()
                     .burnable()));
 
     private static Block registerBlock(String name, Block block) {
@@ -179,6 +232,16 @@ public class ModBlocks {
 
     private static void registerFlammableBlocks(){
         FlammableBlockRegistry.getDefaultInstance().add(OAK_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(BIRCH_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(SPRUCE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(JUNGLE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(DARK_OAK_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ACACIA_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(CHERRY_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_MOSAIC_PEDESTAL, 5, 20);
+
     }
 
 
@@ -226,6 +289,15 @@ public class ModBlocks {
             entries.add(ModBlocks.POLISHED_TUFF_PEDESTAL);
             entries.add(ModBlocks.TUFF_BRICK_PEDESTAL);
             entries.add(ModBlocks.OAK_LOG_PEDESTAL);
+            entries.add(ModBlocks.BIRCH_LOG_PEDESTAL);
+            entries.add(ModBlocks.SPRUCE_LOG_PEDESTAL);
+            entries.add(ModBlocks.JUNGLE_LOG_PEDESTAL);
+            entries.add(ModBlocks.DARK_OAK_LOG_PEDESTAL);
+            entries.add(ModBlocks.ACACIA_LOG_PEDESTAL);
+            entries.add(ModBlocks.MANGROVE_LOG_PEDESTAL);
+            entries.add(ModBlocks.CHERRY_LOG_PEDESTAL);
+            entries.add(ModBlocks.BAMBOO_LOG_PEDESTAL);
+            entries.add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL);
 
 
 

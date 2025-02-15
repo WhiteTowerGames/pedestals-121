@@ -53,6 +53,15 @@ public class ModBlockEntities {
                     ModBlocks.POLISHED_TUFF_PEDESTAL,
                     ModBlocks.TUFF_BRICK_PEDESTAL,
                     ModBlocks.OAK_LOG_PEDESTAL,
+                    ModBlocks.BIRCH_LOG_PEDESTAL,
+                    ModBlocks.SPRUCE_LOG_PEDESTAL,
+                    ModBlocks.JUNGLE_LOG_PEDESTAL,
+                    ModBlocks.DARK_OAK_LOG_PEDESTAL,
+                    ModBlocks.ACACIA_LOG_PEDESTAL,
+                    ModBlocks.MANGROVE_LOG_PEDESTAL,
+                    ModBlocks.CHERRY_LOG_PEDESTAL,
+                    ModBlocks.BAMBOO_LOG_PEDESTAL,
+                    ModBlocks.BAMBOO_MOSAIC_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 

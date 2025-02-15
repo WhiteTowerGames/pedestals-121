@@ -65,9 +65,18 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_QUARTZ_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.SMOOTH_QUARTZ_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_TUFF_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_TUFF_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.TUFF_BRICK_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.BAMBOO_MOSAIC_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.BAMBOO_MOSAIC_PEDESTAL));
 
 
         registerPedestalMult(blockStateModelGenerator, ModBlocks.OAK_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.OAK_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.BIRCH_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.BIRCH_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.SPRUCE_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.SPRUCE_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.JUNGLE_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.JUNGLE_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.DARK_OAK_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.DARK_OAK_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.ACACIA_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.ACACIA_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.MANGROVE_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.MANGROVE_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.CHERRY_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.CHERRY_LOG_PEDESTAL));
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.BAMBOO_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.BAMBOO_LOG_PEDESTAL));
 
 
     }
