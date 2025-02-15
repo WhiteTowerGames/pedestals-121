@@ -14,6 +14,7 @@ import net.chris.pedestals.block.PedestalBlock;
 import net.minecraft.util.math.Direction;
 
 import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL;
+import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL_MORE;
 import static net.minecraft.block.Block.createCuboidShape;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -62,6 +63,11 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.QUARTZ_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.QUARTZ_BRICK_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.RED_NETHER_BRICK_PEDESTAL));
         registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_QUARTZ_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.SMOOTH_QUARTZ_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_TUFF_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.POLISHED_TUFF_PEDESTAL));
+        registerPedestal(blockStateModelGenerator, ModBlocks.TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMap(ModBlocks.TUFF_BRICK_PEDESTAL));
+
+
+        registerPedestalMult(blockStateModelGenerator, ModBlocks.OAK_LOG_PEDESTAL, PedestalBlock.pedestalMapMult(ModBlocks.OAK_LOG_PEDESTAL));
 
 
     }
@@ -71,7 +77,14 @@ public class ModModelProvider extends FabricModelProvider {
 
         generator.registerParentedItemModel(pedestalBlock, pedestalModel);
         generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
-        textures.put(TextureKey.PARTICLE, textures.getTexture(TextureKey.ALL));
+        //textures.put(TextureKey.PARTICLE, textures.getTexture(TextureKey.ALL));
+    }
+
+    public static  void registerPedestalMult(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
+        Identifier pedestalModel = PEDESTAL_MODEL_MORE.upload(pedestalBlock, textures, generator.modelCollector);
+
+        generator.registerParentedItemModel(pedestalBlock, pedestalModel);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
     }
 
     @Override

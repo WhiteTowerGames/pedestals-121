@@ -54,7 +54,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.QUARTZ_BRICK_PEDESTAL)
                 .add(ModBlocks.RED_NETHER_BRICK_PEDESTAL)
                 .add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL)
+                .add(ModBlocks.POLISHED_TUFF_PEDESTAL)
+                .add(ModBlocks.TUFF_BRICK_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
+
+
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.OAK_LOG_PEDESTAL);
+
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.COPPER_PEDESTAL)

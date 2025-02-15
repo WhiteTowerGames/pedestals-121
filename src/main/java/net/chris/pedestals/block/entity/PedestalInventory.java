@@ -6,7 +6,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 
-public interface ImplementedInventory extends Inventory {
+public interface PedestalInventory extends Inventory {
     DefaultedList<ItemStack> getItems();
 
     @Override

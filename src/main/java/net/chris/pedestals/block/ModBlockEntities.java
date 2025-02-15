@@ -50,6 +50,9 @@ public class ModBlockEntities {
                     ModBlocks.QUARTZ_BRICK_PEDESTAL,
                     ModBlocks.RED_NETHER_BRICK_PEDESTAL,
                     ModBlocks.SMOOTH_QUARTZ_PEDESTAL,
+                    ModBlocks.POLISHED_TUFF_PEDESTAL,
+                    ModBlocks.TUFF_BRICK_PEDESTAL,
+                    ModBlocks.OAK_LOG_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 

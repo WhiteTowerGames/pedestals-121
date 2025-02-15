@@ -3,9 +3,7 @@ package net.chris.pedestals.block.entity;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.ModBlockEntities;
 import net.minecraft.block.BlockState;
-import com.mojang.serialization.DynamicOps;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -15,10 +13,9 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class PedestalBlockEntity extends BlockEntity implements ImplementedInventory, TickableBlockEntity{
+public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
     private ItemStack storedItem = ItemStack.EMPTY;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 

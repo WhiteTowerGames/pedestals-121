@@ -2,16 +2,17 @@ package net.chris.pedestals.block;
 
 import net.chris.pedestals.Pedestals121;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Oxidizable;
-import net.minecraft.block.OxidizableBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import static net.minecraft.block.Blocks.*;
@@ -129,6 +130,21 @@ public class ModBlocks {
     public static final Block SMOOTH_QUARTZ_PEDESTAL = registerBlock( "smooth_quartz_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(SMOOTH_QUARTZ).nonOpaque().requiresTool()));
 
+    public static final Block POLISHED_TUFF_PEDESTAL = registerBlock( "polished_tuff_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_TUFF).nonOpaque().requiresTool()));
+
+    public static final Block TUFF_BRICK_PEDESTAL = registerBlock( "tuff_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(TUFF_BRICKS).nonOpaque().requiresTool()));
+
+
+
+    public static final Block OAK_LOG_PEDESTAL = registerBlock( "oak_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .requiresTool()
+                    .burnable()));
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Pedestals121.MOD_ID, name), block);
@@ -160,6 +176,11 @@ public class ModBlocks {
         OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_CUT_COPPER_PEDESTAL, WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
 
     }
+
+    private static void registerFlammableBlocks(){
+        FlammableBlockRegistry.getDefaultInstance().add(OAK_LOG_PEDESTAL, 5, 5);
+    }
+
 
     public static void registerModBlocks(){
         Pedestals121.LOGGER.info("Registering Mod Blocks for Pedestals 1.21 (source: "+Pedestals121.MOD_ID+").");
@@ -202,10 +223,14 @@ public class ModBlocks {
             entries.add(ModBlocks.QUARTZ_BRICK_PEDESTAL);
             entries.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL);
             entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
+            entries.add(ModBlocks.POLISHED_TUFF_PEDESTAL);
+            entries.add(ModBlocks.TUFF_BRICK_PEDESTAL);
+            entries.add(ModBlocks.OAK_LOG_PEDESTAL);
 
 
 
         });
         registerOxidationAndWaxing();
+        registerFlammableBlocks();
     }
 }

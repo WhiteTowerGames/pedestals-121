@@ -131,15 +131,22 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
     public static final Model PEDESTAL_MODEL = block("parent_pedestal", TextureKey.ALL);
 
+    public static final Model PEDESTAL_MODEL_MORE = block("parent_pedestal_more", TextureKey.SIDE, TextureKey.TOP);
+
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
     public static TextureMap pedestalMap(Block block) {
         return new TextureMap()
-                .put(TextureKey.PARTICLE, ModelIds.getBlockSubModelId(block, ""))
                 .put(TextureKey.ALL, ModelIds.getBlockSubModelId(block, ""));
 
+    }
+
+    public static TextureMap pedestalMapMult(Block block) {
+        return new TextureMap()
+                .put(TextureKey.SIDE, ModelIds.getBlockSubModelId(block, "_side"))
+                .put(TextureKey.TOP, ModelIds.getBlockSubModelId(block, "_top"));
     }
 
 }
