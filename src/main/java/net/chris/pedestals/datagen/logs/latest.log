@@ -1,5 +1,5 @@
-[21:38:29] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
-[21:38:29] [main/INFO] (FabricLoader) Loading 55 mods:
+[22:43:15] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
+[22:43:16] [main/INFO] (FabricLoader) Loading 55 mods:
 	- fabric-api 0.117.0+1.21.4
 	- fabric-api-base 0.4.54+b47eab6b04
 	- fabric-api-lookup-api-v1 1.6.86+b1caf1e904
@@ -55,35 +55,35 @@
 	- minecraft 1.21.4
 	- mixinextras 0.4.1
 	- pedestals 1.0.2
-[21:38:29] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[21:38:29] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[21:38:29] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[21:38:31] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[21:38:32] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 465 milliseconds
-[21:38:32] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[21:38:32] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
-[21:38:32] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
-[21:38:32] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
-[21:38:33] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
-[21:38:39] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[21:38:39] [Render thread/INFO] (Minecraft) Setting user: Player746
-[21:38:39] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
-[21:38:39] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
-[21:38:39] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
-[21:38:39] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
-[21:38:39] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
-[21:38:39] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
-[21:38:39] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[21:38:40] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
-[21:38:40] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Tags for minecraft:block
-[21:38:40] [Render thread/INFO] (Minecraft) Pedestals 1.21/Tags for minecraft:block finished after 13 ms
-[21:38:40] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Block Loot Tables
-[21:38:40] [Render thread/INFO] (Minecraft) Pedestals 1.21/Block Loot Tables finished after 16 ms
-[21:38:40] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/
-[21:38:40] [Render thread/INFO] (Minecraft) Pedestals 1.21/ finished after 71 ms
-[21:38:40] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Language (en_us)
-[21:38:40] [Render thread/INFO] (Minecraft) Pedestals 1.21/Language (en_us) finished after 3 ms
-[21:38:40] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Mod Model Provider
-[21:38:40] [Render thread/INFO] (Minecraft) Pedestals 1.21/Mod Model Provider finished after 60 ms
-[21:38:40] [Render thread/INFO] (Minecraft) All providers took: 167 ms
-[21:38:40] [Render thread/INFO] (Minecraft) Caching: total files: 482, old count: 482, new count: 483, removed stale: 0, written: 1
+[22:43:16] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[22:43:16] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[22:43:16] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[22:43:18] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[22:43:19] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 458 milliseconds
+[22:43:19] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[22:43:19] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
+[22:43:19] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
+[22:43:19] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
+[22:43:20] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
+[22:43:25] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[22:43:25] [Render thread/INFO] (Minecraft) Setting user: Player611
+[22:43:25] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
+[22:43:26] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
+[22:43:26] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
+[22:43:26] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
+[22:43:26] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
+[22:43:26] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
+[22:43:26] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[22:43:26] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
+[22:43:27] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Tags for minecraft:block
+[22:43:27] [Render thread/INFO] (Minecraft) Pedestals 1.21/Tags for minecraft:block finished after 12 ms
+[22:43:27] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Block Loot Tables
+[22:43:27] [Render thread/INFO] (Minecraft) Pedestals 1.21/Block Loot Tables finished after 16 ms
+[22:43:27] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/
+[22:43:27] [Render thread/INFO] (Minecraft) Pedestals 1.21/ finished after 76 ms
+[22:43:27] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Language (en_us)
+[22:43:27] [Render thread/INFO] (Minecraft) Pedestals 1.21/Language (en_us) finished after 2 ms
+[22:43:27] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Mod Model Provider
+[22:43:27] [Render thread/INFO] (Minecraft) Pedestals 1.21/Mod Model Provider finished after 60 ms
+[22:43:27] [Render thread/INFO] (Minecraft) All providers took: 169 ms
+[22:43:27] [Render thread/INFO] (Minecraft) Caching: total files: 498, old count: 482, new count: 499, removed stale: 0, written: 18

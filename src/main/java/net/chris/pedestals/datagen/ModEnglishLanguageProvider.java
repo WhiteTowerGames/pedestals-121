@@ -81,6 +81,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL, "Stripped Mangrove Wood Pedestal");
         translationBuilder.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL, "Stripped Cherry Wood Pedestal");
         translationBuilder.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL, "Stripped Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, "Chiseled Tuff Brick Pedestal");
 
         translationBuilder.add(ModBlocks.STONE_BRICK_PEDESTAL.asItem(), "Stone Brick Pedestal");
         translationBuilder.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL.asItem(), "Mossy Stone Brick Pedestal");
@@ -140,6 +141,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL.asItem(), "Stripped Mangrove Wood Pedestal");
         translationBuilder.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL.asItem(), "Stripped Cherry Wood Pedestal");
         translationBuilder.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL.asItem(), "Stripped Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL.asItem(), "Chiseled Tuff Brick Pedestal");
 
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
     }

@@ -487,6 +487,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
                         ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.TUFF);
 
+                offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
+
+                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL)
+                        .pattern("B")
+                        .pattern("B")
+                        .input('B', Blocks.CHISELED_TUFF_BRICKS)
+                        .criterion(hasItem(Blocks.CHISELED_TUFF_BRICKS), conditionsFromItem(Blocks.CHISELED_TUFF_BRICKS))
+                        .offerTo(recipeExporter);
+
+                offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.CHISELED_TUFF_BRICKS);
+
+                offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
+
+                offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF);
+
+                offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
+
                 createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")

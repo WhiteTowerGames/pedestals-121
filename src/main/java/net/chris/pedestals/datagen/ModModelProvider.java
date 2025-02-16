@@ -83,6 +83,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_MANGROVE_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_CHERRY_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_BAMBOO_BLOCK));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.CHISELED_TUFF_BRICKS));
 
 
     }

@@ -56,6 +56,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL)
                 .add(ModBlocks.POLISHED_TUFF_PEDESTAL)
                 .add(ModBlocks.TUFF_BRICK_PEDESTAL)
+                .add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
 

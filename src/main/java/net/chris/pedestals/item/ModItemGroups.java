@@ -56,6 +56,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
                         entries.add(ModBlocks.POLISHED_TUFF_PEDESTAL);
                         entries.add(ModBlocks.TUFF_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL);
                         entries.add(ModBlocks.OAK_LOG_PEDESTAL);
                         entries.add(ModBlocks.BIRCH_LOG_PEDESTAL);
                         entries.add(ModBlocks.SPRUCE_LOG_PEDESTAL);
