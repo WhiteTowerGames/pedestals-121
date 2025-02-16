@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:stripped_cherry_log"
-    }
+    "B": "minecraft:stripped_cherry_log"
   },
   "pattern": [
     "B",

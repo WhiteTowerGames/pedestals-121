@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:birch_log"
-    }
+    "B": "minecraft:birch_log"
   },
   "pattern": [
     "B",

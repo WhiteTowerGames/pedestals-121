@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:mud_bricks"
-    }
+    "B": "minecraft:mud_bricks"
   },
   "pattern": [
     "B",

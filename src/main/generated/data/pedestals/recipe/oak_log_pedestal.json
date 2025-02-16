@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:oak_log"
-    }
+    "B": "minecraft:oak_log"
   },
   "pattern": [
     "B",

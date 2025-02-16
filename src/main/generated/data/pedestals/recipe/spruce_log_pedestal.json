@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:spruce_log"
-    }
+    "B": "minecraft:spruce_log"
   },
   "pattern": [
     "B",

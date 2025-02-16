@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:bamboo_block"
-    }
+    "B": "minecraft:bamboo_block"
   },
   "pattern": [
     "B",

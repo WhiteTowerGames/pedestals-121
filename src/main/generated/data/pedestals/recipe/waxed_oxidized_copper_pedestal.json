@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "minecraft:waxed_oxidized_copper"
-    }
+    "B": "minecraft:waxed_oxidized_copper"
   },
   "pattern": [
     "B",

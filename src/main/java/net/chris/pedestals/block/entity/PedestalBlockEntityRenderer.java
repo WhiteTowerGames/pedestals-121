@@ -1,17 +1,12 @@
 package net.chris.pedestals.block.entity;
 
-import net.chris.pedestals.Pedestals121;
-import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity>{
@@ -21,8 +16,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        ItemStack stack = entity.getStoredItem();// Get the actual stored item
-        //Pedestals121.LOGGER.info(entity.getStoredItem() +"");
+        ItemStack stack = entity.getStoredItem();
 
         if (!stack.isEmpty()) {
             matrices.push();
@@ -37,7 +31,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
             // Render the item
             ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-            itemRenderer.renderItem(stack, ModelTransformationMode.GROUND, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+            itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
 
             matrices.pop();
         }
