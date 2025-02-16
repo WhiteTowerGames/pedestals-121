@@ -137,6 +137,8 @@ public class ModBlocks {
     public static final Block TUFF_BRICK_PEDESTAL = registerBlock( "tuff_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(TUFF_BRICKS).nonOpaque().requiresTool()));
 
+    public static final Block CHISELED_TUFF_BRICK_PEDESTAL = registerBlock( "chiseled_tuff_brick_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(CHISELED_TUFF_BRICKS).nonOpaque().requiresTool()));
 
 
     public static final Block OAK_LOG_PEDESTAL = registerBlock( "oak_log_pedestal",
@@ -359,6 +361,7 @@ public class ModBlocks {
             entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
             entries.add(ModBlocks.POLISHED_TUFF_PEDESTAL);
             entries.add(ModBlocks.TUFF_BRICK_PEDESTAL);
+            entries.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL);
             entries.add(ModBlocks.OAK_LOG_PEDESTAL);
             entries.add(ModBlocks.BIRCH_LOG_PEDESTAL);
             entries.add(ModBlocks.SPRUCE_LOG_PEDESTAL);

@@ -5,17 +5,12 @@ import net.chris.pedestals.block.PedestalBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
-import net.chris.pedestals.block.PedestalBlock;
-import net.minecraft.util.math.Direction;
 
 import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL;
 import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL_MORE;
-import static net.minecraft.block.Block.createCuboidShape;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -86,6 +81,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_MANGROVE_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_CHERRY_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_BAMBOO_BLOCK));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.CHISELED_TUFF_BRICKS));
 
 
     }

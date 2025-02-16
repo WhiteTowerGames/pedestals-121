@@ -6,12 +6,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.resource.featuretoggle.FeatureSet;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -487,6 +484,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.TUFF);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.CHISELED_TUFF_BRICKS)
+                .criterion(hasItem(Blocks.CHISELED_TUFF_BRICKS), conditionsFromItem(Blocks.CHISELED_TUFF_BRICKS))
+                .offerTo(recipeExporter);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.CHISELED_TUFF_BRICKS);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF);
+
+        offerStonecuttingRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_LOG_PEDESTAL)
                 .pattern("B")

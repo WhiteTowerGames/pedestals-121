@@ -39,6 +39,7 @@
     "pedestals:smooth_quartz_pedestal",
     "pedestals:polished_tuff_pedestal",
     "pedestals:tuff_brick_pedestal",
+    "pedestals:chiseled_tuff_brick_pedestal",
     "pedestals:waxed_exposed_cut_copper_pedestal"
   ]
 }

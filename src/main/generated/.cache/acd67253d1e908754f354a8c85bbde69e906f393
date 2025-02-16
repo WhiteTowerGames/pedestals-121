@@ -1,4 +1,4 @@
-// 1.21	2025-02-16T14:29:51.4486214	Pedestals 1.21/Block Loot Tables
+// 1.21	2025-02-16T22:14:11.9760745	Pedestals 1.21/Block Loot Tables
 1103af23209e35a0e38c47c646581de2fe410cee data\pedestals\loot_table\blocks\bamboo_log_pedestal.json
 7b3a0f863d7115bf7861feaf237adcc4ebfb25d5 data\pedestals\loot_table\blocks\waxed_oxidized_copper_pedestal.json
 b28e8af5da4dd88b8b5ef94edf726586dc742ce9 data\pedestals\loot_table\blocks\waxed_oxidized_cut_copper_pedestal.json
@@ -55,5 +55,6 @@ da36dca8c5a1f0bcaa47059631668542bf6cb74c data\pedestals\loot_table\blocks\stripp
 0dda1429b8f40235e3b14ee067236dfbe11b0d23 data\pedestals\loot_table\blocks\calcite_pedestal.json
 132604fa586688f63ae64351e6031b90dca84ac3 data\pedestals\loot_table\blocks\polished_blackstone_pedestal.json
 2c4c57d343a3c4bf0f99dfa1df500b471f3b42ef data\pedestals\loot_table\blocks\weathered_copper_pedestal.json
+41c90d8e8923607c52991f7aff130fbbaa0e9e8e data\pedestals\loot_table\blocks\chiseled_tuff_brick_pedestal.json
 6acf594c7d213e2ad3b31b2a68a5acc47ea998d6 data\pedestals\loot_table\blocks\stripped_oak_log_pedestal.json
 2e8cfb7269022bdb6e914129930271aeceff37cc data\pedestals\loot_table\blocks\bamboo_mosaic_pedestal.json
