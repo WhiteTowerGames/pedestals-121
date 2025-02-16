@@ -1,10 +1,19 @@
 package net.chris.strippableblocksapi.mixin;
 
+import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.strippableblocksapi.StrippableCustomRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -30,14 +39,31 @@ public class AxeItemMixin {
 		World world = context.getWorld();
 		BlockPos pos = context.getBlockPos();
 		Block block = world.getBlockState(pos).getBlock();
-		PlayerEntity player = context.getPlayer();
 
 		Block strippedBlock = StrippableCustomRegistry.getStripppedResult(block);
 
 		if (strippedBlock != null){
-			world.setBlockState(pos, strippedBlock.getDefaultState());
-			world.playSound(null, pos, getStripSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-			cir.setReturnValue(ActionResult.SUCCESS);
+			BlockEntity pedestalEntity = world.getBlockEntity(pos);
+
+			if (pedestalEntity instanceof PedestalBlockEntity) {
+				PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) pedestalEntity;
+
+                ItemStack currentItem = pedestalBlockEntity.getStoredItem();
+
+				world.setBlockState(pos, strippedBlock.getDefaultState(), 3);
+
+				PedestalBlockEntity newPedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+
+                assert newPedestalBlockEntity != null;
+                newPedestalBlockEntity.setStoredItem(currentItem);
+
+				world.playSound(null, pos, getStripSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+				cir.setReturnValue(ActionResult.SUCCESS);
+
+			}
+
+
 		}
 
 	}

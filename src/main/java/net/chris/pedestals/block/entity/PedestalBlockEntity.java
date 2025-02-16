@@ -33,7 +33,6 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 .result()
                 .ifPresent(nbtElement -> {
                     nbt.put("StoredItem", nbtElement);
-                    System.out.println("Item saved to NBT: " + storedItem.getItem().getName(storedItem));  // Debugging line
                 });
     }
 
@@ -44,7 +43,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         storedItem = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredItem"))
                 .result()
                 .orElse(ItemStack.EMPTY);
-        System.out.println("Item loaded from NBT: " + (storedItem.isEmpty() ? "None" : storedItem.getItem().getName(storedItem)));  // Debugging line
+        //System.out.println("Item loaded from NBT: " + (storedItem.isEmpty() ? "None" : storedItem.getItem().getName(storedItem)));  // Debugging line
     }
 
 
@@ -58,20 +57,11 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     }
 
     public void setStoredItem(ItemStack item) {
-        if (!ItemStack.areEqual(storedItem, item)) {
-            Pedestals121.LOGGER.info("Updating stored item: " + item);
-        }
         storedItem = item;
         markDirty();  // Important to update the state
     }
 
-//    public void setStoredItem(ItemStack item) {
-//        storedItem = item;
-//        markDirty(); // Marks the block entity as dirty, forcing an update
-//        if (world != null) {
-//            world.updateListeners(pos, getCachedState(), getCachedState(), 3); // Notifies clients
-//        }
-//    }
+
 
     public ItemStack removeStoredItem() {
         ItemStack item = storedItem;
@@ -93,7 +83,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             if (tickCount % 5 == 0) {
                 getStoredItem();
                 world.updateListeners(pos, getCachedState(), getCachedState(), 3);
-                //Pedestals121.LOGGER.info("Tick!");
+                //Pedestals121.LOGGER.info(getStoredItem()+"");
             }
             if (!storedItem.isEmpty()){
                 markDirty();
