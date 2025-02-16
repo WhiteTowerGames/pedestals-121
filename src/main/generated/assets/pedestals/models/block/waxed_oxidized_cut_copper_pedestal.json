@@ -1,6 +1,6 @@
 {
   "parent": "pedestals:block/parent_pedestal",
   "textures": {
-    "all": "pedestals:block/oxidized_cut_copper_pedestal"
+    "all": "minecraft:block/oxidized_cut_copper"
   }
 }

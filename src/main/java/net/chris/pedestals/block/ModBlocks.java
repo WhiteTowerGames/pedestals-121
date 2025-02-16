@@ -1,6 +1,7 @@
 package net.chris.pedestals.block;
 
 import net.chris.pedestals.Pedestals121;
+import net.chris.strippableblocksapi.StrippableCustomRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
@@ -144,7 +145,19 @@ public class ModBlocks {
                     .nonOpaque()
                     .burnable()));
 
+    public static final Block STRIPPED_OAK_LOG_PEDESTAL = registerBlock( "stripped_oak_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
     public static final Block BIRCH_LOG_PEDESTAL = registerBlock( "birch_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block STRIPPED_BIRCH_LOG_PEDESTAL = registerBlock( "stripped_birch_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.WOOD)
                     .nonOpaque()
@@ -156,7 +169,19 @@ public class ModBlocks {
                     .nonOpaque()
                     .burnable()));
 
+    public static final Block STRIPPED_SPRUCE_LOG_PEDESTAL = registerBlock( "stripped_spruce_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
     public static final Block JUNGLE_LOG_PEDESTAL = registerBlock( "jungle_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block STRIPPED_JUNGLE_LOG_PEDESTAL = registerBlock( "stripped_jungle_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.WOOD)
                     .nonOpaque()
@@ -168,7 +193,19 @@ public class ModBlocks {
                     .nonOpaque()
                     .burnable()));
 
+    public static final Block STRIPPED_DARK_OAK_LOG_PEDESTAL = registerBlock( "stripped_dark_oak_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
     public static final Block ACACIA_LOG_PEDESTAL = registerBlock( "acacia_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block STRIPPED_ACACIA_LOG_PEDESTAL = registerBlock( "stripped_acacia_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.WOOD)
                     .nonOpaque()
@@ -180,13 +217,31 @@ public class ModBlocks {
                     .nonOpaque()
                     .burnable()));
 
-    public static final Block CHERRY_LOG_PEDESTAL = registerBlock( "cherry_log_pedestal",
+    public static final Block STRIPPED_MANGROVE_LOG_PEDESTAL = registerBlock( "stripped_mangrove_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.WOOD)
                     .nonOpaque()
                     .burnable()));
 
+    public static final Block CHERRY_LOG_PEDESTAL = registerBlock( "cherry_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.CHERRY_WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block STRIPPED_CHERRY_LOG_PEDESTAL = registerBlock( "stripped_cherry_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.CHERRY_WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
     public static final Block BAMBOO_LOG_PEDESTAL = registerBlock( "bamboo_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.BAMBOO_WOOD)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block STRIPPED_BAMBOO_LOG_PEDESTAL = registerBlock( "stripped_bamboo_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
                     .nonOpaque()
@@ -197,6 +252,8 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
                     .nonOpaque()
                     .burnable()));
+
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -209,25 +266,20 @@ public class ModBlocks {
     }
 
     private static void registerOxidationAndWaxing() {
-        
         OxidizableBlocksRegistry.registerOxidizableBlockPair(COPPER_PEDESTAL, EXPOSED_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_COPPER_PEDESTAL, WEATHERED_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_COPPER_PEDESTAL, OXIDIZED_COPPER_PEDESTAL);
-
         OxidizableBlocksRegistry.registerOxidizableBlockPair(CUT_COPPER_PEDESTAL, EXPOSED_CUT_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_CUT_COPPER_PEDESTAL, WEATHERED_CUT_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_CUT_COPPER_PEDESTAL, OXIDIZED_CUT_COPPER_PEDESTAL);
-
         OxidizableBlocksRegistry.registerWaxableBlockPair(COPPER_PEDESTAL, WAXED_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_COPPER_PEDESTAL, WAXED_EXPOSED_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_COPPER_PEDESTAL, WAXED_WEATHERED_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_COPPER_PEDESTAL, WAXED_OXIDIZED_COPPER_PEDESTAL);
-
         OxidizableBlocksRegistry.registerWaxableBlockPair(CUT_COPPER_PEDESTAL, WAXED_CUT_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_CUT_COPPER_PEDESTAL, WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_CUT_COPPER_PEDESTAL, WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
         OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_CUT_COPPER_PEDESTAL, WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
-
     }
 
     private static void registerFlammableBlocks(){
@@ -240,10 +292,29 @@ public class ModBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LOG_PEDESTAL, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_LOG_PEDESTAL, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_OAK_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BIRCH_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SPRUCE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_JUNGLE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_DARK_OAK_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ACACIA_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MANGROVE_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_CHERRY_LOG_PEDESTAL, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BAMBOO_LOG_PEDESTAL, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_MOSAIC_PEDESTAL, 5, 20);
-
     }
 
+    private static void registerStrippableBlocks(){
+        StrippableCustomRegistry.register(OAK_LOG_PEDESTAL, STRIPPED_OAK_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(BIRCH_LOG_PEDESTAL, STRIPPED_BIRCH_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(SPRUCE_LOG_PEDESTAL, STRIPPED_SPRUCE_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(JUNGLE_LOG_PEDESTAL, STRIPPED_JUNGLE_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(DARK_OAK_LOG_PEDESTAL, STRIPPED_DARK_OAK_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(ACACIA_LOG_PEDESTAL, STRIPPED_ACACIA_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(MANGROVE_LOG_PEDESTAL, STRIPPED_MANGROVE_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(CHERRY_LOG_PEDESTAL, STRIPPED_CHERRY_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(BAMBOO_LOG_PEDESTAL, STRIPPED_BAMBOO_LOG_PEDESTAL);
+    }
 
     public static void registerModBlocks(){
         Pedestals121.LOGGER.info("Registering Mod Blocks for Pedestals 1.21 (source: "+Pedestals121.MOD_ID+").");
@@ -298,11 +369,18 @@ public class ModBlocks {
             entries.add(ModBlocks.CHERRY_LOG_PEDESTAL);
             entries.add(ModBlocks.BAMBOO_LOG_PEDESTAL);
             entries.add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL);
-
-
-
+            entries.add(ModBlocks.STRIPPED_OAK_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL);
         });
         registerOxidationAndWaxing();
         registerFlammableBlocks();
+        registerStrippableBlocks();
     }
 }

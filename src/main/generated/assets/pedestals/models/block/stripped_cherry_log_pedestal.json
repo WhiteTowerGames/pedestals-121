@@ -1,0 +1,7 @@
+{
+  "parent": "pedestals:block/parent_pedestal_more",
+  "textures": {
+    "side": "minecraft:block/stripped_cherry_log",
+    "top": "minecraft:block/stripped_cherry_log_top"
+  }
+}

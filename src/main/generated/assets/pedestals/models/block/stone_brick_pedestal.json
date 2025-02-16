@@ -1,6 +1,6 @@
 {
   "parent": "pedestals:block/parent_pedestal",
   "textures": {
-    "all": "pedestals:block/stone_brick_pedestal"
+    "all": "minecraft:block/stone_bricks"
   }
 }

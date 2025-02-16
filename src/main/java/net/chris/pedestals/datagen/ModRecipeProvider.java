@@ -557,6 +557,69 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('B', Blocks.BAMBOO_MOSAIC)
                 .criterion(hasItem(Blocks.BAMBOO_MOSAIC), conditionsFromItem(Blocks.BAMBOO_MOSAIC))
                 .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_OAK_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_OAK_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_OAK_LOG), conditionsFromItem(Blocks.STRIPPED_OAK_LOG))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_BIRCH_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_BIRCH_LOG), conditionsFromItem(Blocks.STRIPPED_BIRCH_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_SPRUCE_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_SPRUCE_LOG), conditionsFromItem(Blocks.STRIPPED_SPRUCE_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_JUNGLE_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_JUNGLE_LOG), conditionsFromItem(Blocks.STRIPPED_JUNGLE_LOG))
+                .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_DARK_OAK_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_DARK_OAK_LOG), conditionsFromItem(Blocks.STRIPPED_DARK_OAK_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_ACACIA_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_ACACIA_LOG), conditionsFromItem(Blocks.STRIPPED_ACACIA_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_MANGROVE_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_MANGROVE_LOG), conditionsFromItem(Blocks.STRIPPED_MANGROVE_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_CHERRY_LOG)
+                .criterion(hasItem(Blocks.STRIPPED_CHERRY_LOG), conditionsFromItem(Blocks.STRIPPED_CHERRY_LOG))
+                .offerTo(recipeExporter);
+        
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL)
+                .pattern("B")
+                .pattern("B")
+                .input('B', Blocks.STRIPPED_BAMBOO_BLOCK)
+                .criterion(hasItem(Blocks.STRIPPED_BAMBOO_BLOCK), conditionsFromItem(Blocks.STRIPPED_BAMBOO_BLOCK))
+                .offerTo(recipeExporter);
         
     }
 }

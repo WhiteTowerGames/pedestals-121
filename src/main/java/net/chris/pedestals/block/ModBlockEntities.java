@@ -62,6 +62,16 @@ public class ModBlockEntities {
                     ModBlocks.CHERRY_LOG_PEDESTAL,
                     ModBlocks.BAMBOO_LOG_PEDESTAL,
                     ModBlocks.BAMBOO_MOSAIC_PEDESTAL,
+                    ModBlocks.STRIPPED_OAK_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL,
+                    ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
                     ).build());
 

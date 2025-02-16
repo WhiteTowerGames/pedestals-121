@@ -69,6 +69,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHERRY_LOG_PEDESTAL)
                 .add(ModBlocks.BAMBOO_LOG_PEDESTAL)
                 .add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL)
+                .add(ModBlocks.STRIPPED_OAK_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL)
                 .add(ModBlocks.OAK_LOG_PEDESTAL);
 
 

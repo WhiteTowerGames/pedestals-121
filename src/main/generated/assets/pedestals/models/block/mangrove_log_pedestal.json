@@ -1,7 +1,7 @@
 {
   "parent": "pedestals:block/parent_pedestal_more",
   "textures": {
-    "side": "pedestals:block/mangrove_log_pedestal_side",
-    "top": "pedestals:block/mangrove_log_pedestal_top"
+    "side": "minecraft:block/mangrove_log",
+    "top": "minecraft:block/mangrove_log_top"
   }
 }
