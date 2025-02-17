@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "pedestals",
-	"version": "1.0.2",
+	"version": "${version}",
 	"name": "Pedestals 1.21",
 	"description": "Craft pedestals out of any rock you can find to display your items in a fancy way!",
 	"authors": [
@@ -33,5 +33,13 @@
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*"
+	},
+	"custom": {
+		"fabric:loadConditions": [
+			{
+				"condition": "fabric:has_mod",
+				"values": ["nemos_woodcutter"]
+			}
+		]
 	}
 }
