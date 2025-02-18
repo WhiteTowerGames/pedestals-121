@@ -40,6 +40,9 @@
     "pedestals:polished_tuff_pedestal",
     "pedestals:tuff_brick_pedestal",
     "pedestals:chiseled_tuff_brick_pedestal",
+    "pedestals:resin_brick_pedestal",
+    "pedestals:smooth_sandstone_pedestal",
+    "pedestals:smooth_red_sandstone_pedestal",
     "pedestals:waxed_exposed_cut_copper_pedestal"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "pedestals:block/parent_pedestal_more",
+  "textures": {
+    "side": "minecraft:block/warped_stem",
+    "top": "minecraft:block/warped_stem_top"
+  }
+}

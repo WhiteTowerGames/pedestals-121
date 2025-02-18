@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "nemos_woodcutter"
+      ]
+    }
+  ],
+  "type": "nemos_woodcutter:woodcutting",
+  "ingredient": "minecraft:dark_oak_wood",
+  "inputCount": 1,
+  "result": {
+    "count": 1,
+    "id": "pedestals:stripped_dark_oak_log_pedestal"
+  }
+}
