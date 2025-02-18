@@ -19,6 +19,8 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
                         entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
+                        entries.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL);
+                        entries.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL);
                         entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
                         entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
                         entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
@@ -63,6 +65,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.JUNGLE_LOG_PEDESTAL);
                         entries.add(ModBlocks.DARK_OAK_LOG_PEDESTAL);
                         entries.add(ModBlocks.ACACIA_LOG_PEDESTAL);
+                        entries.add(ModBlocks.CRIMSON_LOG_PEDESTAL);
+                        entries.add(ModBlocks.WARPED_LOG_PEDESTAL);
                         entries.add(ModBlocks.MANGROVE_LOG_PEDESTAL);
                         entries.add(ModBlocks.CHERRY_LOG_PEDESTAL);
                         entries.add(ModBlocks.BAMBOO_LOG_PEDESTAL);
@@ -73,6 +77,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL);
                         entries.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL);
                         entries.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL);
+                        entries.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL);
+                        entries.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
                         entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL);
                         entries.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL);
                         entries.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL);

@@ -74,6 +74,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL);
         addDrop(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL);
         addDrop(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL);
+        addDrop(ModBlocks.CRIMSON_LOG_PEDESTAL);
+        addDrop(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL);
+        addDrop(ModBlocks.WARPED_LOG_PEDESTAL);
+        addDrop(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
+        addDrop(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL);
+        addDrop(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL);
 
         
     }

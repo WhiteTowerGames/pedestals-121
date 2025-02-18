@@ -140,6 +140,11 @@ public class ModBlocks {
     public static final Block CHISELED_TUFF_BRICK_PEDESTAL = registerBlock( "chiseled_tuff_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(CHISELED_TUFF_BRICKS).nonOpaque().requiresTool()));
 
+    public static final Block SMOOTH_SANDSTONE_PEDESTAL = registerBlock( "smooth_sandstone_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(CHISELED_TUFF_BRICKS).nonOpaque().requiresTool()));
+
+    public static final Block SMOOTH_RED_SANDSTONE_PEDESTAL = registerBlock( "smooth_red_sandstone_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.copy(CHISELED_TUFF_BRICKS).nonOpaque().requiresTool()));
 
     public static final Block OAK_LOG_PEDESTAL = registerBlock( "oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
@@ -237,6 +242,26 @@ public class ModBlocks {
                     .nonOpaque()
                     .burnable()));
 
+    public static final Block CRIMSON_LOG_PEDESTAL = registerBlock( "crimson_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.NETHER_STEM)
+                    .nonOpaque()));
+
+    public static final Block STRIPPED_CRIMSON_LOG_PEDESTAL = registerBlock( "stripped_crimson_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.NETHER_STEM)
+                    .nonOpaque()));
+
+    public static final Block WARPED_LOG_PEDESTAL = registerBlock( "warped_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.NETHER_STEM)
+                    .nonOpaque()));
+
+    public static final Block STRIPPED_WARPED_LOG_PEDESTAL = registerBlock( "stripped_warped_log_pedestal",
+            new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
+                    .sounds(BlockSoundGroup.NETHER_STEM)
+                    .nonOpaque()));
+
     public static final Block BAMBOO_LOG_PEDESTAL = registerBlock( "bamboo_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f)
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
@@ -316,6 +341,7 @@ public class ModBlocks {
         StrippableCustomRegistry.register(MANGROVE_LOG_PEDESTAL, STRIPPED_MANGROVE_LOG_PEDESTAL);
         StrippableCustomRegistry.register(CHERRY_LOG_PEDESTAL, STRIPPED_CHERRY_LOG_PEDESTAL);
         StrippableCustomRegistry.register(BAMBOO_LOG_PEDESTAL, STRIPPED_BAMBOO_LOG_PEDESTAL);
+        StrippableCustomRegistry.register(CRIMSON_LOG_PEDESTAL, STRIPPED_CRIMSON_LOG_PEDESTAL);
     }
 
     public static void registerModBlocks(){
@@ -324,6 +350,8 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
             entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
+            entries.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL);
+            entries.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL);
             entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
             entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
             entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
@@ -368,6 +396,8 @@ public class ModBlocks {
             entries.add(ModBlocks.JUNGLE_LOG_PEDESTAL);
             entries.add(ModBlocks.DARK_OAK_LOG_PEDESTAL);
             entries.add(ModBlocks.ACACIA_LOG_PEDESTAL);
+            entries.add(ModBlocks.CRIMSON_LOG_PEDESTAL);
+            entries.add(ModBlocks.WARPED_LOG_PEDESTAL);
             entries.add(ModBlocks.MANGROVE_LOG_PEDESTAL);
             entries.add(ModBlocks.CHERRY_LOG_PEDESTAL);
             entries.add(ModBlocks.BAMBOO_LOG_PEDESTAL);
@@ -378,6 +408,8 @@ public class ModBlocks {
             entries.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL);
+            entries.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL);

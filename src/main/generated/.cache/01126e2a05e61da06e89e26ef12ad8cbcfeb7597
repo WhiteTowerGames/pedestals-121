@@ -1,6 +1,6 @@
-// 1.21	2025-02-16T14:29:51.4476204	Pedestals 1.21/Tags for minecraft:block
+// 1.21	2025-02-18T15:50:39.5251757	Pedestals - Display your items!/Tags for minecraft:block
 af8c7173eb1c26e86a2399b93b5ae09c3eebaed5 data\minecraft\tags\block\needs_stone_tool.json
 af8c7173eb1c26e86a2399b93b5ae09c3eebaed5 data\minecraft\tags\block\incorrect_for_gold_tool.json
 af8c7173eb1c26e86a2399b93b5ae09c3eebaed5 data\minecraft\tags\block\incorrect_for_wooden_tool.json
-3f774500507c2baff6c545842debc24a0c465fb6 data\minecraft\tags\block\mineable\pickaxe.json
-06f8aed2f117363846af090bf8fa7403d4000edd data\minecraft\tags\block\mineable\axe.json
+6ef4f4d78c7051b50d40f7b0683b9708be6d6802 data\minecraft\tags\block\mineable\pickaxe.json
+4670c676dbe29b55c2b127a2fff0b5889c71825a data\minecraft\tags\block\mineable\axe.json

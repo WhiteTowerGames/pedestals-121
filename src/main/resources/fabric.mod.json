@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "pedestals",
 	"version": "${version}",
-	"name": "Pedestals 1.21",
+	"name": "Pedestals - Display your items!",
 	"description": "Craft pedestals out of any rock you can find to display your items in a fancy way!",
 	"authors": [
 		"WhiteTowerGames"

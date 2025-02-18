@@ -18,6 +18,10 @@
     "pedestals:stripped_mangrove_log_pedestal",
     "pedestals:stripped_cherry_log_pedestal",
     "pedestals:stripped_bamboo_log_pedestal",
+    "pedestals:crimson_log_pedestal",
+    "pedestals:stripped_crimson_log_pedestal",
+    "pedestals:warped_log_pedestal",
+    "pedestals:stripped_warped_log_pedestal",
     "pedestals:oak_log_pedestal"
   ]
 }

@@ -1,8 +1,6 @@
 package net.chris.strippableblocksapi;
 
 import net.minecraft.block.Block;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 
 import java.util.HashMap;
 import java.util.Map;

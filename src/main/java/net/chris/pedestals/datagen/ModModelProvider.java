@@ -61,6 +61,9 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.POLISHED_TUFF_PEDESTAL, PedestalBlock.pedestalMap(Blocks.POLISHED_TUFF));
         registerPedestal(blockStateModelGenerator, ModBlocks.TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMap(Blocks.TUFF_BRICKS));
         registerPedestal(blockStateModelGenerator, ModBlocks.BAMBOO_MOSAIC_PEDESTAL, PedestalBlock.pedestalMap(Blocks.BAMBOO_MOSAIC));
+        registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_SANDSTONE_PEDESTAL, PedestalBlock.pedestalMap(Blocks.SMOOTH_SANDSTONE));
+        registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, PedestalBlock.pedestalMap(Blocks.SMOOTH_RED_SANDSTONE));
+
 
 
         registerPedestalWood(blockStateModelGenerator, ModBlocks.OAK_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.OAK_LOG));
@@ -82,6 +85,10 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_CHERRY_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_BAMBOO_BLOCK));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.CHISELED_TUFF_BRICKS));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.CRIMSON_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.CRIMSON_STEM));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_CRIMSON_STEM));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.WARPED_STEM));
+        registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_WARPED_STEM));
 
 
     }

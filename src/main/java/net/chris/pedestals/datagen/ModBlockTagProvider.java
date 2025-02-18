@@ -57,6 +57,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.POLISHED_TUFF_PEDESTAL)
                 .add(ModBlocks.TUFF_BRICK_PEDESTAL)
                 .add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL)
+                .add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL)
+                .add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
 
@@ -79,6 +81,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL)
                 .add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL)
                 .add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL)
+                .add(ModBlocks.CRIMSON_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL)
+                .add(ModBlocks.WARPED_LOG_PEDESTAL)
+                .add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL)
                 .add(ModBlocks.OAK_LOG_PEDESTAL);
 
 
