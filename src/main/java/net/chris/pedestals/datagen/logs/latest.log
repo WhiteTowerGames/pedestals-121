@@ -1,6 +1,6 @@
-[11:48:28] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
-[11:48:28] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) Mod pedestals uses the version 1.0.2.1v214 which isn't compatible with Loader's extended semantic version format (Could not parse version number component '1v214'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
-[11:48:28] [main/INFO] (FabricLoader) Loading 56 mods:
+[21:51:12] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
+[21:51:12] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) Mod pedestals uses the version 1.1.0v214 which isn't compatible with Loader's extended semantic version format (Could not parse version number component '0v214'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[21:51:13] [main/INFO] (FabricLoader) Loading 56 mods:
 	- fabric-api 0.117.0+1.21.4
 	- fabric-api-base 0.4.54+b47eab6b04
 	- fabric-api-lookup-api-v1 1.6.86+b1caf1e904
@@ -56,47 +56,49 @@
 	- minecraft 1.21.4
 	- mixinextras 0.4.1
 	- nemos_woodcutter 1.21.4-1.12.7
-	- pedestals 1.0.2.1v214
-[11:48:29] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[11:48:29] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[11:48:29] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[11:48:30] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[11:48:31] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 409 milliseconds
-[11:48:31] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[11:48:31] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
-[11:48:31] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
-[11:48:31] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
-[11:48:32] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
-[11:48:37] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[11:48:37] [Render thread/INFO] (Minecraft) Setting user: Player822
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Thank you for using Nemo's Woodcutter!
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering mod blocks
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering items
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering creative mode tabs
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering recipe serializer
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Register recipe types
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering recipe book categories
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering recipe displays
-[11:48:37] [Render thread/INFO] (nemos_woodcutter) Registering menu types
-[11:48:37] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
-[11:48:37] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
-[11:48:37] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
-[11:48:37] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
-[11:48:37] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[11:48:37] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
-[11:48:37] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
-[11:48:38] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Tags for minecraft:block
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Tags for minecraft:block finished after 11 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Block Loot Tables
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Block Loot Tables finished after 18 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Mod Recipe Provider
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Mod Recipe Provider finished after 102 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Language (en_us)
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Language (en_us) finished after 2 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Mod Model Provider
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Mod Model Provider finished after 55 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Starting provider: Pedestals 1.21/Nemo's Woodcutter Compatibility Recipe Provider (That's a mouthful!)
-[11:48:38] [Render thread/INFO] (Minecraft) Pedestals 1.21/Nemo's Woodcutter Compatibility Recipe Provider (That's a mouthful!) finished after 21 ms
-[11:48:38] [Render thread/INFO] (Minecraft) All providers took: 214 ms
-[11:48:38] [Render thread/INFO] (Minecraft) Caching: total files: 688, old count: 672, new count: 689, removed stale: 0, written: 18
+	- pedestals 1.1.0v214
+[21:51:13] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[21:51:13] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[21:51:13] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[21:51:14] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[21:51:15] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 401 milliseconds
+[21:51:15] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[21:51:15] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
+[21:51:15] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
+[21:51:15] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
+[21:51:16] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
+[21:51:22] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[21:51:22] [Render thread/INFO] (Minecraft) Setting user: Player148
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Thank you for using Nemo's Woodcutter!
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering mod blocks
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering items
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering creative mode tabs
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering recipe serializer
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Register recipe types
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering recipe book categories
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering recipe displays
+[21:51:22] [Render thread/INFO] (nemos_woodcutter) Registering menu types
+[21:51:22] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
+[21:51:22] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
+[21:51:22] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
+[21:51:22] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
+[21:51:22] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
+[21:51:22] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
+[21:51:22] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[21:51:22] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Tags for minecraft:block
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Tags for minecraft:block finished after 12 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Block Loot Tables
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Block Loot Tables finished after 29 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Mod Recipe Provider
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Mod Recipe Provider finished after 103 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Language (en_us)
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Language (en_us) finished after 2 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Mod Model Provider
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Mod Model Provider finished after 97 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Nemo's Woodcutter Compatibility Recipe Provider (That's a mouthful!)
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Nemo's Woodcutter Compatibility Recipe Provider (That's a mouthful!) finished after 37 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Starting provider: Pedestals - Display your items!/Language (el_gr)
+[21:51:23] [Render thread/INFO] (Minecraft) Pedestals - Display your items!/Language (el_gr) finished after 2 ms
+[21:51:23] [Render thread/INFO] (Minecraft) All providers took: 286 ms
+[21:51:23] [Render thread/INFO] (Minecraft) Caching: total files: 695, old count: 0, new count: 690, removed stale: 6, written: 689

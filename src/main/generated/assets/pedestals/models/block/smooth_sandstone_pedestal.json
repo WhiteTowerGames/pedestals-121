@@ -1,6 +1,6 @@
 {
   "parent": "pedestals:block/parent_pedestal",
   "textures": {
-    "all": "minecraft:block/sandstone_top"
+    "all": "minecraft:block/smooth_sandstone"
   }
 }
