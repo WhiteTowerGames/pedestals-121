@@ -1,6 +1,6 @@
 {
   "parent": "pedestals:block/parent_pedestal",
   "textures": {
-    "all": "minecraft:block/smooth_quartz"
+    "all": "minecraft:block/quartz_block_bottom"
   }
 }

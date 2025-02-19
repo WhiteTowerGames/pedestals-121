@@ -48,6 +48,11 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return FULL_SHAPE;
     }
 
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE); // Exclude DISPLAY_SHAPE from collision
+    }
+
     public SoundEvent getAddItemSound() {
         return SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM;
     }
