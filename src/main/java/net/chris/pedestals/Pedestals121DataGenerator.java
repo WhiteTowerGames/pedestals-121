@@ -16,5 +16,6 @@ public class Pedestals121DataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(WoodcuttingProvider::new);
 		pack.addProvider(ModGreekLanguageProvider::new);
+		pack.addProvider(ModAdvancementProvider::new);
 	}
 }

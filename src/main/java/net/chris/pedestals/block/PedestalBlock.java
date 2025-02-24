@@ -93,7 +93,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             return ActionResult.FAIL;
         }
 
-        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && !player.isSneaking()) {
             ItemStack playerHeldItem = player.getStackInHand(Hand.MAIN_HAND);
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
             ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), storedItem);

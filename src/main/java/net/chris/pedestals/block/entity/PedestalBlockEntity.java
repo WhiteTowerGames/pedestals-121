@@ -15,7 +15,9 @@ import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
+
     private ItemStack storedItem = ItemStack.EMPTY;
+    private ItemStack carpet = ItemStack.EMPTY;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public PedestalBlockEntity(BlockPos pos, BlockState state) {
@@ -33,6 +35,12 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 .ifPresent(nbtElement -> {
                     nbt.put("StoredItem", nbtElement);
                 });
+        // Save carpet to NBT
+//        ItemStack.CODEC.encodeStart(NbtOps.INSTANCE, carpet)
+//                .result()
+//                .ifPresent(nbtElement -> {
+//                    nbt.put("Carpet", nbtElement);
+//                });
     }
 
     @Override
@@ -42,7 +50,10 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         storedItem = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredItem"))
                 .result()
                 .orElse(ItemStack.EMPTY);
-        //System.out.println("Item loaded from NBT: " + (storedItem.isEmpty() ? "None" : storedItem.getItem().getName(storedItem)));  // Debugging line
+        // Load carpet from NBT
+//        storedItem = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbt.get("Carpet"))
+//                .result()
+//                .orElse(ItemStack.EMPTY);
     }
 
 
@@ -60,8 +71,6 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         markDirty();  // Important to update the state
     }
 
-
-
     public ItemStack removeStoredItem() {
         ItemStack item = storedItem;
         storedItem = ItemStack.EMPTY;
@@ -69,11 +78,27 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         return item;
     }
 
-
     public ItemStack getStoredItem() {
         return storedItem;  // Ensure you're returning 'storedItem', not items[0] or other values
     }
 
+    public boolean hasCarpet() {return carpet.isEmpty();}
+
+    public void setCarpet(ItemStack carpetToSet) {
+        carpet = carpetToSet;
+        markDirty();
+    }
+
+    public ItemStack removeCarpet() {
+        ItemStack removedCarpet = carpet;
+        carpet = ItemStack.EMPTY;
+        markDirty();
+        return removedCarpet;
+    }
+
+    public ItemStack getCarpet() {
+        return carpet;
+    }
 
     @Override
     public void tick() {

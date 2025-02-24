@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "got_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "tags": "pedestals:pedestal_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": "Now display your trophies in it",
+    "icon": {
+      "count": 1,
+      "id": "pedestals:stone_brick_pedestal"
+    },
+    "title": "Your first Pedestal"
+  },
+  "requirements": [
+    [
+      "got_pedestal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
