@@ -45,9 +45,6 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .tag(itemLookup, ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
                 .build();
 
-
-
-
             AdvancementEntry get_pedestal = Advancement.Builder.create()
                     .display(
                             ModBlocks.STONE_BRICK_PEDESTAL,
@@ -61,20 +58,6 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                     )
                     .criterion("got_pedestal", InventoryChangedCriterion.Conditions.items(pedestalItemPredicate))
                     .build(consumer, Pedestals121.MOD_ID + ":get_pedestal");
-
-//            AdvancementEntry read_power_of_pedestal.json = Advancement.Builder.create()
-//                    .parent(get_pedestal)
-//                    .display(
-//                            Blocks.COMPARATOR,
-//                            read_power_of_pedestal_title,
-//                            read_power_of_pedestal_desc,
-//                            null,
-//                            AdvancementFrame.GOAL,
-//                            true,
-//                            true,
-//                            false
-//                    )
-//                    .criterion("read_power_of_pedestal.json", )
 
     }
 }
