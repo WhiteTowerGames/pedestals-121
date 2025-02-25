@@ -18,6 +18,8 @@ repositories {
 
 fabricApi {
 	configureDataGeneration {
+		setModId("pedestals")
+		createSourceSet = true
 		client = true
 	}
 }
@@ -30,7 +32,10 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "curse.maven:nemos-woodcutter-914549:${project.woodcutter_id}"
+
+	modDatagenImplementation "curse.maven:nemos-woodcutter-914549:${project.woodcutter_id}"
+
+	modCompileOnly "curse.maven:nemos-woodcutter-914549:${project.woodcutter_id}"
 }
 
 

@@ -79,7 +79,21 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity){
-            return pedestalBlockEntity.hasStoredItem() ? 15 : 0; //Return a strength of 15 if there is an item; otherwise zero
+            //return pedestalBlockEntity.hasStoredItem() ? 15 : 0; //Return a strength of 15 if there is an item; otherwise zero
+            switch (pedestalBlockEntity.getStoredItem().getRarity()){
+                case COMMON -> {
+                    return 0;
+                }
+                case UNCOMMON -> {
+                    return 5;
+                }
+                case RARE -> {
+                    return 10;
+                }
+                case EPIC -> {
+                    return 15;
+                }
+            }
         }
         return 0;
     }

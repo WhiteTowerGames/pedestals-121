@@ -162,6 +162,9 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Βάθρο από Λεία Κόκκινη Αμμόπετρα");
 
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Βάθρα");
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Βάθρα!");
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!");
+
 
     }
 }

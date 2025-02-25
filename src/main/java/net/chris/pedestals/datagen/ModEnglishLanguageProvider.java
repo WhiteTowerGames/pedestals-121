@@ -162,5 +162,13 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Smooth Red Sandstone Pedestal");
         
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
+
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Pedestals!");
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Right click with an item to display it!");
+
+
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_title, "The Power of Fancy Displays");
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_desc, "The comparator output of a pedestal depends on how rare its item is.");
+
     }
 }

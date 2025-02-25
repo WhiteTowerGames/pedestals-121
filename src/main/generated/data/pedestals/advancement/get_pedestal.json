@@ -4,7 +4,7 @@
       "conditions": {
         "items": [
           {
-            "tags": "pedestals:pedestal_blocks"
+            "items": "#pedestals:pedestal_block_items"
           }
         ]
       },
@@ -12,13 +12,17 @@
     }
   },
   "display": {
-    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
-    "description": "Now display your trophies in it",
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancement.pedestals.get_pedestal_desc"
+    },
     "icon": {
       "count": 1,
       "id": "pedestals:stone_brick_pedestal"
     },
-    "title": "Your first Pedestal"
+    "title": {
+      "translate": "advancement.pedestals.get_pedestal_title"
+    }
   },
   "requirements": [
     [

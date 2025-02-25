@@ -1,4 +1,6 @@
 {
+  "advancement.pedestals.get_pedestal_desc": "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!",
+  "advancement.pedestals.get_pedestal_title": "Βάθρα!",
   "block.pedestals.acacia_log_pedestal": "Βάθρο από Κορμό Ακακίας",
   "block.pedestals.bamboo_log_pedestal": "Βάθρο από Μπαμπού",
   "block.pedestals.bamboo_mosaic_pedestal": "Βάθρο από Μωσαϊκό Μπαμπού",
