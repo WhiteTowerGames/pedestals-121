@@ -24,6 +24,16 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         super(ModBlockEntities.PEDESTAL_BLOCK_ENTITY, pos, state);
     }
 
+    @Override
+    public void markDirty() {
+        super.markDirty();
+        if (world != null) {
+            //System.out.println("Pedestal block at " + pos + " changed!");
+            world.updateNeighborsAlways(pos, this.getCachedState().getBlock());
+            world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock());
+        }
+    }
+
     int tickCount = 0;
 
     @Override
@@ -35,12 +45,6 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 .ifPresent(nbtElement -> {
                     nbt.put("StoredItem", nbtElement);
                 });
-        // Save carpet to NBT
-//        ItemStack.CODEC.encodeStart(NbtOps.INSTANCE, carpet)
-//                .result()
-//                .ifPresent(nbtElement -> {
-//                    nbt.put("Carpet", nbtElement);
-//                });
     }
 
     @Override
@@ -50,10 +54,6 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         storedItem = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredItem"))
                 .result()
                 .orElse(ItemStack.EMPTY);
-        // Load carpet from NBT
-//        storedItem = ItemStack.CODEC.parse(NbtOps.INSTANCE, nbt.get("Carpet"))
-//                .result()
-//                .orElse(ItemStack.EMPTY);
     }
 
 
@@ -69,6 +69,11 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     public void setStoredItem(ItemStack item) {
         storedItem = item;
         markDirty();  // Important to update the state
+
+//        if(world != null){
+//            world.updateNeighborsAlways(pos, this.getCachedState().getBlock());
+//            world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock());
+//        }
     }
 
     public ItemStack removeStoredItem() {

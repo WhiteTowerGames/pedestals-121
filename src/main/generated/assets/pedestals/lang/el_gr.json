@@ -1,6 +1,12 @@
 {
   "advancement.pedestals.get_pedestal_desc": "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!",
   "advancement.pedestals.get_pedestal_title": "Βάθρα!",
+  "advancement.pedestals.place_epic_item_desc": "Ένα Βάθρο που περιέχει ένα Επικό (μωβ) αντικείμενο επίσης τροφοδοτεί τον από κάτω κύβο του.",
+  "advancement.pedestals.place_epic_item_title": "Μέγιστη Δύναμη!",
+  "advancement.pedestals.place_pedestal_on_pedestal_desc": "Βάθρα επάνω σε Βάθρα... αρχίζω και ζαλίζομαι.",
+  "advancement.pedestals.place_pedestal_on_pedestal_title": "Βάθρα²",
+  "advancement.pedestals.read_power_of_pedestal_desc": "Το σήμα που εκπέμπει ένα βάθρο μέσω ενός συγκριτή εξαρτάται από τη σπανιότητα του αντικειμένου του.",
+  "advancement.pedestals.read_power_of_pedestal_title": "Η Δύναμη των Φανταχτερών Εκθεμάτων",
   "block.pedestals.acacia_log_pedestal": "Βάθρο από Κορμό Ακακίας",
   "block.pedestals.bamboo_log_pedestal": "Βάθρο από Μπαμπού",
   "block.pedestals.bamboo_mosaic_pedestal": "Βάθρο από Μωσαϊκό Μπαμπού",

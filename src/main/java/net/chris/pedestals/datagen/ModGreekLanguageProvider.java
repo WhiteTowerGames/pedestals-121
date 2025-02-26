@@ -162,9 +162,18 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Βάθρο από Λεία Κόκκινη Αμμόπετρα");
 
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Βάθρα");
+
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Βάθρα!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!");
 
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_title, "Η Δύναμη των Φανταχτερών Εκθεμάτων");
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_desc, "Το σήμα που εκπέμπει ένα βάθρο μέσω ενός συγκριτή εξαρτάται από τη σπανιότητα του αντικειμένου του.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_title, "Μέγιστη Δύναμη!");
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_desc, "Ένα Βάθρο που περιέχει ένα Επικό (μωβ) αντικείμενο επίσης τροφοδοτεί τον από κάτω κύβο του.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Βάθρα²");
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Βάθρα επάνω σε Βάθρα... αρχίζω και ζαλίζομαι.");
 
     }
 }

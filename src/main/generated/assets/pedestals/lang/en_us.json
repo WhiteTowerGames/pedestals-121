@@ -1,6 +1,10 @@
 {
   "advancement.pedestals.get_pedestal_desc": "Right click with an item to display it!",
   "advancement.pedestals.get_pedestal_title": "Pedestals!",
+  "advancement.pedestals.place_epic_item_desc": "A Pedestal with an Epic (purple) item on it will also power the block beneath it.",
+  "advancement.pedestals.place_epic_item_title": "Maximum Power!",
+  "advancement.pedestals.place_pedestal_on_pedestal_desc": "Pedestals on Pedestals... I'm starting to get dizzy.",
+  "advancement.pedestals.place_pedestal_on_pedestal_title": "Pedestal-ception",
   "advancement.pedestals.read_power_of_pedestal_desc": "The comparator output of a pedestal depends on how rare its item is.",
   "advancement.pedestals.read_power_of_pedestal_title": "The Power of Fancy Displays",
   "block.pedestals.acacia_log_pedestal": "Acacia Wood Pedestal",

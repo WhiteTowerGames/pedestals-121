@@ -19,6 +19,7 @@ public class Pedestals121 implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModCriteria.init();
 		ModItemGroups.registerItemGroups();
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();

@@ -1,3 +1,4 @@
 // 1.21.4	-999999999-01-01T00:00:00	Pedestals - Display your items!/Advancements
-b8746be1cb91ba5ab984a77b9460484d06d1fb47 data/pedestals/advancement/aaa.json
 2d3ffd309e73d09b153af0f192e5dafc3efb00de data/pedestals/advancement/get_pedestal.json
+02670de4ac69de15bed297ca15fb6240f7a0be7c data/pedestals/advancement/place_epic_item_on_pedestal.json
+a6a9a96b08d823f2faad1c18eec258af7d7a10a6 data/pedestals/advancement/place_pedestal_on_pedestal.json

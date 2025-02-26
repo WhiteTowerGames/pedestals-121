@@ -89,8 +89,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
              ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL.asItem(),
              ModBlocks.CRIMSON_LOG_PEDESTAL.asItem(),
              ModBlocks.WARPED_LOG_PEDESTAL.asItem(),
-             ModBlocks.OAK_LOG_PEDESTAL.asItem()
-    };
+             ModBlocks.OAK_LOG_PEDESTAL.asItem()};
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {

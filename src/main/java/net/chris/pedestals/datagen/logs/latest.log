@@ -1,6 +1,6 @@
-[15:58:56] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
-[15:58:56] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) Mod pedestals uses the version 1.1.0v214 which isn't compatible with Loader's extended semantic version format (Could not parse version number component '0v214'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
-[15:58:56] [main/INFO] (FabricLoader) Loading 55 mods:
+[05:59:45] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.10
+[05:59:45] [ForkJoinPool-1-worker-1/WARN] (FabricLoader/Metadata) Mod pedestals uses the version 1.1.0v214 which isn't compatible with Loader's extended semantic version format (Could not parse version number component '0v214'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[05:59:45] [main/INFO] (FabricLoader) Loading 55 mods:
 	- fabric-api 0.117.0+1.21.4
 	- fabric-api-base 0.4.54+b47eab6b04
 	- fabric-api-lookup-api-v1 1.6.86+b1caf1e904
@@ -56,31 +56,32 @@
 	- minecraft 1.21.4
 	- mixinextras 0.4.1
 	- pedestals 1.1.0v214
-[15:58:56] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[15:58:56] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[15:58:56] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[15:58:57] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[15:58:58] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 422 milliseconds
-[15:58:58] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[15:58:59] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
-[15:58:59] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
-[15:58:59] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
-[15:59:00] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
-[15:59:04] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[15:59:04] [Render thread/INFO] (Minecraft) Setting user: Player376
-[15:59:04] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
-[15:59:04] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
-[15:59:05] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
-[15:59:05] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
-[15:59:05] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[15:59:05] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
-[15:59:05] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
-[15:59:05] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
-[15:59:05] [Render thread/ERROR] (FabricDataGenHelper) Failed to run data generation
+[05:59:46] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Chris/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[05:59:46] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[05:59:46] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[05:59:47] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[05:59:48] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 381 milliseconds
+[05:59:48] [main/WARN] (PerfmonDisabled) Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[05:59:48] [main/WARN] (PerfDataUtil) Failed to add PDH Counter: \Paging File(_Total)\% Usage, Error code: 0xC0000BB8
+[05:59:48] [main/WARN] (PerfCounterQueryHandler) Failed to add counter for PDH counter: \Paging File(_Total)\% Usage
+[05:59:48] [main/INFO] (PerfCounterQuery) Disabling further attempts to query Paging File.
+[05:59:49] [main/WARN] (WmiQueryHandler) COM exception: Invalid Query: SELECT PERCENTUSAGE FROM Win32_PerfRawData_PerfOS_PagingFile
+[05:59:54] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[05:59:54] [Render thread/INFO] (Minecraft) Setting user: Player969
+[05:59:54] [Render thread/INFO] (pedestals) Registering Pedestals custom criteria!
+[05:59:54] [Render thread/INFO] (pedestals) Registering Item groups for Pedestals (source: pedestals).
+[05:59:54] [Render thread/INFO] (pedestals) Registering Mod Blocks for Pedestals 1.21 (source: pedestals).
+[05:59:54] [Render thread/INFO] (pedestals) Registering Mod Items for Pedestals 1.21 (source: pedestals).
+[05:59:54] [Render thread/INFO] (pedestals) Registering Block Entities for Pedestals 1.21 (source: pedestals).
+[05:59:54] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[05:59:54] [Render thread/INFO] (pedestals) Registering renderers for Pedestals...
+[05:59:54] [Render thread/INFO] (pedestals) PedestalBlockEntityRenderer registered!
+[05:59:54] [Render thread/INFO] (FabricDataGenHelper) Running data generator for pedestals
+[05:59:55] [Render thread/ERROR] (FabricDataGenHelper) Failed to run data generation
 java.lang.RuntimeException: Failed to run data generator from mod (pedestals)
 	at knot/net.fabricmc.fabric.impl.datagen.FabricDataGenHelper.runInternal(FabricDataGenHelper.java:156) ~[fabric-data-generation-api-v1-22.2.11+20ea1e2304.jar:?]
 	at knot/net.fabricmc.fabric.impl.datagen.FabricDataGenHelper.run(FabricDataGenHelper.java:95) [fabric-data-generation-api-v1-22.2.11+20ea1e2304.jar:?]
-	at knot/net.minecraft.client.MinecraftClient.handler$zzf000$fabric-data-generation-api-v1$main(MinecraftClient.java:3077) [minecraft-merged-7cdb4910af-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
+	at knot/net.minecraft.client.MinecraftClient.handler$zgm000$fabric-data-generation-api-v1$main(MinecraftClient.java:4077) [minecraft-merged-7cdb4910af-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
 	at knot/net.minecraft.client.MinecraftClient.<init>(MinecraftClient.java:542) [minecraft-merged-7cdb4910af-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
 	at knot/net.minecraft.client.main.Main.main(Main.java:224) [minecraft-merged-7cdb4910af-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
 	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:480) [fabric-loader-0.16.10.jar:?]

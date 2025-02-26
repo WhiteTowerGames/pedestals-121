@@ -166,9 +166,14 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Pedestals!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Right click with an item to display it!");
 
-
         addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_title, "The Power of Fancy Displays");
         addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_desc, "The comparator output of a pedestal depends on how rare its item is.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_title, "Maximum Power!");
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_desc, "A Pedestal with an Epic (purple) item on it will also power the block beneath it.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Pedestal-ception");
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Pedestals on Pedestals... I'm starting to get dizzy.");
 
     }
 }
