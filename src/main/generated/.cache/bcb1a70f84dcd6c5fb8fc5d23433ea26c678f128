@@ -1,0 +1,4 @@
+// 1.21	2025-02-26T14:26:06.6868565	Pedestals - Display your items!/Advancements
+2d3ffd309e73d09b153af0f192e5dafc3efb00de data\pedestals\advancement\get_pedestal.json
+a6a9a96b08d823f2faad1c18eec258af7d7a10a6 data\pedestals\advancement\place_pedestal_on_pedestal.json
+02670de4ac69de15bed297ca15fb6240f7a0be7c data\pedestals\advancement\place_epic_item_on_pedestal.json

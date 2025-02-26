@@ -1,0 +1,28 @@
+{
+  "parent": "pedestals:get_pedestal",
+  "criteria": {
+    "place_pedestal_on_pedestal": {
+      "trigger": "pedestals:place_pedestal_on_pedestal"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.place_pedestal_on_pedestal_desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "pedestals:tuff_brick_pedestal"
+    },
+    "title": {
+      "translate": "advancement.pedestals.place_pedestal_on_pedestal_title"
+    }
+  },
+  "requirements": [
+    [
+      "place_pedestal_on_pedestal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

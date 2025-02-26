@@ -1,9 +1,11 @@
 package net.chris.pedestals.block;
 
 import com.mojang.serialization.MapCodec;
+import net.chris.pedestals.ModCriteria;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
+import net.chris.pedestals.datagen.ModItemTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.BlockState;
@@ -16,14 +18,17 @@ import net.minecraft.data.client.TextureMap;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -80,9 +85,45 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity){
-            return pedestalBlockEntity.hasStoredItem() ? 15 : 0; //Return a strength of 15 if there is an item; otherwise zero
+            switch (pedestalBlockEntity.getStoredItem().getRarity()) {
+                case COMMON -> {
+                    return 0;
+                }
+                case UNCOMMON -> {
+                    return 5;
+                }
+                case RARE -> {
+                    return 10;
+                }
+                case EPIC -> {
+                    return 15;
+                }
+            }
         }
         return 0;
+    }
+
+    @Override
+    protected int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+
+        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity
+            && direction == Direction.UP && pedestalBlockEntity.getStoredItem().getRarity() == Rarity.EPIC){
+            return 15;
+        }
+
+        return 0;
+
+    }
+
+    @Override
+    protected int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return getStrongRedstonePower(state, world, pos, direction);
+    }
+
+    @Override
+    protected boolean emitsRedstonePower(BlockState state) {
+        return true;
     }
 
     @Override
@@ -99,10 +140,26 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
             ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), storedItem);
 
-            if (storedItem.isEmpty() ) {//&& !playerHeldItem.isEmpty()
-                // If pedestal is empty, store the item from the player
-                pedestalBlockEntity.setStoredItem(playerHeldItem.split(1)); // Store one item
+            if (storedItem.isEmpty() ) {
+
+                pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));
+
                 world.playSound(null, pos, getAddItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+                if (pedestalBlockEntity.getStoredItem().getRarity()== Rarity.EPIC
+                    && player instanceof ServerPlayerEntity serverPlayer){
+
+                    ModCriteria.PLACE_EPIC_ITEM_ON_PEDESTAL.trigger(serverPlayer);
+
+                }
+
+                if (pedestalBlockEntity.getStoredItem().isIn(ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
+                        && player instanceof ServerPlayerEntity serverPlayer){
+
+                    ModCriteria.PLACE_PEDESTAL_ON_PEDESTAL.trigger(serverPlayer);
+
+                }
+
                 return ActionResult.SUCCESS; // Return success as we stored the item
             } else
                 // If pedestal has an item, give it back to the player and clear the pedestal's item
@@ -113,7 +170,6 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         }
         return ActionResult.PASS;
     }
-
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {

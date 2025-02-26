@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "got_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#pedestals:pedestal_block_items"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancement.pedestals.get_pedestal_desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "pedestals:stone_brick_pedestal"
+    },
+    "title": {
+      "translate": "advancement.pedestals.get_pedestal_title"
+    }
+  },
+  "requirements": [
+    [
+      "got_pedestal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

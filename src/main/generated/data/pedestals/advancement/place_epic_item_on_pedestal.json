@@ -1,0 +1,27 @@
+{
+  "parent": "pedestals:read_power_of_pedestal",
+  "criteria": {
+    "place_epic_item": {
+      "trigger": "pedestals:place_epic_item_on_pedestal"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.place_epic_item_desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:nether_star"
+    },
+    "title": {
+      "translate": "advancement.pedestals.place_epic_item_title"
+    }
+  },
+  "requirements": [
+    [
+      "place_epic_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
