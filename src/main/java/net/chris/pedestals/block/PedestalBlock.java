@@ -133,7 +133,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             } else
                 world.spawnEntity(itemEntity);
-                world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
                 return ActionResult.SUCCESS;
         }
@@ -207,5 +207,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 .put(TextureKey.SIDE, ModelIds.getBlockSubModelId(block, ""))
                 .put(TextureKey.TOP, ModelIds.getBlockSubModelId(block, "_top"));
     }
+
+
 
 }

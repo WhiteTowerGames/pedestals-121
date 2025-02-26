@@ -25,11 +25,9 @@
 			"net.chris.pedestals.Pedestals121Client"
 		]
 	},
-	"mixins": [
-		"pedestals.mixins.json"
-	],
 	"depends": {
 		"fabricloader": ">=0.16.10",
+		"strippableblocksapi": "*",
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*"

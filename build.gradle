@@ -32,6 +32,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "curse.maven:strippableblocks-api-1201634:${project.strippable_version}"
 
 	modDatagenImplementation "curse.maven:nemos-woodcutter-914549:${project.woodcutter_id}"
 
