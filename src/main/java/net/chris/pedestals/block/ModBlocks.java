@@ -343,7 +343,6 @@ public class ModBlocks {
             new PedestalBlock(AbstractBlock.Settings.copy(RESIN_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "resin_brick_pedestal")))
                     .nonOpaque().requiresTool()));
 
-
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Pedestals121.MOD_ID, name), block);
