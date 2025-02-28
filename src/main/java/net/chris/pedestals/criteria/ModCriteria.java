@@ -1,5 +1,6 @@
-package net.chris.pedestals;
+package net.chris.pedestals.criteria;
 
+import net.chris.pedestals.Pedestals121;
 import net.minecraft.advancement.criterion.Criteria;
 
 public class ModCriteria {
@@ -12,7 +13,7 @@ public class ModCriteria {
 
 
 
-    static void init(){
+    public static void init(){
         Pedestals121.LOGGER.info("Registering Pedestals custom criteria!");
     }
 }

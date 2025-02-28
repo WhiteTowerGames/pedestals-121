@@ -1,4 +1,4 @@
-package net.chris.pedestals.block;
+package net.chris.pedestals.block.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

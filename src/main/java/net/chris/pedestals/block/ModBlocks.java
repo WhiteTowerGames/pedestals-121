@@ -2,6 +2,8 @@ package net.chris.pedestals.block;
 
 import com.strippableblocksapi.StrippableCustomRegistry;
 import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.block.blocks.OxidizablePedestalBlock;
+import net.chris.pedestals.block.blocks.PedestalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;

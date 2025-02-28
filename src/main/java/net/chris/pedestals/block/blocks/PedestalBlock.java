@@ -1,7 +1,7 @@
-package net.chris.pedestals.block;
+package net.chris.pedestals.block.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.chris.pedestals.ModCriteria;
+import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
@@ -115,7 +115,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && !player.isSneaking()) {
             ItemStack playerHeldItem = player.getStackInHand(Hand.MAIN_HAND);
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), storedItem);
+            ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
             if (storedItem.isEmpty() ) {
 
                 pedestalBlockEntity.setStoredItem(playerHeldItem.split(1)); // Store one item
@@ -133,6 +133,8 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             } else
                 world.spawnEntity(itemEntity);
+
+            itemEntity.setVelocity(0.0,0.13,0.0);
             world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
                 return ActionResult.SUCCESS;
@@ -174,8 +176,9 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             if (!storedItem.isEmpty()) {
                 // Manually drop the stored item
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), storedItem);
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
                 world.spawnEntity(itemEntity);  // Spawn the item in the world
+                itemEntity.setVelocity(0.0,0.2,0.0);
                 pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);  // Clear the stored item after dropping
             }
         }
