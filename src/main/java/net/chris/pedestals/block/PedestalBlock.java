@@ -163,6 +163,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return true;
     }
 
+    
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {

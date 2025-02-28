@@ -1,15 +1,13 @@
 package net.chris.pedestals.datagen;
 
-import net.chris.pedestals.ModCriteria;
-import net.chris.pedestals.Pedestals121;
-import net.chris.pedestals.PlaceEpicItemOnPedestalCriterion;
-import net.chris.pedestals.PlacePedestalOnPedestalCriterion;
+import net.chris.pedestals.*;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
+import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -24,7 +22,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class ModAdvancementProvider extends FabricAdvancementProvider {
+public class ModAdvancementProvider extends FabricAdvancementProvider{
 
     public ModAdvancementProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(output, registryLookup);
@@ -41,6 +39,9 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
 
     public static final Text place_pedestal_on_pedestal_title = Text.translatable("advancement.pedestals.place_pedestal_on_pedestal_title");
     public static final Text place_pedestal_on_pedestal_desc = Text.translatable("advancement.pedestals.place_pedestal_on_pedestal_desc");
+
+    public static final Text collect_all_pedestals_title = Text.translatable("advancement.pedestals.collect_all_pedestals_title");
+    public static final Text collect_all_pedestals_desc = Text.translatable("advancement.pedestals.collect_all_pedestals_desc");
 
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
@@ -104,5 +105,38 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                             new PlacePedestalOnPedestalCriterion.Conditions(Optional.empty())))
                     .build(consumer, Pedestals121.MOD_ID+":place_pedestal_on_pedestal");
 
+            /// This advancement uses a separate, new builder so that I could run a for loop in it.
+            Advancement.Builder builder = Advancement.Builder.create().parent(get_pedestal)
+                    .display(
+                            ModBlocks.END_STONE_BRICK_PEDESTAL,
+                            collect_all_pedestals_title,
+                            collect_all_pedestals_desc,
+                            null,
+                            AdvancementFrame.CHALLENGE,
+                            true,
+                            true,
+                            false
+                    )
+                    .rewards(AdvancementRewards.Builder.experience(250));
+
+        for (Block pedestal : ModBlocks.ALL_PEDESTALS) {
+
+            ItemPredicate allPedestalsItemPredicate = ItemPredicate.Builder.create()
+                    .items(itemLookup, pedestal.asItem())
+                    .build();
+
+            builder.criterion(
+                    Registries.BLOCK.getId(pedestal).getPath(),
+                    InventoryChangedCriterion.Conditions.items(allPedestalsItemPredicate)
+            );
+
+        }
+
+        builder.build(consumer, Pedestals121.MOD_ID+":collect_all_pedestals");
+
+
+
     }
+
 }
+

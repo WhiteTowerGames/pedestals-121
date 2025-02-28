@@ -175,5 +175,9 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Βάθρα²");
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Βάθρα επάνω σε Βάθρα... αρχίζω και ζαλίζομαι.");
 
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Μετρ των Βάθρων");
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "Από την πέτρα μέχρι το ξύλο και τον χαλκό, κανένα βάθρο δε ξέφυγε από τα χέρια σου. Η συλλογή σου ολοκληρώθηκε.");
+
+
     }
 }

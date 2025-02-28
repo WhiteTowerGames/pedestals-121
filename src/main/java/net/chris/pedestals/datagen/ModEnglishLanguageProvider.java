@@ -175,5 +175,8 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Pedestal-ception");
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Pedestals on Pedestals... I'm starting to get dizzy.");
 
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Grand Archivist");
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.");
+
     }
 }

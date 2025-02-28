@@ -22,6 +22,7 @@ public class Pedestals121 implements ModInitializer {
 		ModCriteria.init();
 		ModItemGroups.registerItemGroups();
 		ModBlocks.registerModBlocks();
+		//ModBlocks.registerAll();
 		ModItems.registerModItems();
 		ModBlockEntities.registerModBlockEntities();
 	}

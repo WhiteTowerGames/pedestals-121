@@ -1,0 +1,908 @@
+{
+  "parent": "pedestals:get_pedestal",
+  "criteria": {
+    "acacia_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:acacia_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bamboo_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:bamboo_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bamboo_mosaic_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:bamboo_mosaic_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "birch_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:birch_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "calcite_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:calcite_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cherry_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:cherry_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "chiseled_tuff_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:chiseled_tuff_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crimson_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:crimson_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dark_oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:dark_oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dark_prismarine_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:dark_prismarine_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "deepslate_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:deepslate_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "deepslate_tile_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:deepslate_tile_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "end_stone_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:end_stone_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "exposed_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:exposed_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "exposed_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:exposed_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "jungle_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:jungle_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mangrove_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:mangrove_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mossy_stone_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:mossy_stone_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mud_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:mud_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "nether_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:nether_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oxidized_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:oxidized_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oxidized_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:oxidized_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pale_oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:pale_oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_andesite_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_andesite_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_blackstone_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_blackstone_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_blackstone_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_blackstone_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_deepslate_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_deepslate_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_diorite_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_diorite_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_granite_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_granite_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polished_tuff_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:polished_tuff_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "prismarine_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:prismarine_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purpur_block_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:purpur_block_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "quartz_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:quartz_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_nether_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:red_nether_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "resin_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:resin_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "smooth_quartz_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:smooth_quartz_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "smooth_red_sandstone_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:smooth_red_sandstone_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "smooth_sandstone_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:smooth_sandstone_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "spruce_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:spruce_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stone_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stone_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_acacia_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_acacia_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_bamboo_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_bamboo_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_birch_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_birch_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_cherry_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_cherry_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_crimson_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_crimson_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_dark_oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_dark_oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_jungle_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_jungle_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_mangrove_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_mangrove_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_pale_oak_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_pale_oak_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_spruce_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_spruce_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stripped_warped_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:stripped_warped_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tuff_brick_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:tuff_brick_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "warped_log_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:warped_log_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_exposed_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_exposed_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_exposed_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_exposed_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_oxidized_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_oxidized_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_oxidized_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_oxidized_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_weathered_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_weathered_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_weathered_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:waxed_weathered_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "weathered_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:weathered_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "weathered_cut_copper_pedestal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:weathered_cut_copper_pedestal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.collect_all_pedestals_desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "pedestals:end_stone_brick_pedestal"
+    },
+    "title": {
+      "translate": "advancement.pedestals.collect_all_pedestals_title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_brick_pedestal"
+    ],
+    [
+      "mossy_stone_brick_pedestal"
+    ],
+    [
+      "smooth_sandstone_pedestal"
+    ],
+    [
+      "smooth_red_sandstone_pedestal"
+    ],
+    [
+      "deepslate_brick_pedestal"
+    ],
+    [
+      "deepslate_tile_pedestal"
+    ],
+    [
+      "polished_granite_pedestal"
+    ],
+    [
+      "polished_diorite_pedestal"
+    ],
+    [
+      "polished_andesite_pedestal"
+    ],
+    [
+      "polished_deepslate_pedestal"
+    ],
+    [
+      "calcite_pedestal"
+    ],
+    [
+      "copper_pedestal"
+    ],
+    [
+      "exposed_copper_pedestal"
+    ],
+    [
+      "weathered_copper_pedestal"
+    ],
+    [
+      "oxidized_copper_pedestal"
+    ],
+    [
+      "waxed_copper_pedestal"
+    ],
+    [
+      "waxed_exposed_copper_pedestal"
+    ],
+    [
+      "waxed_weathered_copper_pedestal"
+    ],
+    [
+      "waxed_oxidized_copper_pedestal"
+    ],
+    [
+      "cut_copper_pedestal"
+    ],
+    [
+      "exposed_cut_copper_pedestal"
+    ],
+    [
+      "weathered_cut_copper_pedestal"
+    ],
+    [
+      "oxidized_cut_copper_pedestal"
+    ],
+    [
+      "waxed_cut_copper_pedestal"
+    ],
+    [
+      "waxed_exposed_cut_copper_pedestal"
+    ],
+    [
+      "waxed_weathered_cut_copper_pedestal"
+    ],
+    [
+      "waxed_oxidized_cut_copper_pedestal"
+    ],
+    [
+      "brick_pedestal"
+    ],
+    [
+      "end_stone_brick_pedestal"
+    ],
+    [
+      "mud_brick_pedestal"
+    ],
+    [
+      "nether_brick_pedestal"
+    ],
+    [
+      "polished_blackstone_brick_pedestal"
+    ],
+    [
+      "polished_blackstone_pedestal"
+    ],
+    [
+      "dark_prismarine_pedestal"
+    ],
+    [
+      "prismarine_brick_pedestal"
+    ],
+    [
+      "purpur_block_pedestal"
+    ],
+    [
+      "quartz_brick_pedestal"
+    ],
+    [
+      "red_nether_brick_pedestal"
+    ],
+    [
+      "smooth_quartz_pedestal"
+    ],
+    [
+      "polished_tuff_pedestal"
+    ],
+    [
+      "tuff_brick_pedestal"
+    ],
+    [
+      "chiseled_tuff_brick_pedestal"
+    ],
+    [
+      "oak_log_pedestal"
+    ],
+    [
+      "birch_log_pedestal"
+    ],
+    [
+      "spruce_log_pedestal"
+    ],
+    [
+      "jungle_log_pedestal"
+    ],
+    [
+      "dark_oak_log_pedestal"
+    ],
+    [
+      "acacia_log_pedestal"
+    ],
+    [
+      "crimson_log_pedestal"
+    ],
+    [
+      "warped_log_pedestal"
+    ],
+    [
+      "mangrove_log_pedestal"
+    ],
+    [
+      "cherry_log_pedestal"
+    ],
+    [
+      "bamboo_log_pedestal"
+    ],
+    [
+      "bamboo_mosaic_pedestal"
+    ],
+    [
+      "pale_oak_log_pedestal"
+    ],
+    [
+      "resin_brick_pedestal"
+    ],
+    [
+      "stripped_oak_log_pedestal"
+    ],
+    [
+      "stripped_birch_log_pedestal"
+    ],
+    [
+      "stripped_spruce_log_pedestal"
+    ],
+    [
+      "stripped_jungle_log_pedestal"
+    ],
+    [
+      "stripped_dark_oak_log_pedestal"
+    ],
+    [
+      "stripped_acacia_log_pedestal"
+    ],
+    [
+      "stripped_mangrove_log_pedestal"
+    ],
+    [
+      "stripped_cherry_log_pedestal"
+    ],
+    [
+      "stripped_bamboo_log_pedestal"
+    ],
+    [
+      "stripped_pale_oak_log_pedestal"
+    ],
+    [
+      "stripped_crimson_log_pedestal"
+    ],
+    [
+      "stripped_warped_log_pedestal"
+    ]
+  ],
+  "rewards": {
+    "experience": 250
+  },
+  "sends_telemetry_event": true
+}

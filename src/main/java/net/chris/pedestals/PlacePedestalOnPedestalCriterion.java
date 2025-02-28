@@ -12,8 +12,6 @@ public class PlacePedestalOnPedestalCriterion extends AbstractCriterion<PlacePed
 
     public static final Identifier ID = Identifier.of(Pedestals121.MOD_ID, "place_pedestal_on_pedestal");
 
-
-
     @Override
     public Codec<PlacePedestalOnPedestalCriterion.Conditions> getConditionsCodec() {
         return PlacePedestalOnPedestalCriterion.Conditions.CODEC;

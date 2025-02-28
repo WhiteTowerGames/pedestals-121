@@ -10,6 +10,8 @@ public class ModCriteria {
     public static final PlacePedestalOnPedestalCriterion PLACE_PEDESTAL_ON_PEDESTAL = Criteria.register(
             Pedestals121.MOD_ID+":place_pedestal_on_pedestal", new PlacePedestalOnPedestalCriterion());
 
+
+
     static void init(){
         Pedestals121.LOGGER.info("Registering Pedestals custom criteria!");
     }

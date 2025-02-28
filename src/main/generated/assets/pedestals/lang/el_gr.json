@@ -1,4 +1,6 @@
 {
+  "advancement.pedestals.collect_all_pedestals_desc": "Από την πέτρα μέχρι το ξύλο και τον χαλκό, κανένα βάθρο δε ξέφυγε από τα χέρια σου. Η συλλογή σου ολοκληρώθηκε.",
+  "advancement.pedestals.collect_all_pedestals_title": "Μετρ των Βάθρων",
   "advancement.pedestals.get_pedestal_desc": "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!",
   "advancement.pedestals.get_pedestal_title": "Βάθρα!",
   "advancement.pedestals.place_epic_item_desc": "Ένα Βάθρο που περιέχει ένα Επικό (μωβ) αντικείμενο επίσης τροφοδοτεί τον από κάτω κύβο του.",

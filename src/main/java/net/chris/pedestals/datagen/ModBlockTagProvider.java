@@ -46,7 +46,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL)
-                .add(ModBlocks.POLISHED_ANDESITE_PEDESTAL)
                 .add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
