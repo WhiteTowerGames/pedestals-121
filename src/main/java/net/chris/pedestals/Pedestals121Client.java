@@ -1,7 +1,7 @@
 package net.chris.pedestals;
 
-import net.chris.pedestals.block.ModBlockEntities;
-import net.chris.pedestals.block.ModBlockEntityRenderers;
+import net.chris.pedestals.block.entity.ModBlockEntities;
+import net.chris.pedestals.block.entity.ModBlockEntityRenderers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.chris.pedestals.block.entity.PedestalBlockEntityRenderer;

@@ -1,7 +1,7 @@
 package net.chris.pedestals.datagen;
 
 import net.chris.pedestals.block.ModBlocks;
-import net.chris.pedestals.block.PedestalBlock;
+import net.chris.pedestals.block.blocks.PedestalBlock;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
@@ -11,8 +11,8 @@ import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.TextureMap;
 import net.minecraft.util.Identifier;
 
-import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL;
-import static net.chris.pedestals.block.PedestalBlock.PEDESTAL_MODEL_MORE;
+import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL;
+import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL_MORE;
 
 public class ModModelProvider extends FabricModelProvider {
 

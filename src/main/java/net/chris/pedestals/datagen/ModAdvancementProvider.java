@@ -2,6 +2,9 @@ package net.chris.pedestals.datagen;
 
 import net.chris.pedestals.*;
 import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.criteria.ModCriteria;
+import net.chris.pedestals.criteria.PlaceEpicItemOnPedestalCriterion;
+import net.chris.pedestals.criteria.PlacePedestalOnPedestalCriterion;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;

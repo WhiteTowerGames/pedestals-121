@@ -1,6 +1,5 @@
 package net.chris.pedestals.block.entity;
 
-import net.chris.pedestals.block.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
@@ -10,6 +9,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
@@ -68,8 +68,9 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     public void setStoredItem(ItemStack item) {
         storedItem = item;
-        markDirty();  // Important to update the state
-
+        if (world instanceof ServerWorld) {
+            markDirty();  // Important to update the state
+        }
 //        if(world != null){
 //            world.updateNeighborsAlways(pos, this.getCachedState().getBlock());
 //            world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock());

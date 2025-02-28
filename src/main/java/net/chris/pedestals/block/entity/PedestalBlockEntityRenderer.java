@@ -13,6 +13,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     public PedestalBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {}
 
+    //TODO LOOK INTO NAMED DISPLAYS
+
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
@@ -20,23 +22,22 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         if (!stack.isEmpty()) {
             matrices.push();
-
-            // Make the item float higher (1.5 instead of 1.0)
-            double yOffset = 1.5 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
+            // Make the item float higher
+            double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
             matrices.translate(0.5, yOffset, 0.5);
-
             // Rotate the item
             float rotation = (System.currentTimeMillis() / 20) % 360;
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
-
             // Render the item
             ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-            itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-
+            matrices.scale(1.2f,1.2f,1.2f);
+            itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
+                    light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             matrices.pop();
+        } else {
+            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+            itemRenderer.renderItem(ItemStack.EMPTY, net.minecraft.item.ModelTransformationMode.GROUND,
+                    light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
         }
     }
-
-
-
 }
