@@ -16,6 +16,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
 
+    //TODO: ADD CARPETS/PILLOWS FOR PEDESTALS AND REMOVING THEM WITH SHEARS
+
     private ItemStack storedItem = ItemStack.EMPTY;
     private ItemStack carpet = ItemStack.EMPTY;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
