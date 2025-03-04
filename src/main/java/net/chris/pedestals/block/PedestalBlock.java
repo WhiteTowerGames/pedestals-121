@@ -164,7 +164,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             } else
                 // If pedestal has an item, give it back to the player and clear the pedestal's item
                 world.spawnEntity(itemEntity);
-                world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 pedestalBlockEntity.setStoredItem(ItemStack.EMPTY); // Remove the item from the pedestal
                 return ActionResult.SUCCESS; // Return success as we gave the item back
         }
