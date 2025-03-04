@@ -1,5 +1,6 @@
-package net.chris.pedestals;
+package net.chris.pedestals.criteria;
 
+import net.chris.pedestals.Pedestals121;
 import net.minecraft.advancement.criterion.Criteria;
 
 public class ModCriteria {
@@ -10,7 +11,7 @@ public class ModCriteria {
     public static final PlacePedestalOnPedestalCriterion PLACE_PEDESTAL_ON_PEDESTAL = Criteria.register(
             Pedestals121.MOD_ID+":place_pedestal_on_pedestal", new PlacePedestalOnPedestalCriterion());
 
-    static void init(){
+    public static void init(){
         Pedestals121.LOGGER.info("Registering Pedestals custom criteria!");
     }
 }

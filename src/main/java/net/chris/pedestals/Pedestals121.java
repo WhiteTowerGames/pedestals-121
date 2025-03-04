@@ -1,7 +1,8 @@
 package net.chris.pedestals;
 
-import net.chris.pedestals.block.ModBlockEntities;
+import net.chris.pedestals.block.entity.ModBlockEntities;
 import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.item.ModItemGroups;
 import net.chris.pedestals.item.ModItems;
 import net.fabricmc.api.ModInitializer;

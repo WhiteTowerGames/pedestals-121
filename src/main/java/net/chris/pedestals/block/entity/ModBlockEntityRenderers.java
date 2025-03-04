@@ -1,11 +1,9 @@
-package net.chris.pedestals.block;
+package net.chris.pedestals.block.entity;
 
 import net.chris.pedestals.Pedestals121;
-import net.chris.pedestals.block.ModBlockEntities;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.chris.pedestals.block.entity.PedestalBlockEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class ModBlockEntityRenderers {

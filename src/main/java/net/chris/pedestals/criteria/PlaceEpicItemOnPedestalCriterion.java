@@ -1,6 +1,7 @@
-package net.chris.pedestals;
+package net.chris.pedestals.criteria;
 
 import com.mojang.serialization.Codec;
+import net.chris.pedestals.Pedestals121;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;

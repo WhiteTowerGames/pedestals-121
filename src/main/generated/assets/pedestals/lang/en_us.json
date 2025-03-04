@@ -1,4 +1,6 @@
 {
+  "advancement.pedestals.collect_all_pedestals_desc": "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.",
+  "advancement.pedestals.collect_all_pedestals_title": "Grand Archivist",
   "advancement.pedestals.get_pedestal_desc": "Right click with an item to display it!",
   "advancement.pedestals.get_pedestal_title": "Pedestals!",
   "advancement.pedestals.place_epic_item_desc": "A Pedestal with an Epic (purple) item on it will also power the block beneath it.",

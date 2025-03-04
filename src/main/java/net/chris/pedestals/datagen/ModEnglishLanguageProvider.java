@@ -21,7 +21,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         builder.add(((TranslatableTextContent) text.getContent()).getKey(), value);
     }
 
-                                @Override
+    @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(ModBlocks.STONE_BRICK_PEDESTAL, "Stone Brick Pedestal");
         translationBuilder.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL, "Mossy Stone Brick Pedestal");
@@ -102,5 +102,8 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Pedestal-ception");
         addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Pedestals on Pedestals... I'm starting to get dizzy.");
+
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Grand Archivist");
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.");
     }
 }

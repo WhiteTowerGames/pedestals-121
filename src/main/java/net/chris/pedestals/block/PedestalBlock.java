@@ -1,7 +1,7 @@
 package net.chris.pedestals.block;
 
 import com.mojang.serialization.MapCodec;
-import net.chris.pedestals.ModCriteria;
+import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;

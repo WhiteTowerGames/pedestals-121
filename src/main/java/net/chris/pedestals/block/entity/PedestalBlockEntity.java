@@ -1,7 +1,5 @@
 package net.chris.pedestals.block.entity;
 
-import net.chris.pedestals.Pedestals121;
-import net.chris.pedestals.block.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
@@ -85,7 +83,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 world.updateListeners(pos, getCachedState(), getCachedState(), 3);
                 //Pedestals121.LOGGER.info(getStoredItem()+"");
             }
-            if (!storedItem.isEmpty()){
+            if (hasStoredItem()){
                 markDirty();
             }
         }

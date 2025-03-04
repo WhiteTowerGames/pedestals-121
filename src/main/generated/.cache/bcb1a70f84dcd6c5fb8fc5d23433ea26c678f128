@@ -1,4 +1,5 @@
-// 1.21	2025-02-26T14:26:06.6868565	Pedestals - Display your items!/Advancements
+// 1.21	2025-03-04T22:31:18.9439612	Pedestals - Display your items!/Advancements
 2d3ffd309e73d09b153af0f192e5dafc3efb00de data\pedestals\advancement\get_pedestal.json
 a6a9a96b08d823f2faad1c18eec258af7d7a10a6 data\pedestals\advancement\place_pedestal_on_pedestal.json
+d36ad84753d28e35653c3cbc54413dd365503b9c data\pedestals\advancement\collect_all_pedestals.json
 02670de4ac69de15bed297ca15fb6240f7a0be7c data\pedestals\advancement\place_epic_item_on_pedestal.json
