@@ -9,6 +9,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ModelTransformationMode;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -91,7 +92,6 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         matrices.pop();
     }
 
-
     protected int getItemRarityColor(ItemStack stack){
         switch (stack.getRarity()) {
             case COMMON -> {return Colors.WHITE;}
@@ -102,13 +102,29 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         }
     }
 
+    protected void renderCarpetIfPresent(PedestalBlockEntity entity, ItemStack carpet, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay) {
+        matrices.push();
+
+        matrices.translate(0.5f, 1.29f, 0.51f);
+        matrices.scale(1f,1f,1f);
+
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+
+        itemRenderer.renderItem(carpet, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+
+        matrices.pop();
+
+    }
+
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemStack stack = entity.getStoredItem();
+        ItemStack carpet = entity.getStoredCarpet();
 
-        if (!stack.isEmpty()) {
-            matrices.push();
+        if (stack.isEmpty() && carpet.isEmpty()) return;
+
+        matrices.push();
             // Make the item float higher
             double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
             matrices.translate(0.5, yOffset, 0.5);
@@ -121,13 +137,11 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
                     light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             matrices.pop();
-        } else {
-            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-            itemRenderer.renderItem(ItemStack.EMPTY, net.minecraft.item.ModelTransformationMode.GROUND,
-                    light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-        }
         if (shouldRenderName(stack, entity)){
             renderCustomNameIfPresent(stack, matrices, vertexConsumers, light);
+        }
+        if (entity.hasStoredCarpet()) {
+            renderCarpetIfPresent(entity, carpet, matrices, vertexConsumers, light, itemRenderer, overlay);
         }
     }
 }

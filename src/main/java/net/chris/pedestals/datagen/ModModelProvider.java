@@ -1,6 +1,7 @@
 package net.chris.pedestals.datagen;
 
 import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.PedestalBlock;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -11,6 +12,8 @@ import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.TextureMap;
 import net.minecraft.util.Identifier;
 
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.block.blocks.FancyCarpetBlock.FANCY_CARPET_MODEL;
 import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL;
 import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL_MORE;
 
@@ -68,6 +71,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, PedestalBlock.pedestalMap(Blocks.SMOOTH_RED_SANDSTONE));
 
 
+        /// Pedestals that use more than one texture (Mostly wooden ones)
         registerPedestalWood(blockStateModelGenerator, ModBlocks.OAK_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.OAK_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.BIRCH_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.BIRCH_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.SPRUCE_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.SPRUCE_LOG));
@@ -94,8 +98,14 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.WARPED_STEM));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_WARPED_STEM));
 
-
+        /// Gilded Carpet Models:
+        for (int i = 0; i<=15; i++){
+            registerFancyCarpet(blockStateModelGenerator, ALL_FANCY_CARPETS.get(i), FancyCarpetBlock.fancyCarpetMap(allColors[i]));
+        }
     }
+
+    public static final String[] allColors = {"white", "light_gray", "gray", "black",
+            "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"};
 
 
     public static void registerPedestal(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
@@ -105,11 +115,18 @@ public class ModModelProvider extends FabricModelProvider {
         generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
     }
 
-    public static  void registerPedestalWood(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
+    public static void registerPedestalWood(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
         Identifier pedestalModel = PEDESTAL_MODEL_MORE.upload(pedestalBlock, textures, generator.modelCollector);
 
         generator.registerParentedItemModel(pedestalBlock, pedestalModel);
         generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
+    }
+
+    public static void registerFancyCarpet(BlockStateModelGenerator generator, Block fancyCarpetBlock, TextureMap textures){
+        Identifier fancyCarpetModel = FANCY_CARPET_MODEL.upload(fancyCarpetBlock, textures, generator.modelCollector);
+
+        generator.registerParentedItemModel(fancyCarpetBlock, fancyCarpetModel);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(fancyCarpetBlock, fancyCarpetModel));
     }
 
     @Override

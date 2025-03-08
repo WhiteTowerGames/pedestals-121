@@ -2,6 +2,7 @@ package net.chris.pedestals.block;
 
 import com.strippableblocksapi.StrippableCustomRegistry;
 import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.OxidizablePedestalBlock;
 import net.chris.pedestals.block.blocks.PedestalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -343,7 +344,108 @@ public class ModBlocks {
 
     public static final Block RESIN_BRICK_PEDESTAL = registerBlock( "resin_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(RESIN_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "resin_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .sounds(BlockSoundGroup.RESIN_BRICKS)
+                    .nonOpaque()
+                    .requiresTool()));
+
+    /// Post Fancy Carpets Update:
+
+    public static final Block RED_GILDED_CARPET = registerBlock("red_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(RED_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "red_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block BLUE_GILDED_CARPET = registerBlock("blue_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(BLUE_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "blue_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block WHITE_GILDED_CARPET = registerBlock("white_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(WHITE_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "white_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block LIGHT_GRAY_GILDED_CARPET = registerBlock("light_gray_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(LIGHT_GRAY_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "light_gray_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block GRAY_GILDED_CARPET = registerBlock("gray_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(GRAY_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "gray_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block BLACK_GILDED_CARPET = registerBlock("black_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(BLACK_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "black_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block BROWN_GILDED_CARPET = registerBlock("brown_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(BROWN_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "brown_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block ORANGE_GILDED_CARPET = registerBlock("orange_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(ORANGE_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "orange_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block YELLOW_GILDED_CARPET = registerBlock("yellow_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(YELLOW_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "yellow_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block LIME_GILDED_CARPET = registerBlock("lime_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(LIME_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "lime_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block GREEN_GILDED_CARPET = registerBlock("green_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(GREEN_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "green_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block CYAN_GILDED_CARPET = registerBlock("cyan_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(CYAN_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "cyan_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block LIGHT_BLUE_GILDED_CARPET = registerBlock("light_blue_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(LIGHT_BLUE_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "light_blue_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+    
+    public static final Block PURPLE_GILDED_CARPET = registerBlock("purple_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(PURPLE_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "purple_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block MAGENTA_GILDED_CARPET = registerBlock("magenta_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(MAGENTA_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "magenta_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
+    public static final Block PINK_GILDED_CARPET = registerBlock("pink_gilded_carpet",
+            new FancyCarpetBlock(AbstractBlock.Settings.copy(PINK_CARPET).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "pink_gilded_carpet")))
+                    .sounds(BlockSoundGroup.WOOL)
+                    .nonOpaque()
+                    .burnable()));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -423,7 +525,25 @@ public class ModBlocks {
             ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL,
             ModBlocks.STRIPPED_PALE_OAK_LOG_PEDESTAL,
             ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL,
-            ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL
+            ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
+
+    public static final List<Block> ALL_FANCY_CARPETS = List.of(
+            WHITE_GILDED_CARPET,
+            LIGHT_GRAY_GILDED_CARPET,
+            GRAY_GILDED_CARPET,
+            BLACK_GILDED_CARPET,
+            BROWN_GILDED_CARPET,
+            RED_GILDED_CARPET,
+            ORANGE_GILDED_CARPET,
+            YELLOW_GILDED_CARPET,
+            LIME_GILDED_CARPET,
+            GREEN_GILDED_CARPET,
+            CYAN_GILDED_CARPET,
+            LIGHT_BLUE_GILDED_CARPET,
+            BLUE_GILDED_CARPET,
+            PURPLE_GILDED_CARPET,
+            MAGENTA_GILDED_CARPET,
+            PINK_GILDED_CARPET
     );
 
     private static void registerOxidationAndWaxing() {
@@ -465,6 +585,11 @@ public class ModBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(PALE_OAK_LOG_PEDESTAL, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_PALE_OAK_LOG_PEDESTAL, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_MOSAIC_PEDESTAL, 5, 20);
+
+        /// Gilded Carpets:
+        for (Block fancyCarpet : ALL_FANCY_CARPETS){
+            FlammableBlockRegistry.getDefaultInstance().add(fancyCarpet, 60, 20);
+        }
     }
 
     private static void registerStrippableBlocks(){
@@ -555,7 +680,26 @@ public class ModBlocks {
             entries.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL);
             entries.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
         });
-        Pedestals121.LOGGER.info(STONE_BRICK_PEDESTAL+"");
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries ->{
+            entries.addAfter(RED_CARPET, RED_GILDED_CARPET);
+            entries.addAfter(BLUE_CARPET, BLUE_GILDED_CARPET);
+            entries.addAfter(WHITE_CARPET, WHITE_GILDED_CARPET);
+            entries.addAfter(LIGHT_GRAY_CARPET, LIGHT_GRAY_GILDED_CARPET);
+            entries.addAfter(GRAY_CARPET, GRAY_GILDED_CARPET);
+            entries.addAfter(BLACK_CARPET, BLACK_GILDED_CARPET);
+            entries.addAfter(BROWN_CARPET, BROWN_GILDED_CARPET);
+            entries.addAfter(ORANGE_CARPET, ORANGE_GILDED_CARPET);
+            entries.addAfter(YELLOW_CARPET, YELLOW_GILDED_CARPET);
+            entries.addAfter(LIME_CARPET, LIME_GILDED_CARPET);
+            entries.addAfter(GREEN_CARPET, GREEN_GILDED_CARPET);
+            entries.addAfter(CYAN_CARPET, CYAN_GILDED_CARPET);
+            entries.addAfter(LIGHT_BLUE_CARPET, LIGHT_BLUE_GILDED_CARPET);
+            entries.addAfter(PURPLE_CARPET, PURPLE_GILDED_CARPET);
+            entries.addAfter(MAGENTA_CARPET, MAGENTA_GILDED_CARPET);
+            entries.addAfter(PINK_CARPET, PINK_GILDED_CARPET);
+        });
+
         registerOxidationAndWaxing();
         registerFlammableBlocks();
         registerStrippableBlocks();

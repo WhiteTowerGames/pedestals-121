@@ -3,12 +3,15 @@ package net.chris.pedestals.item;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
 
 public class ModItemGroups {
 
@@ -87,6 +90,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
 
                     }).build());
+
+    public static final ItemGroup FANCY_CARPETS_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(Pedestals121.MOD_ID, "fancy_carpets"),
+                    FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.RED_GILDED_CARPET))
+                            .displayName(Text.translatable("itemgroup.pedestals.fancycarpets"))
+                            .entries((displayContext, entries) -> {
+                                for (Block fancyCarpet : ALL_FANCY_CARPETS){
+                                    entries.add(fancyCarpet);
+                                }
+                            }).build());
 
     public static void registerItemGroups(){
         Pedestals121.LOGGER.info("Registering Item groups for Pedestals (source: "+Pedestals121.MOD_ID+").");

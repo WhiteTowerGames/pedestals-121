@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:cyan_carpet",
+    "N": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "N N",
+    " C ",
+    "N N"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pedestals:cyan_gilded_carpet"
+  }
+}

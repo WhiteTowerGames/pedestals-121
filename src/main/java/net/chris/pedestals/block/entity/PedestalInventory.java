@@ -11,15 +11,12 @@ public interface PedestalInventory extends Inventory {
 
     @Override
     default int size() {
-        return getItems().size();
+        return 1;
     }
 
     @Override
     default boolean isEmpty() {
-        for (ItemStack stack : getItems()) {
-            if (!stack.isEmpty()) return false;
-        }
-        return true;
+        return getItems().getFirst().isEmpty();
     }
 
     @Override

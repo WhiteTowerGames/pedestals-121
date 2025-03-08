@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:light_gray_carpet",
+    "N": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "N N",
+    " C ",
+    "N N"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pedestals:light_gray_gilded_carpet"
+  }
+}

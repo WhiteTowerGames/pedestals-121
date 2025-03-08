@@ -7,6 +7,8 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
@@ -83,6 +85,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
         addDrop(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL);
         addDrop(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL);
+
+        for (int i = 0; i<=15; i++){
+            addDrop(ALL_FANCY_CARPETS.get(i));
+        }
 
         
     }

@@ -11,6 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.datagen.ModModelProvider.allColors;
+
 public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
     public ModEnglishLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
@@ -160,8 +163,15 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL.asItem(), "Stripped Warped Stem Pedestal");
         translationBuilder.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL.asItem(), "Smooth Sandstone Pedestal");
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Smooth Red Sandstone Pedestal");
+
+        for (int i = 0; i<=15; i++){
+            String actualName = getActualName(i);
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Gilded Carpet");
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Gilded Carpet");
+        }
         
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
+        addText(translationBuilder, ModItemGroups.FANCY_CARPETS_GROUP.getDisplayName(), "Gilded Carpets");
 
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Pedestals!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Right click with an item to display it!");
@@ -178,5 +188,17 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Grand Archivist");
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.");
 
+    }
+
+    private static @NotNull String getActualName(int i) {
+        String colorName = allColors[i];
+        String actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
+        if (actualName.length()>5) {
+            if (actualName.charAt(5) == '_'){
+                actualName = actualName.replaceAll("_", " ");
+                actualName = actualName.substring(0, 5) + actualName.substring(5,7).toUpperCase() + actualName.substring(7);
+            }
+        }
+        return actualName;
     }
 }

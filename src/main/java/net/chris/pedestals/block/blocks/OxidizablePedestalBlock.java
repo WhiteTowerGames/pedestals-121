@@ -1,8 +1,10 @@
 package net.chris.pedestals.block.blocks;
 
+import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Oxidizable;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -26,7 +28,11 @@ public class OxidizablePedestalBlock extends PedestalBlock implements Oxidizable
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.random.nextFloat() < 0.1F) { // Adjust chance of oxidation
             getNextOxidationLevel(state).ifPresent(nextBlock -> {
+                PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+                ItemStack stack = pedestalBlockEntity.getStoredItem();
                 world.setBlockState(pos, nextBlock.getDefaultState());
+                pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+                pedestalBlockEntity.setStoredItem(stack);
             });
         }
     }

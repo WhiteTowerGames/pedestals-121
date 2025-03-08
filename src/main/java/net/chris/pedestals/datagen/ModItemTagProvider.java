@@ -12,6 +12,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
@@ -19,6 +21,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     public static final TagKey<Item> PEDESTAL_BLOCK_ITEMS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, "pedestal_block_items"));
+
+    public static final TagKey<Item> FANCY_CARPET_BLOCK_ITEMS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, "fancy_carpet_block_items"));
 
     public static final Item[] PEDESTAL_BLOCK_ITEM_ARRAY = new Item[]{
              ModBlocks.STONE_BRICK_PEDESTAL.asItem(),
@@ -163,5 +167,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.CRIMSON_LOG_PEDESTAL.asItem())
                 .add(ModBlocks.WARPED_LOG_PEDESTAL.asItem())
                 .add(ModBlocks.OAK_LOG_PEDESTAL.asItem());
+
+            for (int i = 0; i<=15; i++){
+                getOrCreateTagBuilder(FANCY_CARPET_BLOCK_ITEMS).add(ALL_FANCY_CARPETS.get(i).asItem());
+            }
     }
 }

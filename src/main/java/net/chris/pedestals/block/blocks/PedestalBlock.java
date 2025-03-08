@@ -18,6 +18,7 @@ import net.minecraft.client.data.TextureMap;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -64,6 +65,10 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     public SoundEvent getRemoveItemSound() {
         return SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM;
     }
+
+    public final SoundEvent getAddCarpetSoundWool() {return SoundEvents.BLOCK_WOOL_PLACE;}
+    public final SoundEvent getAddCarpetSoundChain() {return SoundEvents.BLOCK_CHAIN_PLACE;}
+    public final SoundEvent getRemoveCarpetSound() {return SoundEvents.ENTITY_MOOSHROOM_SHEAR;}
 
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
@@ -112,32 +117,63 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             return ActionResult.FAIL;
         }
 
-        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && !player.isSneaking()) {
+        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+
             ItemStack playerHeldItem = player.getStackInHand(Hand.MAIN_HAND);
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
-            if (storedItem.isEmpty() ) {
 
-                pedestalBlockEntity.setStoredItem(playerHeldItem.split(1)); // Store one item
-                world.playSound(null, pos, getAddItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                if(pedestalBlockEntity.getStoredItem().getRarity()==Rarity.EPIC
-                        && player instanceof ServerPlayerEntity serverPlayer){
-                    ModCriteria.PLACE_EPIC_ITEM_ON_PEDESTAL.trigger(serverPlayer);
-                }
-                if (pedestalBlockEntity.getStoredItem().isIn(ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
-                        && player instanceof ServerPlayerEntity serverPlayer) {
-                    ModCriteria.PLACE_PEDESTAL_ON_PEDESTAL.trigger(serverPlayer);
-                }
+            if(!pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isIn(ModItemTagProvider.FANCY_CARPET_BLOCK_ITEMS)) {
 
+                pedestalBlockEntity.setStoredCarpet(playerHeldItem.split(1));
+                world.playSound(null, pos, getAddCarpetSoundWool(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, pos, getAddCarpetSoundChain(), SoundCategory.BLOCKS, 0.15F, 1.0F);
                 return ActionResult.SUCCESS;
 
-            } else
+            }
+            if(pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isOf(Items.SHEARS)) {
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
+                pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
+                world.playSound(null, pos, getRemoveCarpetSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                playerHeldItem.damage(1, player);
                 world.spawnEntity(itemEntity);
-
-            itemEntity.setVelocity(0.0,0.13,0.0);
-            world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+                itemEntity.setVelocity(0.0, 0.13, 0.0);
                 return ActionResult.SUCCESS;
+
+            }
+            if (!player.isSneaking()) {
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
+                if (storedItem.isEmpty() ) {
+
+                    pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
+
+                    pedestalBlockEntity.markDirty();
+
+                    world.updateListeners(pos, state, state, 0);
+
+                    world.playSound(null, pos, getAddItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    if(pedestalBlockEntity.getStoredItem().getRarity()==Rarity.EPIC
+                            && player instanceof ServerPlayerEntity serverPlayer){
+                        ModCriteria.PLACE_EPIC_ITEM_ON_PEDESTAL.trigger(serverPlayer);
+                    }
+                    if (pedestalBlockEntity.getStoredItem().isIn(ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
+                            && player instanceof ServerPlayerEntity serverPlayer) {
+                        ModCriteria.PLACE_PEDESTAL_ON_PEDESTAL.trigger(serverPlayer);
+                    }
+
+                    return ActionResult.SUCCESS;
+
+                } else {
+                    world.spawnEntity(itemEntity);
+                    itemEntity.setVelocity(0.0, 0.13, 0.0);
+                    world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+                    world.updateListeners(pos, state, state, 0);
+                    if (!world.isClient) {
+                        return ActionResult.SUCCESS_SERVER;
+                    }
+                    return ActionResult.SUCCESS;
+                }
+            }
         }
         world.updateNeighborsAlways(pos, this);
         return ActionResult.PASS;
@@ -148,9 +184,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if(blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && direction == Direction.UP){
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
-            if(storedItem.getRarity() == Rarity.EPIC) {
-                return 15;
-            }
+            return storedItem.getRarity()== Rarity.EPIC ? 15 : 0;
         }
         return 0;
     }
@@ -181,6 +215,14 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 itemEntity.setVelocity(0.0,0.2,0.0);
                 pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);  // Clear the stored item after dropping
             }
+
+            if (pedestalBlockEntity.hasStoredCarpet()) {
+                ItemEntity carpetEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
+                world.spawnEntity(carpetEntity);
+                carpetEntity.setVelocity(0.0,0.2,0.0);
+                pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
+            }
+
         }
 
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior

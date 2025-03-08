@@ -11,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+
 public class ModGreekLanguageProvider extends FabricLanguageProvider {
 
     public ModGreekLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
@@ -20,6 +22,9 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
     private static void addText(@NotNull TranslationBuilder builder, @NotNull Text text, @NotNull String value){
         builder.add(((TranslatableTextContent) text.getContent()).getKey(), value);
     }
+
+    private static final String[] allColorsGreek = {"λευκό", "ανοιχτό Γκρι", "γκρι", "μαύρο",
+            "καφέ", "κόκκινο", "πορτοκαλί", "κίτρινο", "λάιμ", "πράσινο", "κυανό", "ανοιχτό Μπλε", "μπλε", "μοβ", "ματζέντα", "ροζ"};
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
@@ -161,7 +166,15 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL.asItem(), "Βάθρο από Λεία Αμμόπετρα");
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Βάθρο από Λεία Κόκκινη Αμμόπετρα");
 
+        for (int i = 0; i<=15; i++){
+            String colorName = allColorsGreek[i];
+            String actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Επίχρυσο Σεμεδάκι");
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Επίχρυσο Σεμεδάκι");
+        }
+
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Βάθρα");
+        addText(translationBuilder, ModItemGroups.FANCY_CARPETS_GROUP.getDisplayName(), "Επίχρυσα Σεμεδάκια");
 
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Βάθρα!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!");

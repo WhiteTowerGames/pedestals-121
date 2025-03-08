@@ -3,12 +3,18 @@ package net.chris.pedestals.datagen;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
@@ -16,6 +22,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
+    public static final List<Block> allVanillaCarpets = List.of(
+            Blocks.WHITE_CARPET,
+            Blocks.LIGHT_GRAY_CARPET,
+            Blocks.GRAY_CARPET,
+            Blocks.BLACK_CARPET,
+            Blocks.BROWN_CARPET,
+            Blocks.RED_CARPET,
+            Blocks.ORANGE_CARPET,
+            Blocks.YELLOW_CARPET,
+            Blocks.LIME_CARPET,
+            Blocks.GREEN_CARPET,
+            Blocks.CYAN_CARPET,
+            Blocks.LIGHT_BLUE_CARPET,
+            Blocks.BLUE_CARPET,
+            Blocks.PURPLE_CARPET,
+            Blocks.MAGENTA_CARPET,
+            Blocks.PINK_CARPET
+    );
 
     @Override
     protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
@@ -711,6 +735,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, Blocks.SMOOTH_RED_SANDSTONE);
+
+                for (int i = 0; i<=15; i++) {
+                    createShaped(RecipeCategory.DECORATIONS, ALL_FANCY_CARPETS.get(i))
+                            .pattern("N N")
+                            .pattern(" C ")
+                            .pattern("N N")
+                            .input('C', allVanillaCarpets.get(i))
+                            .input('N', Items.GOLD_NUGGET)
+                            .criterion(hasItem(allVanillaCarpets.get(i)), conditionsFromItem(allVanillaCarpets.get(i)))
+                            .offerTo(recipeExporter);
+                }
 
             }
         };
