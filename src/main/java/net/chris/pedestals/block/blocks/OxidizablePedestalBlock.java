@@ -28,13 +28,21 @@ public class OxidizablePedestalBlock extends PedestalBlock implements Oxidizable
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.random.nextFloat() < 0.1F) { // Adjust chance of oxidation
             getNextOxidationLevel(state).ifPresent(nextBlock -> {
-                PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
-                ItemStack stack = pedestalBlockEntity.getStoredItem();
-                world.setBlockState(pos, nextBlock.getDefaultState());
-                pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
-                pedestalBlockEntity.setStoredItem(stack);
+                replaceItemCarpetAndEntity(world, pos, nextBlock);
             });
         }
+    }
+
+    private void replaceItemCarpetAndEntity(ServerWorld world, BlockPos pos, Block nextBlock) {
+        PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+        assert pedestalBlockEntity != null;
+        ItemStack stack = pedestalBlockEntity.getStoredItem();
+        ItemStack carpet = pedestalBlockEntity.getStoredCarpet();
+        world.setBlockState(pos, nextBlock.getDefaultState());
+        pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+        assert pedestalBlockEntity != null;
+        pedestalBlockEntity.setStoredItem(stack);
+        pedestalBlockEntity.setStoredCarpet(carpet);
     }
 
     private Optional<Block> getNextOxidationLevel(BlockState state) {
