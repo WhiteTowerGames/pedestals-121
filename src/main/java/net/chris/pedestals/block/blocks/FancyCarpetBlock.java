@@ -56,9 +56,9 @@ public class FancyCarpetBlock extends Block {
 
     public static final TextureKey GOLD = TextureKey.of("gold");
 
-    public static final Model FANCY_CARPET_MODEL = blockCarpet("fancy_carpet", TextureKey.WOOL, GOLD);
+    public static final Model FANCY_CARPET_MODEL = block("fancy_carpet", TextureKey.WOOL, GOLD);
 
-    public static Model blockCarpet(String parent, TextureKey... requiredTextureKeys) {
+    public static Model block(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 

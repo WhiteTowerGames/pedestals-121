@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:diamond",
+    "G": "minecraft:black_stained_glass",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    " R ",
+    "BGB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "pedestals:black_lockbox"
+  }
+}

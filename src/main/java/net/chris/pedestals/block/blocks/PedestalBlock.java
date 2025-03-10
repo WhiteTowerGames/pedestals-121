@@ -6,6 +6,7 @@ import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
 import net.chris.pedestals.datagen.ModItemTagProvider;
+import net.chris.pedestals.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.BlockState;
@@ -59,16 +60,19 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE); // Exclude DISPLAY_SHAPE from collision
     }
 
-    public SoundEvent getAddItemSound() {
+    private SoundEvent getAddItemSound() {
         return SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM;
     }
-    public SoundEvent getRemoveItemSound() {
+    private SoundEvent getRemoveItemSound() {
         return SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM;
     }
 
-    public final SoundEvent getAddCarpetSoundWool() {return SoundEvents.BLOCK_WOOL_PLACE;}
-    public final SoundEvent getAddCarpetSoundChain() {return SoundEvents.BLOCK_CHAIN_PLACE;}
-    public final SoundEvent getRemoveCarpetSound() {return SoundEvents.ENTITY_MOOSHROOM_SHEAR;}
+    private SoundEvent getAddCarpetSoundWool() {return SoundEvents.BLOCK_WOOL_PLACE;}
+    private SoundEvent getAddCarpetSoundChain() {return SoundEvents.BLOCK_CHAIN_PLACE;}
+    private SoundEvent getRemoveCarpetSound() {return SoundEvents.ENTITY_MOOSHROOM_SHEAR;}
+
+    private SoundEvent getLockSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM_FAIL;}
+    private SoundEvent getUnlockSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM;}
 
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
@@ -140,9 +144,23 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 return ActionResult.SUCCESS;
 
             }
+            if (!pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.isIn(ModItemTagProvider.LOCKBOX_ITEMS)) {
+                pedestalBlockEntity.setStoredLockbox(playerHeldItem.split(1));
+                world.playSound(null, pos, getLockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                return ActionResult.SUCCESS;
+            }
+
+            if (pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.isOf(ModItems.CREATIVE_KEY)) {
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5, pedestalBlockEntity.getStoredLockbox());
+                pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
+                world.spawnEntity(itemEntity);
+                itemEntity.setVelocity(0.0, 0.13, 0.0);
+                world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                return ActionResult.SUCCESS;
+            }
             if (!player.isSneaking()) {
                 ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
-                if (storedItem.isEmpty() ) {
+                if (storedItem.isEmpty() && !playerHeldItem.isEmpty() && !pedestalBlockEntity.hasStoredLockbox()) {
 
                     pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
 
@@ -163,15 +181,17 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                     return ActionResult.SUCCESS;
 
                 } else {
-                    world.spawnEntity(itemEntity);
-                    itemEntity.setVelocity(0.0, 0.13, 0.0);
-                    world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
-                    world.updateListeners(pos, state, state, 0);
-                    if (!world.isClient) {
-                        return ActionResult.SUCCESS_SERVER;
+                    if (!pedestalBlockEntity.hasStoredLockbox()) {
+                        world.spawnEntity(itemEntity);
+                        itemEntity.setVelocity(0.0, 0.13, 0.0);
+                        world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+                        world.updateListeners(pos, state, state, 0);
+                        if (!world.isClient) {
+                            return ActionResult.SUCCESS_SERVER;
+                        }
+                        return ActionResult.SUCCESS;
                     }
-                    return ActionResult.SUCCESS;
                 }
             }
         }
@@ -199,30 +219,18 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return true;
     }
 
-    
-
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
 
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
-            ItemStack storedItem = pedestalBlockEntity.getStoredItem();
-
-            if (!storedItem.isEmpty()) {
-                // Manually drop the stored item
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
-                world.spawnEntity(itemEntity);  // Spawn the item in the world
-                itemEntity.setVelocity(0.0,0.2,0.0);
-                pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);  // Clear the stored item after dropping
+            for (ItemStack itemStack : pedestalBlockEntity.getAllInventories()) {
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, itemStack, 0, 0.2, 0);
+                world.spawnEntity(itemEntity);
             }
-
-            if (pedestalBlockEntity.hasStoredCarpet()) {
-                ItemEntity carpetEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
-                world.spawnEntity(carpetEntity);
-                carpetEntity.setVelocity(0.0,0.2,0.0);
-                pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
-            }
-
+            pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+            pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
+            pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
         }
 
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior

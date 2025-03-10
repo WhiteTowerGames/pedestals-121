@@ -11,8 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.datagen.ModModelProvider.allColors;
+import static net.chris.pedestals.item.ModItems.*;
 
 public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
@@ -164,15 +165,32 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL.asItem(), "Smooth Sandstone Pedestal");
         translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Smooth Red Sandstone Pedestal");
 
+        translationBuilder.add(GLASS_LOCKBOX, "Reinforced Lockbox");
+
         for (int i = 0; i<=15; i++){
             String actualName = getActualName(i);
+
+            /// Gilded Carpets:
             translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Gilded Carpet");
             translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Gilded Carpet");
+
+            /// Reinforced Lockboxes:
+            translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Reinforced Lockbox");
         }
-        
+
+        /// Keys:
+        translationBuilder.add(LOCKBOX_KEY, "Lockbox Key");
+        translationBuilder.add(CREATIVE_KEY, "Lockbox Master Key");
+
+        /// Key Tooltips:
+        translationBuilder.add("itemtooltip.pedestals.creative_key", "This key can unlock any lockbox!");
+
+        /// Item Groups:
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
         addText(translationBuilder, ModItemGroups.FANCY_CARPETS_GROUP.getDisplayName(), "Gilded Carpets");
+        addText(translationBuilder, ModItemGroups.LOCKBOXES_GROUP.getDisplayName(), "Reinforced Lockboxes");
 
+        /// Advancement Titles & Descriptions:
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Pedestals!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Right click with an item to display it!");
 

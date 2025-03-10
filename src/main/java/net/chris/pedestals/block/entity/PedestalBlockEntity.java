@@ -1,5 +1,6 @@
 package net.chris.pedestals.block.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
@@ -12,6 +13,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
@@ -19,7 +21,9 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     private ItemStack storedItem = ItemStack.EMPTY;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
-    private final GildedCarpetInventory carpetInventory = new GildedCarpetInventory();
+    private final ModuleContainer carpetInventory = new ModuleContainer();
+
+    private final ModuleContainer lockboxInventory = new ModuleContainer();
 
     public PedestalBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PEDESTAL_BLOCK_ENTITY, pos, state);
@@ -77,7 +81,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     /// CARPET LOGIC
 
-    public GildedCarpetInventory getCarpetInventory() {
+    public ModuleContainer getCarpetInventory() {
         return this.carpetInventory;
     }
 
@@ -88,12 +92,51 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     public void setStoredCarpet(ItemStack stack) {
         getCarpetInventory().setStack(0, stack);
         if (world instanceof ServerWorld) {
-            markDirty();  // Important to update the state
+            markDirty();
         }
     }
 
     public boolean hasStoredCarpet() {
         return !getCarpetInventory().getStack(0).isEmpty();
+    }
+
+    /// LOCKBOX LOGIC
+
+    public ModuleContainer getLockboxInventory() {
+        return this.lockboxInventory;
+    }
+
+    public ItemStack getStoredLockbox() {
+        return getLockboxInventory().getStack(0);
+    }
+
+    public void setStoredLockbox(ItemStack stack) {
+        getLockboxInventory().setStack(0, stack);
+        if (world instanceof ServerWorld){
+            markDirty();
+        }
+    }
+
+    public boolean hasStoredLockbox() {
+        return !getLockboxInventory().getStack(0).isEmpty();
+    }
+
+    /// REALLY IMPORTANT FOR FUTURE PROOFING!!! GETTING & TRANSFERRING THE INVENTORY!!!
+
+    public ItemStack[] getAllInventories() {
+        return new ItemStack[]{storedItem, getStoredCarpet(), getStoredLockbox()};
+    }
+
+    public void transferAllInventories(World world, BlockPos pos, Block blockToSet) {
+        PedestalBlockEntity oldPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
+        assert oldPedestal != null;
+        ItemStack[] ItemsToTransfer = oldPedestal.getAllInventories();
+        world.setBlockState(pos, blockToSet.getDefaultState(), 3);
+        PedestalBlockEntity newPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
+        assert newPedestal != null;
+        newPedestal.storedItem = ItemsToTransfer[0];
+        newPedestal.setStoredCarpet(ItemsToTransfer[1]);
+        newPedestal.setStoredLockbox(ItemsToTransfer[2]);
     }
 
     /// Syncing, NBT and other logic.
@@ -129,10 +172,16 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                     nbt.put("StoredItem", nbtElement);
                 });
 
-        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredCarpet()) // Assuming carpet is at index 0
+        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredCarpet())
                 .result()
                 .ifPresent(nbtElement -> {
                     nbt.put("StoredCarpet", nbtElement);
+                });
+
+        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredLockbox())
+                .result()
+                .ifPresent(nbtElement ->{
+                    nbt.put("StoredLockbox", nbtElement);
                 });
     }
 
@@ -143,12 +192,18 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         storedItem = ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredItem"))
                 .result()
                 .orElse(ItemStack.EMPTY);
-
+        //Load carpet from NBT
         ItemStack storedCarpetFromNBT = (ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredCarpet"))
                 .result()
                 .orElse(ItemStack.EMPTY));
 
         setStoredCarpet(storedCarpetFromNBT);
+        //Load lockbox from NBT
+        ItemStack storedLockboxFromNBT = (ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredLockbox"))
+                .result()
+                .orElse(ItemStack.EMPTY));
+
+        setStoredLockbox(storedLockboxFromNBT);
     }
 
     int tickCount = 0;
@@ -161,7 +216,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 getStoredItem();
                 world.updateListeners(pos, getCachedState(), getCachedState(), 3);
             }
-            if (!storedItem.isEmpty()){
+            if (!(storedItem.isEmpty() && hasStoredCarpet() && hasStoredLockbox())){
                 markDirty();
             }
         }

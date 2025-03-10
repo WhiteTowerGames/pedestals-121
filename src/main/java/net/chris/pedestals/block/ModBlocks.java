@@ -445,6 +445,7 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.WOOL)
                     .nonOpaque()
                     .burnable()));
+    
 
 
     private static Block registerBlock(String name, Block block) {
@@ -456,6 +457,8 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, Identifier.of(Pedestals121.MOD_ID, name),
                 new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, name)))));
     }
+
+
 
     public static final List<Block> ALL_PEDESTALS = List.of(
             ModBlocks.STONE_BRICK_PEDESTAL,
@@ -544,6 +547,25 @@ public class ModBlocks {
             PURPLE_GILDED_CARPET,
             MAGENTA_GILDED_CARPET,
             PINK_GILDED_CARPET
+    );
+    
+    public static final List<Block> ALL_STAINED_GLASS = List.of(
+            WHITE_STAINED_GLASS,
+            LIGHT_GRAY_STAINED_GLASS,
+            GRAY_STAINED_GLASS,
+            BLACK_STAINED_GLASS,
+            BROWN_STAINED_GLASS,
+            RED_STAINED_GLASS,
+            ORANGE_STAINED_GLASS,
+            YELLOW_STAINED_GLASS,
+            LIME_STAINED_GLASS,
+            GREEN_STAINED_GLASS,
+            CYAN_STAINED_GLASS,
+            LIGHT_BLUE_STAINED_GLASS,
+            BLUE_STAINED_GLASS,
+            PURPLE_STAINED_GLASS,
+            MAGENTA_STAINED_GLASS,
+            PINK_STAINED_GLASS
     );
 
     private static void registerOxidationAndWaxing() {
@@ -698,6 +720,10 @@ public class ModBlocks {
             entries.addAfter(PURPLE_CARPET, PURPLE_GILDED_CARPET);
             entries.addAfter(MAGENTA_CARPET, MAGENTA_GILDED_CARPET);
             entries.addAfter(PINK_CARPET, PINK_GILDED_CARPET);
+            //entries.addAfter(GLASS, GLASS_LOCKBOX);
+//            for (int i = 0; i<15; i++) {
+//                entries.addAfter(ALL_STAINED_GLASS.get(i)) ALL_COLORED_LOCKBOXES.get(i));
+//            }
         });
 
         registerOxidationAndWaxing();

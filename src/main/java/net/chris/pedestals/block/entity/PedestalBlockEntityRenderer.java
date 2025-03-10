@@ -31,8 +31,6 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     protected boolean hasCustomName(ItemStack stack) {
         return stack.getCustomName() != null;
     }
-
-    //TODO: LOOK INTO ADDING TRANSPARENT BLACK BACKGROUND FOR TEXT
     protected boolean isLookingAtItem(PedestalBlockEntity entity) {
         //This method will check if the player is looking at the item (i.e. the space above the block entity)
         MinecraftClient client = MinecraftClient.getInstance();
@@ -116,18 +114,32 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     }
 
+    protected void renderLockboxIfPresent(PedestalBlockEntity entity, ItemStack lockbox, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay, double higherIfHasCarpet) {
+        matrices.push();
+
+        matrices.translate(0.5f, 1.8f + higherIfHasCarpet, 0.5f);
+        matrices.scale(1.1f,1f,1.1f);
+
+        itemRenderer.renderItem(lockbox, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+
+        matrices.pop();
+
+    }
+
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemStack stack = entity.getStoredItem();
         ItemStack carpet = entity.getStoredCarpet();
+        ItemStack lockbox = entity.getStoredLockbox();
 
-        if (stack.isEmpty() && carpet.isEmpty()) return;
+        if (stack.isEmpty() && carpet.isEmpty() && lockbox.isEmpty()) return;
 
         matrices.push();
-            // Make the item float higher
+            // Make the item float higher (and even higher if the pedestal has a carpet)
             double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
-            matrices.translate(0.5, yOffset, 0.5);
+            double higherIfHasCarpet = entity.hasStoredCarpet() ? 0.053 : 0;
+            matrices.translate(0.5, yOffset + higherIfHasCarpet, 0.5);
             // Rotate the item
             float rotation = (System.currentTimeMillis() / 20) % 360;
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
@@ -142,6 +154,9 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         }
         if (entity.hasStoredCarpet()) {
             renderCarpetIfPresent(entity, carpet, matrices, vertexConsumers, light, itemRenderer, overlay);
+        }
+        if (entity.hasStoredLockbox()) {
+            renderLockboxIfPresent(entity, lockbox, matrices, vertexConsumers, light, itemRenderer, overlay, higherIfHasCarpet);
         }
     }
 }

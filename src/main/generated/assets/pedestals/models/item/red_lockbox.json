@@ -1,0 +1,6 @@
+{
+  "parent": "pedestals:item/lockbox",
+  "textures": {
+    "all": "minecraft:block/red_stained_glass"
+  }
+}

@@ -6,7 +6,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 
-public class GildedCarpetInventory implements Inventory {
+public class ModuleContainer implements Inventory {
 
     private final DefaultedList<ItemStack> carpetItems = DefaultedList.ofSize(1, ItemStack.EMPTY);
 

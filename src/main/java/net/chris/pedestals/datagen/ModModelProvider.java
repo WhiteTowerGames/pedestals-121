@@ -1,21 +1,28 @@
 package net.chris.pedestals.datagen;
 
 import net.chris.pedestals.block.ModBlocks;
-import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.PedestalBlock;
+import net.chris.pedestals.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
+import net.minecraft.client.data.Models;
 import net.minecraft.client.data.TextureMap;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.block.blocks.FancyCarpetBlock.FANCY_CARPET_MODEL;
+import static net.chris.pedestals.block.blocks.FancyCarpetBlock.fancyCarpetMap;
+import static net.chris.pedestals.item.ItemClasses.LockboxItem.LOCKBOX_MODEL;
 import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL;
 import static net.chris.pedestals.block.blocks.PedestalBlock.PEDESTAL_MODEL_MORE;
+import static net.chris.pedestals.item.ItemClasses.LockboxItem.lockboxMap;
+import static net.chris.pedestals.item.ModItems.ALL_COLORED_LOCKBOXES;
+import static net.chris.pedestals.item.ModItems.GLASS_LOCKBOX;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -98,9 +105,13 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.WARPED_STEM));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL, PedestalBlock.pedestalMapWood(Blocks.STRIPPED_WARPED_STEM));
 
-        /// Gilded Carpet Models:
+        /// Gilded Carpet and Lockbox Models:
+
+        registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(""));
+
         for (int i = 0; i<=15; i++){
-            registerFancyCarpet(blockStateModelGenerator, ALL_FANCY_CARPETS.get(i), FancyCarpetBlock.fancyCarpetMap(allColors[i]));
+            registerFancyCarpet(blockStateModelGenerator, ALL_FANCY_CARPETS.get(i), fancyCarpetMap(allColors[i]));
+            registerLockbox(blockStateModelGenerator, ALL_COLORED_LOCKBOXES.get(i), lockboxMap(allColors[i]));
         }
     }
 
@@ -129,15 +140,27 @@ public class ModModelProvider extends FabricModelProvider {
         generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(fancyCarpetBlock, fancyCarpetModel));
     }
 
+    public static void registerLockbox(BlockStateModelGenerator generator, Item lockboxItem, TextureMap textures) {
+        Identifier lockboxModel = LOCKBOX_MODEL.upload(lockboxItem, textures, generator.modelCollector);
+
+        generator.registerItemModel(lockboxItem, lockboxModel);
+        //generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(Block.getBlockFromItem(lockboxItem), lockboxModel));
+    }
+
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.LOCKBOX_KEY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CREATIVE_KEY, Models.GENERATED);
 
+//        for (int i = 0; i<=15; i++){
+//            registerLockbox(itemModelGenerator, ALL_COLORED_LOCKBOXES.get(i), ALL_STAINED_GLASS.get(i).asItem());
+//        }
     }
 
 
     @Override
     public String getName() {
-        return "Mod Model Provider";
+        return "Pedestals Model Provider";
     }
 
 

@@ -3,6 +3,7 @@ package net.chris.pedestals.block.entity;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -11,8 +12,9 @@ import net.minecraft.util.Identifier;
 
 public class ModBlockEntities {
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = registerBlockEntity(
-            FabricBlockEntityTypeBuilder.create(PedestalBlockEntity::new,
+
+    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = register( "pedestal",
+            PedestalBlockEntity::new,
                     ModBlocks.STONE_BRICK_PEDESTAL,
                     ModBlocks.DEEPSLATE_BRICK_PEDESTAL,
                     ModBlocks.MOSSY_STONE_BRICK_PEDESTAL,
@@ -82,13 +84,16 @@ public class ModBlockEntities {
                     ModBlocks.SMOOTH_SANDSTONE_PEDESTAL,
                     ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL,
                     ModBlocks.POLISHED_DEEPSLATE_PEDESTAL
-                    ).build());
+                    );
 
-
-
-    private static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(BlockEntityType<T> type) {
-        return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Pedestals121.MOD_ID, "pedestal"), type);
-    }
+private static <T extends BlockEntity> BlockEntityType<T> register(
+        String name,
+        FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
+        Block... blocks
+) {
+    Identifier id = Identifier.of(Pedestals121.MOD_ID, name);
+    return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
+}
 
     public static void registerModBlockEntities() {
         Pedestals121.LOGGER.info("Registering Block Entities for Pedestals 1.21 (source: " + Pedestals121.MOD_ID + ").");

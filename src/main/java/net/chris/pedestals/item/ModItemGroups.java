@@ -4,6 +4,7 @@ import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -11,7 +12,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.block.ModBlocks.*;
+import static net.chris.pedestals.item.ModItems.*;
 
 public class ModItemGroups {
 
@@ -100,6 +102,19 @@ public class ModItemGroups {
                                     entries.add(fancyCarpet);
                                 }
                             }).build());
+
+    public static final ItemGroup LOCKBOXES_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(Pedestals121.MOD_ID, "lockboxes"),
+            FabricItemGroup.builder().icon(() -> new ItemStack(GLASS_LOCKBOX))
+                    .displayName(Text.translatable("itemgroup.pedestals.lockboxes"))
+                    .entries((displayContext, entries) -> {
+                        entries.add(GLASS_LOCKBOX);
+                        for (Item lockbox : ALL_COLORED_LOCKBOXES) {
+                            entries.add(lockbox);
+                        }
+                        entries.add(LOCKBOX_KEY);
+                        entries.add(CREATIVE_KEY);
+                    }).build());
 
     public static void registerItemGroups(){
         Pedestals121.LOGGER.info("Registering Item groups for Pedestals (source: "+Pedestals121.MOD_ID+").");

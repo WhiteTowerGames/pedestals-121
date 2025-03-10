@@ -1,6 +1,7 @@
 package net.chris.pedestals.datagen;
 
 import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
@@ -14,7 +15,9 @@ import net.minecraft.registry.RegistryWrapper;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
+import static net.chris.pedestals.block.ModBlocks.*;
+import static net.chris.pedestals.item.ModItems.ALL_COLORED_LOCKBOXES;
+import static net.chris.pedestals.item.ModItems.GLASS_LOCKBOX;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
@@ -736,6 +739,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, Blocks.SMOOTH_RED_SANDSTONE);
 
+                createShaped(RecipeCategory.DECORATIONS, GLASS_LOCKBOX)
+                        .pattern(" R ")
+                        .pattern("BGB")
+                        .pattern(" B ")
+                        .input('R', Items.REDSTONE)
+                        .input('B', Items.DIAMOND)
+                        .input('G', Blocks.GLASS)
+                        .criterion(hasItem(Blocks.GLASS), conditionsFromItem(Blocks.GLASS))
+                        .offerTo(recipeExporter);
+
                 for (int i = 0; i<=15; i++) {
                     createShaped(RecipeCategory.DECORATIONS, ALL_FANCY_CARPETS.get(i))
                             .pattern("N N")
@@ -745,7 +758,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                             .input('N', Items.GOLD_NUGGET)
                             .criterion(hasItem(allVanillaCarpets.get(i)), conditionsFromItem(allVanillaCarpets.get(i)))
                             .offerTo(recipeExporter);
+
+                    createShaped(RecipeCategory.DECORATIONS, ALL_COLORED_LOCKBOXES.get(i))
+                            .pattern(" R ")
+                            .pattern("BGB")
+                            .pattern(" B ")
+                            .input('R', Items.REDSTONE)
+                            .input('B', Items.DIAMOND)
+                            .input('G', ALL_STAINED_GLASS.get(i))
+                            .criterion(hasItem(ALL_STAINED_GLASS.get(i)), conditionsFromItem(ALL_STAINED_GLASS.get(i)))
+                            .offerTo(recipeExporter);
                 }
+
+                createShaped(RecipeCategory.MISC, ModItems.LOCKBOX_KEY)
+                        .pattern("GGG")
+                        .pattern(" NN")
+                        .input('G', Items.GOLD_INGOT)
+                        .input('N', Items.GOLD_NUGGET)
+                        .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                        .offerTo(recipeExporter);
 
             }
         };
