@@ -222,5 +222,3 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         }
     }
 }
-
-
