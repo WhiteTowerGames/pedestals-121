@@ -4,31 +4,51 @@ import net.chris.pedestals.block.entity.ModBlockEntities;
 import net.chris.pedestals.block.ModBlocks;
 import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.criteria.ModCriteria;
+import net.chris.pedestals.gamerules.ModGameRuleCache;
+import net.chris.pedestals.gamerules.ModGameRules;
 import net.chris.pedestals.item.ModItemGroups;
 import net.chris.pedestals.item.ModItems;
+import net.chris.pedestals.recipes.ModRecipeSerializers;
+import net.chris.pedestals.sounds.ModSoundEvents;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
-import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
-import net.minecraft.world.GameRules;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradedItem;
+import net.minecraft.village.VillagerProfession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
+
+import static net.chris.pedestals.item.ModItems.LOCKPICK;
+import static net.minecraft.item.Items.EMERALD;
+import static net.minecraft.item.Items.IRON_INGOT;
 
 public class Pedestals121 implements ModInitializer {
 	public static final String MOD_ID = "pedestals";
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final GameRules.Key<GameRules.BooleanRule> LOCKBOX_MAKES_PEDESTAL_UNBREAKABLE =
-			GameRuleRegistry.register("lockedPedestalsUnminable", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(true));
-
 	@Override
 	public void onInitialize() {
 		ModCriteria.init();
 		ModItemGroups.registerItemGroups();
+		ModSoundEvents.initialize();
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
 		ModBlockEntities.registerModBlockEntities();
 		ModComponents.initialize();
+		ModRecipeSerializers.register();
+		ModGameRules.initialize();
+		ModGameRuleCache.register();
 
+        /// Register custom villager trades:
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 3, factories -> {
+            factories.add(((entity, random) -> new TradeOffer(
+                    new TradedItem(EMERALD, 10),
+                    Optional.of(new TradedItem(IRON_INGOT, 2)),
+                    new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2)));
+        });
 	}
 }

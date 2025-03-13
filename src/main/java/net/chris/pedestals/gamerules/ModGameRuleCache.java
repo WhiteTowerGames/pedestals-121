@@ -1,0 +1,40 @@
+package net.chris.pedestals.gamerules;
+
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.world.World;
+
+public class ModGameRuleCache {
+
+    private static boolean infiniteKeyDuping = false;
+    private static boolean enableLockpicks = true;
+    private static boolean lockedPedestalsUnbreakable = false;
+    private static int percentLockpickSuccessChance = 15;
+
+    public static boolean isInfiniteKeyDupingEnabled() {
+        return infiniteKeyDuping;
+    }
+
+    public static boolean areLockpicksEnabled() {
+        return enableLockpicks;
+    }
+
+    public static int getPercentLockpickSuccessChance() {
+        return percentLockpickSuccessChance;
+    }
+
+    public static boolean areLockedPedestalsUnbreakable() {
+        return lockedPedestalsUnbreakable;
+    }
+
+    public static void register() {
+        ServerTickEvents.END_WORLD_TICK.register((world) -> {
+            if (world.getRegistryKey() == World.OVERWORLD) {
+                infiniteKeyDuping = world.getGameRules().getBoolean(ModGameRules.INFINITE_KEY_DUPING);
+                enableLockpicks = world.getGameRules().getBoolean(ModGameRules.ENABLE_LOCKPICKS);
+                percentLockpickSuccessChance = world.getGameRules().getInt(ModGameRules.LOCKPICK_SUCCESS_CHANCE);
+                lockedPedestalsUnbreakable = world.getGameRules().getBoolean(ModGameRules.LOCKED_PEDESTALS_UNBREAKABLE);
+            }
+        });
+    }
+
+}

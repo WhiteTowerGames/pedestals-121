@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "N": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "GGG",
+    "NN "
+  ],
+  "result": {
+    "count": 1,
+    "id": "pedestals:lockbox_key"
+  }
+}

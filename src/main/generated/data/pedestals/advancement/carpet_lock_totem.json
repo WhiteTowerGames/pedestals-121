@@ -1,0 +1,30 @@
+{
+  "parent": "pedestals:get_lockbox",
+  "criteria": {
+    "carpet_lock_totem": {
+      "trigger": "pedestals:lock_totem_with_carpet"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.carpet_lock_totem_desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:totem_of_undying"
+    },
+    "title": {
+      "translate": "advancement.pedestals.carpet_lock_totem_title"
+    }
+  },
+  "requirements": [
+    [
+      "carpet_lock_totem"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "pedestals:break_lockpick",
+  "criteria": {
+    "pick_lock": {
+      "trigger": "pedestals:use_lockpick"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.pick_lock_desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "pedestals:lockpick"
+    },
+    "title": {
+      "translate": "advancement.pedestals.pick_lock_title"
+    }
+  },
+  "requirements": [
+    [
+      "pick_lock"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

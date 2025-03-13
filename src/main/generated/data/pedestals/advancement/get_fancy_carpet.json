@@ -1,0 +1,33 @@
+{
+  "parent": "pedestals:get_pedestal",
+  "criteria": {
+    "get_fancy_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#pedestals:fancy_carpet_block_items"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.get_fancy_carpet_desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "pedestals:red_gilded_carpet"
+    },
+    "title": {
+      "translate": "advancement.pedestals.get_fancy_carpet_title"
+    }
+  },
+  "requirements": [
+    [
+      "get_fancy_carpet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

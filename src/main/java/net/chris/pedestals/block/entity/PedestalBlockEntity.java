@@ -1,7 +1,9 @@
 package net.chris.pedestals.block.entity;
 
+import net.chris.pedestals.Pedestals121;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.item.ItemStack;
@@ -18,8 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
 
-    private ItemStack storedItem = ItemStack.EMPTY;
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    private DefaultedList<ItemStack> item = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     private final ModuleContainer carpetInventory = new ModuleContainer();
 
@@ -34,12 +35,13 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return items;
+        return this.item;
     }
+
 
     @Override
     public int size() {
-        return PedestalInventory.super.size();
+        return 1;
     }
 
     @Override
@@ -49,34 +51,47 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     @Override
     public ItemStack getStack(int slot) {
-        return PedestalInventory.super.getStack(slot);
+        return null;
     }
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        return PedestalInventory.super.removeStack(slot, amount);
+        return null;
+    }
+
+
+    @Override
+    public ItemStack removeStack(int slot) {
+        ItemStack removedItem = item.getFirst();
+        getItems().removeFirst();
+        return removedItem;
+    }
+
+    @Override
+    public void setStack(int slot, ItemStack stack) {
+        getItems().set(0, stack);
     }
 
     public boolean hasStoredItem() {
-        return !storedItem.isEmpty();
+        return !getItems().isEmpty();
     }
 
     public void setStoredItem(ItemStack item) {
-        storedItem = item;
+        setStack(0, item);
         if (world instanceof ServerWorld) {
-            markDirty();  // Important to update the state
+            markDirty();// Important to update the state
         }
     }
 
     public ItemStack removeStoredItem() {
-        ItemStack item = storedItem;
-        storedItem = ItemStack.EMPTY;
-        markDirty();
-        return item;
+        return removeStack(0);
     }
 
     public ItemStack getStoredItem() {
-        return storedItem;  // Ensure you're returning 'storedItem', not items[0] or other values
+        if (!getItems().isEmpty()) {
+            return getItems().getFirst();  // Ensure you're returning 'storedItem', not items[0] or other values
+        }
+        return ItemStack.EMPTY;
     }
 
     /// CARPET LOGIC
@@ -124,17 +139,16 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     /// REALLY IMPORTANT FOR FUTURE PROOFING!!! GETTING & TRANSFERRING THE INVENTORY!!!
 
     public ItemStack[] getAllInventories() {
-        return new ItemStack[]{storedItem, getStoredCarpet(), getStoredLockbox()};
+        return new ItemStack[]{getStoredItem(), getStoredCarpet(), getStoredLockbox()};
     }
 
     public void transferAllInventories(World world, BlockPos pos, Block blockToSet) {
-        PedestalBlockEntity oldPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
-        assert oldPedestal != null;
+        PedestalBlockEntity oldPedestal = this;
         ItemStack[] ItemsToTransfer = oldPedestal.getAllInventories();
         world.setBlockState(pos, blockToSet.getDefaultState(), 3);
         PedestalBlockEntity newPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
         assert newPedestal != null;
-        newPedestal.storedItem = ItemsToTransfer[0];
+        newPedestal.setStoredItem(ItemsToTransfer[0]);
         newPedestal.setStoredCarpet(ItemsToTransfer[1]);
         newPedestal.setStoredLockbox(ItemsToTransfer[2]);
     }
@@ -165,12 +179,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     @Override
     public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
-        // Save item to NBT
-        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, storedItem)
-                .result()
-                .ifPresent(nbtElement -> {
-                    nbt.put("StoredItem", nbtElement);
-                });
+        Inventories.writeNbt(nbt, getItems(), registryLookup);
 
         ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredCarpet())
                 .result()
@@ -188,14 +197,14 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     @Override
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        // Load item from NBT
-        storedItem = ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredItem"))
+
+        this.item = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+        Inventories.readNbt(nbt, getItems(), registryLookup);
+
+        //Load carpet from NBT
+        ItemStack storedCarpetFromNBT = ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredCarpet"))
                 .result()
                 .orElse(ItemStack.EMPTY);
-        //Load carpet from NBT
-        ItemStack storedCarpetFromNBT = (ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredCarpet"))
-                .result()
-                .orElse(ItemStack.EMPTY));
 
         setStoredCarpet(storedCarpetFromNBT);
         //Load lockbox from NBT
@@ -211,12 +220,13 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     @Override
     public void tick() {
         if(this.world != null && !this.world.isClient) {
+            Pedestals121.LOGGER.info("{}", world.getBlockState(pos).getBlock().getBlastResistance());
             tickCount++;
             if (tickCount % 5 == 0) {
                 getStoredItem();
                 world.updateListeners(pos, getCachedState(), getCachedState(), 3);
             }
-            if (!(storedItem.isEmpty() && hasStoredCarpet() && hasStoredLockbox())){
+            if (!(hasStoredItem() && !hasStoredCarpet() && !hasStoredLockbox())) {
                 markDirty();
             }
         }

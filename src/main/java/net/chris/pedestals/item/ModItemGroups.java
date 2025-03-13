@@ -113,7 +113,7 @@ public class ModItemGroups {
                             entries.add(lockbox);
                         }
                         entries.add(LOCKBOX_KEY);
-                        entries.add(CREATIVE_KEY);
+                        entries.add(LOCKPICK);
                     }).build());
 
     public static void registerItemGroups(){

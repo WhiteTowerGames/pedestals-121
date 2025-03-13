@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": "minecraft:iron_bars",
+    "I": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "BI",
+    " B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pedestals:lockpick"
+  }
+}

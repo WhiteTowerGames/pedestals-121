@@ -1,0 +1,8 @@
+{
+  "lockpick_increase": {
+    "subtitle": "sound.pedestals.lockpick_increase",
+    "sounds": [
+      "pedestals:lockpick_increase"
+    ]
+  }
+}

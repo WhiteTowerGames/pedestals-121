@@ -180,10 +180,28 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
         /// Keys:
         translationBuilder.add(LOCKBOX_KEY, "Lockbox Key");
-        translationBuilder.add(CREATIVE_KEY, "Lockbox Master Key");
+        translationBuilder.add(CREATIVE_KEY, "Skeleton Key");
+        translationBuilder.add(LOCKPICK, "Lockpick");
 
-        /// Key Tooltips:
-        translationBuilder.add("itemtooltip.pedestals.creative_key", "This key can unlock any lockbox!");
+        /// Key Tooltips & Messages:
+        translationBuilder.add("itemtooltip.pedestals.creative_key", "This can unlock any lockbox!");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l1", "Lockpicks have been disabled via");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l2", "the enableLockpicks gamerule.");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l1", "Right click on a lockbox to");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l2", "try to pick the lock!");
+        translationBuilder.add("itemtooltip.pedestals.key_is_mapped", "This key will open a specific lockbox.");
+        translationBuilder.add("itemtooltip.pedestals.key_unnamed", "Consider renaming it to keep track.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l1", "This key has not been bound yet.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l2", "Right click an unregistered lockbox to bind!");
+        translationBuilder.add("itemtooltip.pedestals.key_clone", "Duplicate Key");
+        translationBuilder.add("messages.pedestals.key_open", "Case Opened!");
+        translationBuilder.add("messages.pedestals.key_wrong", "Incorrect Key!");
+        translationBuilder.add("messages.pedestals.key_map", "Key Registered!");
+        translationBuilder.add("messages.pedestals.lockpicking_failed", "Lockpicking attempt failed!");
+        translationBuilder.add("messages.pedestals.lockpicking_success", "Lock picked!");
+
+        /// Sounds:
+        translationBuilder.add("sound.pedestals.lockpick_increase", "Lockpicking Increases");
 
         /// Item Groups:
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
@@ -206,6 +224,26 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Grand Archivist");
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.");
 
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_title, "Gilded Carpets!");
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_desc, "Didn't my grandmother have one of those on her coffee table?");
+
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_title, "Reinforced Lockboxes!");
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_desc, "A sturdy glass lockbox, reinforced with diamond for extra security. Good luck breaking in!");
+
+        addText(translationBuilder, ModAdvancementProvider.use_key_title, "The Right Key for the Job");
+        addText(translationBuilder, ModAdvancementProvider.use_key_desc, "Registered keys and lockboxes can be duplicated via crafting - Share access wisely.");
+
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_title, "If at first you don't succeed...");
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_desc, "Break a Lockpick.");
+
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_title, "Lockpicking 100");
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_desc, "Successfully pick the lock on a Lockbox to relieve it of its contents.");
+
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_title, "It Belongs in a Museum!");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_desc, "So did the Evoker. Place a Totem of Undying on a carpeted pedestal, and secure it with a lockbox.");
+
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Taste the Rainbow");
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "A rainbow of options to make your displays pop!");
     }
 
     private static @NotNull String getActualName(int i) {

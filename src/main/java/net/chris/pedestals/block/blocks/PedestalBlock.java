@@ -1,21 +1,16 @@
 package net.chris.pedestals.block.blocks;
 
 import com.mojang.serialization.MapCodec;
+import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
 import net.chris.pedestals.datagen.ModItemTagProvider;
-import net.chris.pedestals.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.data.Model;
-import net.minecraft.client.data.ModelIds;
-import net.minecraft.client.data.TextureKey;
-import net.minecraft.client.data.TextureMap;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -26,7 +21,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -37,9 +31,10 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
 public class PedestalBlock extends Block implements BlockEntityProvider{
+
     public PedestalBlock(Settings settings) {
         super(settings);
     }
@@ -93,7 +88,6 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity){
-            //return pedestalBlockEntity.hasStoredItem() ? 15 : 0; //Return a strength of 15 if there is an item; otherwise zero
             switch (pedestalBlockEntity.getStoredItem().getRarity()){
                 case COMMON -> {
                     return 0;
@@ -123,14 +117,22 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
 
+            if (player.getStackInHand(Hand.MAIN_HAND).isEmpty() && !pedestalBlockEntity.hasStoredItem() && !pedestalBlockEntity.hasStoredCarpet() && !pedestalBlockEntity.hasStoredLockbox()){
+                return ActionResult.FAIL;
+            }
+
             ItemStack playerHeldItem = player.getStackInHand(Hand.MAIN_HAND);
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
 
             if(!pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isIn(ModItemTagProvider.FANCY_CARPET_BLOCK_ITEMS)) {
 
                 pedestalBlockEntity.setStoredCarpet(playerHeldItem.split(1));
+
                 world.playSound(null, pos, getAddCarpetSoundWool(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.playSound(null, pos, getAddCarpetSoundChain(), SoundCategory.BLOCKS, 0.15F, 1.0F);
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    ModCriteria.LOCK_TOTEM_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+                }
                 return ActionResult.SUCCESS;
 
             }
@@ -145,12 +147,16 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             }
             if (!pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.isIn(ModItemTagProvider.LOCKBOX_ITEMS)) {
+
                 pedestalBlockEntity.setStoredLockbox(playerHeldItem.split(1));
                 world.playSound(null, pos, getLockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    ModCriteria.LOCK_TOTEM_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+                }
                 return ActionResult.SUCCESS;
             }
 
-            if (pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.isOf(ModItems.CREATIVE_KEY)) {
+            if (pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.contains(ModComponents.UNLOCKS_LOCKBOXES_COMPONENT)) {
                 ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5, pedestalBlockEntity.getStoredLockbox());
                 pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
                 world.spawnEntity(itemEntity);
@@ -163,8 +169,6 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 if (storedItem.isEmpty() && !playerHeldItem.isEmpty() && !pedestalBlockEntity.hasStoredLockbox()) {
 
                     pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
-
-                    pedestalBlockEntity.markDirty();
 
                     world.updateListeners(pos, state, state, 0);
 
@@ -204,6 +208,9 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if(blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && direction == Direction.UP){
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
+            if (storedItem.isOf(TOTEM_OF_UNDYING)) {
+                return 15;
+            }
             return storedItem.getRarity()== Rarity.EPIC ? 15 : 0;
         }
         return 0;
@@ -232,8 +239,21 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
         }
-
+        world.removeBlockEntity(pos);
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
+    }
+
+    /// This FINALLY solved my problem with pedestals losing their inventory when scraped/waxed/stripped.
+    /// Why did I not find this method sooner?
+    ///
+    /// <sub>Side note: how does this work? Blocks are quasi-singletons.</sub>
+    @Override
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+        if (state.getBlock() != newState.getBlock() && newState.getBlock() instanceof PedestalBlock) {
+            assert pedestalBlockEntity != null;
+            pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
+        }
     }
 
     @Nullable
@@ -241,27 +261,5 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type){
         return TickableBlockEntity.getTicker(world);
     }
-
-    public static final Model PEDESTAL_MODEL = block("parent_pedestal", TextureKey.ALL);
-    public static final Model PEDESTAL_MODEL_MORE = block("parent_pedestal_more", TextureKey.SIDE, TextureKey.TOP);
-
-    private static Model block(String parent, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
-
-    }
-
-    public static TextureMap pedestalMap(Block block) {
-        return new TextureMap()
-                .put(TextureKey.ALL, ModelIds.getBlockSubModelId(block, ""));
-
-    }
-
-    public static TextureMap pedestalMapWood(Block block) {
-        return new TextureMap()
-                .put(TextureKey.SIDE, ModelIds.getBlockSubModelId(block, ""))
-                .put(TextureKey.TOP, ModelIds.getBlockSubModelId(block, "_top"));
-    }
-
-
 
 }

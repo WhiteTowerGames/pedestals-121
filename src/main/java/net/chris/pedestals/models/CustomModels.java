@@ -1,0 +1,67 @@
+package net.chris.pedestals.models;
+
+import net.chris.pedestals.Pedestals121;
+import net.minecraft.block.Block;
+import net.minecraft.client.data.Model;
+import net.minecraft.client.data.ModelIds;
+import net.minecraft.client.data.TextureKey;
+import net.minecraft.client.data.TextureMap;
+import net.minecraft.util.Identifier;
+
+import java.util.Optional;
+
+public class CustomModels {
+
+    public static final TextureKey GOLD = TextureKey.of("gold");
+
+    public static final Model FANCY_CARPET_MODEL = block("fancy_carpet", TextureKey.WOOL, GOLD);
+    public static final Model PEDESTAL_MODEL = block("parent_pedestal", TextureKey.ALL);
+    public static final Model PEDESTAL_MODEL_MORE = block("parent_pedestal_more", TextureKey.SIDE, TextureKey.TOP);
+    public static final Model LOCKBOX_MODEL = item("lockbox", TextureKey.ALL);
+
+    public static Model block(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+    }
+
+    private static Model item(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
+    }
+
+    public static TextureMap fancyCarpetMap(String color) {
+        TextureMap textureMap = new TextureMap();
+
+        //Map the wool texture to the vanilla wool texture with the specified color
+        textureMap.put(TextureKey.WOOL, Identifier.of("minecraft", "block/"+color+"_wool"));
+
+        //Map the gold texture to the gold block texture
+        textureMap.put(GOLD, Identifier.of("minecraft", "block/gold_block"));
+
+        return textureMap;
+    }
+
+    public static TextureMap pedestalMap(Block block) {
+        return new TextureMap()
+                .put(TextureKey.ALL, ModelIds.getBlockSubModelId(block, ""));
+
+    }
+
+    public static TextureMap pedestalMapWood(Block block) {
+        return new TextureMap()
+                .put(TextureKey.SIDE, ModelIds.getBlockSubModelId(block, ""))
+                .put(TextureKey.TOP, ModelIds.getBlockSubModelId(block, "_top"));
+    }
+
+    public static TextureMap lockboxMap(String color) {
+        TextureMap textureMap = new TextureMap();
+
+        //Map the glass texture to the vanilla glass texture with the specified color, or to normal glass if no color is specified.
+        if (!color.isEmpty()) {
+            textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/" + color + "_stained_glass"));
+        } else {
+            textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/glass"));
+        }
+
+        return textureMap;
+    }
+
+}

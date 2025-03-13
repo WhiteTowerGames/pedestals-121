@@ -1,7 +1,9 @@
 package net.chris.pedestals.datagen;
 
-import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.item.ModItems;
+import net.chris.pedestals.recipes.KeyDuplicationRecipe;
+import net.chris.pedestals.recipes.LockboxDuplicationRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
@@ -9,8 +11,13 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -49,7 +56,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
             @Override
             public void generate() {
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STONE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STONE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STONE_BRICKS)
@@ -57,12 +64,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.STONE_BRICK_PEDESTAL, Blocks.STONE_BRICKS);
+                        STONE_BRICK_PEDESTAL, Blocks.STONE_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.STONE_BRICK_PEDESTAL, Blocks.STONE);
+                        STONE_BRICK_PEDESTAL, Blocks.STONE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_STONE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MOSSY_STONE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.MOSSY_STONE_BRICKS)
@@ -70,9 +77,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.MOSSY_STONE_BRICK_PEDESTAL, Blocks.MOSSY_STONE_BRICKS);
+                        MOSSY_STONE_BRICK_PEDESTAL, Blocks.MOSSY_STONE_BRICKS);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEPSLATE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, DEEPSLATE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.DEEPSLATE_BRICKS)
@@ -80,15 +87,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_BRICK_PEDESTAL, Blocks.DEEPSLATE_BRICKS);
+                        DEEPSLATE_BRICK_PEDESTAL, Blocks.DEEPSLATE_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_BRICK_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
+                        DEEPSLATE_BRICK_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_BRICK_PEDESTAL, Blocks.DEEPSLATE);
+                        DEEPSLATE_BRICK_PEDESTAL, Blocks.DEEPSLATE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEPSLATE_TILE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, DEEPSLATE_TILE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.DEEPSLATE_TILES)
@@ -96,15 +103,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_TILE_PEDESTAL, Blocks.DEEPSLATE_TILES);
+                        DEEPSLATE_TILE_PEDESTAL, Blocks.DEEPSLATE_TILES);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_TILE_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
+                        DEEPSLATE_TILE_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DEEPSLATE_TILE_PEDESTAL, Blocks.DEEPSLATE);
+                        DEEPSLATE_TILE_PEDESTAL, Blocks.DEEPSLATE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_GRANITE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_GRANITE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_GRANITE)
@@ -112,12 +119,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_GRANITE_PEDESTAL, Blocks.POLISHED_GRANITE);
+                        POLISHED_GRANITE_PEDESTAL, Blocks.POLISHED_GRANITE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_GRANITE_PEDESTAL, Blocks.GRANITE);
+                        POLISHED_GRANITE_PEDESTAL, Blocks.GRANITE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_DIORITE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_DIORITE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_DIORITE)
@@ -125,12 +132,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_DIORITE_PEDESTAL, Blocks.POLISHED_DIORITE);
+                        POLISHED_DIORITE_PEDESTAL, Blocks.POLISHED_DIORITE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_DIORITE_PEDESTAL, Blocks.DIORITE);
+                        POLISHED_DIORITE_PEDESTAL, Blocks.DIORITE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_ANDESITE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_ANDESITE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_ANDESITE)
@@ -138,12 +145,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_ANDESITE_PEDESTAL, Blocks.POLISHED_ANDESITE);
+                        POLISHED_ANDESITE_PEDESTAL, Blocks.POLISHED_ANDESITE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_ANDESITE_PEDESTAL, Blocks.ANDESITE);
+                        POLISHED_ANDESITE_PEDESTAL, Blocks.ANDESITE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_DEEPSLATE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_DEEPSLATE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_DEEPSLATE)
@@ -151,15 +158,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, Blocks.POLISHED_DEEPSLATE);
+                        POLISHED_DEEPSLATE_PEDESTAL, Blocks.POLISHED_DEEPSLATE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
+                        POLISHED_DEEPSLATE_PEDESTAL, Blocks.COBBLED_DEEPSLATE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, Blocks.DEEPSLATE);
+                        POLISHED_DEEPSLATE_PEDESTAL, Blocks.DEEPSLATE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CALCITE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, CALCITE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.CALCITE)
@@ -167,9 +174,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CALCITE_PEDESTAL, Blocks.CALCITE);
+                        CALCITE_PEDESTAL, Blocks.CALCITE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.COPPER_BLOCK)
@@ -177,9 +184,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.COPPER_PEDESTAL, Blocks.COPPER_BLOCK);
+                        COPPER_PEDESTAL, Blocks.COPPER_BLOCK);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EXPOSED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, EXPOSED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.EXPOSED_COPPER)
@@ -187,9 +194,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.EXPOSED_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER);
+                        EXPOSED_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WEATHERED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WEATHERED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WEATHERED_COPPER)
@@ -197,9 +204,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WEATHERED_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER);
+                        WEATHERED_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OXIDIZED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, OXIDIZED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.OXIDIZED_COPPER)
@@ -207,9 +214,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.OXIDIZED_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER);
+                        OXIDIZED_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_COPPER_BLOCK)
@@ -217,9 +224,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK);
+                        WAXED_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_EXPOSED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_EXPOSED_COPPER)
@@ -227,9 +234,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER);
+                        WAXED_EXPOSED_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_WEATHERED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_WEATHERED_COPPER)
@@ -237,9 +244,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER);
+                        WAXED_WEATHERED_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_OXIDIZED_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_OXIDIZED_COPPER)
@@ -247,9 +254,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER);
+                        WAXED_OXIDIZED_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.CUT_COPPER)
@@ -257,12 +264,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CUT_COPPER_PEDESTAL, Blocks.CUT_COPPER);
+                        CUT_COPPER_PEDESTAL, Blocks.CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CUT_COPPER_PEDESTAL, Blocks.COPPER_BLOCK, 4);
+                        CUT_COPPER_PEDESTAL, Blocks.COPPER_BLOCK, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, EXPOSED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.EXPOSED_CUT_COPPER)
@@ -270,12 +277,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_CUT_COPPER);
+                        EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER, 4);
+                        EXPOSED_CUT_COPPER_PEDESTAL, Blocks.EXPOSED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WEATHERED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WEATHERED_CUT_COPPER)
@@ -283,12 +290,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_CUT_COPPER);
+                        WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER, 4);
+                        WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WEATHERED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, OXIDIZED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.OXIDIZED_CUT_COPPER)
@@ -296,12 +303,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_CUT_COPPER);
+                        OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER, 4);
+                        OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.OXIDIZED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_CUT_COPPER)
@@ -309,12 +316,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_CUT_COPPER);
+                        WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK, 4);
+                        WAXED_CUT_COPPER_PEDESTAL, Blocks.WAXED_COPPER_BLOCK, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_EXPOSED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_EXPOSED_CUT_COPPER)
@@ -322,12 +329,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_CUT_COPPER);
+                        WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER, 4);
+                        WAXED_EXPOSED_CUT_COPPER_PEDESTAL, Blocks.WAXED_EXPOSED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_WEATHERED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_WEATHERED_CUT_COPPER)
@@ -335,12 +342,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_CUT_COPPER);
+                        WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER, 4);
+                        WAXED_WEATHERED_CUT_COPPER_PEDESTAL, Blocks.WAXED_WEATHERED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WAXED_OXIDIZED_CUT_COPPER)
@@ -348,12 +355,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_CUT_COPPER);
+                        WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_CUT_COPPER);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER, 4);
+                        WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, Blocks.WAXED_OXIDIZED_COPPER, 4);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.BRICKS)
@@ -361,9 +368,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.BRICK_PEDESTAL, Blocks.BRICKS);
+                        BRICK_PEDESTAL, Blocks.BRICKS);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, END_STONE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.END_STONE_BRICKS)
@@ -371,19 +378,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.END_STONE_BRICK_PEDESTAL, Blocks.END_STONE_BRICKS);
+                        END_STONE_BRICK_PEDESTAL, Blocks.END_STONE_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.END_STONE_BRICK_PEDESTAL, Blocks.END_STONE);
+                        END_STONE_BRICK_PEDESTAL, Blocks.END_STONE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUD_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MUD_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.MUD_BRICKS)
                         .criterion(hasItem(Blocks.MUD_BRICKS), conditionsFromItem(Blocks.MUD_BRICKS))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, NETHER_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.NETHER_BRICKS)
@@ -391,10 +398,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.NETHER_BRICK_PEDESTAL, Blocks.NETHER_BRICKS);
+                        NETHER_BRICK_PEDESTAL, Blocks.NETHER_BRICKS);
 
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_BLACKSTONE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_BLACKSTONE_BRICKS)
@@ -402,15 +409,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE_BRICKS);
+                        POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
+                        POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.BLACKSTONE);
+                        POLISHED_BLACKSTONE_BRICK_PEDESTAL, Blocks.BLACKSTONE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_BLACKSTONE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_BLACKSTONE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_BLACKSTONE)
@@ -418,12 +425,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
+                        POLISHED_BLACKSTONE_PEDESTAL, Blocks.POLISHED_BLACKSTONE);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, Blocks.BLACKSTONE);
+                        POLISHED_BLACKSTONE_PEDESTAL, Blocks.BLACKSTONE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_PRISMARINE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, DARK_PRISMARINE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.DARK_PRISMARINE)
@@ -431,9 +438,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.DARK_PRISMARINE_PEDESTAL, Blocks.DARK_PRISMARINE);
+                        DARK_PRISMARINE_PEDESTAL, Blocks.DARK_PRISMARINE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, PRISMARINE_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.PRISMARINE_BRICKS)
@@ -441,9 +448,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.PRISMARINE_BRICK_PEDESTAL, Blocks.PRISMARINE_BRICKS);
+                        PRISMARINE_BRICK_PEDESTAL, Blocks.PRISMARINE_BRICKS);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPUR_BLOCK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, PURPUR_BLOCK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.PURPUR_BLOCK)
@@ -451,9 +458,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.PURPUR_BLOCK_PEDESTAL, Blocks.PURPUR_BLOCK);
+                        PURPUR_BLOCK_PEDESTAL, Blocks.PURPUR_BLOCK);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, QUARTZ_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.QUARTZ_BRICKS)
@@ -461,12 +468,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.QUARTZ_BRICK_PEDESTAL, Blocks.QUARTZ_BRICKS);
+                        QUARTZ_BRICK_PEDESTAL, Blocks.QUARTZ_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.QUARTZ_BRICK_PEDESTAL, Blocks.QUARTZ_BLOCK);
+                        QUARTZ_BRICK_PEDESTAL, Blocks.QUARTZ_BLOCK);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, RED_NETHER_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.RED_NETHER_BRICKS)
@@ -474,9 +481,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.RED_NETHER_BRICK_PEDESTAL, Blocks.RED_NETHER_BRICKS);
+                        RED_NETHER_BRICK_PEDESTAL, Blocks.RED_NETHER_BRICKS);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_QUARTZ_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, SMOOTH_QUARTZ_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.SMOOTH_QUARTZ)
@@ -484,12 +491,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.SMOOTH_QUARTZ_PEDESTAL, Blocks.SMOOTH_QUARTZ);
+                        SMOOTH_QUARTZ_PEDESTAL, Blocks.SMOOTH_QUARTZ);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.SMOOTH_QUARTZ_PEDESTAL, Blocks.QUARTZ_BLOCK);
+                        SMOOTH_QUARTZ_PEDESTAL, Blocks.QUARTZ_BLOCK);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_TUFF_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_TUFF_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.POLISHED_TUFF)
@@ -497,12 +504,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_TUFF_PEDESTAL, Blocks.POLISHED_TUFF);
+                        POLISHED_TUFF_PEDESTAL, Blocks.POLISHED_TUFF);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.POLISHED_TUFF_PEDESTAL, Blocks.TUFF);
+                        POLISHED_TUFF_PEDESTAL, Blocks.TUFF);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TUFF_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, TUFF_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.TUFF_BRICKS)
@@ -510,15 +517,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
+                        TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.TUFF);
+                        TUFF_BRICK_PEDESTAL, Blocks.TUFF);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
+                        TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, CHISELED_TUFF_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.CHISELED_TUFF_BRICKS)
@@ -526,218 +533,218 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeExporter);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.CHISELED_TUFF_BRICKS);
+                        CHISELED_TUFF_BRICK_PEDESTAL, Blocks.CHISELED_TUFF_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
+                        CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF_BRICKS);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF);
+                        CHISELED_TUFF_BRICK_PEDESTAL, Blocks.TUFF);
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                        ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
+                        CHISELED_TUFF_BRICK_PEDESTAL, Blocks.POLISHED_TUFF);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.OAK_LOG)
                         .criterion(hasItem(Blocks.OAK_LOG), conditionsFromItem(Blocks.OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, BIRCH_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.BIRCH_LOG)
                         .criterion(hasItem(Blocks.BIRCH_LOG), conditionsFromItem(Blocks.BIRCH_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPRUCE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, SPRUCE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.SPRUCE_LOG)
                         .criterion(hasItem(Blocks.SPRUCE_LOG), conditionsFromItem(Blocks.SPRUCE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, JUNGLE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.JUNGLE_LOG)
                         .criterion(hasItem(Blocks.JUNGLE_LOG), conditionsFromItem(Blocks.JUNGLE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, DARK_OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.DARK_OAK_LOG)
                         .criterion(hasItem(Blocks.DARK_OAK_LOG), conditionsFromItem(Blocks.DARK_OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ACACIA_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, ACACIA_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.ACACIA_LOG)
                         .criterion(hasItem(Blocks.ACACIA_LOG), conditionsFromItem(Blocks.ACACIA_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MANGROVE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MANGROVE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.MANGROVE_LOG)
                         .criterion(hasItem(Blocks.MANGROVE_LOG), conditionsFromItem(Blocks.MANGROVE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHERRY_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, CHERRY_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.CHERRY_LOG)
                         .criterion(hasItem(Blocks.CHERRY_LOG), conditionsFromItem(Blocks.CHERRY_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, BAMBOO_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.BAMBOO_BLOCK)
                         .criterion(hasItem(Blocks.BAMBOO_BLOCK), conditionsFromItem(Blocks.BAMBOO_BLOCK))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_MOSAIC_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, BAMBOO_MOSAIC_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.BAMBOO_MOSAIC)
                         .criterion(hasItem(Blocks.BAMBOO_MOSAIC), conditionsFromItem(Blocks.BAMBOO_MOSAIC))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_OAK_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_OAK_LOG), conditionsFromItem(Blocks.STRIPPED_OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_BIRCH_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_BIRCH_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_BIRCH_LOG), conditionsFromItem(Blocks.STRIPPED_BIRCH_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_SPRUCE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_SPRUCE_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_SPRUCE_LOG), conditionsFromItem(Blocks.STRIPPED_SPRUCE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_JUNGLE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_JUNGLE_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_JUNGLE_LOG), conditionsFromItem(Blocks.STRIPPED_JUNGLE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_DARK_OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_DARK_OAK_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_DARK_OAK_LOG), conditionsFromItem(Blocks.STRIPPED_DARK_OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_ACACIA_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_ACACIA_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_ACACIA_LOG), conditionsFromItem(Blocks.STRIPPED_ACACIA_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_MANGROVE_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_MANGROVE_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_MANGROVE_LOG), conditionsFromItem(Blocks.STRIPPED_MANGROVE_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_CHERRY_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_CHERRY_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_CHERRY_LOG), conditionsFromItem(Blocks.STRIPPED_CHERRY_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_BAMBOO_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_BAMBOO_BLOCK)
                         .criterion(hasItem(Blocks.STRIPPED_BAMBOO_BLOCK), conditionsFromItem(Blocks.STRIPPED_BAMBOO_BLOCK))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, PALE_OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.PALE_OAK_LOG)
                         .criterion(hasItem(Blocks.PALE_OAK_LOG), conditionsFromItem(Blocks.PALE_OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_PALE_OAK_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_PALE_OAK_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_PALE_OAK_LOG)
                         .criterion(hasItem(Blocks.STRIPPED_PALE_OAK_LOG), conditionsFromItem(Blocks.STRIPPED_PALE_OAK_LOG))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRIMSON_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, CRIMSON_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.CRIMSON_STEM)
                         .criterion(hasItem(Blocks.CRIMSON_STEM), conditionsFromItem(Blocks.CRIMSON_STEM))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_CRIMSON_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_CRIMSON_STEM)
                         .criterion(hasItem(Blocks.STRIPPED_CRIMSON_STEM), conditionsFromItem(Blocks.STRIPPED_CRIMSON_STEM))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WARPED_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, WARPED_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.WARPED_STEM)
                         .criterion(hasItem(Blocks.WARPED_STEM), conditionsFromItem(Blocks.WARPED_STEM))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, STRIPPED_WARPED_LOG_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.STRIPPED_WARPED_STEM)
                         .criterion(hasItem(Blocks.STRIPPED_WARPED_STEM), conditionsFromItem(Blocks.STRIPPED_WARPED_STEM))
                         .offerTo(recipeExporter);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_BRICK_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, RESIN_BRICK_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.RESIN_BRICKS)
                         .criterion(hasItem(Blocks.RESIN_BRICKS), conditionsFromItem(Blocks.RESIN_BRICKS))
                         .offerTo(recipeExporter);
 
-                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_BRICK_PEDESTAL, Blocks.RESIN_BRICKS);
+                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, RESIN_BRICK_PEDESTAL, Blocks.RESIN_BRICKS);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SANDSTONE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, SMOOTH_SANDSTONE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.SMOOTH_SANDSTONE)
                         .criterion(hasItem(Blocks.SMOOTH_SANDSTONE), conditionsFromItem(Blocks.SMOOTH_SANDSTONE))
                         .offerTo(recipeExporter);
 
-                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SANDSTONE_PEDESTAL, Blocks.SMOOTH_SANDSTONE);
+                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, SMOOTH_SANDSTONE_PEDESTAL, Blocks.SMOOTH_SANDSTONE);
 
-                createShaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL)
+                createShaped(RecipeCategory.BUILDING_BLOCKS, SMOOTH_RED_SANDSTONE_PEDESTAL)
                         .pattern("B")
                         .pattern("B")
                         .input('B', Blocks.SMOOTH_RED_SANDSTONE)
                         .criterion(hasItem(Blocks.SMOOTH_RED_SANDSTONE), conditionsFromItem(Blocks.SMOOTH_RED_SANDSTONE))
                         .offerTo(recipeExporter);
 
-                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, Blocks.SMOOTH_RED_SANDSTONE);
+                offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS, SMOOTH_RED_SANDSTONE_PEDESTAL, Blocks.SMOOTH_RED_SANDSTONE);
 
                 createShaped(RecipeCategory.DECORATIONS, GLASS_LOCKBOX)
                         .pattern(" R ")
@@ -776,8 +783,55 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('G', Items.GOLD_INGOT)
                         .input('N', Items.GOLD_NUGGET)
                         .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
-                        .offerTo(recipeExporter);
+                        .offerTo(recipeExporter, String.valueOf(Identifier.of(Pedestals121.MOD_ID, "lockbox_key_right")));
 
+                createShaped(RecipeCategory.MISC, ModItems.LOCKBOX_KEY)
+                        .pattern("GGG")
+                        .pattern("NN ")
+                        .input('G', Items.GOLD_INGOT)
+                        .input('N', Items.GOLD_NUGGET)
+                        .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                        .offerTo(recipeExporter, String.valueOf(Identifier.of(Pedestals121.MOD_ID, "lockbox_key_left")));
+
+                createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
+                        .pattern("BI")
+                        .pattern(" B")
+                        .input('B', Items.IRON_BARS)
+                        .input('I', Items.IRON_INGOT)
+                        .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .offerTo(recipeExporter, "lockpick_right_down");
+
+                createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
+                        .pattern("BI")
+                        .pattern("B ")
+                        .input('B', Items.IRON_BARS)
+                        .input('I', Items.IRON_INGOT)
+                        .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .offerTo(recipeExporter, "lockpick_left_down");
+
+                createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
+                        .pattern(" B")
+                        .pattern("BI")
+                        .input('B', Items.IRON_BARS)
+                        .input('I', Items.IRON_INGOT)
+                        .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .offerTo(recipeExporter, "lockpick_right_up");
+
+                createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
+                        .pattern("B ")
+                        .pattern("BI")
+                        .input('B', Items.IRON_BARS)
+                        .input('I', Items.IRON_INGOT)
+                        .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .offerTo(recipeExporter, "lockpick_left_up");
+
+                /// Special duping recipes (produce blank json)
+
+                Recipe<?> KeyDuplicationRecipe = new KeyDuplicationRecipe(CraftingRecipeCategory.MISC);
+                recipeExporter.accept(RegistryKey.of(RegistryKeys.RECIPE, Identifier.of(Pedestals121.MOD_ID, "key_duplication")), KeyDuplicationRecipe, null);
+
+                Recipe<?> LockboxDuplicationRecipe = new LockboxDuplicationRecipe(CraftingRecipeCategory.MISC);
+                recipeExporter.accept(RegistryKey.of(RegistryKeys.RECIPE, Identifier.of(Pedestals121.MOD_ID, "lockbox_duplication")), LockboxDuplicationRecipe, null);
             }
         };
     }

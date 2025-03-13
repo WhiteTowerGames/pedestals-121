@@ -2,7 +2,6 @@ package net.chris.pedestals.block.entity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 
@@ -10,33 +9,16 @@ public interface PedestalInventory extends Inventory {
     DefaultedList<ItemStack> getItems();
 
     @Override
-    default int size() {
-        return 1;
-    }
-
-    @Override
     default boolean isEmpty() {
         return getItems().getFirst().isEmpty();
     }
 
-    @Override
-    default ItemStack getStack(int slot) {
-        return getItems().get(slot);
+    default ItemStack getStack() {
+        return getItems().getFirst();
     }
 
-    @Override
-    default ItemStack removeStack(int slot, int amount) {
-        return Inventories.splitStack(getItems(), slot, amount);
-    }
-
-    @Override
-    default ItemStack removeStack(int slot) {
-        return Inventories.removeStack(getItems(), slot);
-    }
-
-    @Override
-    default void setStack(int slot, ItemStack stack) {
-        getItems().set(slot, stack);
+    default void setStack(ItemStack stack) {
+        getItems().set(0, stack);
     }
 
     @Override

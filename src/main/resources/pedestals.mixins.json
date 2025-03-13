@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.chris.pedestals.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BlockHardnessMixin",
+    "ExplosionBehaviorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

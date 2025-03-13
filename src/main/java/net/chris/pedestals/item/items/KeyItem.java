@@ -1,9 +1,9 @@
-package net.chris.pedestals.item.ItemClasses;
+package net.chris.pedestals.item.items;
 
-import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.components.ModComponents;
-import net.chris.pedestals.components.UUIDAndBoolComponent;
+import net.chris.pedestals.components.LockAndKeyDataComponent;
+import net.chris.pedestals.criteria.ModCriteria;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -41,23 +42,20 @@ public class KeyItem extends Item {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         PlayerEntity player = context.getPlayer();
 
-        UUIDAndBoolComponent stackComponent = stack.get(ModComponents.UUID_BOOL_COMPONENT);
+        LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
 
+        assert stackComponent != null;
         UUID stackUUID = stackComponent.uuid();
         boolean isStackMapped = stackComponent.isMapped();
         boolean isStackCopy = stackComponent.isCopy();
-
-        Pedestals121.LOGGER.info("Key UUID: {}", stackUUID);
-        Pedestals121.LOGGER.info("Is key mapped? {}", isStackMapped);
-        Pedestals121.LOGGER.info("Is key a duplicate? {}", isStackCopy);
 
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
 
             if (pedestalBlockEntity.hasStoredLockbox()) {
 
                 ItemStack lockboxStack = pedestalBlockEntity.getStoredLockbox();
-
-                UUIDAndBoolComponent lockboxComponent = lockboxStack.get(ModComponents.UUID_BOOL_COMPONENT);
+                LockAndKeyDataComponent lockboxComponent = lockboxStack.get(ModComponents.LOCK_AND_KEY_DATA);
+                assert lockboxComponent != null;
                 UUID lockboxUUID = lockboxComponent.uuid();
                 boolean isLockboxMapped = lockboxComponent.isMapped();
 
@@ -66,29 +64,37 @@ public class KeyItem extends Item {
                         pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
                         ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5,
                                 lockboxStack, 0.0, 0.2, 0.0);
-                        if (!world.isClient) {
-                            player.sendMessage(Text.of("Case Opened!"), true);
+                        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
+                            serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);
+                            ModCriteria.USE_KEY_ON_LOCKBOX.trigger(serverPlayer);
                         }
                         world.spawnEntity(itemEntity);
                         world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                        return ActionResult.SUCCESS;
                     } else {
                         if (!world.isClient) {
-                            player.sendMessage(Text.of("Incorrect Key!"), true);
+                            assert player != null;
+                            player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
                         }
                         world.playSound(null, pos, getWrongKeySound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                        return ActionResult.FAIL;
-                    }
-                }
-                if (!isLockboxMapped && !isStackMapped) {
-                    stack.set(ModComponents.UUID_BOOL_COMPONENT, new UUIDAndBoolComponent(lockboxUUID, true, isStackCopy));
-                    lockboxStack.set(ModComponents.UUID_BOOL_COMPONENT, new UUIDAndBoolComponent(lockboxUUID, true, false));
-                    world.playSound(null, pos, getRegisterSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                    if (!world.isClient) {
-                        player.sendMessage(Text.of("Key Registered!"), true);
                     }
                     return ActionResult.SUCCESS;
                 }
+                if (!isLockboxMapped && !isStackMapped) {
+                    stack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true, isStackCopy));
+                    lockboxStack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true));
+                    world.playSound(null, pos, getRegisterSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                    if (!world.isClient) {
+                        assert player != null;
+                        player.sendMessage(Text.translatable("messages.pedestals.key_map"), true);
+                    }
+                    return ActionResult.SUCCESS;
+                }
+                if (!world.isClient) {
+                    assert player != null;
+                    player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
+                }
+                world.playSound(null, pos, getWrongKeySound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                return ActionResult.SUCCESS;
             }
         }
         return ActionResult.PASS;
@@ -96,15 +102,21 @@ public class KeyItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        UUIDAndBoolComponent stackComponent = stack.get(ModComponents.UUID_BOOL_COMPONENT);
+        LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
+        assert stackComponent != null;
         boolean isStackMapped = stackComponent.isMapped();
         boolean isStackCopy = stackComponent.isCopy();
         if (isStackMapped){
-            tooltip.add(Text.of("This key will open a specific lockbox."));
-            tooltip.add(Text.of("Consider renaming it to keep track."));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_is_mapped"));
+            if (stack.getCustomName()==null) {
+                tooltip.add(Text.translatable("itemtooltip.pedestals.key_unnamed"));
+            }
+        } else {
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l1"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l2"));
         }
         if (isStackCopy){
-            tooltip.add(Text.literal("Duplicate Key").formatted(Formatting.BOLD, Formatting.YELLOW));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_clone").formatted(Formatting.BOLD, Formatting.YELLOW));
         }
     }
 }

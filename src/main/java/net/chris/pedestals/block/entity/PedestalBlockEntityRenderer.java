@@ -3,7 +3,6 @@ package net.chris.pedestals.block.entity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
-import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
@@ -21,16 +20,15 @@ import org.joml.Matrix4f;
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity>{
 
     private final TextRenderer textRenderer;
-    protected final BlockEntityRenderDispatcher dispatcher;
 
     public PedestalBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         this.textRenderer = ctx.getTextRenderer();
-        this.dispatcher = ctx.getRenderDispatcher();
     }
 
     protected boolean hasCustomName(ItemStack stack) {
         return stack.getCustomName() != null;
     }
+
     protected boolean isLookingAtItem(PedestalBlockEntity entity) {
         //This method will check if the player is looking at the item (i.e. the space above the block entity)
         MinecraftClient client = MinecraftClient.getInstance();
@@ -117,8 +115,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     protected void renderLockboxIfPresent(PedestalBlockEntity entity, ItemStack lockbox, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay, double higherIfHasCarpet) {
         matrices.push();
 
-        matrices.translate(0.5f, 1.8f + higherIfHasCarpet, 0.5f);
-        matrices.scale(1.1f,1f,1.1f);
+        matrices.translate(0.5f, 1.85f + higherIfHasCarpet, 0.5f);
+        matrices.scale(1.1f,1.1f,1.1f);
 
         itemRenderer.renderItem(lockbox, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
 
@@ -129,9 +127,9 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        ItemStack stack = entity.getStoredItem();
-        ItemStack carpet = entity.getStoredCarpet();
-        ItemStack lockbox = entity.getStoredLockbox();
+        ItemStack stack = entity.getStoredItem().copy();
+        ItemStack carpet = entity.getStoredCarpet().copy();
+        ItemStack lockbox = entity.getStoredLockbox().copy();
 
         if (stack.isEmpty() && carpet.isEmpty() && lockbox.isEmpty()) return;
 
@@ -140,15 +138,14 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
             double higherIfHasCarpet = entity.hasStoredCarpet() ? 0.053 : 0;
             matrices.translate(0.5, yOffset + higherIfHasCarpet, 0.5);
-            // Rotate the item
             float rotation = (System.currentTimeMillis() / 20) % 360;
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
-            // Render the item
             ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
             matrices.scale(1.2f,1.2f,1.2f);
             itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
                     light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             matrices.pop();
+
         if (shouldRenderName(stack, entity)){
             renderCustomNameIfPresent(stack, matrices, vertexConsumers, light);
         }

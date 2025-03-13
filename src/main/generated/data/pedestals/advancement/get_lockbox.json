@@ -1,0 +1,34 @@
+{
+  "parent": "pedestals:get_pedestal",
+  "criteria": {
+    "get_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#pedestals:lockbox_block_items"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.get_lockbox_desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "pedestals:blue_lockbox"
+    },
+    "title": {
+      "translate": "advancement.pedestals.get_lockbox_title"
+    }
+  },
+  "requirements": [
+    [
+      "get_lockbox"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

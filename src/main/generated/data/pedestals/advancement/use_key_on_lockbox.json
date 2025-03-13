@@ -1,0 +1,27 @@
+{
+  "parent": "pedestals:get_lockbox",
+  "criteria": {
+    "use_key_on_lockbox": {
+      "trigger": "pedestals:use_key_on_lockbox"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.use_key_desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "pedestals:lockbox_key"
+    },
+    "title": {
+      "translate": "advancement.pedestals.use_key_title"
+    }
+  },
+  "requirements": [
+    [
+      "use_key_on_lockbox"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

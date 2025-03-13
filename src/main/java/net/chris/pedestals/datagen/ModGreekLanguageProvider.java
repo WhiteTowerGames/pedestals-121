@@ -183,15 +183,37 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
             actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
             translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Ενισχυμένη Προθήκη");
         }
-        /// Keys and key tooltips:
-        translationBuilder.add("itemtooltip.pedestals.creative_key", "Αυτό το αντικλείδι μπορεί να ανοίξει οποιαδήποτε προθήκη!");
+        /// Keys:
         translationBuilder.add(LOCKBOX_KEY, "Κλειδί Προθήκης");
-        translationBuilder.add(CREATIVE_KEY, "Αντικλείδι Προθηκών");
+        translationBuilder.add(LOCKPICK, "Μαραφέτι");
+        translationBuilder.add(CREATIVE_KEY, "Αντικλείδι");
 
+        /// Key Tooltips & Messages:
+        translationBuilder.add("itemtooltip.pedestals.creative_key", "Αυτό το αντικλείδι μπορεί να ανοίξει οποιαδήποτε προθήκη!");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l1", "Το μαραφέτι έχει απενεργοποιηθεί μέσω");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l2", "του Κανόνα Παιχνιδιού enableLockpicks.");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l1", "Κάνε δεξί κλικ σε μία προθήκη για");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l2", "να προσπαθήσεις να τη διαρρήξεις!");
+        translationBuilder.add("itemtooltip.pedestals.key_is_mapped", "Αυτό το κλείδι μπορεί να ανοίξει μια συγκεκριμένη προθήκη.");
+        translationBuilder.add("itemtooltip.pedestals.key_unnamed", "Ονόμασέ το για να μη ξεχάσεις ποια.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l1", "Αυτό το κλειδί δεν ανήκει σε κάποια προθήκη.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l2", "Κάνε δεξί κλικ σε μία νέα προθήκη για να την ενώσεις!");
+        translationBuilder.add("itemtooltip.pedestals.key_clone", "Αντίγραφο");
+        translationBuilder.add("messages.pedestals.key_open", "Η προθήκη άνοιξε!");
+        translationBuilder.add("messages.pedestals.key_wrong", "Αυτό το κλειδί δεν είναι σωστό...");
+        translationBuilder.add("messages.pedestals.key_map", "Το κλειδί και η προθήκη ενώθηκαν!");
+        translationBuilder.add("messages.pedestals.lockpicking_failed", "Δεν κατάφερες να διαρρήξεις την κλειδαριά...");
+        translationBuilder.add("messages.pedestals.lockpicking_success", "Διέρρηξες την κλειδαριά!");
+
+        /// Sounds:
+        translationBuilder.add("sound.pedestals.lockpick_increase", "Διάρρηξη αναβαθμίζεται");
+
+        /// Item Groups:
         addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Βάθρα");
         addText(translationBuilder, ModItemGroups.FANCY_CARPETS_GROUP.getDisplayName(), "Επίχρυσα Σεμεδάκια");
         addText(translationBuilder, ModItemGroups.LOCKBOXES_GROUP.getDisplayName(), "Ενισχυμένες Προθήκες");
 
+        /// Advancements:
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Βάθρα!");
         addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Κάνε δεξί κλίκ με ένα αντικείμενο για να το προβάλεις!");
 
@@ -207,6 +229,26 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Μετρ των Βάθρων");
         addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "Από την πέτρα μέχρι το ξύλο και τον χαλκό, κανένα βάθρο δε ξέφυγε από τα χέρια σου. Η συλλογή σου ολοκληρώθηκε.");
 
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_title, "Επίχρυσα Σεμεδάκια!");
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_desc, "Η γιαγιά μου είχε ένα τέτοιο σε κάθε τραπεζάκι της.");
+
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_title, "Ενισχυμένες Προθήκες!");
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_desc, "Μία στιβαρή γυάλινη προθήκη, ενισχυμένο με διαμάντι για έξτρα ασφάλεια. Καλή τύχη να τη διαρρήξεις!");
+
+        addText(translationBuilder, ModAdvancementProvider.use_key_title, "Το Κλειδί του Παραδείσου");
+        addText(translationBuilder, ModAdvancementProvider.use_key_desc, "Τα εγγεγραμμένα κλειδιά και οι προθήκες μπορούν να αντιγραφούν μέσω κατασκευής.");
+
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_title, "Παρά Λίγο Διαρρήκτης");
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_desc, "Σπάσε ένα Μαραφέτι.");
+
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_title, "Ξεκλείδωμα 100");
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_desc, "Διάρρηξε με επιτυχία την κλειδαριά μιας προθήκης ώστε να αποκτήσεις πρόσβαση στο περιεχόμενό της.");
+
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_title, "Αρχαιοκαπηλεία");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_desc, "Τοποθέτησε ένα Τοτέμ της Αθανασίας σε ένα βάθρο με σεμεδάκι, και ασφάλισέ το με μια προθήκη.");
+
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Όλο το Ουράνιο Τόξο!");
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "Μία πληθώρα επιλογών για να κάνεις τα βάθρα σου να ξεχωρίζουν!");
 
     }
 }

@@ -1,4 +1,4 @@
-package net.chris.pedestals.item.ItemClasses;
+package net.chris.pedestals.item.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -1,0 +1,453 @@
+{
+  "parent": "pedestals:get_fancy_carpet",
+  "criteria": {
+    "black_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:black_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "black_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:black_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:blue_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:blue_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brown_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:brown_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brown_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:brown_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cyan_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:cyan_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cyan_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:cyan_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "glass_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:glass_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gray_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:gray_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gray_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:gray_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "green_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:green_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "green_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:green_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_blue_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:light_blue_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_blue_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:light_blue_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_gray_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:light_gray_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_gray_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:light_gray_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lime_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:lime_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lime_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:lime_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "magenta_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:magenta_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "magenta_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:magenta_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "orange_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:orange_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "orange_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:orange_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pink_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:pink_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pink_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:pink_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:purple_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:purple_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:red_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:red_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:white_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:white_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "yellow_gilded_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:yellow_gilded_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "yellow_lockbox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pedestals:yellow_lockbox"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.all_the_colors_desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "pedestals:yellow_gilded_carpet"
+    },
+    "title": {
+      "translate": "advancement.pedestals.all_the_colors_title"
+    }
+  },
+  "requirements": [
+    [
+      "white_gilded_carpet"
+    ],
+    [
+      "light_gray_gilded_carpet"
+    ],
+    [
+      "gray_gilded_carpet"
+    ],
+    [
+      "black_gilded_carpet"
+    ],
+    [
+      "brown_gilded_carpet"
+    ],
+    [
+      "red_gilded_carpet"
+    ],
+    [
+      "orange_gilded_carpet"
+    ],
+    [
+      "yellow_gilded_carpet"
+    ],
+    [
+      "lime_gilded_carpet"
+    ],
+    [
+      "green_gilded_carpet"
+    ],
+    [
+      "cyan_gilded_carpet"
+    ],
+    [
+      "light_blue_gilded_carpet"
+    ],
+    [
+      "blue_gilded_carpet"
+    ],
+    [
+      "purple_gilded_carpet"
+    ],
+    [
+      "magenta_gilded_carpet"
+    ],
+    [
+      "pink_gilded_carpet"
+    ],
+    [
+      "glass_lockbox"
+    ],
+    [
+      "white_lockbox"
+    ],
+    [
+      "light_gray_lockbox"
+    ],
+    [
+      "gray_lockbox"
+    ],
+    [
+      "black_lockbox"
+    ],
+    [
+      "brown_lockbox"
+    ],
+    [
+      "red_lockbox"
+    ],
+    [
+      "orange_lockbox"
+    ],
+    [
+      "yellow_lockbox"
+    ],
+    [
+      "lime_lockbox"
+    ],
+    [
+      "green_lockbox"
+    ],
+    [
+      "cyan_lockbox"
+    ],
+    [
+      "light_blue_lockbox"
+    ],
+    [
+      "blue_lockbox"
+    ],
+    [
+      "purple_lockbox"
+    ],
+    [
+      "magenta_lockbox"
+    ],
+    [
+      "pink_lockbox"
+    ]
+  ],
+  "rewards": {
+    "experience": 400
+  },
+  "sends_telemetry_event": true
+}
