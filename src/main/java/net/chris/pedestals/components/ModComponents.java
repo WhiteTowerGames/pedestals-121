@@ -113,6 +113,12 @@ public class ModComponents {
             ComponentType.<UnlocksLockboxesComponent>builder().codec(UnlocksLockboxesComponent.UNLOCKS_LOCKBOXES_CODEC).build()
     );
 
+    public static final ComponentType<LockboxDustComponent> LOCKBOX_DUST_COMPONENT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(Pedestals121.MOD_ID, "lockbox_dust"),
+            ComponentType.<LockboxDustComponent>builder().codec(LockboxDustComponent.LOCKBOX_DUST_COMPONENT).build()
+    );
+
     public static void initialize() {
         Pedestals121.LOGGER.info("Registering components for Pedestals");
     }
