@@ -1,0 +1,6 @@
+{
+  "parent": "pedestals:item/lockbox",
+  "textures": {
+    "all": "pedestals:item/lockbox_dust_4"
+  }
+}

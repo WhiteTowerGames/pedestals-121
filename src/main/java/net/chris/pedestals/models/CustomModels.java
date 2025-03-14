@@ -55,10 +55,16 @@ public class CustomModels {
         TextureMap textureMap = new TextureMap();
 
         //Map the glass texture to the vanilla glass texture with the specified color, or to normal glass if no color is specified.
-        if (!color.isEmpty()) {
+        if (!color.isEmpty() && !color.equals("dust1") && !color.equals("dust2") && !color.equals("dust3") && !color.equals("dust4")) {
             textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/" + color + "_stained_glass"));
         } else {
-            textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/glass"));
+            switch (color) {
+                case "dust1" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_1"));
+                case "dust2" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_2"));
+                case "dust3" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_3"));
+                case "dust4" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_4"));
+                default -> textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/glass"));
+            }
         }
 
         return textureMap;

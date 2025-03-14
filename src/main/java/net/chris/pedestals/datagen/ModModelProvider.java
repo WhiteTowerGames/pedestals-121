@@ -10,8 +10,7 @@ import net.minecraft.client.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import static net.chris.pedestals.block.ModBlocks.*;
-import static net.chris.pedestals.item.ModItems.ALL_COLORED_LOCKBOXES;
-import static net.chris.pedestals.item.ModItems.GLASS_LOCKBOX;
+import static net.chris.pedestals.item.ModItems.*;
 import static net.chris.pedestals.models.CustomModels.*;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -98,6 +97,11 @@ public class ModModelProvider extends FabricModelProvider {
         /// Gilded Carpet and Lockbox Models:
 
         registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(""));
+
+        registerLockbox(blockStateModelGenerator, DUST_1, lockboxMap("dust1"));
+        registerLockbox(blockStateModelGenerator, DUST_2, lockboxMap("dust2"));
+        registerLockbox(blockStateModelGenerator, DUST_3, lockboxMap("dust3"));
+        registerLockbox(blockStateModelGenerator, DUST_4, lockboxMap("dust4"));
 
         for (int i = 0; i<=15; i++){
             registerFancyCarpet(blockStateModelGenerator, ALL_FANCY_CARPETS.get(i), fancyCarpetMap(allColors[i]));
