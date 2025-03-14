@@ -12,6 +12,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -25,12 +26,16 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
+import net.minecraft.world.tick.ScheduledTickView;
 import org.jetbrains.annotations.Nullable;
 
+import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
 public class PedestalBlock extends Block implements BlockEntityProvider{
@@ -39,11 +44,13 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         super(settings);
     }
 
-    private static final VoxelShape BASE_SHAPE = Block.createCuboidShape(0.0,0.0,0.0,16.0,2.0,16.0);
-    private static final VoxelShape PILLAR_SHAPE = Block.createCuboidShape(2.0,2.0,2.0,14.0,18.0,14.0);
-    private static final VoxelShape DISPLAY_SHAPE = Block.createCuboidShape(-1.0,18.0,-1.0,17.0,21.0,17.0);
+    private static final VoxelShape BASE_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+    private static final VoxelShape PILLAR_SHAPE = Block.createCuboidShape(2.0, 2.0, 2.0, 14.0, 18.0, 14.0);
+    private static final VoxelShape DISPLAY_SHAPE = Block.createCuboidShape(-1.0, 18.0, -1.0, 17.0, 21.0, 17.0);
+    private static final VoxelShape SMALLER_DISPLAY_SHAPE = Block.createCuboidShape(0.0, 18.0, 0.0, 16.0, 21.0, 16.0);
 
-    public static final VoxelShape FULL_SHAPE = VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE, DISPLAY_SHAPE);
+    private static final VoxelShape FULL_SHAPE = VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE, DISPLAY_SHAPE);
+    private static final VoxelShape FULL_COLLISION_SHAPE = VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE, SMALLER_DISPLAY_SHAPE);
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -52,7 +59,13 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.union(BASE_SHAPE, PILLAR_SHAPE); // Exclude DISPLAY_SHAPE from collision
+        return FULL_COLLISION_SHAPE;
+    }
+
+
+    @Override
+    protected VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return super.getOutlineShape(state, world, pos, context);
     }
 
     private SoundEvent getAddItemSound() {
@@ -77,6 +90,19 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new PedestalBlockEntity(pos, state);
+    }
+
+    @Override
+    protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        BlockState aboveState = world.getBlockState(pos.up());
+        return aboveState.isAir() || aboveState.isOf(PEDESTAL_EXTENSION);
+    }
+
+    @Override
+    protected BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
+        return !state.canPlaceAt(world, pos)
+                ? Blocks.AIR.getDefaultState()
+                : super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override
@@ -111,7 +137,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         BlockEntity blockEntity = world.getBlockEntity(pos);
         BlockPos aboveBlock = pos.up();
 
-        if (!world.getBlockState(aboveBlock).isAir()){
+        if (!world.getBlockState(aboveBlock).isOf(PEDESTAL_EXTENSION)){
             return ActionResult.FAIL;
         }
 
@@ -137,7 +163,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             }
             if(pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isOf(Items.SHEARS)) {
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
                 pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
                 world.playSound(null, pos, getRemoveCarpetSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 playerHeldItem.damage(1, player);
@@ -227,6 +253,11 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     }
 
     @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        world.setBlockState(pos.up(), PEDESTAL_EXTENSION.getDefaultState());
+    }
+
+    @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
 
@@ -240,6 +271,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
         }
         world.removeBlockEntity(pos);
+        world.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
     }
 
@@ -253,6 +285,8 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         if (state.getBlock() != newState.getBlock() && newState.getBlock() instanceof PedestalBlock) {
             assert pedestalBlockEntity != null;
             pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
+        } else {
+            onBreak(world, pos, state, world.getClosestPlayer(0, 0, 0, 0, true));
         }
     }
 

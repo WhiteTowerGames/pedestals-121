@@ -5,6 +5,7 @@ import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.OxidizablePedestalBlock;
 import net.chris.pedestals.block.blocks.PedestalBlock;
+import net.chris.pedestals.block.blocks.PedestalExtensionBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
@@ -445,8 +446,17 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.WOOL)
                     .nonOpaque()
                     .burnable()));
-    
 
+    /// Pedestal Extension Block (I can't believe I'm doing this):
+    
+    public static final Block PEDESTAL_EXTENSION = registerBlock("pedestal_extension",
+            new PedestalExtensionBlock(AbstractBlock.Settings.copy(GLASS)
+                    .dropsNothing()
+                    .nonOpaque()
+                    .strength(-1f, 3600000)
+                    .noBlockBreakParticles()
+                    .noCollision()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "pedestal_extension")))));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

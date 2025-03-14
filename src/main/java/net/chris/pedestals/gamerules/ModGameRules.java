@@ -18,5 +18,8 @@ public class ModGameRules {
     public static final GameRules.Key<GameRules.BooleanRule> LOCKED_PEDESTALS_UNBREAKABLE =
             GameRuleRegistry.register("lockedPedestalsUnbreakable", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false));
 
+    public static final GameRules.Key<GameRules.BooleanRule> DUSTY_LOCKBOXES =
+            GameRuleRegistry.register("dustyLockboxes", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(true));
+
     public static void initialize() {}
 }

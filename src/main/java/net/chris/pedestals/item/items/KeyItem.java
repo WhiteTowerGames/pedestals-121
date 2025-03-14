@@ -24,6 +24,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
+
 public class KeyItem extends Item {
     public KeyItem(Settings settings) {
         super(settings);
@@ -33,6 +34,7 @@ public class KeyItem extends Item {
     private SoundEvent getWrongKeySound() {return SoundEvents.BLOCK_VAULT_REJECT_REWARDED_PLAYER;}
     private SoundEvent getRegisterSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM_FAIL;}
 
+//TODO FIX JANKY ITEM SPAWNING AND TRANSFER LOCKBOX INTERACTIONS TO PEDESTAL EXTENSION BLOCK
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
@@ -62,7 +64,7 @@ public class KeyItem extends Item {
                 if (isLockboxMapped && isStackMapped) {
                     if(stackUUID.equals(lockboxUUID)) {
                         pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-                        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5,
+                        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5,
                                 lockboxStack, 0.0, 0.2, 0.0);
                         if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
                             serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);

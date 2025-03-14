@@ -2,6 +2,7 @@ package net.chris.pedestals.block.entity;
 
 import net.chris.pedestals.components.LockboxDustComponent;
 import net.chris.pedestals.components.ModComponents;
+import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventories;
@@ -233,7 +234,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             if (!(hasStoredItem() && !hasStoredCarpet() && !hasStoredLockbox())) {
                 markDirty();
             }
-            if (hasStoredLockbox()) {
+            if (hasStoredLockbox() && ModGameRuleCache.areLockboxesDusty()) {
                 int currentDust = Objects.requireNonNull(getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
                 if (currentDust < 4) {
                     // If dustDelay is 0, run the random chance
@@ -244,7 +245,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                             getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
                         }
                         // Reset the dustDelay to run the random check again after a set amount of ticks
-                        dustDelay = 2000;  // 50 ticks delay (change as needed)
+                        dustDelay = 2000;  // 2000 ticks delay (change as desired)
                     } else {
                         // Decrease the delay counter every tick
                         dustDelay--;
