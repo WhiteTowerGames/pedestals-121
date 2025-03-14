@@ -720,10 +720,6 @@ public class ModBlocks {
             entries.addAfter(PURPLE_CARPET, PURPLE_GILDED_CARPET);
             entries.addAfter(MAGENTA_CARPET, MAGENTA_GILDED_CARPET);
             entries.addAfter(PINK_CARPET, PINK_GILDED_CARPET);
-            //entries.addAfter(GLASS, GLASS_LOCKBOX);
-//            for (int i = 0; i<15; i++) {
-//                entries.addAfter(ALL_STAINED_GLASS.get(i)) ALL_COLORED_LOCKBOXES.get(i));
-//            }
         });
 
         registerOxidationAndWaxing();

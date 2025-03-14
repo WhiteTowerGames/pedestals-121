@@ -1,5 +1,6 @@
 package net.chris.pedestals.block.entity;
 
+import net.chris.pedestals.components.ModComponents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
@@ -15,6 +16,8 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
+
+import static net.chris.pedestals.item.ModItems.*;
 
 @SuppressWarnings({"IntegerDivisionInFloatingPointContext", "DataFlowIssue"})
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity>{
@@ -119,10 +122,20 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         matrices.scale(1.1f,1.1f,1.1f);
 
         itemRenderer.renderItem(lockbox, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-
+        matrices.scale(1.01f,1.01f,1.01f);
+        int dustLevel = lockbox.get(ModComponents.LOCKBOX_DUST_COMPONENT).dustLevel();
+        if (dustLevel > 0) {
+            switch (dustLevel) {
+                case 1 -> itemRenderer.renderItem(DUST_1.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 2 -> itemRenderer.renderItem(DUST_2.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 3 -> itemRenderer.renderItem(DUST_3.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 4 -> itemRenderer.renderItem(DUST_4.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+            }
+        }
         matrices.pop();
 
     }
+
 
     @Override
     public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
@@ -142,7 +155,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
             ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
             matrices.scale(1.2f,1.2f,1.2f);
-            itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
+        itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
                     light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             matrices.pop();
 

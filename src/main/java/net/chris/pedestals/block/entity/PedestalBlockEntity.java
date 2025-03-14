@@ -1,6 +1,7 @@
 package net.chris.pedestals.block.entity;
 
-import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.components.LockboxDustComponent;
+import net.chris.pedestals.components.ModComponents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventories;
@@ -17,6 +18,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
 
@@ -217,10 +220,11 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     int tickCount = 0;
 
+    private int dustDelay = 2000;
+
     @Override
     public void tick() {
         if(this.world != null && !this.world.isClient) {
-            Pedestals121.LOGGER.info("{}", world.getBlockState(pos).getBlock().getBlastResistance());
             tickCount++;
             if (tickCount % 5 == 0) {
                 getStoredItem();
@@ -228,6 +232,24 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             }
             if (!(hasStoredItem() && !hasStoredCarpet() && !hasStoredLockbox())) {
                 markDirty();
+            }
+            if (hasStoredLockbox()) {
+                int currentDust = Objects.requireNonNull(getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
+                if (currentDust < 4) {
+                    // If dustDelay is 0, run the random chance
+                    if (dustDelay == 0) {
+                        // Only trigger the dust level increment about 5% of the time (1 in 200 ticks)
+                        if (this.world.getRandom().nextInt(200) < 10) {
+                            // Increase dust level by 1
+                            getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
+                        }
+                        // Reset the dustDelay to run the random check again after a set amount of ticks
+                        dustDelay = 2000;  // 50 ticks delay (change as needed)
+                    } else {
+                        // Decrease the delay counter every tick
+                        dustDelay--;
+                    }
+                }
             }
         }
     }

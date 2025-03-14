@@ -1,6 +1,7 @@
 package net.chris.pedestals.item;
 
 import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.components.LockboxDustComponent;
 import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.components.LockAndKeyDataComponent;
 import net.chris.pedestals.components.UnlocksLockboxesComponent;
@@ -39,75 +40,80 @@ public class ModItems {
             .maxDamage(1)
             .rarity(Rarity.UNCOMMON));
 
+    public static final Item DUST_1 = registerItem("dust_1", Item::new, new Item.Settings());
+    public static final Item DUST_2 = registerItem("dust_2", Item::new, new Item.Settings());
+    public static final Item DUST_3 = registerItem("dust_3", Item::new, new Item.Settings());
+    public static final Item DUST_4 = registerItem("dust_4", Item::new, new Item.Settings());
+
     /// Lockboxes:
 
     public static final Item GLASS_LOCKBOX = registerItem("glass_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item LIGHT_GRAY_LOCKBOX = registerItem("light_gray_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item GRAY_LOCKBOX = registerItem("gray_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item BLACK_LOCKBOX = registerItem("black_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item BROWN_LOCKBOX = registerItem("brown_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item RED_LOCKBOX = registerItem("red_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item ORANGE_LOCKBOX = registerItem("orange_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item YELLOW_LOCKBOX = registerItem("yellow_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item LIME_LOCKBOX = registerItem("lime_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item GREEN_LOCKBOX = registerItem("green_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item CYAN_LOCKBOX = registerItem("cyan_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item LIGHT_BLUE_LOCKBOX = registerItem("light_blue_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item BLUE_LOCKBOX = registerItem("blue_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item WHITE_LOCKBOX = registerItem("white_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item PURPLE_LOCKBOX = registerItem("purple_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item MAGENTA_LOCKBOX = registerItem("magenta_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final Item PINK_LOCKBOX = registerItem("pink_lockbox", LockboxItem::new, new Item.Settings()
             .maxCount(1)
-            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)));
+            .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
     public static final List<Item> ALL_COLORED_LOCKBOXES = List.of(
             WHITE_LOCKBOX,
