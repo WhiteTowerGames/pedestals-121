@@ -38,7 +38,6 @@ import net.minecraft.world.tick.ScheduledTickView;
 import org.jetbrains.annotations.Nullable;
 
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
-import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
 public class PedestalBlock extends Block implements BlockEntityProvider{
 
@@ -230,7 +229,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if(blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && direction == Direction.UP){
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
-            if (storedItem.isOf(TOTEM_OF_UNDYING)) {
+            if (PedestalBlockEntity.ITEM_PARTICLE_MAP.containsKey(pedestalBlockEntity.getStoredItem().getItem())) {
                 return 15;
             }
             return storedItem.getRarity()== Rarity.EPIC ? 15 : 0;
