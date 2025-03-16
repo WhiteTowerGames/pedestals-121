@@ -39,7 +39,7 @@ public class LockArtifactWithCarpetCriterion extends AbstractCriterion<LockArtif
                 return false;
             }
             //Then, we decide whether to trigger the advancement based on whether the item is an artifact (Items that emit particles in pedestals).
-            return PedestalBlockEntity.ITEM_PARTICLE_MAP.containsKey(storedLockbox.getItem());
+            return PedestalBlockEntity.ITEM_PARTICLE_MAP.containsKey(storedItem.getItem());
         }
     }
     public void trigger(ServerPlayerEntity player, ItemStack storedItem, ItemStack storedCarpet, ItemStack storedLockbox) {
