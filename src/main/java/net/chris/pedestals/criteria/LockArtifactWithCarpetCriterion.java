@@ -3,6 +3,7 @@ package net.chris.pedestals.criteria;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.chris.pedestals.Pedestals121;
+import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.entity.LootContextPredicate;
@@ -11,11 +12,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
-public class LockTotemWithCarpetCriterion extends AbstractCriterion<LockTotemWithCarpetCriterion.Conditions> {
+public class LockArtifactWithCarpetCriterion extends AbstractCriterion<LockArtifactWithCarpetCriterion.Conditions> {
 
-    public static final Identifier ID = Identifier.of(Pedestals121.MOD_ID, "lock_totem_with_carpet");
+    public static final Identifier ID = Identifier.of(Pedestals121.MOD_ID, "lock_artifact_with_carpet");
 
     @Override
     public Codec<Conditions> getConditionsCodec() {
@@ -24,7 +24,7 @@ public class LockTotemWithCarpetCriterion extends AbstractCriterion<LockTotemWit
 
     public record Conditions(Optional<LootContextPredicate> playerPredicate) implements AbstractCriterion.Conditions {
 
-        public static Codec<LockTotemWithCarpetCriterion.Conditions> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+        public static Codec<LockArtifactWithCarpetCriterion.Conditions> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 LootContextPredicate.CODEC.optionalFieldOf("player").forGetter(Conditions::player)
         ).apply(instance, Conditions::new));
 
@@ -38,8 +38,8 @@ public class LockTotemWithCarpetCriterion extends AbstractCriterion<LockTotemWit
             if (storedItem.isEmpty() || storedCarpet.isEmpty() || storedLockbox.isEmpty()) {
                 return false;
             }
-            //Then, we decide whether to trigger the advancement based on whether the item is a totem.
-            return storedItem.isOf(TOTEM_OF_UNDYING);
+            //Then, we decide whether to trigger the advancement based on whether the item is an artifact (Items that emit particles in pedestals).
+            return PedestalBlockEntity.ITEM_PARTICLE_MAP.containsKey(storedLockbox.getItem());
         }
     }
     public void trigger(ServerPlayerEntity player, ItemStack storedItem, ItemStack storedCarpet, ItemStack storedLockbox) {

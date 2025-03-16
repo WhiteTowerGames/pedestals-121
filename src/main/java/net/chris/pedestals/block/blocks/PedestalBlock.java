@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
+import net.chris.pedestals.datagen.ModBlockTagProvider;
 import net.chris.pedestals.datagen.ModItemTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -157,7 +158,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 world.playSound(null, pos, getAddCarpetSoundWool(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.playSound(null, pos, getAddCarpetSoundChain(), SoundCategory.BLOCKS, 0.15F, 1.0F);
                 if (player instanceof ServerPlayerEntity serverPlayer) {
-                    ModCriteria.LOCK_TOTEM_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+                    ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
                 }
                 return ActionResult.SUCCESS;
 
@@ -181,7 +182,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                             10, 0.3, 0.2, 0.3, 0.03);
                 }
                 if (player instanceof ServerPlayerEntity serverPlayer) {
-                    ModCriteria.LOCK_TOTEM_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+                    ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
                 }
                 return ActionResult.SUCCESS;
             }
@@ -277,7 +278,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     @Override
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
-        if (state.getBlock() != newState.getBlock() && newState.getBlock() instanceof PedestalBlock) {
+        if (state.getBlock() != newState.getBlock() && newState.isIn(ModBlockTagProvider.PEDESTAL_BLOCKS)) {
             assert pedestalBlockEntity != null;
             pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
         } else {

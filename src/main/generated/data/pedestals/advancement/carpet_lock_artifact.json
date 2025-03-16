@@ -1,13 +1,13 @@
 {
   "parent": "pedestals:get_lockbox",
   "criteria": {
-    "carpet_lock_totem": {
-      "trigger": "pedestals:lock_totem_with_carpet"
+    "carpet_lock_artifact": {
+      "trigger": "pedestals:lock_artifact_with_carpet"
     }
   },
   "display": {
     "description": {
-      "translate": "advancement.pedestals.carpet_lock_totem_desc"
+      "translate": "advancement.pedestals.carpet_lock_artifact_desc"
     },
     "frame": "challenge",
     "icon": {
@@ -15,12 +15,12 @@
       "id": "minecraft:totem_of_undying"
     },
     "title": {
-      "translate": "advancement.pedestals.carpet_lock_totem_title"
+      "translate": "advancement.pedestals.carpet_lock_artifact_title"
     }
   },
   "requirements": [
     [
-      "carpet_lock_totem"
+      "carpet_lock_artifact"
     ]
   ],
   "rewards": {

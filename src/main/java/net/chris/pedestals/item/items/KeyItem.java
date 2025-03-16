@@ -36,8 +36,6 @@ public class KeyItem extends Item {
     private SoundEvent getWrongKeySound() {return SoundEvents.BLOCK_VAULT_REJECT_REWARDED_PLAYER;}
     private SoundEvent getRegisterSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM_FAIL;}
 
-//TODO FIX JANKY ITEM SPAWNING AND TRANSFER LOCKBOX INTERACTIONS TO PEDESTAL EXTENSION BLOCK
-
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
@@ -66,43 +64,51 @@ public class KeyItem extends Item {
 
                 if (isLockboxMapped && isStackMapped) {
                     if(stackUUID.equals(lockboxUUID)) {
-                        pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-                        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5,
-                                lockboxStack, 0.0, 0.2, 0.0);
-                        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
-                            serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);
-                            ModCriteria.USE_KEY_ON_LOCKBOX.trigger(serverPlayer);
-                        }
-                        world.spawnEntity(itemEntity);
-                        world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                        openCase(pedestalBlockEntity, world, pos, lockboxStack, player);
                     } else {
-                        if (!world.isClient) {
-                            assert player != null;
-                            player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
-                        }
-                        world.playSound(null, pos, getWrongKeySound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                        wrongKey(world, player, pos);
                     }
                     return ActionResult.SUCCESS;
                 }
                 if (!isLockboxMapped && !isStackMapped) {
-                    stack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true, isStackCopy));
-                    lockboxStack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true));
-                    world.playSound(null, pos, getRegisterSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                    if (!world.isClient) {
-                        assert player != null;
-                        player.sendMessage(Text.translatable("messages.pedestals.key_map"), true);
-                    }
-                    return ActionResult.SUCCESS;
+                    return mapKeyToLockbox(stack, lockboxUUID, isStackCopy, lockboxStack, world, pos, player);
                 }
-                if (!world.isClient) {
-                    assert player != null;
-                    player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
-                }
-                world.playSound(null, pos, getWrongKeySound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                wrongKey(world, player, pos);
                 return ActionResult.SUCCESS;
             }
         }
         return ActionResult.PASS;
+    }
+
+    private ActionResult mapKeyToLockbox(ItemStack stack, UUID lockboxUUID, boolean isStackCopy, ItemStack lockboxStack, World world, BlockPos pos, PlayerEntity player) {
+        stack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true, isStackCopy));
+        lockboxStack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true));
+        world.playSound(null, pos, getRegisterSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+        if (!world.isClient) {
+            assert player != null;
+            player.sendMessage(Text.translatable("messages.pedestals.key_map"), true);
+        }
+        return ActionResult.SUCCESS;
+    }
+
+    private void wrongKey(World world, PlayerEntity player, BlockPos pos) {
+        if (!world.isClient) {
+            assert player != null;
+            player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
+        }
+        world.playSound(null, pos, getWrongKeySound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+    }
+
+    private void openCase(PedestalBlockEntity pedestalBlockEntity, World world, BlockPos pos, ItemStack lockboxStack, PlayerEntity player) {
+        pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
+        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+0.75, pos.getZ()+0.5,
+                lockboxStack, 0.0, 0.2, 0.0);
+        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
+            serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);
+            ModCriteria.USE_KEY_ON_LOCKBOX.trigger(serverPlayer);
+        }
+        world.spawnEntity(itemEntity);
+        world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
     }
 
     @Override

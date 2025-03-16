@@ -10,6 +10,7 @@ public class ModGameRuleCache {
     private static boolean lockedPedestalsUnbreakable = false;
     private static int percentLockpickSuccessChance = 15;
     private static boolean dustyLockboxes = true;
+    private static boolean displayedItemParticles = true;
 
     public static boolean isInfiniteKeyDupingEnabled() {
         return infiniteKeyDuping;
@@ -31,6 +32,8 @@ public class ModGameRuleCache {
         return dustyLockboxes;
     }
 
+    public static boolean pedestalsDisplayParticles() {return displayedItemParticles;}
+
     public static void register() {
         ServerTickEvents.END_WORLD_TICK.register((world) -> {
             if (world.getRegistryKey() == World.OVERWORLD) {
@@ -39,8 +42,8 @@ public class ModGameRuleCache {
                 percentLockpickSuccessChance = world.getGameRules().getInt(ModGameRules.LOCKPICK_SUCCESS_CHANCE);
                 lockedPedestalsUnbreakable = world.getGameRules().getBoolean(ModGameRules.LOCKED_PEDESTALS_UNBREAKABLE);
                 dustyLockboxes = world.getGameRules().getBoolean(ModGameRules.DUSTY_LOCKBOXES);
+                displayedItemParticles = world.getGameRules().getBoolean(ModGameRules.DISPLAY_PARTICLES);
             }
         });
     }
-
 }

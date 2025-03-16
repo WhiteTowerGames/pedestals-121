@@ -61,8 +61,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
     public static final Text pick_lock_title = Text.translatable("advancement.pedestals.pick_lock_title");
     public static final Text pick_lock_desc = Text.translatable("advancement.pedestals.pick_lock_desc");
 
-    public static final Text carpet_lock_totem_title = Text.translatable("advancement.pedestals.carpet_lock_totem_title");
-    public static final Text carpet_lock_totem_desc = Text.translatable("advancement.pedestals.carpet_lock_totem_desc");
+    public static final Text carpet_lock_artifact_title = Text.translatable("advancement.pedestals.carpet_lock_artifact_title");
+    public static final Text carpet_lock_artifact_desc = Text.translatable("advancement.pedestals.carpet_lock_artifact_desc");
 
     public static final Text all_the_colors_title = Text.translatable("advancement.pedestals.all_the_colors_title");
     public static final Text all_the_colors_desc = Text.translatable("advancement.pedestals.all_the_colors_desc");
@@ -270,20 +270,20 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                         new UseLockpickCriterion.Conditions(Optional.empty())
                 )).build(consumer, Pedestals121.MOD_ID+":pick_lock");
 
-        AdvancementEntry carpet_lock_totem = Advancement.Builder.create()
+        AdvancementEntry carpet_lock_artifact = Advancement.Builder.create()
                 .parent(get_lockbox)
                 .display(TOTEM_OF_UNDYING,
-                        carpet_lock_totem_title,
-                        carpet_lock_totem_desc,
+                        carpet_lock_artifact_title,
+                        carpet_lock_artifact_desc,
                         null,
                         AdvancementFrame.CHALLENGE,
                         true,
                         true,
                         false)
                 .rewards(AdvancementRewards.Builder.experience(80).build())
-                .criterion("carpet_lock_totem", ModCriteria.LOCK_TOTEM_WITH_CARPET.create(
-                        new LockTotemWithCarpetCriterion.Conditions(Optional.empty())
-                )).build(consumer, Pedestals121.MOD_ID+":carpet_lock_totem");
+                .criterion("carpet_lock_artifact", ModCriteria.LOCK_ARTIFACT_WITH_CARPET.create(
+                        new LockArtifactWithCarpetCriterion.Conditions(Optional.empty())
+                )).build(consumer, Pedestals121.MOD_ID+":carpet_lock_artifact");
 
         AdvancementEntry fully_clean_lockbox = Advancement.Builder.create()
                 .parent(get_lockbox)

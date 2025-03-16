@@ -6,6 +6,7 @@ import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -21,9 +23,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
+import static net.minecraft.item.Items.*;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
 
@@ -241,32 +245,55 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 markDirty();
             }
             if (hasStoredLockbox() && ModGameRuleCache.areLockboxesDusty()) {
-                int currentDust = Objects.requireNonNull(getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
-                if (currentDust < 4) {
-                    // If dustDelay is 0, run the random chance
-                    if (dustDelay == 0) {
-                        // Only trigger the dust level increment 10% of the time
-                        if (this.world.getRandom().nextInt(100) < 10) {
-                            // Increase dust level by 1
-                            getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
-                        }
-                        // Reset the dustDelay to run the random check again after a set amount of ticks
-                        dustDelay = 2400;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
-                    } else {
-                        // Decrease the delay counter every tick
-                        dustDelay--;
-                    }
-                }
+                tryDust(this.world);
             }
-            if (world instanceof ServerWorld serverWorld && this.getStoredItem().isOf(TOTEM_OF_UNDYING)) {
-                if (totemParticleDelay == 0) {
-                    serverWorld.spawnParticles(ParticleTypes.TRIAL_SPAWNER_DETECTION, pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
-                            3, 0.5, 0.5, 0.5, 0.03);
-                    totemParticleDelay = 10;
-                } else {
-                    totemParticleDelay--;
-                }
+            if (this.world instanceof ServerWorld serverWorld
+                    && ModGameRuleCache.pedestalsDisplayParticles()
+                    && ITEM_PARTICLE_MAP.containsKey(getStoredItem().getItem())) {
+
+                displayItemParticles(serverWorld);
+
             }
+        }
+    }
+
+    private void tryDust(World world) {
+        int currentDust = Objects.requireNonNull(getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
+        if (currentDust < 4) {
+            // If dustDelay is 0, run the random chance
+            if (dustDelay == 0) {
+                // Only trigger the dust level increment 10% of the time
+                if (world.getRandom().nextInt(100) < 10) {
+                    // Increase dust level by 1
+                    getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
+                }
+                // Reset the dustDelay to run the random check again after a set amount of ticks
+                dustDelay = 2400;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
+            } else {
+                // Decrease the delay counter every tick
+                dustDelay--;
+            }
+        }
+    }
+
+    public static final HashMap<Item, SimpleParticleType> ITEM_PARTICLE_MAP = new HashMap<>(Map.of(
+            TOTEM_OF_UNDYING, ParticleTypes.TRIAL_SPAWNER_DETECTION,
+            TRIDENT, ParticleTypes.FISHING,
+            MACE, ParticleTypes.TRIAL_SPAWNER_DETECTION_OMINOUS,
+            ENCHANTED_GOLDEN_APPLE, ParticleTypes.SCRAPE,
+            WITHER_SKELETON_SKULL, ParticleTypes.SMOKE,
+            SCULK_CATALYST, ParticleTypes.SCULK_SOUL,
+            DRAGON_EGG, ParticleTypes.DRAGON_BREATH,
+            NETHER_STAR, ParticleTypes.END_ROD,
+            HEART_OF_THE_SEA, ParticleTypes.NAUTILUS));
+
+    private void displayItemParticles(ServerWorld serverWorld) {
+        if (totemParticleDelay == 0) {
+            serverWorld.spawnParticles(ITEM_PARTICLE_MAP.get(getStoredItem().getItem()), pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
+                    4, 0.5, 0.5, 0.5, 0.03);
+            totemParticleDelay = 10;
+        } else {
+            totemParticleDelay--;
         }
     }
 }

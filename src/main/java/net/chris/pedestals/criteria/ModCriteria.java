@@ -11,8 +11,8 @@ public class ModCriteria {
     public static final PlacePedestalOnPedestalCriterion PLACE_PEDESTAL_ON_PEDESTAL = Criteria.register(
             PlacePedestalOnPedestalCriterion.ID.toString(), new PlacePedestalOnPedestalCriterion());
 
-    public static final LockTotemWithCarpetCriterion LOCK_TOTEM_WITH_CARPET = Criteria.register(
-            LockTotemWithCarpetCriterion.ID.toString(), new LockTotemWithCarpetCriterion());
+    public static final LockArtifactWithCarpetCriterion LOCK_ARTIFACT_WITH_CARPET = Criteria.register(
+            LockArtifactWithCarpetCriterion.ID.toString(), new LockArtifactWithCarpetCriterion());
 
     public static final UseKeyOnLockboxCriterion USE_KEY_ON_LOCKBOX = Criteria.register(
             UseKeyOnLockboxCriterion.ID.toString(), new UseKeyOnLockboxCriterion());

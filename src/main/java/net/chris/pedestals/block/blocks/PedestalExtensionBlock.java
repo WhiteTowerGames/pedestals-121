@@ -110,4 +110,9 @@ public class PedestalExtensionBlock extends Block {
         }
         return ActionResult.FAIL;
     }
+
+    @Override
+    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
+        return world.getBlockState(pos.down()).getPickStack(world, pos.down(), true);
+    }
 }

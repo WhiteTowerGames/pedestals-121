@@ -21,5 +21,8 @@ public class ModGameRules {
     public static final GameRules.Key<GameRules.BooleanRule> DUSTY_LOCKBOXES =
             GameRuleRegistry.register("dustyLockboxes", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(true));
 
+    public static final GameRules.Key<GameRules.BooleanRule> DISPLAY_PARTICLES =
+            GameRuleRegistry.register("displayedItemParticles", GameRules.Category.MISC, GameRuleFactory.createBooleanRule(true));
+
     public static void initialize() {}
 }

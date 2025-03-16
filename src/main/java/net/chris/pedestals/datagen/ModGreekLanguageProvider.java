@@ -247,8 +247,8 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.pick_lock_title, "Ξεκλείδωμα 100");
         addText(translationBuilder, ModAdvancementProvider.pick_lock_desc, "Διάρρηξε με επιτυχία την κλειδαριά μιας προθήκης ώστε να αποκτήσεις πρόσβαση στο περιεχόμενό της.");
 
-        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_title, "Αρχαιοκαπηλεία");
-        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_desc, "Τοποθέτησε ένα Τοτέμ της Αθανασίας σε ένα βάθρο με σεμεδάκι, και ασφάλισέ το με μια προθήκη.");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_title, "Αρχαιοκαπηλεία");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_desc, "Τοποθέτησε ένα κειμήλιο σε ένα βάθρο με σεμεδάκι, και ασφάλισέ το με μια προθήκη.");
 
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Όλο το Ουράνιο Τόξο!");
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "Μία πληθώρα επιλογών για να κάνεις τα βάθρα σου να ξεχωρίζουν!");

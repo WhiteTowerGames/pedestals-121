@@ -242,8 +242,8 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.pick_lock_title, "Lockpicking 100");
         addText(translationBuilder, ModAdvancementProvider.pick_lock_desc, "Successfully pick the lock on a Lockbox to relieve it of its contents.");
 
-        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_title, "It Belongs in a Museum!");
-        addText(translationBuilder, ModAdvancementProvider.carpet_lock_totem_desc, "So did the Evoker. Place a Totem of Undying on a carpeted pedestal, and secure it with a lockbox.");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_title, "It Belongs in a Museum!");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_desc, "Place an artifact on a carpeted Pedestal, and secure it with a lockbox.");
 
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Taste the Rainbow");
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "A rainbow of options to make your displays pop!");
