@@ -183,7 +183,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(CREATIVE_KEY, "Skeleton Key");
         translationBuilder.add(LOCKPICK, "Lockpick");
 
-        /// Key Tooltips & Messages:
+        /// Item Tooltips:
         translationBuilder.add("itemtooltip.pedestals.creative_key", "This can unlock any lockbox!");
         translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l1", "Lockpicks have been disabled via");
         translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l2", "the enableLockpicks gamerule.");
@@ -194,11 +194,14 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l1", "This key has not been bound yet.");
         translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l2", "Right click an unregistered lockbox to bind!");
         translationBuilder.add("itemtooltip.pedestals.key_clone", "Duplicate Key");
+
+        /// Messages:
         translationBuilder.add("messages.pedestals.key_open", "Case Opened!");
         translationBuilder.add("messages.pedestals.key_wrong", "Incorrect Key!");
         translationBuilder.add("messages.pedestals.key_map", "Key Registered!");
         translationBuilder.add("messages.pedestals.lockpicking_failed", "Lockpicking attempt failed!");
         translationBuilder.add("messages.pedestals.lockpicking_success", "Lock picked!");
+        translationBuilder.add("messages.pedestals.try_break_lockbox", "The glass appears impenetrable... But perhaps there is another way to open it.");
 
         /// Sounds:
         translationBuilder.add("sound.pedestals.lockpick_increase", "Lockpicking Increases");
@@ -244,6 +247,9 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Taste the Rainbow");
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "A rainbow of options to make your displays pop!");
+
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_title, "Squeaky Clean");
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_desc, "Restore a dusty Lockbox to its former condition with the Brush.");
     }
 
     private static @NotNull String getActualName(int i) {

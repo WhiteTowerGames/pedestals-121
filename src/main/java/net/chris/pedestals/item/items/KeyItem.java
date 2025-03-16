@@ -24,6 +24,8 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
+import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
+
 
 public class KeyItem extends Item {
     public KeyItem(Settings settings) {
@@ -41,7 +43,7 @@ public class KeyItem extends Item {
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos();
         ItemStack stack = context.getStack();
-        BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockEntity blockEntity = world.getBlockEntity(pos.down());
         PlayerEntity player = context.getPlayer();
 
         LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
@@ -50,8 +52,9 @@ public class KeyItem extends Item {
         UUID stackUUID = stackComponent.uuid();
         boolean isStackMapped = stackComponent.isMapped();
         boolean isStackCopy = stackComponent.isCopy();
+        boolean isTargetExtensionBlock = world.getBlockState(pos).isOf(PEDESTAL_EXTENSION);
 
-        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+        if (isTargetExtensionBlock && blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
 
             if (pedestalBlockEntity.hasStoredLockbox()) {
 

@@ -1,0 +1,26 @@
+{
+  "parent": "pedestals:get_lockbox",
+  "criteria": {
+    "fully_clean_lockbox": {
+      "trigger": "pedestals:fully_clean_lockbox"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pedestals.fully_clean_lockbox_desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:brush"
+    },
+    "title": {
+      "translate": "advancement.pedestals.fully_clean_lockbox_title"
+    }
+  },
+  "requirements": [
+    [
+      "fully_clean_lockbox"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -21,6 +22,8 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+
+import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
 
@@ -87,6 +90,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         }
     }
 
+    @Deprecated
     public ItemStack removeStoredItem() {
         return removeStack(0);
     }
@@ -180,6 +184,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         }
     }
 
+    @SuppressWarnings("CodeBlock2Expr")
     @Override
     public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
@@ -222,6 +227,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     int tickCount = 0;
 
     private int dustDelay = 2000;
+    private int totemParticleDelay = 10;
 
     @Override
     public void tick() {
@@ -239,17 +245,26 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 if (currentDust < 4) {
                     // If dustDelay is 0, run the random chance
                     if (dustDelay == 0) {
-                        // Only trigger the dust level increment about 5% of the time (1 in 200 ticks)
-                        if (this.world.getRandom().nextInt(200) < 10) {
+                        // Only trigger the dust level increment 6.25% of the time
+                        if (this.world.getRandom().nextInt(160) < 10) {
                             // Increase dust level by 1
                             getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
                         }
                         // Reset the dustDelay to run the random check again after a set amount of ticks
-                        dustDelay = 2000;  // 2000 ticks delay (change as desired)
+                        dustDelay = 2000;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
                     } else {
                         // Decrease the delay counter every tick
                         dustDelay--;
                     }
+                }
+            }
+            if (world instanceof ServerWorld serverWorld && this.getStoredItem().isOf(TOTEM_OF_UNDYING)) {
+                if (totemParticleDelay == 0) {
+                    serverWorld.spawnParticles(ParticleTypes.TRIAL_SPAWNER_DETECTION, pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
+                            3, 0.5, 0.5, 0.5, 0.03);
+                    totemParticleDelay = 10;
+                } else {
+                    totemParticleDelay--;
                 }
             }
         }

@@ -22,6 +22,7 @@ import java.util.function.Consumer;
 
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
+import static net.minecraft.item.Items.BRUSH;
 import static net.minecraft.item.Items.TOTEM_OF_UNDYING;
 
 public class ModAdvancementProvider extends FabricAdvancementProvider{
@@ -66,6 +67,10 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
     public static final Text all_the_colors_title = Text.translatable("advancement.pedestals.all_the_colors_title");
     public static final Text all_the_colors_desc = Text.translatable("advancement.pedestals.all_the_colors_desc");
 
+    public static final Text fully_clean_lockbox_title = Text.translatable("advancement.pedestals.fully_clean_lockbox_title");
+    public static final Text fully_clean_lockbox_desc = Text.translatable("advancement.pedestals.fully_clean_lockbox_desc");
+
+    @SuppressWarnings("unused")
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
 
@@ -280,6 +285,20 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                         new LockTotemWithCarpetCriterion.Conditions(Optional.empty())
                 )).build(consumer, Pedestals121.MOD_ID+":carpet_lock_totem");
 
+        AdvancementEntry fully_clean_lockbox = Advancement.Builder.create()
+                .parent(get_lockbox)
+                .display(BRUSH,
+                        fully_clean_lockbox_title,
+                        fully_clean_lockbox_desc,
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false)
+                .criterion("fully_clean_lockbox", ModCriteria.FULLY_CLEAN_LOCKBOX.create(
+                        new FullyCleanLockboxCriterion.Conditions(Optional.empty())
+                )).build(consumer, Pedestals121.MOD_ID + ":fully_clean_lockbox");
+        
     }
 
 }

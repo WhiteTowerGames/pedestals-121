@@ -1,7 +1,6 @@
 package net.chris.pedestals.block.blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
@@ -16,7 +15,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -80,7 +81,6 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     private SoundEvent getRemoveCarpetSound() {return SoundEvents.ENTITY_MOOSHROOM_SHEAR;}
 
     private SoundEvent getLockSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM_FAIL;}
-    private SoundEvent getUnlockSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM;}
 
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
@@ -176,22 +176,17 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
                 pedestalBlockEntity.setStoredLockbox(playerHeldItem.split(1));
                 world.playSound(null, pos, getLockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
+                            10, 0.3, 0.2, 0.3, 0.03);
+                }
                 if (player instanceof ServerPlayerEntity serverPlayer) {
                     ModCriteria.LOCK_TOTEM_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
                 }
                 return ActionResult.SUCCESS;
             }
-
-            if (pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.contains(ModComponents.UNLOCKS_LOCKBOXES_COMPONENT)) {
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5, pedestalBlockEntity.getStoredLockbox());
-                pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-                world.spawnEntity(itemEntity);
-                itemEntity.setVelocity(0.0, 0.13, 0.0);
-                world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                return ActionResult.SUCCESS;
-            }
             if (!player.isSneaking()) {
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.25, pos.getZ()+0.5, storedItem);
+                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, storedItem);
                 if (storedItem.isEmpty() && !playerHeldItem.isEmpty() && !pedestalBlockEntity.hasStoredLockbox()) {
 
                     pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
