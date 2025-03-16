@@ -280,7 +280,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             TOTEM_OF_UNDYING, ParticleTypes.TRIAL_SPAWNER_DETECTION,
             TRIDENT, ParticleTypes.FISHING,
             MACE, ParticleTypes.TRIAL_SPAWNER_DETECTION_OMINOUS,
-            ENCHANTED_GOLDEN_APPLE, ParticleTypes.SCRAPE,
+            ENCHANTED_GOLDEN_APPLE, ParticleTypes.ENCHANT,
             WITHER_SKELETON_SKULL, ParticleTypes.SMOKE,
             SCULK_CATALYST, ParticleTypes.SCULK_SOUL,
             DRAGON_EGG, ParticleTypes.DRAGON_BREATH,

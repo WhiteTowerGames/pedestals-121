@@ -15,7 +15,6 @@ public class Pedestals121Client implements ClientModInitializer {
     private static void handleMigrationWarningPayload(MigrationWarningPayload payload, ClientPlayNetworking.Context context) {
         ClientPlayerEntity player = context.client().player;
         assert player != null;
-        /// I tried to format it better, but it didn't work... Sorry pnku.
         player.sendMessage(Text.literal("§c§l[Pedestals V3.0] - Warning: §r§cThis update §c§lbreaks the functionality §r§cof" +
                 " §c§lpreviously placed §r§cpedestals."), false);
         player.sendMessage(Text.of("§cPlease §c§lbreak §r§cand §c§lreplace §r§cthem."), false);
