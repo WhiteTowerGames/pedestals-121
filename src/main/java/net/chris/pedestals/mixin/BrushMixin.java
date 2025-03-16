@@ -29,7 +29,6 @@ public abstract class BrushMixin {
 
     @Shadow protected abstract HitResult getHitResult(PlayerEntity user);
 
-    @Unique
     @Inject(method = "usageTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;playSound(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;)V"), cancellable = true)
     public void dustLockbox(World world, LivingEntity user, ItemStack stack, int remainingUseTicks, CallbackInfo ci) {
         BrushItem brushItem = ((BrushItem) (Object) this);

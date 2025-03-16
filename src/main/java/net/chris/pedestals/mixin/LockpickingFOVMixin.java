@@ -3,7 +3,6 @@ package net.chris.pedestals.mixin;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -13,7 +12,6 @@ import static net.chris.pedestals.item.ModItems.LOCKPICK;
 @Mixin(AbstractClientPlayerEntity.class)
 public class LockpickingFOVMixin {
 
-    @Unique
     @Inject(method = "getFovMultiplier", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isUsingItem()Z"), cancellable = true)
     public void lockpickingZoom(boolean firstPerson, float fovEffectScale, CallbackInfoReturnable<Float> cir) {
         AbstractClientPlayerEntity abstractClientPlayerEntity = ((AbstractClientPlayerEntity) (Object) this);

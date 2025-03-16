@@ -245,13 +245,13 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
                 if (currentDust < 4) {
                     // If dustDelay is 0, run the random chance
                     if (dustDelay == 0) {
-                        // Only trigger the dust level increment 6.25% of the time
-                        if (this.world.getRandom().nextInt(160) < 10) {
+                        // Only trigger the dust level increment 10% of the time
+                        if (this.world.getRandom().nextInt(100) < 10) {
                             // Increase dust level by 1
                             getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
                         }
                         // Reset the dustDelay to run the random check again after a set amount of ticks
-                        dustDelay = 2000;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
+                        dustDelay = 2400;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
                     } else {
                         // Decrease the delay counter every tick
                         dustDelay--;
