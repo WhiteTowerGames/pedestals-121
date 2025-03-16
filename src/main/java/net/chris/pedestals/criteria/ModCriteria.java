@@ -23,6 +23,9 @@ public class ModCriteria {
     public static final UseLockpickCriterion USE_LOCKPICK = Criteria.register(
             UseLockpickCriterion.ID.toString(), new UseLockpickCriterion());
 
+    public static final FullyCleanLockboxCriterion FULLY_CLEAN_LOCKBOX = Criteria.register(
+            FullyCleanLockboxCriterion.ID.toString(), new FullyCleanLockboxCriterion());
+
     public static void init(){
         Pedestals121.LOGGER.info("Registering Pedestals custom criteria!");
     }

@@ -188,7 +188,7 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(LOCKPICK, "Μαραφέτι");
         translationBuilder.add(CREATIVE_KEY, "Αντικλείδι");
 
-        /// Key Tooltips & Messages:
+        /// Item tooltips:
         translationBuilder.add("itemtooltip.pedestals.creative_key", "Αυτό το αντικλείδι μπορεί να ανοίξει οποιαδήποτε προθήκη!");
         translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l1", "Το μαραφέτι έχει απενεργοποιηθεί μέσω");
         translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l2", "του Κανόνα Παιχνιδιού enableLockpicks.");
@@ -199,11 +199,14 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l1", "Αυτό το κλειδί δεν ανήκει σε κάποια προθήκη.");
         translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l2", "Κάνε δεξί κλικ σε μία νέα προθήκη για να την ενώσεις!");
         translationBuilder.add("itemtooltip.pedestals.key_clone", "Αντίγραφο");
+
+        /// Messages:
         translationBuilder.add("messages.pedestals.key_open", "Η προθήκη άνοιξε!");
         translationBuilder.add("messages.pedestals.key_wrong", "Αυτό το κλειδί δεν είναι σωστό...");
         translationBuilder.add("messages.pedestals.key_map", "Το κλειδί και η προθήκη ενώθηκαν!");
         translationBuilder.add("messages.pedestals.lockpicking_failed", "Δεν κατάφερες να διαρρήξεις την κλειδαριά...");
         translationBuilder.add("messages.pedestals.lockpicking_success", "Διέρρηξες την κλειδαριά!");
+        translationBuilder.add("messages.pedestals.try_break_lockbox", "Το γυαλί φαίνεται άθραυστο... ίσως μπορείς με κάποιο τρόπο να το ανοίξεις.");
 
         /// Sounds:
         translationBuilder.add("sound.pedestals.lockpick_increase", "Διάρρηξη αναβαθμίζεται");
@@ -250,5 +253,7 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Όλο το Ουράνιο Τόξο!");
         addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "Μία πληθώρα επιλογών για να κάνεις τα βάθρα σου να ξεχωρίζουν!");
 
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_title, "Η Μισή Αρχοντιά");
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_desc, "Επανάφερε μία σκονισμένη Προθήκη σε καθαρή κατάσταση με τo Ξεσκονιστήρι.");
     }
 }

@@ -24,6 +24,9 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
+import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
+
+
 public class KeyItem extends Item {
     public KeyItem(Settings settings) {
         super(settings);
@@ -33,13 +36,14 @@ public class KeyItem extends Item {
     private SoundEvent getWrongKeySound() {return SoundEvents.BLOCK_VAULT_REJECT_REWARDED_PLAYER;}
     private SoundEvent getRegisterSound() {return SoundEvents.BLOCK_VAULT_INSERT_ITEM_FAIL;}
 
+//TODO FIX JANKY ITEM SPAWNING AND TRANSFER LOCKBOX INTERACTIONS TO PEDESTAL EXTENSION BLOCK
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos();
         ItemStack stack = context.getStack();
-        BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockEntity blockEntity = world.getBlockEntity(pos.down());
         PlayerEntity player = context.getPlayer();
 
         LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
@@ -48,8 +52,9 @@ public class KeyItem extends Item {
         UUID stackUUID = stackComponent.uuid();
         boolean isStackMapped = stackComponent.isMapped();
         boolean isStackCopy = stackComponent.isCopy();
+        boolean isTargetExtensionBlock = world.getBlockState(pos).isOf(PEDESTAL_EXTENSION);
 
-        if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+        if (isTargetExtensionBlock && blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
 
             if (pedestalBlockEntity.hasStoredLockbox()) {
 
@@ -62,7 +67,7 @@ public class KeyItem extends Item {
                 if (isLockboxMapped && isStackMapped) {
                     if(stackUUID.equals(lockboxUUID)) {
                         pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-                        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.3, pos.getZ()+0.5,
+                        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5,
                                 lockboxStack, 0.0, 0.2, 0.0);
                         if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
                             serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);

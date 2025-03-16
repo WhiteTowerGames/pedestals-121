@@ -1,15 +1,10 @@
 package net.chris.pedestals.components;
 
 import net.chris.pedestals.Pedestals121;
-import net.minecraft.block.BlockState;
 import net.minecraft.component.ComponentType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 import java.util.UUID;
 
@@ -68,7 +63,9 @@ public class ModComponents {
     ///
     /// **Note:** Unlike `KeyItem`s, duplicated `LockboxItem`s **can** be used to create additional copies, meaning there is no restriction
     /// on further lockbox duplication.
-    /// See also: {@link net.chris.pedestals.recipes.LockboxDuplicationRecipe LockboxDuplicationRecipe} for the recipe involved in lockbox duplication.
+    ///
+    /// See also:
+    /// * {@link net.chris.pedestals.recipes.LockboxDuplicationRecipe LockboxDuplicationRecipe} for the recipe involved in lockbox duplication.
     ///
     /// ---
     ///
@@ -98,14 +95,13 @@ public class ModComponents {
     /// - Any item with this component will bypass lockbox security.
     /// - The component's only and optional `value` **does not matter** and is there simply because *there needs to be
     /// a value*.
-    /// - To mirror this, {@link UnlocksLockboxesComponent#UnlocksLockboxesComponent()} is a parameterless delegate constructor
+    /// - To reflect this, {@link UnlocksLockboxesComponent#UnlocksLockboxesComponent()} is a parameterless delegate constructor
     /// that simply passes in a `value` of `true`.
     ///
     /// ---
     ///
     /// ### See also:
-    ///
-    /// -{@link net.chris.pedestals.block.blocks.PedestalBlock#onUse(BlockState, World, BlockPos, PlayerEntity, BlockHitResult) PedestalBlock#onUse}
+    /// * {@link net.chris.pedestals.item.items.KeyItem#useOnBlock KeyItem#useOnBlock}
     /// for details on how interaction with items containing this component type are handled.
     public static final ComponentType<UnlocksLockboxesComponent> UNLOCKS_LOCKBOXES_COMPONENT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
@@ -113,6 +109,31 @@ public class ModComponents {
             ComponentType.<UnlocksLockboxesComponent>builder().codec(UnlocksLockboxesComponent.UNLOCKS_LOCKBOXES_CODEC).build()
     );
 
+    /// # LockboxDustComponent
+    /// <p>
+    /// Represents the dust accumulation level of a lockbox.
+    /// <p>
+    /// This component stores an integer value indicating the amount of dust present on a lockbox.
+    /// It is used to track the state of dust buildup over time and can be modified through brushing.
+    /// A higher value means more dust has accumulated, obscuring the lockbox until it is cleaned.
+    /// </p>
+    ///
+    /// ---
+    ///
+    /// <p>
+    /// The dust level is managed as a data component, allowing efficient storage and retrieval
+    /// without requiring a dedicated block entity.
+    /// </p>
+    ///
+    /// ---
+    ///
+    /// <p>
+    /// Brushing a lockbox with a brush item gradually removes dust, reducing this component’s value.
+    /// Once fully cleaned, the dust overlay disappears.
+    /// </p>
+    ///
+    /// @see LockboxDustComponent
+    /// @see net.chris.pedestals.block.blocks.PedestalExtensionBlock PedestalExtensionBlock
     public static final ComponentType<LockboxDustComponent> LOCKBOX_DUST_COMPONENT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(Pedestals121.MOD_ID, "lockbox_dust"),

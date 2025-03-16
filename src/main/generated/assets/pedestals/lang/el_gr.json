@@ -7,6 +7,8 @@
   "advancement.pedestals.carpet_lock_totem_title": "Αρχαιοκαπηλεία",
   "advancement.pedestals.collect_all_pedestals_desc": "Από την πέτρα μέχρι το ξύλο και τον χαλκό, κανένα βάθρο δε ξέφυγε από τα χέρια σου. Η συλλογή σου ολοκληρώθηκε.",
   "advancement.pedestals.collect_all_pedestals_title": "Μετρ των Βάθρων",
+  "advancement.pedestals.fully_clean_lockbox_desc": "Επανάφερε μία σκονισμένη Προθήκη σε καθαρή κατάσταση με τo Ξεσκονιστήρι.",
+  "advancement.pedestals.fully_clean_lockbox_title": "Η Μισή Αρχοντιά",
   "advancement.pedestals.get_fancy_carpet_desc": "Η γιαγιά μου είχε ένα τέτοιο σε κάθε τραπεζάκι της.",
   "advancement.pedestals.get_fancy_carpet_title": "Επίχρυσα Σεμεδάκια!",
   "advancement.pedestals.get_lockbox_desc": "Μία στιβαρή γυάλινη προθήκη, ενισχυμένο με διαμάντι για έξτρα ασφάλεια. Καλή τύχη να τη διαρρήξεις!",
@@ -229,5 +231,6 @@
   "messages.pedestals.key_wrong": "Αυτό το κλειδί δεν είναι σωστό...",
   "messages.pedestals.lockpicking_failed": "Δεν κατάφερες να διαρρήξεις την κλειδαριά...",
   "messages.pedestals.lockpicking_success": "Διέρρηξες την κλειδαριά!",
+  "messages.pedestals.try_break_lockbox": "Το γυαλί φαίνεται άθραυστο... ίσως μπορείς με κάποιο τρόπο να το ανοίξεις.",
   "sound.pedestals.lockpick_increase": "Διάρρηξη αναβαθμίζεται"
 }

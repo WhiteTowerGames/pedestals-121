@@ -5,6 +5,7 @@ import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.OxidizablePedestalBlock;
 import net.chris.pedestals.block.blocks.PedestalBlock;
+import net.chris.pedestals.block.blocks.PedestalExtensionBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
@@ -28,324 +29,324 @@ public class ModBlocks {
 
     public static final Block STONE_BRICK_PEDESTAL = registerBlock("stone_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(STONE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stone_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block DEEPSLATE_BRICK_PEDESTAL = registerBlock("deepslate_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(DEEPSLATE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "deepslate_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block MOSSY_STONE_BRICK_PEDESTAL = registerBlock("mossy_stone_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(MOSSY_STONE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "mossy_stone_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block DEEPSLATE_TILE_PEDESTAL = registerBlock( "deepslate_tile_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(DEEPSLATE_TILES).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "deepslate_tile_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_GRANITE_PEDESTAL = registerBlock( "polished_granite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_GRANITE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_granite_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_DIORITE_PEDESTAL = registerBlock( "polished_diorite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_DIORITE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_diorite_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_ANDESITE_PEDESTAL = registerBlock( "polished_andesite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_ANDESITE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_andesite_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_DEEPSLATE_PEDESTAL = registerBlock( "polished_deepslate_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_DEEPSLATE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_deepslate_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block CALCITE_PEDESTAL = registerBlock( "calcite_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(CALCITE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "calcite_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block COPPER_PEDESTAL = registerBlock( "copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(COPPER_BLOCK).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block EXPOSED_COPPER_PEDESTAL = registerBlock( "exposed_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(EXPOSED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "exposed_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block WEATHERED_COPPER_PEDESTAL = registerBlock( "weathered_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(WEATHERED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "weathered_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block OXIDIZED_COPPER_PEDESTAL = registerBlock( "oxidized_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.OXIDIZED, AbstractBlock.Settings.copy(OXIDIZED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "oxidized_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block WAXED_COPPER_PEDESTAL = registerBlock( "waxed_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_COPPER_BLOCK).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_EXPOSED_COPPER_PEDESTAL = registerBlock( "waxed_exposed_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_EXPOSED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_exposed_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_WEATHERED_COPPER_PEDESTAL = registerBlock( "waxed_weathered_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_WEATHERED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_weathered_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_OXIDIZED_COPPER_PEDESTAL = registerBlock( "waxed_oxidized_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_oxidized_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block CUT_COPPER_PEDESTAL = registerBlock( "cut_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "cut_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block EXPOSED_CUT_COPPER_PEDESTAL = registerBlock( "exposed_cut_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(EXPOSED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "exposed_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block WEATHERED_CUT_COPPER_PEDESTAL = registerBlock( "weathered_cut_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(WEATHERED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "weathered_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "oxidized_cut_copper_pedestal",
             new OxidizablePedestalBlock(Oxidizable.OxidationLevel.OXIDIZED, AbstractBlock.Settings.copy(OXIDIZED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "oxidized_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool().ticksRandomly()));
+                    .nonOpaque().luminance(value -> 4).requiresTool().ticksRandomly()));
 
     public static final Block WAXED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_EXPOSED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_exposed_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_EXPOSED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_exposed_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_WEATHERED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_weathered_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_WEATHERED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_weathered_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block WAXED_OXIDIZED_CUT_COPPER_PEDESTAL = registerBlock( "waxed_oxidized_cut_copper_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(WAXED_OXIDIZED_CUT_COPPER).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "waxed_oxidized_cut_copper_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block BRICK_PEDESTAL = registerBlock( "brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block END_STONE_BRICK_PEDESTAL = registerBlock( "end_stone_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(END_STONE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "end_stone_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block MUD_BRICK_PEDESTAL = registerBlock( "mud_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(MUD_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "mud_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block NETHER_BRICK_PEDESTAL = registerBlock( "nether_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(NETHER_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "nether_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_BLACKSTONE_BRICK_PEDESTAL = registerBlock( "polished_blackstone_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_BLACKSTONE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_blackstone_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_BLACKSTONE_PEDESTAL = registerBlock( "polished_blackstone_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_BLACKSTONE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_blackstone_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block DARK_PRISMARINE_PEDESTAL = registerBlock( "dark_prismarine_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(DARK_PRISMARINE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "dark_prismarine_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block PRISMARINE_BRICK_PEDESTAL = registerBlock( "prismarine_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(PRISMARINE_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "prismarine_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block PURPUR_BLOCK_PEDESTAL = registerBlock( "purpur_block_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(PURPUR_BLOCK).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "purpur_block_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block QUARTZ_BRICK_PEDESTAL = registerBlock( "quartz_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(QUARTZ_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "quartz_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block RED_NETHER_BRICK_PEDESTAL = registerBlock( "red_nether_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(RED_NETHER_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "red_nether_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block SMOOTH_QUARTZ_PEDESTAL = registerBlock( "smooth_quartz_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(SMOOTH_QUARTZ).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "smooth_quartz_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block POLISHED_TUFF_PEDESTAL = registerBlock( "polished_tuff_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(POLISHED_TUFF).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "polished_tuff_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block TUFF_BRICK_PEDESTAL = registerBlock( "tuff_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(TUFF_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "tuff_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block CHISELED_TUFF_BRICK_PEDESTAL = registerBlock( "chiseled_tuff_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(CHISELED_TUFF_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "chiseled_tuff_brick_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block OAK_LOG_PEDESTAL = registerBlock( "oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_OAK_LOG_PEDESTAL = registerBlock( "stripped_oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block BIRCH_LOG_PEDESTAL = registerBlock( "birch_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "birch_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_BIRCH_LOG_PEDESTAL = registerBlock( "stripped_birch_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_birch_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block SPRUCE_LOG_PEDESTAL = registerBlock( "spruce_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "spruce_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_SPRUCE_LOG_PEDESTAL = registerBlock( "stripped_spruce_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_spruce_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block JUNGLE_LOG_PEDESTAL = registerBlock( "jungle_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "jungle_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_JUNGLE_LOG_PEDESTAL = registerBlock( "stripped_jungle_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_jungle_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block DARK_OAK_LOG_PEDESTAL = registerBlock( "dark_oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "dark_oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_DARK_OAK_LOG_PEDESTAL = registerBlock( "stripped_dark_oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_dark_oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block ACACIA_LOG_PEDESTAL = registerBlock( "acacia_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "acacia_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_ACACIA_LOG_PEDESTAL = registerBlock( "stripped_acacia_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_acacia_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block MANGROVE_LOG_PEDESTAL = registerBlock( "mangrove_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "mangrove_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_MANGROVE_LOG_PEDESTAL = registerBlock( "stripped_mangrove_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_mangrove_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block CHERRY_LOG_PEDESTAL = registerBlock( "cherry_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "cherry_log_pedestal")))
                     .sounds(BlockSoundGroup.CHERRY_WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_CHERRY_LOG_PEDESTAL = registerBlock( "stripped_cherry_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_cherry_log_pedestal")))
                     .sounds(BlockSoundGroup.CHERRY_WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block BAMBOO_LOG_PEDESTAL = registerBlock( "bamboo_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "bamboo_log_pedestal")))
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_BAMBOO_LOG_PEDESTAL = registerBlock( "stripped_bamboo_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_bamboo_log_pedestal")))
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block BAMBOO_MOSAIC_PEDESTAL = registerBlock( "bamboo_mosaic_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "bamboo_mosaic_pedestal")))
                     .sounds(BlockSoundGroup.BAMBOO_WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block CRIMSON_LOG_PEDESTAL = registerBlock( "crimson_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "crimson_log_pedestal")))
                     .sounds(BlockSoundGroup.STEM)
-                    .nonOpaque()));
+                    .nonOpaque().luminance(value -> 4)));
 
     public static final Block STRIPPED_CRIMSON_LOG_PEDESTAL = registerBlock( "stripped_crimson_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_crimson_log_pedestal")))
                     .sounds(BlockSoundGroup.STEM)
-                    .nonOpaque()));
+                    .nonOpaque().luminance(value -> 4)));
 
     public static final Block WARPED_LOG_PEDESTAL = registerBlock( "warped_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "warped_log_pedestal")))
                     .sounds(BlockSoundGroup.STEM)
-                    .nonOpaque()));
+                    .nonOpaque().luminance(value -> 4)));
 
     public static final Block STRIPPED_WARPED_LOG_PEDESTAL = registerBlock( "stripped_warped_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_warped_log_pedestal")))
                     .sounds(BlockSoundGroup.STEM)
-                    .nonOpaque()));
+                    .nonOpaque().luminance(value -> 4)));
 
     public static final Block SMOOTH_SANDSTONE_PEDESTAL = registerBlock( "smooth_sandstone_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(SMOOTH_SANDSTONE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "smooth_sandstone_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     public static final Block SMOOTH_RED_SANDSTONE_PEDESTAL = registerBlock( "smooth_red_sandstone_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(SMOOTH_RED_SANDSTONE).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "smooth_red_sandstone_pedestal")))
-                    .nonOpaque().requiresTool()));
+                    .nonOpaque().luminance(value -> 4).requiresTool()));
 
     ///1.21.4 port specific blocks:
 
     public static final Block PALE_OAK_LOG_PEDESTAL = registerBlock( "pale_oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "pale_oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block STRIPPED_PALE_OAK_LOG_PEDESTAL = registerBlock( "stripped_pale_oak_log_pedestal",
             new PedestalBlock(AbstractBlock.Settings.create().strength(2.0f).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "stripped_pale_oak_log_pedestal")))
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .burnable()));
 
     public static final Block RESIN_BRICK_PEDESTAL = registerBlock( "resin_brick_pedestal",
             new PedestalBlock(AbstractBlock.Settings.copy(RESIN_BRICKS).registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "resin_brick_pedestal")))
                     .sounds(BlockSoundGroup.RESIN_BRICKS)
-                    .nonOpaque()
+                    .nonOpaque().luminance(value -> 4)
                     .requiresTool()));
 
     /// Post Fancy Carpets Update:
@@ -445,8 +446,17 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.WOOL)
                     .nonOpaque()
                     .burnable()));
-    
 
+    /// Pedestal Extension Block (I can't believe I'm doing this):
+    
+    public static final Block PEDESTAL_EXTENSION = registerBlock("pedestal_extension",
+            new PedestalExtensionBlock(AbstractBlock.Settings.copy(GLASS)
+                    .dropsNothing()
+                    .nonOpaque()
+                    .strength(-1f, 3600000)
+                    .noBlockBreakParticles()
+                    .noCollision()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Pedestals121.MOD_ID, "pedestal_extension")))));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

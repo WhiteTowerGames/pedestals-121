@@ -4,9 +4,13 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BlockHardnessMixin",
+    "BrushMixin",
     "ExplosionBehaviorMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "LockpickingFOVMixin"
+  ]
 }

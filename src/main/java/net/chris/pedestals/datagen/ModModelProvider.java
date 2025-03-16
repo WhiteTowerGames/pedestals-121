@@ -94,6 +94,10 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestalWood(blockStateModelGenerator, ModBlocks.WARPED_LOG_PEDESTAL, pedestalMapWood(Blocks.WARPED_STEM));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL, pedestalMapWood(Blocks.STRIPPED_WARPED_STEM));
 
+        /// Pedestal Extension block:
+
+        blockStateModelGenerator.registerSimpleCubeAll(PEDESTAL_EXTENSION);
+
         /// Gilded Carpet and Lockbox Models:
 
         registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(""));

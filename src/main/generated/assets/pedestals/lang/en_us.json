@@ -7,6 +7,8 @@
   "advancement.pedestals.carpet_lock_totem_title": "It Belongs in a Museum!",
   "advancement.pedestals.collect_all_pedestals_desc": "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.",
   "advancement.pedestals.collect_all_pedestals_title": "Grand Archivist",
+  "advancement.pedestals.fully_clean_lockbox_desc": "Restore a dusty Lockbox to its former condition with the Brush.",
+  "advancement.pedestals.fully_clean_lockbox_title": "Squeaky Clean",
   "advancement.pedestals.get_fancy_carpet_desc": "Didn't my grandmother have one of those on her coffee table?",
   "advancement.pedestals.get_fancy_carpet_title": "Gilded Carpets!",
   "advancement.pedestals.get_lockbox_desc": "A sturdy glass lockbox, reinforced with diamond for extra security. Good luck breaking in!",
@@ -229,5 +231,6 @@
   "messages.pedestals.key_wrong": "Incorrect Key!",
   "messages.pedestals.lockpicking_failed": "Lockpicking attempt failed!",
   "messages.pedestals.lockpicking_success": "Lock picked!",
+  "messages.pedestals.try_break_lockbox": "The glass appears impenetrable... But perhaps there is another way to open it.",
   "sound.pedestals.lockpick_increase": "Lockpicking Increases"
 }
