@@ -10,8 +10,6 @@ public class ModuleContainer implements Inventory {
 
     private final DefaultedList<ItemStack> carpetItems = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
-
-
     @Override
     public int size() {
         return carpetItems.size();

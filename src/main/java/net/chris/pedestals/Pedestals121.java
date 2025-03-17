@@ -32,22 +32,24 @@ import static net.minecraft.item.Items.EMERALD;
 import static net.minecraft.item.Items.IRON_INGOT;
 
 public class Pedestals121 implements ModInitializer {
+
 	public static final String MOD_ID = "pedestals";
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		ModCriteria.init();
-		ModItemGroups.registerItemGroups();
+
+		ModCriteria.initialize();
+		ModItemGroups.initialize();
 		ModSoundEvents.initialize();
-		ModBlocks.registerModBlocks();
-		ModItems.registerModItems();
-		ModBlockEntities.registerModBlockEntities();
+		ModBlocks.initialize();
+		ModItems.initialize();
+		ModBlockEntities.initialize();
 		ModComponents.initialize();
-		ModRecipeSerializers.register();
+		ModRecipeSerializers.initialize();
 		ModGameRules.initialize();
-		ModGameRuleCache.register();
+		ModGameRuleCache.initialize();
 
         /// Register custom villager trade:
         //noinspection CodeBlock2Expr
@@ -58,7 +60,7 @@ public class Pedestals121 implements ModInitializer {
                     new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2)));
         });
 
-		/// Migration Warning (V3.0 Breaks Previously Placed Pedestals' Functionality):
+		/// Migration Warning (V1.3.0 Breaks Previously Placed Pedestals' Functionality):
 		PayloadTypeRegistry.playS2C().register(MigrationWarningPayload.ID, MigrationWarningPayload.CODEC);
 
 		PlayerBlockBreakEvents.AFTER.register(((world, playerEntity, blockPos, blockState, blockEntity) -> {

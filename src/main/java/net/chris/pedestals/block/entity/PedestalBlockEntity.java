@@ -231,7 +231,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     int tickCount = 0;
 
     private int dustDelay = 2000;
-    private int totemParticleDelay = 10;
+    private int artifactParticleDelay = 10;
 
     @Override
     public void tick() {
@@ -285,15 +285,16 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             SCULK_CATALYST, ParticleTypes.SCULK_SOUL,
             DRAGON_EGG, ParticleTypes.DRAGON_BREATH,
             NETHER_STAR, ParticleTypes.END_ROD,
-            HEART_OF_THE_SEA, ParticleTypes.NAUTILUS));
+            HEART_OF_THE_SEA, ParticleTypes.NAUTILUS
+    ));
 
     private void displayItemParticles(ServerWorld serverWorld) {
-        if (totemParticleDelay == 0) {
+        if (artifactParticleDelay == 0) {
             serverWorld.spawnParticles(ITEM_PARTICLE_MAP.get(getStoredItem().getItem()), pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
                     4, 0.5, 0.5, 0.5, 0.03);
-            totemParticleDelay = 10;
+            artifactParticleDelay = 10;
         } else {
-            totemParticleDelay--;
+            artifactParticleDelay--;
         }
     }
 }

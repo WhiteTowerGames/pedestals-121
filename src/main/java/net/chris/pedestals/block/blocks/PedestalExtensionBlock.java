@@ -87,7 +87,7 @@ public class PedestalExtensionBlock extends Block {
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         world.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
-        return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
+        return super.onBreak(world, pos, state, player);
     }
 
     @Override
@@ -111,6 +111,8 @@ public class PedestalExtensionBlock extends Block {
         return ActionResult.FAIL;
     }
 
+    /// Ensures the extension never gives itself as an item using middle click.
+    /// Rather, returns the pedestal below it.
     @Override
     protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
         return world.getBlockState(pos.down()).getPickStack(world, pos.down(), true);

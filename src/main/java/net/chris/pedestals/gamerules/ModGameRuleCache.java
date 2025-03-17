@@ -34,7 +34,7 @@ public class ModGameRuleCache {
 
     public static boolean pedestalsDisplayParticles() {return displayedItemParticles;}
 
-    public static void register() {
+    public static void initialize() {
         ServerTickEvents.END_WORLD_TICK.register((world) -> {
             if (world.getRegistryKey() == World.OVERWORLD) {
                 infiniteKeyDuping = world.getGameRules().getBoolean(ModGameRules.INFINITE_KEY_DUPING);

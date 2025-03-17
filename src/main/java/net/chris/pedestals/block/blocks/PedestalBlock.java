@@ -35,6 +35,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
@@ -62,7 +63,6 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return FULL_COLLISION_SHAPE;
     }
-
 
     @Override
     protected VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -152,76 +152,99 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
 
             if(!pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isIn(ModItemTagProvider.FANCY_CARPET_BLOCK_ITEMS)) {
 
-                pedestalBlockEntity.setStoredCarpet(playerHeldItem.split(1));
-
-                world.playSound(null, pos, getAddCarpetSoundWool(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                world.playSound(null, pos, getAddCarpetSoundChain(), SoundCategory.BLOCKS, 0.15F, 1.0F);
-                if (player instanceof ServerPlayerEntity serverPlayer) {
-                    ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
-                }
-                return ActionResult.SUCCESS;
+                return addFancyCarpet(world, pos, player, pedestalBlockEntity, playerHeldItem);
 
             }
             if(pedestalBlockEntity.hasStoredCarpet() && playerHeldItem.isOf(Items.SHEARS)) {
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
-                pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
-                world.playSound(null, pos, getRemoveCarpetSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                playerHeldItem.damage(1, player);
-                world.spawnEntity(itemEntity);
-                itemEntity.setVelocity(0.0, 0.13, 0.0);
-                return ActionResult.SUCCESS;
+
+                return removeFancyCarpet(world, pos, player, pedestalBlockEntity, playerHeldItem);
 
             }
             if (!pedestalBlockEntity.hasStoredLockbox() && playerHeldItem.isIn(ModItemTagProvider.LOCKBOX_ITEMS)) {
 
-                pedestalBlockEntity.setStoredLockbox(playerHeldItem.split(1));
-                world.playSound(null, pos, getLockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                if (world instanceof ServerWorld serverWorld) {
-                    serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
-                            10, 0.3, 0.2, 0.3, 0.03);
-                }
-                if (player instanceof ServerPlayerEntity serverPlayer) {
-                    ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
-                }
-                return ActionResult.SUCCESS;
+                return addLockbox(world, pos, player, pedestalBlockEntity, playerHeldItem);
             }
             if (!player.isSneaking()) {
                 ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, storedItem);
-                if (storedItem.isEmpty() && !playerHeldItem.isEmpty() && !pedestalBlockEntity.hasStoredLockbox()) {
+                if (!pedestalBlockEntity.hasStoredLockbox()) {
+                    if (storedItem.isEmpty() && !playerHeldItem.isEmpty()) {
 
-                    pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
+                        return addItemCheckCriteria(state, world, pos, player, pedestalBlockEntity, playerHeldItem);
 
-                    world.updateListeners(pos, state, state, 0);
+                    } else {
 
-                    world.playSound(null, pos, getAddItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    if(pedestalBlockEntity.getStoredItem().getRarity()==Rarity.EPIC
-                            && player instanceof ServerPlayerEntity serverPlayer){
-                        ModCriteria.PLACE_EPIC_ITEM_ON_PEDESTAL.trigger(serverPlayer);
-                    }
-                    if (pedestalBlockEntity.getStoredItem().isIn(ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
-                            && player instanceof ServerPlayerEntity serverPlayer) {
-                        ModCriteria.PLACE_PEDESTAL_ON_PEDESTAL.trigger(serverPlayer);
-                    }
+                        return removeItem(state, world, pos, pedestalBlockEntity, itemEntity);
 
-                    return ActionResult.SUCCESS;
-
-                } else {
-                    if (!pedestalBlockEntity.hasStoredLockbox()) {
-                        world.spawnEntity(itemEntity);
-                        itemEntity.setVelocity(0.0, 0.13, 0.0);
-                        world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                        pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
-                        world.updateListeners(pos, state, state, 0);
-                        if (!world.isClient) {
-                            return ActionResult.SUCCESS_SERVER;
-                        }
-                        return ActionResult.SUCCESS;
                     }
                 }
             }
         }
         world.updateNeighborsAlways(pos, this);
         return ActionResult.PASS;
+    }
+
+    private ActionResult.@NotNull Success removeItem(BlockState state, World world, BlockPos pos, PedestalBlockEntity pedestalBlockEntity, ItemEntity itemEntity) {
+        world.spawnEntity(itemEntity);
+        itemEntity.setVelocity(0.0, 0.13, 0.0);
+        world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+        pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+        world.updateListeners(pos, state, state, 0);
+        if (!world.isClient) {
+            return ActionResult.SUCCESS_SERVER;
+        }
+        return ActionResult.SUCCESS;
+    }
+
+    private ActionResult.@NotNull Success addItemCheckCriteria(BlockState state, World world, BlockPos pos, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack playerHeldItem) {
+        pedestalBlockEntity.setStoredItem(playerHeldItem.split(1));// Store one item
+
+        world.updateListeners(pos, state, state, 0);
+
+        world.playSound(null, pos, getAddItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+        if(pedestalBlockEntity.getStoredItem().getRarity()==Rarity.EPIC
+                && player instanceof ServerPlayerEntity serverPlayer){
+            ModCriteria.PLACE_EPIC_ITEM_ON_PEDESTAL.trigger(serverPlayer);
+        }
+        if (pedestalBlockEntity.getStoredItem().isIn(ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
+                && player instanceof ServerPlayerEntity serverPlayer) {
+            ModCriteria.PLACE_PEDESTAL_ON_PEDESTAL.trigger(serverPlayer);
+        }
+
+        return ActionResult.SUCCESS;
+    }
+
+    private ActionResult.@NotNull Success addLockbox(World world, BlockPos pos, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack playerHeldItem) {
+        pedestalBlockEntity.setStoredLockbox(playerHeldItem.split(1));
+        world.playSound(null, pos, getLockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+        if (world instanceof ServerWorld serverWorld) {
+            serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1.25, pos.getZ() + 0.5,
+                    10, 0.3, 0.2, 0.3, 0.03);
+        }
+        if (player instanceof ServerPlayerEntity serverPlayer) {
+            ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+        }
+        return ActionResult.SUCCESS;
+    }
+
+    private ActionResult.@NotNull Success removeFancyCarpet(World world, BlockPos pos, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack playerHeldItem) {
+        ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, pedestalBlockEntity.getStoredCarpet());
+        pedestalBlockEntity.setStoredCarpet(ItemStack.EMPTY);
+        world.playSound(null, pos, getRemoveCarpetSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+        playerHeldItem.damage(1, player);
+        world.spawnEntity(itemEntity);
+        itemEntity.setVelocity(0.0, 0.13, 0.0);
+        return ActionResult.SUCCESS;
+    }
+
+    private ActionResult.@NotNull Success addFancyCarpet(World world, BlockPos pos, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack playerHeldItem) {
+        pedestalBlockEntity.setStoredCarpet(playerHeldItem.split(1));
+
+        world.playSound(null, pos, getAddCarpetSoundWool(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.playSound(null, pos, getAddCarpetSoundChain(), SoundCategory.BLOCKS, 0.15F, 1.0F);
+        if (player instanceof ServerPlayerEntity serverPlayer) {
+            ModCriteria.LOCK_ARTIFACT_WITH_CARPET.trigger(serverPlayer, pedestalBlockEntity.getStoredItem(), pedestalBlockEntity.getStoredCarpet(), pedestalBlockEntity.getStoredLockbox());
+        }
+        return ActionResult.SUCCESS;
     }
 
     @Override

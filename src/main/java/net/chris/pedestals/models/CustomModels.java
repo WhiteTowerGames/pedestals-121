@@ -23,7 +23,7 @@ public class CustomModels {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
-    private static Model item(String parent, TextureKey... requiredTextureKeys) {
+    private static Model item(@SuppressWarnings("SameParameterValue") String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 

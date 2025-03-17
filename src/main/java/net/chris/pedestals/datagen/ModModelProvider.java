@@ -66,7 +66,6 @@ public class ModModelProvider extends FabricModelProvider {
         registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_SANDSTONE_PEDESTAL, pedestalMap(Blocks.SMOOTH_SANDSTONE));
         registerPedestal(blockStateModelGenerator, ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, pedestalMap(Blocks.SMOOTH_RED_SANDSTONE));
 
-
         /// Pedestals that use more than one texture (Mostly wooden ones)
         registerPedestalWood(blockStateModelGenerator, ModBlocks.OAK_LOG_PEDESTAL, pedestalMapWood(Blocks.OAK_LOG));
         registerPedestalWood(blockStateModelGenerator, ModBlocks.BIRCH_LOG_PEDESTAL, pedestalMapWood(Blocks.BIRCH_LOG));

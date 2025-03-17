@@ -26,7 +26,7 @@ public class ModCriteria {
     public static final FullyCleanLockboxCriterion FULLY_CLEAN_LOCKBOX = Criteria.register(
             FullyCleanLockboxCriterion.ID.toString(), new FullyCleanLockboxCriterion());
 
-    public static void init(){
+    public static void initialize(){
         Pedestals121.LOGGER.info("Registering Pedestals custom criteria!");
     }
 }

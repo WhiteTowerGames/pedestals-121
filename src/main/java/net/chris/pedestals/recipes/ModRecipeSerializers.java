@@ -17,8 +17,6 @@ public class ModRecipeSerializers {
             Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(Pedestals121.MOD_ID, "lockbox_duplication"),
                     new SpecialCraftingRecipe.SpecialRecipeSerializer<>(LockboxDuplicationRecipe::new));
 
-    public static void register(){
-        // Dummy initialization method
-    }
+    public static void initialize(){}
 
 }

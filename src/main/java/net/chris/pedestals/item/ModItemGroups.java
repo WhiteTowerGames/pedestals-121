@@ -3,8 +3,6 @@ package net.chris.pedestals.item;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -21,102 +19,31 @@ public class ModItemGroups {
             Identifier.of(Pedestals121.MOD_ID, "pedestals"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.STONE_BRICK_PEDESTAL))
                     .displayName(Text.translatable("itemgroup.pedestals.pedestals"))
-                    .entries((displayContext, entries) -> {
-                        entries.add(ModBlocks.STONE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL);
-                        entries.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL);
-                        entries.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_GRANITE_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_DIORITE_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL);
-                        entries.add(ModBlocks.CALCITE_PEDESTAL);
-                        entries.add(ModBlocks.COPPER_PEDESTAL);
-                        entries.add(ModBlocks.EXPOSED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WEATHERED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL);
-                        entries.add(ModBlocks.BRICK_PEDESTAL);
-                        entries.add(ModBlocks.END_STONE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.MUD_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.NETHER_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL);
-                        entries.add(ModBlocks.DARK_PRISMARINE_PEDESTAL);
-                        entries.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.PURPUR_BLOCK_PEDESTAL);
-                        entries.add(ModBlocks.QUARTZ_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL);
-                        entries.add(ModBlocks.POLISHED_TUFF_PEDESTAL);
-                        entries.add(ModBlocks.TUFF_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.BIRCH_LOG_PEDESTAL);
-                        entries.add(ModBlocks.SPRUCE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.JUNGLE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.DARK_OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.ACACIA_LOG_PEDESTAL);
-                        entries.add(ModBlocks.CRIMSON_LOG_PEDESTAL);
-                        entries.add(ModBlocks.WARPED_LOG_PEDESTAL);
-                        entries.add(ModBlocks.MANGROVE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.CHERRY_LOG_PEDESTAL);
-                        entries.add(ModBlocks.BAMBOO_LOG_PEDESTAL);
-                        entries.add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL);
-                        entries.add(ModBlocks.PALE_OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.RESIN_BRICK_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_PALE_OAK_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL);
-                        entries.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL);
-
-                    }).build());
+                    .entries((displayContext, entries) -> ALL_PEDESTALS.forEach(entries::add)).build());
 
     public static final ItemGroup FANCY_CARPETS_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(Pedestals121.MOD_ID, "fancy_carpets"),
                     FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.RED_GILDED_CARPET))
                             .displayName(Text.translatable("itemgroup.pedestals.fancycarpets"))
-                            .entries((displayContext, entries) -> {
-                                for (Block fancyCarpet : ALL_FANCY_CARPETS){
-                                    entries.add(fancyCarpet);
-                                }
-                            }).build());
+                            .entries((displayContext, entries) -> ALL_FANCY_CARPETS.forEach(entries::add)).build());
 
     public static final ItemGroup LOCKBOXES_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(Pedestals121.MOD_ID, "lockboxes"),
             FabricItemGroup.builder().icon(() -> new ItemStack(GLASS_LOCKBOX))
                     .displayName(Text.translatable("itemgroup.pedestals.lockboxes"))
                     .entries((displayContext, entries) -> {
+
                         entries.add(GLASS_LOCKBOX);
-                        for (Item lockbox : ALL_COLORED_LOCKBOXES) {
-                            entries.add(lockbox);
-                        }
+
+                        ALL_COLORED_LOCKBOXES.forEach(entries::add);
+
                         entries.add(LOCKBOX_KEY);
+
                         entries.add(LOCKPICK);
+
                     }).build());
 
-    public static void registerItemGroups(){
+    public static void initialize(){
         Pedestals121.LOGGER.info("Registering Item groups for Pedestals (source: "+Pedestals121.MOD_ID+").");
     }
 }

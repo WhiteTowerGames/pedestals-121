@@ -87,7 +87,7 @@ public class ModBlockEntities {
                     );
 
 private static <T extends BlockEntity> BlockEntityType<T> register(
-        String name,
+        @SuppressWarnings("SameParameterValue") String name,
         FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
         Block... blocks
 ) {
@@ -95,7 +95,7 @@ private static <T extends BlockEntity> BlockEntityType<T> register(
     return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
 }
 
-    public static void registerModBlockEntities() {
+    public static void initialize() {
         Pedestals121.LOGGER.info("Registering Block Entities for Pedestals 1.21 (source: " + Pedestals121.MOD_ID + ").");
     }
 }

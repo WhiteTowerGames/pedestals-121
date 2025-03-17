@@ -300,6 +300,4 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 )).build(consumer, Pedestals121.MOD_ID + ":fully_clean_lockbox");
         
     }
-
 }
-

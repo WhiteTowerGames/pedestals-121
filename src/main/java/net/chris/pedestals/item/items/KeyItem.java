@@ -52,30 +52,27 @@ public class KeyItem extends Item {
         boolean isStackCopy = stackComponent.isCopy();
         boolean isTargetExtensionBlock = world.getBlockState(pos).isOf(PEDESTAL_EXTENSION);
 
-        if (isTargetExtensionBlock && blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+        if (isTargetExtensionBlock && blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && pedestalBlockEntity.hasStoredLockbox()) {
 
-            if (pedestalBlockEntity.hasStoredLockbox()) {
+            ItemStack lockboxStack = pedestalBlockEntity.getStoredLockbox();
+            LockAndKeyDataComponent lockboxComponent = lockboxStack.get(ModComponents.LOCK_AND_KEY_DATA);
+            assert lockboxComponent != null;
+            UUID lockboxUUID = lockboxComponent.uuid();
+            boolean isLockboxMapped = lockboxComponent.isMapped();
 
-                ItemStack lockboxStack = pedestalBlockEntity.getStoredLockbox();
-                LockAndKeyDataComponent lockboxComponent = lockboxStack.get(ModComponents.LOCK_AND_KEY_DATA);
-                assert lockboxComponent != null;
-                UUID lockboxUUID = lockboxComponent.uuid();
-                boolean isLockboxMapped = lockboxComponent.isMapped();
-
-                if (isLockboxMapped && isStackMapped) {
-                    if(stackUUID.equals(lockboxUUID)) {
-                        openCase(pedestalBlockEntity, world, pos, lockboxStack, player);
-                    } else {
-                        wrongKey(world, player, pos);
-                    }
-                    return ActionResult.SUCCESS;
+            if (isLockboxMapped && isStackMapped) {
+                if (stackUUID.equals(lockboxUUID)) {
+                    openCase(pedestalBlockEntity, world, pos, lockboxStack, player);
+                } else {
+                    wrongKey(world, player, pos);
                 }
-                if (!isLockboxMapped && !isStackMapped) {
-                    return mapKeyToLockbox(stack, lockboxUUID, isStackCopy, lockboxStack, world, pos, player);
-                }
-                wrongKey(world, player, pos);
                 return ActionResult.SUCCESS;
             }
+            if (!isLockboxMapped && !isStackMapped) {
+                return mapKeyToLockbox(stack, lockboxUUID, isStackCopy, lockboxStack, world, pos, player);
+            }
+            wrongKey(world, player, pos);
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }

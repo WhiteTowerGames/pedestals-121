@@ -10,6 +10,7 @@ public class ModSoundEvents {
 
     private ModSoundEvents(){}
 
+    @SuppressWarnings("SameParameterValue")
     private static SoundEvent registerSoundEvent(String id) {
         Identifier identifier = Identifier.of(Pedestals121.MOD_ID, id);
         return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));

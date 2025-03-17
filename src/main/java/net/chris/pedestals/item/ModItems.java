@@ -141,7 +141,7 @@ public class ModItems {
         return item;
     }
 
-    public static void registerModItems(){
+    public static void initialize(){
         Pedestals121.LOGGER.info("Registering Mod Items for Pedestals 1.21 (source: "+Pedestals121.MOD_ID+").");
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> {
@@ -156,9 +156,7 @@ public class ModItems {
             entries.addAfter(LOCKBOX_KEY, LOCKPICK);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> {
-            entries.add(CREATIVE_KEY);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> entries.add(CREATIVE_KEY));
 
     }
 

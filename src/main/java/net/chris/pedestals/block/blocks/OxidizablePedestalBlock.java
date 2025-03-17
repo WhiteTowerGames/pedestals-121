@@ -38,12 +38,4 @@ public class OxidizablePedestalBlock extends PedestalBlock implements Oxidizable
     private Optional<Block> getNextOxidationLevel(BlockState state) {
         return Oxidizable.getIncreasedOxidationBlock(state.getBlock());
     }
-
-    private Block getPreviousOxidationBlock(BlockState state){
-        if (Oxidizable.getDecreasedOxidationBlock(state.getBlock()).isPresent()) {
-            return Oxidizable.getDecreasedOxidationBlock(state.getBlock()).get();
-        }
-        return this;
-    }
-
 }
