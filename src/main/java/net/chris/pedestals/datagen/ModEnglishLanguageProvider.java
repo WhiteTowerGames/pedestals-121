@@ -12,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 import static net.chris.pedestals.block.ModBlocks.*;
-import static net.chris.pedestals.datagen.ModModelProvider.allColors;
 import static net.chris.pedestals.item.ModItems.*;
 
 public class ModEnglishLanguageProvider extends FabricLanguageProvider {
@@ -24,6 +23,9 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
     private static void addText(@NotNull TranslationBuilder builder, @NotNull Text text, @NotNull String value){
         builder.add(((TranslatableTextContent) text.getContent()).getKey(), value);
     }
+
+    public static final String[] allColors = {"White", "Light Gray", "Gray", "Black",
+            "Brown", "Red", "Orange", "Yellow", "Lime", "Green", "Cyan", "Light Blue", "Blue", "Purple", "Magenta", "Pink"};
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {

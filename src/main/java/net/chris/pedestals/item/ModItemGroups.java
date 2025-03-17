@@ -35,8 +35,8 @@ public class ModItemGroups {
 
                         entries.add(GLASS_LOCKBOX);
 
-                        ALL_COLORED_LOCKBOXES.forEach(entries::add);
-
+                        STAINED_LOCKBOX_TO_GLASS_MAP.keySet().forEach(entries::add);
+                        
                         entries.add(LOCKBOX_KEY);
 
                         entries.add(LOCKPICK);

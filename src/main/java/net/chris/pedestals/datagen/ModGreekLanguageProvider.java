@@ -24,11 +24,11 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         builder.add(((TranslatableTextContent) text.getContent()).getKey(), value);
     }
 
-    private static final String[] allColorsGreek = {"λευκό", "ανοιχτό Γκρι", "γκρι", "μαύρο",
-            "καφέ", "κόκκινο", "πορτοκαλί", "κίτρινο", "λαχανί", "πράσινο", "κυανό", "ανοιχτό Μπλε", "μπλε", "μοβ", "φούξια", "ροζ"};
+    private static final String[] allColorsGreek = {"Λευκό", "Ανοιχτό Γκρι", "Γκρι", "Μαύρο",
+            "Καφέ", "Κόκκινο", "Πορτοκαλί", "Κίτρινο", "Λαχανί", "Πράσινο", "Κυανό", "Ανοιχτό Μπλε", "Μπλε", "Μοβ", "Φούξια", "Ροζ"};
 
-    private static final String[] allColorsGreekFeminine = {"λευκή", "ανοιχτή Γκρι", "γκρι", "μαύρη",
-            "καφέ", "κόκκινη", "πορτοκαλί", "κίτρινη", "λαχανί", "πράσινη", "κυανή", "ανοιχτή Μπλε", "μπλε", "μοβ", "φούξια", "ροζ"};
+    private static final String[] allColorsGreekFeminine = {"Λευκή", "Ανοιχτή Γκρι", "Γκρι", "Μαύρη",
+            "Καφέ", "Κόκκινη", "Πορτοκαλί", "Κίτρινη", "Λαχανί", "Πράσινη", "Κυανή", "Ανοιχτή Μπλε", "Μπλε", "Μοβ", "Φούξια", "Ροζ"};
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
@@ -172,15 +172,15 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(GLASS_LOCKBOX, "Ενισχυμένη Προθήκη");
 
+        String actualName;
+
         for (int i = 0; i<=15; i++){
             /// Gilded Carpets:
-            String colorName = allColorsGreek[i];
-            String actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
+            actualName = allColorsGreek[i];
             translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Επίχρυσο Σεμεδάκι");
             translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Επίχρυσο Σεμεδάκι");
             /// Reinforced Lockboxes:
-            colorName = allColorsGreekFeminine[i];
-            actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
+            actualName = allColorsGreekFeminine[i];
             translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Ενισχυμένη Προθήκη");
         }
         /// Keys:

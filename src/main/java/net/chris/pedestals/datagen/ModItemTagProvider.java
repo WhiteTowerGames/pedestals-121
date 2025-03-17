@@ -12,8 +12,7 @@ import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
 
 import static net.chris.pedestals.block.ModBlocks.*;
-import static net.chris.pedestals.item.ModItems.ALL_COLORED_LOCKBOXES;
-import static net.chris.pedestals.item.ModItems.GLASS_LOCKBOX;
+import static net.chris.pedestals.item.ModItems.*;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -32,14 +31,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         ALL_PEDESTALS.forEach(block -> getOrCreateTagBuilder(PEDESTAL_BLOCK_ITEMS).add(block.asItem()));
 
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> getOrCreateTagBuilder(FANCY_CARPET_BLOCK_ITEMS).add(block.asItem()));
+
+        STAINED_LOCKBOX_TO_GLASS_MAP.keySet().forEach(item -> getOrCreateTagBuilder(LOCKBOX_ITEMS).add(item));
+
         getOrCreateTagBuilder(LOCKBOX_ITEMS)
-                .add(GLASS_LOCKBOX.asItem());
-
-        for (int i = 0; i<=15; i++){
-            getOrCreateTagBuilder(FANCY_CARPET_BLOCK_ITEMS).add(ALL_FANCY_CARPETS.get(i).asItem());
-            getOrCreateTagBuilder(LOCKBOX_ITEMS).add(ALL_COLORED_LOCKBOXES.get(i));
-        }
-
+                .add(GLASS_LOCKBOX);
 
     }
 }

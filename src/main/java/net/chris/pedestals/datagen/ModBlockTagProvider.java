@@ -13,8 +13,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
-import static net.chris.pedestals.block.ModBlocks.ALL_PEDESTALS;
+import static net.chris.pedestals.block.ModBlocks.*;
 
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
@@ -159,7 +158,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
-        ALL_FANCY_CARPETS.forEach(block -> getOrCreateTagBuilder(BlockTags.WOOL_CARPETS).add(block));
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> getOrCreateTagBuilder(BlockTags.WOOL_CARPETS).add(block));
+
     }
 
 }

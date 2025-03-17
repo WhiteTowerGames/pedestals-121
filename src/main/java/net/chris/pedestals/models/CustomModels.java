@@ -10,6 +10,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
+import static net.minecraft.block.Blocks.GOLD_BLOCK;
+
 public class CustomModels {
 
     public static final TextureKey GOLD = TextureKey.of("gold");
@@ -27,6 +29,7 @@ public class CustomModels {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
+    @Deprecated(forRemoval = true)
     public static TextureMap fancyCarpetMap(String color) {
         TextureMap textureMap = new TextureMap();
 
@@ -37,6 +40,12 @@ public class CustomModels {
         textureMap.put(GOLD, Identifier.of("minecraft", "block/gold_block"));
 
         return textureMap;
+    }
+
+    public static TextureMap fancyCarpetMap(Block block) {
+        return new TextureMap()
+                .put(TextureKey.WOOL, ModelIds.getBlockSubModelId(block, ""))
+                .put(GOLD, ModelIds.getBlockSubModelId(GOLD_BLOCK, ""));
     }
 
     public static TextureMap pedestalMap(Block block) {
@@ -51,23 +60,20 @@ public class CustomModels {
                 .put(TextureKey.TOP, ModelIds.getBlockSubModelId(block, "_top"));
     }
 
-    public static TextureMap lockboxMap(String color) {
+    public static TextureMap dustMap(String shade) {
         TextureMap textureMap = new TextureMap();
-
-        //Map the glass texture to the vanilla glass texture with the specified color, or to normal glass if no color is specified.
-        if (!color.isEmpty() && !color.equals("dust1") && !color.equals("dust2") && !color.equals("dust3") && !color.equals("dust4")) {
-            textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/" + color + "_stained_glass"));
-        } else {
-            switch (color) {
-                case "dust1" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_1"));
-                case "dust2" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_2"));
-                case "dust3" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_3"));
-                case "dust4" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_4"));
-                default -> textureMap.put(TextureKey.ALL, Identifier.of("minecraft", "block/glass"));
-            }
+        switch (shade) {
+            case "dust1" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_1"));
+            case "dust2" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_2"));
+            case "dust3" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_3"));
+            case "dust4" -> textureMap.put(TextureKey.ALL, Identifier.of(Pedestals121.MOD_ID, "item/lockbox_dust_4"));
         }
-
         return textureMap;
+    }
+
+    public static TextureMap lockboxMap(Block block) {
+        return new TextureMap()
+                .put(TextureKey.ALL, ModelIds.getBlockSubModelId(block, ""));
     }
 
 }

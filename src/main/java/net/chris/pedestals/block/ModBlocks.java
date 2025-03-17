@@ -21,7 +21,10 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.minecraft.block.Blocks.*;
 
@@ -468,7 +471,76 @@ public class ModBlocks {
                 new BlockItem(block, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, name)))));
     }
 
-
+    public static final HashMap<Block, Block> PEDESTAL_TO_BLOCK_MAP = new HashMap<>(Map.<Block, Block>ofEntries(
+            Map.entry(STONE_BRICK_PEDESTAL, STONE_BRICKS),
+            Map.entry(MOSSY_STONE_BRICK_PEDESTAL, MOSSY_STONE_BRICKS),
+            Map.entry(SMOOTH_SANDSTONE_PEDESTAL, SMOOTH_SANDSTONE),
+            Map.entry(SMOOTH_RED_SANDSTONE_PEDESTAL, SMOOTH_RED_SANDSTONE),
+            Map.entry(DEEPSLATE_BRICK_PEDESTAL, DEEPSLATE_BRICKS),
+            Map.entry(DEEPSLATE_TILE_PEDESTAL, DEEPSLATE_TILES),
+            Map.entry(POLISHED_GRANITE_PEDESTAL, POLISHED_GRANITE),
+            Map.entry(POLISHED_DIORITE_PEDESTAL, POLISHED_DIORITE),
+            Map.entry(POLISHED_ANDESITE_PEDESTAL, POLISHED_ANDESITE),
+            Map.entry(POLISHED_DEEPSLATE_PEDESTAL, POLISHED_DEEPSLATE),
+            Map.entry(CALCITE_PEDESTAL, CALCITE),
+            Map.entry(COPPER_PEDESTAL, COPPER_BLOCK),
+            Map.entry(EXPOSED_COPPER_PEDESTAL, EXPOSED_COPPER),
+            Map.entry(WEATHERED_COPPER_PEDESTAL, WEATHERED_COPPER),
+            Map.entry(OXIDIZED_COPPER_PEDESTAL, OXIDIZED_COPPER),
+            Map.entry(WAXED_COPPER_PEDESTAL, WAXED_COPPER_BLOCK),
+            Map.entry(WAXED_EXPOSED_COPPER_PEDESTAL, WAXED_EXPOSED_COPPER),
+            Map.entry(WAXED_WEATHERED_COPPER_PEDESTAL, WAXED_WEATHERED_COPPER),
+            Map.entry(WAXED_OXIDIZED_COPPER_PEDESTAL, WAXED_OXIDIZED_COPPER),
+            Map.entry(CUT_COPPER_PEDESTAL, CUT_COPPER),
+            Map.entry(EXPOSED_CUT_COPPER_PEDESTAL, EXPOSED_CUT_COPPER),
+            Map.entry(WEATHERED_CUT_COPPER_PEDESTAL, WEATHERED_CUT_COPPER),
+            Map.entry(OXIDIZED_CUT_COPPER_PEDESTAL, OXIDIZED_CUT_COPPER),
+            Map.entry(WAXED_CUT_COPPER_PEDESTAL, WAXED_CUT_COPPER),
+            Map.entry(WAXED_EXPOSED_CUT_COPPER_PEDESTAL, WAXED_EXPOSED_CUT_COPPER),
+            Map.entry(WAXED_WEATHERED_CUT_COPPER_PEDESTAL, WAXED_WEATHERED_CUT_COPPER),
+            Map.entry(WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, WAXED_OXIDIZED_CUT_COPPER),
+            Map.entry(BRICK_PEDESTAL, BRICKS),
+            Map.entry(END_STONE_BRICK_PEDESTAL, END_STONE_BRICKS),
+            Map.entry(MUD_BRICK_PEDESTAL, MUD_BRICKS),
+            Map.entry(NETHER_BRICK_PEDESTAL, NETHER_BRICKS),
+            Map.entry(POLISHED_BLACKSTONE_BRICK_PEDESTAL, POLISHED_BLACKSTONE_BRICKS),
+            Map.entry(POLISHED_BLACKSTONE_PEDESTAL, POLISHED_BLACKSTONE),
+            Map.entry(DARK_PRISMARINE_PEDESTAL, DARK_PRISMARINE),
+            Map.entry(PRISMARINE_BRICK_PEDESTAL, PRISMARINE_BRICKS),
+            Map.entry(PURPUR_BLOCK_PEDESTAL, PURPUR_BLOCK),
+            Map.entry(QUARTZ_BRICK_PEDESTAL, QUARTZ_BRICKS),
+            Map.entry(RED_NETHER_BRICK_PEDESTAL, RED_NETHER_BRICKS),
+            Map.entry(SMOOTH_QUARTZ_PEDESTAL, SMOOTH_QUARTZ),
+            Map.entry(POLISHED_TUFF_PEDESTAL, POLISHED_TUFF),
+            Map.entry(TUFF_BRICK_PEDESTAL, TUFF_BRICKS),
+            Map.entry(CHISELED_TUFF_BRICK_PEDESTAL, CHISELED_TUFF_BRICKS),
+            Map.entry(OAK_LOG_PEDESTAL, OAK_LOG),
+            Map.entry(BIRCH_LOG_PEDESTAL, BIRCH_LOG),
+            Map.entry(SPRUCE_LOG_PEDESTAL, SPRUCE_LOG),
+            Map.entry(JUNGLE_LOG_PEDESTAL, JUNGLE_LOG),
+            Map.entry(DARK_OAK_LOG_PEDESTAL, DARK_OAK_LOG),
+            Map.entry(ACACIA_LOG_PEDESTAL, ACACIA_LOG),
+            Map.entry(CRIMSON_LOG_PEDESTAL, CRIMSON_STEM),
+            Map.entry(WARPED_LOG_PEDESTAL, WARPED_STEM),
+            Map.entry(MANGROVE_LOG_PEDESTAL, MANGROVE_LOG),
+            Map.entry(CHERRY_LOG_PEDESTAL, CHERRY_LOG),
+            Map.entry(BAMBOO_LOG_PEDESTAL, BAMBOO_BLOCK),
+            Map.entry(BAMBOO_MOSAIC_PEDESTAL, BAMBOO_MOSAIC),
+            Map.entry(PALE_OAK_LOG_PEDESTAL, PALE_OAK_LOG),
+            Map.entry(RESIN_BRICK_PEDESTAL, RESIN_BRICKS),
+            Map.entry(STRIPPED_OAK_LOG_PEDESTAL, STRIPPED_OAK_LOG),
+            Map.entry(STRIPPED_BIRCH_LOG_PEDESTAL, STRIPPED_BIRCH_LOG),
+            Map.entry(STRIPPED_SPRUCE_LOG_PEDESTAL, STRIPPED_SPRUCE_LOG),
+            Map.entry(STRIPPED_JUNGLE_LOG_PEDESTAL, STRIPPED_JUNGLE_LOG),
+            Map.entry(STRIPPED_DARK_OAK_LOG_PEDESTAL, STRIPPED_DARK_OAK_LOG),
+            Map.entry(STRIPPED_ACACIA_LOG_PEDESTAL, STRIPPED_ACACIA_LOG),
+            Map.entry(STRIPPED_MANGROVE_LOG_PEDESTAL, STRIPPED_MANGROVE_LOG),
+            Map.entry(STRIPPED_CHERRY_LOG_PEDESTAL, STRIPPED_CHERRY_LOG),
+            Map.entry(STRIPPED_BAMBOO_LOG_PEDESTAL, STRIPPED_BAMBOO_BLOCK),
+            Map.entry(STRIPPED_PALE_OAK_LOG_PEDESTAL, STRIPPED_PALE_OAK_LOG),
+            Map.entry(STRIPPED_CRIMSON_LOG_PEDESTAL, STRIPPED_CRIMSON_STEM),
+            Map.entry(STRIPPED_WARPED_LOG_PEDESTAL, STRIPPED_WARPED_STEM)
+    ));
 
     public static final List<Block> ALL_PEDESTALS = List.of(
             STONE_BRICK_PEDESTAL,
@@ -540,6 +612,25 @@ public class ModBlocks {
             STRIPPED_CRIMSON_LOG_PEDESTAL,
             STRIPPED_WARPED_LOG_PEDESTAL);
 
+    public static final HashMap<Block, Block> GILDED_TO_NORMAL_CARPET_MAP = new HashMap<>(Map.ofEntries(
+            Map.entry(WHITE_GILDED_CARPET, WHITE_CARPET),
+            Map.entry(LIGHT_GRAY_GILDED_CARPET, LIGHT_GRAY_CARPET),
+            Map.entry(GRAY_GILDED_CARPET, GRAY_CARPET),
+            Map.entry(BLACK_GILDED_CARPET, BLACK_CARPET),
+            Map.entry(BROWN_GILDED_CARPET, BROWN_CARPET),
+            Map.entry(RED_GILDED_CARPET, RED_CARPET),
+            Map.entry(ORANGE_GILDED_CARPET, ORANGE_CARPET),
+            Map.entry(YELLOW_GILDED_CARPET, YELLOW_CARPET),
+            Map.entry(LIME_GILDED_CARPET, LIME_CARPET),
+            Map.entry(GREEN_GILDED_CARPET, GREEN_CARPET),
+            Map.entry(CYAN_GILDED_CARPET, CYAN_CARPET),
+            Map.entry(LIGHT_BLUE_GILDED_CARPET, LIGHT_BLUE_CARPET),
+            Map.entry(BLUE_GILDED_CARPET, BLUE_CARPET),
+            Map.entry(PURPLE_GILDED_CARPET, PURPLE_CARPET),
+            Map.entry(MAGENTA_GILDED_CARPET, MAGENTA_CARPET),
+            Map.entry(PINK_GILDED_CARPET, PINK_CARPET)
+    ));
+
     public static final List<Block> ALL_FANCY_CARPETS = List.of(
             WHITE_GILDED_CARPET,
             LIGHT_GRAY_GILDED_CARPET,
@@ -557,25 +648,6 @@ public class ModBlocks {
             PURPLE_GILDED_CARPET,
             MAGENTA_GILDED_CARPET,
             PINK_GILDED_CARPET
-    );
-    
-    public static final List<Block> ALL_STAINED_GLASS = List.of(
-            WHITE_STAINED_GLASS,
-            LIGHT_GRAY_STAINED_GLASS,
-            GRAY_STAINED_GLASS,
-            BLACK_STAINED_GLASS,
-            BROWN_STAINED_GLASS,
-            RED_STAINED_GLASS,
-            ORANGE_STAINED_GLASS,
-            YELLOW_STAINED_GLASS,
-            LIME_STAINED_GLASS,
-            GREEN_STAINED_GLASS,
-            CYAN_STAINED_GLASS,
-            LIGHT_BLUE_STAINED_GLASS,
-            BLUE_STAINED_GLASS,
-            PURPLE_STAINED_GLASS,
-            MAGENTA_STAINED_GLASS,
-            PINK_STAINED_GLASS
     );
 
     private static void registerOxidationAndWaxing() {
@@ -619,9 +691,7 @@ public class ModBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(BAMBOO_MOSAIC_PEDESTAL, 5, 20);
 
         /// Gilded Carpets:
-        for (Block fancyCarpet : ALL_FANCY_CARPETS){
-            FlammableBlockRegistry.getDefaultInstance().add(fancyCarpet, 60, 20);
-        }
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> FlammableBlockRegistry.getDefaultInstance().add(block, 60, 20));
     }
 
     private static void registerStrippableBlocks(){
@@ -644,24 +714,7 @@ public class ModBlocks {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> ALL_PEDESTALS.forEach(entries::add));
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries ->{
-            entries.addAfter(RED_CARPET, RED_GILDED_CARPET);
-            entries.addAfter(BLUE_CARPET, BLUE_GILDED_CARPET);
-            entries.addAfter(WHITE_CARPET, WHITE_GILDED_CARPET);
-            entries.addAfter(LIGHT_GRAY_CARPET, LIGHT_GRAY_GILDED_CARPET);
-            entries.addAfter(GRAY_CARPET, GRAY_GILDED_CARPET);
-            entries.addAfter(BLACK_CARPET, BLACK_GILDED_CARPET);
-            entries.addAfter(BROWN_CARPET, BROWN_GILDED_CARPET);
-            entries.addAfter(ORANGE_CARPET, ORANGE_GILDED_CARPET);
-            entries.addAfter(YELLOW_CARPET, YELLOW_GILDED_CARPET);
-            entries.addAfter(LIME_CARPET, LIME_GILDED_CARPET);
-            entries.addAfter(GREEN_CARPET, GREEN_GILDED_CARPET);
-            entries.addAfter(CYAN_CARPET, CYAN_GILDED_CARPET);
-            entries.addAfter(LIGHT_BLUE_CARPET, LIGHT_BLUE_GILDED_CARPET);
-            entries.addAfter(PURPLE_CARPET, PURPLE_GILDED_CARPET);
-            entries.addAfter(MAGENTA_CARPET, MAGENTA_GILDED_CARPET);
-            entries.addAfter(PINK_CARPET, PINK_GILDED_CARPET);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> GILDED_TO_NORMAL_CARPET_MAP.forEach((gilded, normal) -> entries.addAfter(normal, gilded)));
 
         registerOxidationAndWaxing();
         registerFlammableBlocks();

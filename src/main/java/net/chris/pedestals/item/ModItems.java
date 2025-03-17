@@ -10,6 +10,7 @@ import net.chris.pedestals.item.items.KeyItem;
 import net.chris.pedestals.item.items.LockboxItem;
 import net.chris.pedestals.item.items.LockpickItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -21,9 +22,14 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
+
+import static net.minecraft.block.Blocks.*;
+import static net.minecraft.block.Blocks.PINK_STAINED_GLASS;
 
 public class ModItems {
 
@@ -134,6 +140,26 @@ public class ModItems {
             PINK_LOCKBOX
     );
 
+    public static final HashMap<Item, Block> STAINED_LOCKBOX_TO_GLASS_MAP = new HashMap<>(Map.ofEntries(
+            Map.entry(WHITE_LOCKBOX, WHITE_STAINED_GLASS),
+            Map.entry(LIGHT_GRAY_LOCKBOX, LIGHT_GRAY_STAINED_GLASS),
+            Map.entry(GRAY_LOCKBOX, GRAY_STAINED_GLASS),
+            Map.entry(BLACK_LOCKBOX, BLACK_STAINED_GLASS),
+            Map.entry(BROWN_LOCKBOX, BROWN_STAINED_GLASS),
+            Map.entry(RED_LOCKBOX, RED_STAINED_GLASS),
+            Map.entry(ORANGE_LOCKBOX, ORANGE_STAINED_GLASS),
+            Map.entry(YELLOW_LOCKBOX, YELLOW_STAINED_GLASS),
+            Map.entry(LIME_LOCKBOX, LIME_STAINED_GLASS),
+            Map.entry(GREEN_LOCKBOX, GREEN_STAINED_GLASS),
+            Map.entry(CYAN_LOCKBOX, CYAN_STAINED_GLASS),
+            Map.entry(LIGHT_BLUE_LOCKBOX, LIGHT_BLUE_STAINED_GLASS),
+            Map.entry(BLUE_LOCKBOX, BLUE_STAINED_GLASS),
+            Map.entry(PURPLE_LOCKBOX, PURPLE_STAINED_GLASS),
+            Map.entry(MAGENTA_LOCKBOX, MAGENTA_STAINED_GLASS),
+            Map.entry(PINK_LOCKBOX, PINK_STAINED_GLASS)
+    ));
+
+
     public static Item registerItem(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, name));
         Item item = itemFactory.apply(settings.registryKey(itemKey));
@@ -146,9 +172,7 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> {
             entries.add(GLASS_LOCKBOX);
-            for (Item i: ALL_COLORED_LOCKBOXES) {
-                entries.add(i);
-            }
+            STAINED_LOCKBOX_TO_GLASS_MAP.keySet().forEach(entries::add);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {

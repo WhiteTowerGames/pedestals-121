@@ -103,9 +103,6 @@ public class WoodcuttingProvider extends FabricRecipeProvider {
                     createWoodcuttingRecipe(RecipeCategory.DECORATIONS, Blocks.STRIPPED_BAMBOO_BLOCK, ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL.asItem(), 1);
                     createWoodcuttingRecipe(RecipeCategory.DECORATIONS, Blocks.BAMBOO_BLOCK, ModBlocks.BAMBOO_MOSAIC_PEDESTAL.asItem(), 1);
                     createWoodcuttingRecipe(RecipeCategory.DECORATIONS, Blocks.STRIPPED_BAMBOO_BLOCK, ModBlocks.BAMBOO_MOSAIC_PEDESTAL.asItem(), 1);
-
-
-
                 }
             };
     }

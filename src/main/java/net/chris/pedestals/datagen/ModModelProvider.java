@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
 import static net.chris.pedestals.models.CustomModels.*;
+import static net.minecraft.block.Blocks.GLASS;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -99,21 +100,17 @@ public class ModModelProvider extends FabricModelProvider {
 
         /// Gilded Carpet and Lockbox Models:
 
-        registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(""));
+        registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(GLASS));
 
-        registerLockbox(blockStateModelGenerator, DUST_1, lockboxMap("dust1"));
-        registerLockbox(blockStateModelGenerator, DUST_2, lockboxMap("dust2"));
-        registerLockbox(blockStateModelGenerator, DUST_3, lockboxMap("dust3"));
-        registerLockbox(blockStateModelGenerator, DUST_4, lockboxMap("dust4"));
+        registerLockbox(blockStateModelGenerator, DUST_1, dustMap("dust1"));
+        registerLockbox(blockStateModelGenerator, DUST_2, dustMap("dust2"));
+        registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
+        registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
 
-        for (int i = 0; i<=15; i++){
-            registerFancyCarpet(blockStateModelGenerator, ALL_FANCY_CARPETS.get(i), fancyCarpetMap(allColors[i]));
-            registerLockbox(blockStateModelGenerator, ALL_COLORED_LOCKBOXES.get(i), lockboxMap(allColors[i]));
-        }
+        GILDED_TO_NORMAL_CARPET_MAP.forEach((gilded, normal) -> registerFancyCarpet(blockStateModelGenerator, gilded, fancyCarpetMap(normal)));
+
+        STAINED_LOCKBOX_TO_GLASS_MAP.forEach((lockbox, glass) -> registerLockbox(blockStateModelGenerator, lockbox, lockboxMap(glass)));
     }
-
-    public static final String[] allColors = {"white", "light_gray", "gray", "black",
-            "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"};
 
 
     public static void registerPedestal(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){

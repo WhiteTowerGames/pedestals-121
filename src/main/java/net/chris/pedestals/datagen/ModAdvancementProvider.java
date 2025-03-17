@@ -140,7 +140,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 .build(consumer, Pedestals121.MOD_ID + ":place_pedestal_on_pedestal");
 
         /// This advancement uses a separate, new builder so that I could run a for loop in it.
-        Advancement.Builder builder = Advancement.Builder.create().parent(get_pedestal)
+        final Advancement.Builder builder = Advancement.Builder.create().parent(get_pedestal)
                 .display(
                         ModBlocks.END_STONE_BRICK_PEDESTAL,
                         collect_all_pedestals_title,
@@ -153,7 +153,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 )
                 .rewards(AdvancementRewards.Builder.experience(250));
 
-        for (Block pedestal : ModBlocks.ALL_PEDESTALS) {
+        PEDESTAL_TO_BLOCK_MAP.keySet().forEach(pedestal -> {
             ItemPredicate allPedestalsItemPredicate = ItemPredicate.Builder.create()
                     .items(itemLookup, pedestal.asItem())
                     .build();
@@ -161,7 +161,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                     Registries.BLOCK.getId(pedestal).getPath(),
                     InventoryChangedCriterion.Conditions.items(allPedestalsItemPredicate)
             );
-        }
+        });
+
         builder.build(consumer, Pedestals121.MOD_ID + ":collect_all_pedestals");
         
         AdvancementEntry get_fancy_carpet = Advancement.Builder.create()
@@ -178,7 +179,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 .build(consumer, Pedestals121.MOD_ID + ":get_fancy_carpet");
 
         /// And so does this.
-        builder = Advancement.Builder.create().parent(get_fancy_carpet)
+        final Advancement.Builder other_builder = Advancement.Builder.create().parent(get_fancy_carpet)
                 .display(
                         YELLOW_GILDED_CARPET,
                         all_the_colors_title,
@@ -191,29 +192,30 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 )
                 .rewards(AdvancementRewards.Builder.experience(400));
 
-        for (Block fancyCarpet : ALL_FANCY_CARPETS) {
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(fancyCarpet -> {
             ItemPredicate allCarpetsItemPredicate = ItemPredicate.Builder.create()
                     .items(itemLookup, fancyCarpet.asItem())
                     .build();
-            builder.criterion(
+            other_builder.criterion(
                     Registries.BLOCK.getId(fancyCarpet).getPath(),
                     InventoryChangedCriterion.Conditions.items(allCarpetsItemPredicate)
             );
-        }
+        });
         builder.criterion(
                 Registries.ITEM.getId(GLASS_LOCKBOX).getPath(),
-                InventoryChangedCriterion.Conditions.items(GLASS_LOCKBOX)
-        );
-        for (Item lockbox : ALL_COLORED_LOCKBOXES) {
+                InventoryChangedCriterion.Conditions.items(GLASS_LOCKBOX));
+
+        STAINED_LOCKBOX_TO_GLASS_MAP.keySet().forEach(lockbox -> {
             ItemPredicate allLockboxesItemPredicate = ItemPredicate.Builder.create()
-                    .items(itemLookup, lockbox.asItem())
+                    .items(itemLookup, lockbox)
                     .build();
-            builder.criterion(
+            other_builder.criterion(
                     Registries.ITEM.getId(lockbox).getPath(),
                     InventoryChangedCriterion.Conditions.items(allLockboxesItemPredicate)
             );
-        }
-        builder.build(consumer, Pedestals121.MOD_ID + ":all_the_colors");
+        });
+
+        other_builder.build(consumer, Pedestals121.MOD_ID + ":all_the_colors");
 
         AdvancementEntry get_lockbox = Advancement.Builder.create()
                 .parent(get_pedestal)
