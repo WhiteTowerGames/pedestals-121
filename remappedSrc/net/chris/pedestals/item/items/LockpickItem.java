@@ -4,7 +4,6 @@ import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.chris.pedestals.sounds.ModSoundEvents;
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -37,9 +36,9 @@ import java.util.List;
 
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
-public class LockpickItem extends Item implements ItemTooltipCallback {
+public class LockpickItem extends Item {
 
-    public LockpickItem(Settings settings) {
+    public LockpickItem(net.minecraft.item.Item.Settings settings) {
         super(settings);
     }
 
@@ -179,14 +178,15 @@ public class LockpickItem extends Item implements ItemTooltipCallback {
     }
 
     @Override
-    public void getTooltip(ItemStack stack, TooltipContext tooltipContext, TooltipType tooltipType, List<Text> lines) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+
         boolean isEnabled = ModGameRuleCache.areLockpicksEnabled();
         if (!isEnabled){
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l1").formatted(Formatting.RED, Formatting.BOLD));
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l2").formatted(Formatting.RED, Formatting.BOLD));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l1").formatted(Formatting.RED, Formatting.BOLD));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l2").formatted(Formatting.RED, Formatting.BOLD));
         } else {
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l1"));
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l2"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l1"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l2"));
         }
     }
 }

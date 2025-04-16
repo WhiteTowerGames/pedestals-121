@@ -4,7 +4,6 @@ import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.components.LockAndKeyDataComponent;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,8 +27,8 @@ import java.util.UUID;
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
 
-public class KeyItem extends Item implements ItemTooltipCallback {
-    public KeyItem(Settings settings) {
+public class KeyItem extends Item {
+    public KeyItem(net.minecraft.item.Item.Settings settings) {
         super(settings);
     }
 
@@ -110,23 +109,22 @@ public class KeyItem extends Item implements ItemTooltipCallback {
     }
 
     @Override
-    public void getTooltip(ItemStack stack, TooltipContext tooltipContext, TooltipType tooltipType, List<Text> lines) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
         assert stackComponent != null;
         boolean isStackMapped = stackComponent.isMapped();
         boolean isStackCopy = stackComponent.isCopy();
         if (isStackMapped){
-            lines.add(Text.translatable("itemtooltip.pedestals.key_is_mapped"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_is_mapped"));
             if (stack.getCustomName()==null) {
-                lines.add(Text.translatable("itemtooltip.pedestals.key_unnamed"));
+                tooltip.add(Text.translatable("itemtooltip.pedestals.key_unnamed"));
             }
         } else {
-            lines.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l1"));
-            lines.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l2"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l1"));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l2"));
         }
         if (isStackCopy){
-            lines.add(Text.translatable("itemtooltip.pedestals.key_clone").formatted(Formatting.BOLD, Formatting.YELLOW));
+            tooltip.add(Text.translatable("itemtooltip.pedestals.key_clone").formatted(Formatting.BOLD, Formatting.YELLOW));
         }
     }
-
 }

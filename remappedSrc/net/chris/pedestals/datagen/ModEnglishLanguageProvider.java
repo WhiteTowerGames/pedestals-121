@@ -1,0 +1,268 @@
+package net.chris.pedestals.datagen;
+
+import net.chris.pedestals.block.ModBlocks;
+import net.chris.pedestals.item.ModItemGroups;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableTextContent;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.concurrent.CompletableFuture;
+
+import static net.chris.pedestals.block.ModBlocks.*;
+import static net.chris.pedestals.item.ModItems.*;
+
+public class ModEnglishLanguageProvider extends FabricLanguageProvider {
+
+    public ModEnglishLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, "en_us", registryLookup);
+    }
+
+    private static void addText(@NotNull TranslationBuilder builder, @NotNull Text text, @NotNull String value){
+        builder.add(((TranslatableTextContent) text.getContent()).getKey(), value);
+    }
+
+    public static final String[] allColors = {"White", "Light Gray", "Gray", "Black",
+            "Brown", "Red", "Orange", "Yellow", "Lime", "Green", "Cyan", "Light Blue", "Blue", "Purple", "Magenta", "Pink"};
+
+    @Override
+    public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModBlocks.STONE_BRICK_PEDESTAL, "Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL, "Mossy Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL, "Deepslate Brick Pedestal");
+        translationBuilder.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL, "Deepslate Tile Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_GRANITE_PEDESTAL, "Polished Granite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_DIORITE_PEDESTAL, "Polished Diorite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL, "Polished Andesite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL, "Polished Deepslate Pedestal");
+        translationBuilder.add(ModBlocks.CALCITE_PEDESTAL, "Calcite Pedestal");
+        translationBuilder.add(ModBlocks.COPPER_PEDESTAL, "Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_COPPER_PEDESTAL, "Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_COPPER_PEDESTAL, "Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL, "Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_COPPER_PEDESTAL, "Waxed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL, "Waxed Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL, "Waxed Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL, "Waxed Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.CUT_COPPER_PEDESTAL, "Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL, "Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL, "Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL, "Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL, "Waxed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL, "Waxed Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL, "Waxed Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL, "Waxed Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.BRICK_PEDESTAL, "Brick Pedestal");
+        translationBuilder.add(ModBlocks.END_STONE_BRICK_PEDESTAL, "End Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.MUD_BRICK_PEDESTAL, "Mud Brick Pedestal");
+        translationBuilder.add(ModBlocks.NETHER_BRICK_PEDESTAL, "Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL, "Polished Blackstone Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL, "Polished Blackstone Pedestal");
+        translationBuilder.add(ModBlocks.DARK_PRISMARINE_PEDESTAL, "Dark Prismarine Pedestal");
+        translationBuilder.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL, "Prismarine Brick Pedestal");
+        translationBuilder.add(ModBlocks.PURPUR_BLOCK_PEDESTAL, "Purpur Pedestal");
+        translationBuilder.add(ModBlocks.QUARTZ_BRICK_PEDESTAL, "Quartz Brick Pedestal");
+        translationBuilder.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL, "Red Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL, "Smooth Quartz Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_TUFF_PEDESTAL, "Polished Tuff Pedestal");
+        translationBuilder.add(ModBlocks.TUFF_BRICK_PEDESTAL, "Tuff Brick Pedestal");
+        translationBuilder.add(ModBlocks.OAK_LOG_PEDESTAL, "Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.BIRCH_LOG_PEDESTAL, "Birch Wood Pedestal");
+        translationBuilder.add(ModBlocks.SPRUCE_LOG_PEDESTAL, "Spruce Wood Pedestal");
+        translationBuilder.add(ModBlocks.JUNGLE_LOG_PEDESTAL, "Jungle Wood Pedestal");
+        translationBuilder.add(ModBlocks.DARK_OAK_LOG_PEDESTAL, "Dark Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.ACACIA_LOG_PEDESTAL, "Acacia Wood Pedestal");
+        translationBuilder.add(ModBlocks.MANGROVE_LOG_PEDESTAL, "Mangrove Wood Pedestal");
+        translationBuilder.add(ModBlocks.CHERRY_LOG_PEDESTAL, "Cherry Wood Pedestal");
+        translationBuilder.add(ModBlocks.BAMBOO_LOG_PEDESTAL, "Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL, "Bamboo Mosaic Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_OAK_LOG_PEDESTAL, "Stripped Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL, "Stripped Birch Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL, "Stripped Spruce Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL, "Stripped Jungle Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL, "Stripped Dark Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL, "Stripped Acacia Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL, "Stripped Mangrove Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL, "Stripped Cherry Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL, "Stripped Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL, "Chiseled Tuff Brick Pedestal");
+        translationBuilder.add(ModBlocks.PALE_OAK_LOG_PEDESTAL, "Pale Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_PALE_OAK_LOG_PEDESTAL, "Stripped Pale Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.RESIN_BRICK_PEDESTAL, "Resin Brick Pedestal");
+        translationBuilder.add(ModBlocks.CRIMSON_LOG_PEDESTAL, "Crimson Stem Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL, "Stripped Crimson Stem Pedestal");
+        translationBuilder.add(ModBlocks.WARPED_LOG_PEDESTAL, "Warped Stem Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL, "Stripped Warped Stem Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL, "Smooth Sandstone Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL, "Smooth Red Sandstone Pedestal");
+
+        translationBuilder.add(ModBlocks.STONE_BRICK_PEDESTAL.asItem(), "Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL.asItem(), "Mossy Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL.asItem(), "Deepslate Brick Pedestal");
+        translationBuilder.add(ModBlocks.DEEPSLATE_TILE_PEDESTAL.asItem(), "Deepslate Tile Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_GRANITE_PEDESTAL.asItem(), "Polished Granite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_DIORITE_PEDESTAL.asItem(), "Polished Diorite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_ANDESITE_PEDESTAL.asItem(), "Polished Andesite Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_DEEPSLATE_PEDESTAL.asItem(), "Polished Deepslate Pedestal");
+        translationBuilder.add(ModBlocks.CALCITE_PEDESTAL.asItem(), "Calcite Pedestal");
+        translationBuilder.add(ModBlocks.COPPER_PEDESTAL.asItem(), "Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_COPPER_PEDESTAL.asItem(), "Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_COPPER_PEDESTAL.asItem(), "Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_COPPER_PEDESTAL.asItem(), "Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_COPPER_PEDESTAL.asItem(), "Waxed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_COPPER_PEDESTAL.asItem(), "Waxed Exposed Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_COPPER_PEDESTAL.asItem(), "Waxed Weathered Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_COPPER_PEDESTAL.asItem(), "Waxed Oxidized Copper Pedestal");
+        translationBuilder.add(ModBlocks.CUT_COPPER_PEDESTAL.asItem(), "Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.EXPOSED_CUT_COPPER_PEDESTAL.asItem(), "Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WEATHERED_CUT_COPPER_PEDESTAL.asItem(), "Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.OXIDIZED_CUT_COPPER_PEDESTAL.asItem(), "Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_CUT_COPPER_PEDESTAL.asItem(), "Waxed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL.asItem(), "Waxed Exposed Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_WEATHERED_CUT_COPPER_PEDESTAL.asItem(), "Waxed Weathered Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL.asItem(), "Waxed Oxidized Cut Copper Pedestal");
+        translationBuilder.add(ModBlocks.BRICK_PEDESTAL.asItem(), "Brick Pedestal");
+        translationBuilder.add(ModBlocks.END_STONE_BRICK_PEDESTAL.asItem(), "End Stone Brick Pedestal");
+        translationBuilder.add(ModBlocks.MUD_BRICK_PEDESTAL.asItem(), "Mud Brick Pedestal");
+        translationBuilder.add(ModBlocks.NETHER_BRICK_PEDESTAL.asItem(), "Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_BRICK_PEDESTAL.asItem(), "Polished Blackstone Brick Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_BLACKSTONE_PEDESTAL.asItem(), "Polished Blackstone Pedestal");
+        translationBuilder.add(ModBlocks.DARK_PRISMARINE_PEDESTAL.asItem(), "Dark Prismarine Pedestal");
+        translationBuilder.add(ModBlocks.PRISMARINE_BRICK_PEDESTAL.asItem(), "Prismarine Brick Pedestal");
+        translationBuilder.add(ModBlocks.PURPUR_BLOCK_PEDESTAL.asItem(), "Purpur Pedestal");
+        translationBuilder.add(ModBlocks.QUARTZ_BRICK_PEDESTAL.asItem(), "Quartz Brick Pedestal");
+        translationBuilder.add(ModBlocks.RED_NETHER_BRICK_PEDESTAL.asItem(), "Red Nether Brick Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_QUARTZ_PEDESTAL.asItem(), "Smooth Quartz Pedestal");
+        translationBuilder.add(ModBlocks.POLISHED_TUFF_PEDESTAL.asItem(), "Polished Tuff Pedestal");
+        translationBuilder.add(ModBlocks.TUFF_BRICK_PEDESTAL.asItem(), "Tuff Brick Pedestal");
+        translationBuilder.add(ModBlocks.OAK_LOG_PEDESTAL.asItem(), "Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.BIRCH_LOG_PEDESTAL.asItem(), "Birch Wood Pedestal");
+        translationBuilder.add(ModBlocks.SPRUCE_LOG_PEDESTAL.asItem(), "Spruce Wood Pedestal");
+        translationBuilder.add(ModBlocks.JUNGLE_LOG_PEDESTAL.asItem(), "Jungle Wood Pedestal");
+        translationBuilder.add(ModBlocks.DARK_OAK_LOG_PEDESTAL.asItem(), "Dark Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.ACACIA_LOG_PEDESTAL.asItem(), "Acacia Wood Pedestal");
+        translationBuilder.add(ModBlocks.MANGROVE_LOG_PEDESTAL.asItem(), "Mangrove Wood Pedestal");
+        translationBuilder.add(ModBlocks.CHERRY_LOG_PEDESTAL.asItem(), "Cherry Wood Pedestal");
+        translationBuilder.add(ModBlocks.BAMBOO_LOG_PEDESTAL.asItem(), "Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.BAMBOO_MOSAIC_PEDESTAL.asItem(), "Bamboo Mosaic Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_OAK_LOG_PEDESTAL.asItem(), "Stripped Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_BIRCH_LOG_PEDESTAL.asItem(), "Stripped Birch Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_SPRUCE_LOG_PEDESTAL.asItem(), "Stripped Spruce Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_JUNGLE_LOG_PEDESTAL.asItem(), "Stripped Jungle Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_DARK_OAK_LOG_PEDESTAL.asItem(), "Stripped Dark Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_ACACIA_LOG_PEDESTAL.asItem(), "Stripped Acacia Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_MANGROVE_LOG_PEDESTAL.asItem(), "Stripped Mangrove Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_CHERRY_LOG_PEDESTAL.asItem(), "Stripped Cherry Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_BAMBOO_LOG_PEDESTAL.asItem(), "Stripped Bamboo Pedestal");
+        translationBuilder.add(ModBlocks.CHISELED_TUFF_BRICK_PEDESTAL.asItem(), "Chiseled Tuff Brick Pedestal");
+        translationBuilder.add(ModBlocks.PALE_OAK_LOG_PEDESTAL.asItem(), "Pale Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_PALE_OAK_LOG_PEDESTAL.asItem(), "Stripped Pale Oak Wood Pedestal");
+        translationBuilder.add(ModBlocks.RESIN_BRICK_PEDESTAL.asItem(), "Resin Brick Pedestal");
+        translationBuilder.add(ModBlocks.CRIMSON_LOG_PEDESTAL.asItem(), "Crimson Stem Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_CRIMSON_LOG_PEDESTAL.asItem(), "Stripped Crimson Stem Pedestal");
+        translationBuilder.add(ModBlocks.WARPED_LOG_PEDESTAL.asItem(), "Warped Stem Pedestal");
+        translationBuilder.add(ModBlocks.STRIPPED_WARPED_LOG_PEDESTAL.asItem(), "Stripped Warped Stem Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_SANDSTONE_PEDESTAL.asItem(), "Smooth Sandstone Pedestal");
+        translationBuilder.add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL.asItem(), "Smooth Red Sandstone Pedestal");
+
+        translationBuilder.add(GLASS_LOCKBOX, "Reinforced Lockbox");
+
+        for (int i = 0; i<=15; i++){
+            String actualName = getActualName(i);
+
+            /// Gilded Carpets:
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Gilded Carpet");
+            translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Gilded Carpet");
+
+            /// Reinforced Lockboxes:
+            translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Reinforced Lockbox");
+        }
+
+        /// Keys:
+        translationBuilder.add(LOCKBOX_KEY, "Lockbox Key");
+        translationBuilder.add(CREATIVE_KEY, "Skeleton Key");
+        translationBuilder.add(LOCKPICK, "Lockpick");
+
+        /// Item Tooltips:
+        translationBuilder.add("itemtooltip.pedestals.creative_key", "This can unlock any lockbox!");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l1", "Lockpicks have been disabled via");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_disabled.l2", "the enableLockpicks gamerule.");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l1", "Right click on a lockbox to");
+        translationBuilder.add("itemtooltip.pedestals.lockpick_enabled.l2", "try to pick the lock!");
+        translationBuilder.add("itemtooltip.pedestals.key_is_mapped", "This key will open a specific lockbox.");
+        translationBuilder.add("itemtooltip.pedestals.key_unnamed", "Consider renaming it to keep track.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l1", "This key has not been bound yet.");
+        translationBuilder.add("itemtooltip.pedestals.key_not_mapped.l2", "Right click an unregistered lockbox to bind!");
+        translationBuilder.add("itemtooltip.pedestals.key_clone", "Duplicate Key");
+
+        /// Messages:
+        translationBuilder.add("messages.pedestals.key_open", "Case Opened!");
+        translationBuilder.add("messages.pedestals.key_wrong", "Incorrect Key!");
+        translationBuilder.add("messages.pedestals.key_map", "Key Registered!");
+        translationBuilder.add("messages.pedestals.lockpicking_failed", "Lockpicking attempt failed!");
+        translationBuilder.add("messages.pedestals.lockpicking_success", "Lock picked!");
+        translationBuilder.add("messages.pedestals.try_break_lockbox", "The glass appears impenetrable... But perhaps there is another way to open it.");
+
+        /// Sounds:
+        translationBuilder.add("sound.pedestals.lockpick_increase", "Lockpicking Increases");
+
+        /// Item Groups:
+        addText(translationBuilder, ModItemGroups.PEDESTALS_GROUP.getDisplayName(), "Pedestals");
+        addText(translationBuilder, ModItemGroups.FANCY_CARPETS_GROUP.getDisplayName(), "Gilded Carpets");
+        addText(translationBuilder, ModItemGroups.LOCKBOXES_GROUP.getDisplayName(), "Reinforced Lockboxes");
+
+        /// Advancement Titles & Descriptions:
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_title, "Pedestals!");
+        addText(translationBuilder, ModAdvancementProvider.get_pedestal_desc, "Right click with an item to display it!");
+
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_title, "The Power of Fancy Displays");
+        addText(translationBuilder, ModAdvancementProvider.read_power_of_pedestal_desc, "The comparator output of a pedestal depends on how rare its item is.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_title, "Maximum Power!");
+        addText(translationBuilder, ModAdvancementProvider.place_epic_item_desc, "A Pedestal with an Epic (purple) item on it will also power the block beneath it.");
+
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_title, "Pedestal-ception");
+        addText(translationBuilder, ModAdvancementProvider.place_pedestal_on_pedestal_desc, "Pedestals on Pedestals... I'm starting to get dizzy.");
+
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_title, "Grand Archivist");
+        addText(translationBuilder, ModAdvancementProvider.collect_all_pedestals_desc, "From stone to wood to copper, no pedestal has escaped your grasp. Your collection is complete.");
+
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_title, "Gilded Carpets!");
+        addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_desc, "Didn't my grandmother have one of those on her coffee table?");
+
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_title, "Reinforced Lockboxes!");
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_desc, "A sturdy glass lockbox, reinforced with diamond for extra security. Good luck breaking in!");
+
+        addText(translationBuilder, ModAdvancementProvider.use_key_title, "The Right Key for the Job");
+        addText(translationBuilder, ModAdvancementProvider.use_key_desc, "Registered keys and lockboxes can be duplicated via crafting - Share access wisely.");
+
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_title, "If at first you don't succeed...");
+        addText(translationBuilder, ModAdvancementProvider.break_lockpick_desc, "Break a Lockpick.");
+
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_title, "Lockpicking 100");
+        addText(translationBuilder, ModAdvancementProvider.pick_lock_desc, "Successfully pick the lock on a Lockbox to relieve it of its contents.");
+
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_title, "It Belongs in a Museum!");
+        addText(translationBuilder, ModAdvancementProvider.carpet_lock_artifact_desc, "Place an artifact on a carpeted Pedestal, and secure it with a lockbox.");
+
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_title, "Taste the Rainbow");
+        addText(translationBuilder, ModAdvancementProvider.all_the_colors_desc, "A rainbow of options to make your displays pop!");
+
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_title, "Squeaky Clean");
+        addText(translationBuilder, ModAdvancementProvider.fully_clean_lockbox_desc, "Restore a dusty Lockbox to its former condition with the Brush.");
+    }
+
+    private static @NotNull String getActualName(int i) {
+        String colorName = allColors[i];
+        String actualName = colorName.substring(0, 1).toUpperCase() + colorName.substring(1);
+        if (actualName.length()>5) {
+            if (actualName.charAt(5) == '_'){
+                actualName = actualName.replaceAll("_", " ");
+                actualName = actualName.substring(0, 5) + actualName.substring(5,7).toUpperCase() + actualName.substring(7);
+            }
+        }
+        return actualName;
+    }
+}

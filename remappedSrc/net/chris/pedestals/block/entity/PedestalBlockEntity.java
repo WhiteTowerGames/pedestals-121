@@ -183,8 +183,8 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         super.markDirty();
         if (world != null) {
             //System.out.println("Pedestal block at " + pos + " changed!");
-            world.updateNeighborsAlways(pos, this.getCachedState().getBlock(), null);
-            world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock(), null);
+            world.updateNeighborsAlways(pos, this.getCachedState().getBlock());
+            world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock());
         }
     }
 

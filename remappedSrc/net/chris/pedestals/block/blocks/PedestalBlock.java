@@ -8,7 +8,6 @@ import net.chris.pedestals.datagen.ModBlockTagProvider;
 import net.chris.pedestals.datagen.ModItemTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ItemEntity;
@@ -179,7 +178,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
                 }
             }
         }
-        world.updateNeighborsAlways(pos, this, null);
+        world.updateNeighborsAlways(pos, this);
         return ActionResult.PASS;
     }
 
@@ -293,10 +292,13 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
     }
 
+    /// This FINALLY solved my problem with pedestals losing their inventory when scraped/waxed/stripped.
+    /// Why did I not find this method sooner?
+    ///
+    /// <sub>Side note: how does this work? Blocks are quasi-singletons.</sub>
     @Override
-    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
-        BlockState newState = world.getBlockState(pos);
         if (state.getBlock() != newState.getBlock() && newState.isIn(ModBlockTagProvider.PEDESTAL_BLOCKS)) {
             assert pedestalBlockEntity != null;
             pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());

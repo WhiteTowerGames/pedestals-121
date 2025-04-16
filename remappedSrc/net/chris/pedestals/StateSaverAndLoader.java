@@ -1,5 +1,6 @@
 package net.chris.pedestals;
 
+import com.mojang.datafixers.types.Type;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
@@ -7,15 +8,13 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.World;
 
+import java.util.Optional;
+
 public class StateSaverAndLoader extends PersistentState {
 
-    public boolean warned = false;
+    public Optional<Boolean> warned = Optional.of(false);
 
-    @Override
-    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
-        nbt.putBoolean("pedestal_migration_warned", warned);
-        return nbt;
-    }
+
 
     public static StateSaverAndLoader createFromNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         StateSaverAndLoader state = new StateSaverAndLoader();
@@ -25,15 +24,17 @@ public class StateSaverAndLoader extends PersistentState {
 
     public static StateSaverAndLoader createNew() {
         StateSaverAndLoader state = new StateSaverAndLoader();
-        state.warned = false;
+        state.warned = Optional.of(false);
         return state;
     }
 
-    private static final Type<StateSaverAndLoader> TYPE = new Type<>(
-            StateSaverAndLoader::createNew, // If there's no StateSaverAndLoader yet create one and refresh variables
-            StateSaverAndLoader::createFromNbt, //If there is a StateSaverAndLoader NBT key, parse it with createFromNbt
-            null //Supposed to be a DataFixTypes enum but null is fine
-    );
+//    private static final Type<StateSaverAndLoader> TYPE = new Type<>(
+//            StateSaverAndLoader::createNew, // If there's no StateSaverAndLoader yet create one and refresh variables
+//            StateSaverAndLoader::createFromNbt, //If there is a StateSaverAndLoader NBT key, parse it with createFromNbt
+//            null //Supposed to be a DataFixTypes enum but null is fine
+//    );
+
+
 
     public static StateSaverAndLoader getServerState(MinecraftServer server) {
         ServerWorld serverWorld = server.getWorld(World.OVERWORLD);

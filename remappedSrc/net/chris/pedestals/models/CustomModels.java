@@ -29,6 +29,19 @@ public class CustomModels {
         return new Model(Optional.of(Identifier.of(Pedestals121.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
+    @Deprecated(forRemoval = true)
+    public static TextureMap fancyCarpetMap(String color) {
+        TextureMap textureMap = new TextureMap();
+
+        //Map the wool texture to the vanilla wool texture with the specified color
+        textureMap.put(TextureKey.WOOL, Identifier.of("minecraft", "block/"+color+"_wool"));
+
+        //Map the gold texture to the gold block texture
+        textureMap.put(GOLD, Identifier.of("minecraft", "block/gold_block"));
+
+        return textureMap;
+    }
+
     public static TextureMap fancyCarpetMap(Block block) {
         return new TextureMap()
                 .put(TextureKey.WOOL, ModelIds.getBlockSubModelId(block, ""))
