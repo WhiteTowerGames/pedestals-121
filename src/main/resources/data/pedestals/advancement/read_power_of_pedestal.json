@@ -5,7 +5,7 @@
       "conditions": {
         "location": [
           {
-            "block": "pedestals:deepslate_brick_pedestal",
+            "block": "pedestals:stone_brick_pedestal",
             "condition": "minecraft:block_state_property"
           },
           {

@@ -98,7 +98,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                         STONE_BRICK_PEDESTAL,
                         get_pedestal_title,
                         get_pedestal_desc,
-                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        Identifier.ofVanilla("gui/advancements/backgrounds/adventure"),
                         AdvancementFrame.TASK,
                         true,
                         true,

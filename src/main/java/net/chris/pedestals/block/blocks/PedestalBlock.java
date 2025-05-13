@@ -297,11 +297,11 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
     protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
         PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
         BlockState newState = world.getBlockState(pos);
+        assert pedestalBlockEntity != null;
         if (state.getBlock() != newState.getBlock() && newState.isIn(ModBlockTagProvider.PEDESTAL_BLOCKS)) {
-            assert pedestalBlockEntity != null;
             pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
         } else {
-            onBreak(world, pos, state, world.getClosestPlayer(0, 0, 0, 0, true));
+            onBreak(world, pos, state, world.getClosestPlayer(pedestalBlockEntity.getPos().getX(), pedestalBlockEntity.getPos().getY(), pedestalBlockEntity.getPos().getZ(), 0, true));
         }
     }
 

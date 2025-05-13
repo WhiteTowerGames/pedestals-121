@@ -81,16 +81,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "glass_lockbox": {
-      "conditions": {
-        "items": [
-          {
-            "items": "pedestals:glass_lockbox"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "gray_gilded_carpet": {
       "conditions": {
         "items": [
@@ -347,22 +337,37 @@
   },
   "requirements": [
     [
-      "white_gilded_carpet"
+      "brown_gilded_carpet"
     ],
     [
-      "light_gray_gilded_carpet"
+      "green_gilded_carpet"
     ],
     [
-      "gray_gilded_carpet"
+      "pink_gilded_carpet"
     ],
     [
       "black_gilded_carpet"
     ],
     [
-      "brown_gilded_carpet"
+      "red_gilded_carpet"
     ],
     [
-      "red_gilded_carpet"
+      "magenta_gilded_carpet"
+    ],
+    [
+      "blue_gilded_carpet"
+    ],
+    [
+      "light_gray_gilded_carpet"
+    ],
+    [
+      "purple_gilded_carpet"
+    ],
+    [
+      "gray_gilded_carpet"
+    ],
+    [
+      "light_blue_gilded_carpet"
     ],
     [
       "orange_gilded_carpet"
@@ -371,43 +376,28 @@
       "yellow_gilded_carpet"
     ],
     [
-      "lime_gilded_carpet"
+      "white_gilded_carpet"
     ],
     [
-      "green_gilded_carpet"
+      "lime_gilded_carpet"
     ],
     [
       "cyan_gilded_carpet"
     ],
     [
-      "light_blue_gilded_carpet"
-    ],
-    [
-      "blue_gilded_carpet"
-    ],
-    [
-      "purple_gilded_carpet"
-    ],
-    [
-      "magenta_gilded_carpet"
-    ],
-    [
-      "pink_gilded_carpet"
-    ],
-    [
-      "glass_lockbox"
-    ],
-    [
-      "white_lockbox"
-    ],
-    [
-      "light_gray_lockbox"
-    ],
-    [
-      "gray_lockbox"
+      "pink_lockbox"
     ],
     [
       "black_lockbox"
+    ],
+    [
+      "yellow_lockbox"
+    ],
+    [
+      "cyan_lockbox"
+    ],
+    [
+      "magenta_lockbox"
     ],
     [
       "brown_lockbox"
@@ -416,34 +406,31 @@
       "red_lockbox"
     ],
     [
-      "orange_lockbox"
-    ],
-    [
-      "yellow_lockbox"
-    ],
-    [
       "lime_lockbox"
-    ],
-    [
-      "green_lockbox"
-    ],
-    [
-      "cyan_lockbox"
-    ],
-    [
-      "light_blue_lockbox"
     ],
     [
       "blue_lockbox"
     ],
     [
+      "gray_lockbox"
+    ],
+    [
+      "light_blue_lockbox"
+    ],
+    [
+      "white_lockbox"
+    ],
+    [
+      "green_lockbox"
+    ],
+    [
       "purple_lockbox"
     ],
     [
-      "magenta_lockbox"
+      "orange_lockbox"
     ],
     [
-      "pink_lockbox"
+      "light_gray_lockbox"
     ]
   ],
   "rewards": {
