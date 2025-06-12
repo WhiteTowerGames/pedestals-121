@@ -4,7 +4,6 @@ import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.chris.pedestals.sounds.ModSoundEvents;
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -15,7 +14,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.consume.UseAction;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleFadeS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
@@ -33,11 +31,9 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
-public class LockpickItem extends Item implements ItemTooltipCallback {
+public class LockpickItem extends Item{
 
     public LockpickItem(Settings settings) {
         super(settings);
@@ -178,15 +174,5 @@ public class LockpickItem extends Item implements ItemTooltipCallback {
         }
     }
 
-    @Override
-    public void getTooltip(ItemStack stack, TooltipContext tooltipContext, TooltipType tooltipType, List<Text> lines) {
-        boolean isEnabled = ModGameRuleCache.areLockpicksEnabled();
-        if (!isEnabled){
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l1").formatted(Formatting.RED, Formatting.BOLD));
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l2").formatted(Formatting.RED, Formatting.BOLD));
-        } else {
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l1"));
-            lines.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l2"));
-        }
-    }
+
 }

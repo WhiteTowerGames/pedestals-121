@@ -4,31 +4,27 @@ import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.components.ModComponents;
 import net.chris.pedestals.components.LockAndKeyDataComponent;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
 import java.util.UUID;
 
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
 
-public class KeyItem extends Item implements ItemTooltipCallback {
+public class KeyItem extends Item{
     public KeyItem(Settings settings) {
         super(settings);
     }
@@ -107,26 +103,6 @@ public class KeyItem extends Item implements ItemTooltipCallback {
         }
         world.spawnEntity(itemEntity);
         world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-    }
-
-    @Override
-    public void getTooltip(ItemStack stack, TooltipContext tooltipContext, TooltipType tooltipType, List<Text> lines) {
-        LockAndKeyDataComponent stackComponent = stack.get(ModComponents.LOCK_AND_KEY_DATA);
-        assert stackComponent != null;
-        boolean isStackMapped = stackComponent.isMapped();
-        boolean isStackCopy = stackComponent.isCopy();
-        if (isStackMapped){
-            lines.add(Text.translatable("itemtooltip.pedestals.key_is_mapped"));
-            if (stack.getCustomName()==null) {
-                lines.add(Text.translatable("itemtooltip.pedestals.key_unnamed"));
-            }
-        } else {
-            lines.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l1"));
-            lines.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l2"));
-        }
-        if (isStackCopy){
-            lines.add(Text.translatable("itemtooltip.pedestals.key_clone").formatted(Formatting.BOLD, Formatting.YELLOW));
-        }
     }
 
 }
