@@ -1,10 +1,11 @@
 package net.chris.pedestals.block.blocks;
 
 import com.mojang.serialization.MapCodec;
+import com.strippableblocksapi.inventory.InventoryPreservingBlock;
+import net.chris.pedestals.block.entity.ModBlockEntities;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.block.entity.TickableBlockEntity;
-import net.chris.pedestals.datagen.ModBlockTagProvider;
 import net.chris.pedestals.datagen.ModItemTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -39,8 +40,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
+import static net.chris.pedestals.datagen.ModBlockTagProvider.PEDESTAL_BLOCKS;
 
-public class PedestalBlock extends Block implements BlockEntityProvider{
+public class PedestalBlock extends Block implements BlockEntityProvider, InventoryPreservingBlock {
 
     public PedestalBlock(Settings settings) {
         super(settings);
@@ -293,22 +295,20 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
     }
 
-    @Override
-    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
-        PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
-        BlockState newState = world.getBlockState(pos);
-        assert pedestalBlockEntity != null;
-        if (state.getBlock() != newState.getBlock() && newState.isIn(ModBlockTagProvider.PEDESTAL_BLOCKS)) {
-            pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
-        } else {
-            onBreak(world, pos, state, world.getClosestPlayer(pedestalBlockEntity.getPos().getX(), pedestalBlockEntity.getPos().getY(), pedestalBlockEntity.getPos().getZ(), 0, true));
-        }
-    }
-
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type){
         return TickableBlockEntity.getTicker(world);
     }
 
+    @Override
+    public void onStripped(World world, BlockPos blockPos, BlockState blockState) {
+        System.out.println("PedestalBlock.onStripped called at " + blockPos + " with state: " + blockState);
+        if (blockState.isIn(PEDESTAL_BLOCKS)){
+            PedestalBlockEntity oldPedestal = world.getBlockEntity(blockPos, ModBlockEntities.PEDESTAL_BLOCK_ENTITY)
+                    .orElseThrow(() -> new IllegalStateException("PedestalBlockEntity not found at " + blockPos));
+
+            oldPedestal.transferAllInventories(world, blockPos, blockState.getBlock());
+        }
+    }
 }

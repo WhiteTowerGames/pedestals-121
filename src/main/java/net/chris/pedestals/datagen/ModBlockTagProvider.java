@@ -26,9 +26,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
-        ALL_PEDESTALS.forEach(block -> getOrCreateTagBuilder(PEDESTAL_BLOCKS).add(block));
+        ALL_PEDESTALS.forEach(block -> valueLookupBuilder(PEDESTAL_BLOCKS).add(block));
 
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.STONE_BRICK_PEDESTAL)
                 .add(ModBlocks.MOSSY_STONE_BRICK_PEDESTAL)
                 .add(ModBlocks.DEEPSLATE_BRICK_PEDESTAL)
@@ -74,7 +74,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SMOOTH_RED_SANDSTONE_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+        valueLookupBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.BIRCH_LOG_PEDESTAL)
                 .add(ModBlocks.SPRUCE_LOG_PEDESTAL)
                 .add(ModBlocks.JUNGLE_LOG_PEDESTAL)
@@ -101,7 +101,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WARPED_LOG_PEDESTAL)
                 .add(ModBlocks.OAK_LOG_PEDESTAL);
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+        valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.COPPER_PEDESTAL)
                 .add(ModBlocks.WEATHERED_COPPER_PEDESTAL)
                 .add(ModBlocks.OXIDIZED_COPPER_PEDESTAL)
@@ -120,7 +120,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
-        getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+        valueLookupBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
                 .add(ModBlocks.COPPER_PEDESTAL)
                 .add(ModBlocks.WEATHERED_COPPER_PEDESTAL)
                 .add(ModBlocks.OXIDIZED_COPPER_PEDESTAL)
@@ -139,7 +139,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
-        getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+        valueLookupBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
                 .add(ModBlocks.COPPER_PEDESTAL)
                 .add(ModBlocks.WEATHERED_COPPER_PEDESTAL)
                 .add(ModBlocks.OXIDIZED_COPPER_PEDESTAL)
@@ -158,7 +158,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WAXED_OXIDIZED_CUT_COPPER_PEDESTAL)
                 .add(ModBlocks.WAXED_EXPOSED_CUT_COPPER_PEDESTAL);
 
-        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> getOrCreateTagBuilder(BlockTags.WOOL_CARPETS).add(block));
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> valueLookupBuilder(BlockTags.WOOL_CARPETS).add(block));
 
     }
 

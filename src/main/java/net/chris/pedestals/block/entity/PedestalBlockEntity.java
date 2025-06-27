@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -18,6 +17,8 @@ import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -49,7 +50,6 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         return this.item;
     }
 
-
     @Override
     public int size() {
         return 1;
@@ -62,12 +62,14 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     @Override
     public ItemStack getStack(int slot) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        return null;
+        ItemStack removedItem = item.getFirst();
+        getItems().removeFirst();
+        return removedItem;
     }
 
 
@@ -151,18 +153,41 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     /// REALLY IMPORTANT FOR FUTURE PROOFING!!! GETTING & TRANSFERRING THE INVENTORY!!!
 
     public ItemStack[] getAllInventories() {
-        return new ItemStack[]{getStoredItem(), getStoredCarpet(), getStoredLockbox()};
+        return new ItemStack[] {
+                getStoredItem() != null ? getStoredItem() : ItemStack.EMPTY,
+                getStoredCarpet() != null ? getStoredCarpet() : ItemStack.EMPTY,
+                getStoredLockbox() != null ? getStoredLockbox() : ItemStack.EMPTY
+        };
     }
 
     public void transferAllInventories(World world, BlockPos pos, Block blockToSet) {
+        System.out.println("[Pedestals] Attempting to transfer inventories at " + pos);
+
         PedestalBlockEntity oldPedestal = this;
-        ItemStack[] ItemsToTransfer = oldPedestal.getAllInventories();
-        world.setBlockState(pos, blockToSet.getDefaultState(), 3);
+        ItemStack[] itemsToTransfer = oldPedestal.getAllInventories();
+
+        System.out.println("[Pedestals] Items to transfer:");
+        for (int i = 0; i < itemsToTransfer.length; i++) {
+            System.out.println("  Slot " + i + ": " + itemsToTransfer[i]);
+        }
+
+        boolean success = world.setBlockState(pos, blockToSet.getDefaultState(), 3);
+        System.out.println("[Pedestals] Block state set to " + blockToSet.getTranslationKey() + "? " + success);
+
+        // Optional: force remove/create the block entity
+        world.removeBlockEntity(pos);
+        world.addBlockEntity(ModBlockEntities.PEDESTAL_BLOCK_ENTITY.instantiate(pos, blockToSet.getDefaultState()));
+
         PedestalBlockEntity newPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
-        assert newPedestal != null;
-        newPedestal.setStoredItem(ItemsToTransfer[0]);
-        newPedestal.setStoredCarpet(ItemsToTransfer[1]);
-        newPedestal.setStoredLockbox(ItemsToTransfer[2]);
+        if (newPedestal == null) {
+            System.out.println("[Pedestals] FAILED to retrieve new pedestal block entity at " + pos);
+            return;
+        }
+
+        System.out.println("[Pedestals] Transferring items to new pedestal");
+        newPedestal.setStoredItem(itemsToTransfer[0]);
+        newPedestal.setStoredCarpet(itemsToTransfer[1]);
+        newPedestal.setStoredLockbox(itemsToTransfer[2]);
     }
 
     /// Syncing, NBT and other logic.
@@ -182,50 +207,33 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     public void markDirty() {
         super.markDirty();
         if (world != null) {
-            //System.out.println("Pedestal block at " + pos + " changed!");
             world.updateNeighborsAlways(pos, this.getCachedState().getBlock(), null);
             world.updateNeighborsAlways(pos.down(), this.getCachedState().getBlock(), null);
         }
     }
 
-    @SuppressWarnings("CodeBlock2Expr")
     @Override
-    public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, getItems(), registryLookup);
-
-        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredCarpet())
-                .result()
-                .ifPresent(nbtElement -> {
-                    nbt.put("StoredCarpet", nbtElement);
-                });
-
-        ItemStack.OPTIONAL_CODEC.encodeStart(NbtOps.INSTANCE, getStoredLockbox())
-                .result()
-                .ifPresent(nbtElement ->{
-                    nbt.put("StoredLockbox", nbtElement);
-                });
+    protected void writeData(WriteView view) {
+        super.writeData(view);
+        Inventories.writeData(view, getItems());
+        view.put("StoredCarpet", ItemStack.OPTIONAL_CODEC, getStoredCarpet());
+        view.put("StoredLockbox", ItemStack.OPTIONAL_CODEC, getStoredLockbox());
     }
 
+
     @Override
-    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-
+    protected void readData(ReadView view) {
+        super.readData(view);
         this.item = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
-        Inventories.readNbt(nbt, getItems(), registryLookup);
+        Inventories.readData(view, getItems());
 
-        //Load carpet from NBT
-        ItemStack storedCarpetFromNBT = ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredCarpet"))
-                .result()
-                .orElse(ItemStack.EMPTY);
+        //Read carpet from NBT
+        ItemStack carpetFromNbt = view.read("StoredCarpet", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
+        setStoredCarpet(carpetFromNbt);
 
-        setStoredCarpet(storedCarpetFromNBT);
-        //Load lockbox from NBT
-        ItemStack storedLockboxFromNBT = (ItemStack.OPTIONAL_CODEC.parse(NbtOps.INSTANCE, nbt.get("StoredLockbox"))
-                .result()
-                .orElse(ItemStack.EMPTY));
-
-        setStoredLockbox(storedLockboxFromNBT);
+        //Read lockbox from NBT
+        ItemStack lockboxFromNbt = view.read("StoredLockbox", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
+        setStoredLockbox(lockboxFromNbt);
     }
 
     int tickCount = 0;

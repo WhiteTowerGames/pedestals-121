@@ -3,9 +3,11 @@
   "package": "net.chris.pedestals.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AxeItemMixin",
     "BlockHardnessMixin",
     "BrushMixin",
-    "ExplosionBehaviorMixin"
+    "ExplosionBehaviorMixin",
+    "HoneycombItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
