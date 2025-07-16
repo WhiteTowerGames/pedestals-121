@@ -189,6 +189,27 @@ public class PedestalBlock extends Block implements BlockEntityProvider{
         return super.onBreak(world, pos, state, player); // Call the superclass method for standard block breaking behavior
     }
 
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        // Check if the block type has changed (not just a state change like oxidation level)
+        if (!state.isOf(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            
+            if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+                ItemStack storedItem = pedestalBlockEntity.getStoredItem();
+                
+                if (!storedItem.isEmpty()) {
+                    // Drop the stored item when the block is being replaced with a different block type
+                    ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), storedItem);
+                    world.spawnEntity(itemEntity);
+                    pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
+                }
+            }
+        }
+        
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type){
