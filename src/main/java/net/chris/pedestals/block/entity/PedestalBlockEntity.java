@@ -2,7 +2,6 @@ package net.chris.pedestals.block.entity;
 
 import net.chris.pedestals.components.LockboxDustComponent;
 import net.chris.pedestals.components.ModComponents;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventories;
@@ -28,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static net.chris.pedestals.Pedestals121.CONFIG;
 import static net.minecraft.item.Items.*;
 
 public class PedestalBlockEntity extends BlockEntity implements PedestalInventory, TickableBlockEntity{
@@ -252,11 +252,11 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             if (!(hasStoredItem() && !hasStoredCarpet() && !hasStoredLockbox())) {
                 markDirty();
             }
-            if (hasStoredLockbox() && ModGameRuleCache.areLockboxesDusty()) {
+            if (hasStoredLockbox() && CONFIG.dustyLockboxes()) {
                 tryDust(this.world);
             }
             if (this.world instanceof ServerWorld serverWorld
-                    && ModGameRuleCache.pedestalsDisplayParticles()
+                    && CONFIG.displayedItemParticles()
                     && ITEM_PARTICLE_MAP.containsKey(getStoredItem().getItem())) {
 
                 displayItemParticles(serverWorld);

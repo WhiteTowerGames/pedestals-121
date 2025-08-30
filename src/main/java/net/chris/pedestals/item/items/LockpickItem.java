@@ -2,7 +2,6 @@ package net.chris.pedestals.item.items;
 
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.chris.pedestals.sounds.ModSoundEvents;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
@@ -31,6 +30,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import static net.chris.pedestals.Pedestals121.CONFIG;
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
 public class LockpickItem extends Item{
@@ -65,7 +65,7 @@ public class LockpickItem extends Item{
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        if (user instanceof PlayerEntity player) {
+        if (user instanceof PlayerEntity player && CONFIG.enableLockpicks()) {
 
             HitResult hitResult = this.getHitResult(player);
 
@@ -127,7 +127,7 @@ public class LockpickItem extends Item{
         boolean lockpickResult = false;
         int easterEggChance = world.getRandom().nextInt(50);
         int roll = world.getRandom().nextInt(100);
-        if (roll < ModGameRuleCache.getPercentLockpickSuccessChance()) { //Lockpicking succeeded
+        if (roll < CONFIG.percentLockpickSuccessChance()) { //Lockpicking succeeded
             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5,
                     pedestalBlockEntity.getStoredLockbox(), 0.0, 0.2, 0.0);
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
@@ -135,7 +135,7 @@ public class LockpickItem extends Item{
             if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
                 if (easterEggChance >= 1) { //Normal lockpicking response
                     serverPlayer.sendMessage(Text.translatable("messages.pedestals.lockpicking_success"), true);
-                } else { //Play the easter egg!
+                } else { //Play the Easter egg!
                     playEasterEgg(player, world.getRandom().nextBetween(25, 70), world, pos);
                 }
                 ModCriteria.USE_LOCKPICK.trigger(serverPlayer);

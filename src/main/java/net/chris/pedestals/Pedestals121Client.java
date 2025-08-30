@@ -13,6 +13,5 @@ public class Pedestals121Client implements ClientModInitializer {
     public void onInitializeClient() {
         ModBlockEntityRenderers.register();
         BlockEntityRendererRegistry.register(ModBlockEntities.PEDESTAL_BLOCK_ENTITY, PedestalBlockEntityRenderer::new);
-
     }
 }

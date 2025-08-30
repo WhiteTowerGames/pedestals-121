@@ -223,7 +223,7 @@
   "itemtooltip.pedestals.key_not_mapped.l2": "Right click an unregistered lockbox to bind!",
   "itemtooltip.pedestals.key_unnamed": "Consider renaming it to keep track.",
   "itemtooltip.pedestals.lockpick_disabled.l1": "Lockpicks have been disabled via",
-  "itemtooltip.pedestals.lockpick_disabled.l2": "the enableLockpicks gamerule.",
+  "itemtooltip.pedestals.lockpick_disabled.l2": "the enableLockpicks config option.",
   "itemtooltip.pedestals.lockpick_enabled.l1": "Right click on a lockbox to",
   "itemtooltip.pedestals.lockpick_enabled.l2": "try to pick the lock!",
   "messages.pedestals.key_map": "Key Registered!",

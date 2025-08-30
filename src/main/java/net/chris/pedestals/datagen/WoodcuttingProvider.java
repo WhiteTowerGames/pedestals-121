@@ -1,6 +1,6 @@
 package net.chris.pedestals.datagen;
 
-import com.nemonotfound.nemos.woodcutter.datagen.WoodcutterRecipeProvider;
+import com.devnemo.nemos.woodcutter.datagen.WoodcutterRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;

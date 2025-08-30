@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	Pedestals - Display your items!/Tags for minecraft:item
-68d254762fe699c98891cfc9c57051d726200502 data/pedestals/tags/item/fancy_carpet_block_items.json
-a34c690666ac8e3769c01ea00d6cbbce86e6fd66 data/pedestals/tags/item/lockbox_block_items.json
+// 1.21.8	-999999999-01-01T00:00:00	Pedestals - Display your items!/Tags for minecraft:item
+a662459f8b9543ba6ffac5cad018690c7eecaabe data/pedestals/tags/item/fancy_carpet_block_items.json
+a12c2afa5f57bf9844f0db60b3e771f366dd62a7 data/pedestals/tags/item/lockbox_block_items.json
 35445dd0624d6c1f42a538bd8439ec88be531d93 data/pedestals/tags/item/pedestal_block_items.json

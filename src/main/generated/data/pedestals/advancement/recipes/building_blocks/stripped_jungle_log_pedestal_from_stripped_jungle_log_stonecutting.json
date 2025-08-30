@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:stripped_jungle_log_pedestal_from_stripped_jungle_log_stonecutting"
+        "recipe": "pedestals:stripped_jungle_log_pedestal_from_stripped_jungle_log_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:stripped_jungle_log_pedestal_from_stripped_jungle_log_stonecutting"
+      "pedestals:stripped_jungle_log_pedestal_from_stripped_jungle_log_stonecutting"
     ]
   }
 }

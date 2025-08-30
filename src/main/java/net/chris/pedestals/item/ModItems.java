@@ -9,6 +9,7 @@ import net.chris.pedestals.item.items.CreativeKeyItem;
 import net.chris.pedestals.item.items.KeyItem;
 import net.chris.pedestals.item.items.LockboxItem;
 import net.chris.pedestals.item.items.LockpickItem;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
@@ -19,6 +20,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
@@ -28,6 +31,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
+import static net.chris.pedestals.Pedestals121.CONFIG;
 import static net.minecraft.block.Blocks.*;
 import static net.minecraft.block.Blocks.PINK_STAINED_GLASS;
 
@@ -184,4 +188,38 @@ public class ModItems {
 
     }
 
+    public static void registerItemTooltips() {
+        ItemTooltipCallback.EVENT.register((itemStack, tooltipContext, tooltipType, list) -> {
+            if (itemStack.isOf(LOCKBOX_KEY) && itemStack.contains(ModComponents.LOCK_AND_KEY_DATA)) {
+                LockAndKeyDataComponent lockAndKeyData = itemStack.get(ModComponents.LOCK_AND_KEY_DATA);
+                assert lockAndKeyData != null;
+                if (lockAndKeyData.isCopy() && !CONFIG.infiniteKeyDuping()){
+                    list.add(Text.translatable("itemtooltip.pedestals.key_clone").formatted(Formatting.BOLD, Formatting.YELLOW));
+                }
+                if (lockAndKeyData.isMapped()) {
+                    list.add(Text.translatable("itemtooltip.pedestals.key_is_mapped"));
+                }
+                else {
+                    list.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l1"));
+                    list.add(Text.translatable("itemtooltip.pedestals.key_not_mapped.l2"));
+                }
+                if (itemStack.getCustomName() == null || itemStack.getCustomName().getString().isEmpty()) { // Going to check both. Can't be too sure.
+                    list.add(Text.translatable("itemtooltip.pedestals.key_unnamed"));
+                }
+            }
+            if (itemStack.isOf(CREATIVE_KEY)){
+                list.add(Text.translatable("itemtooltip.pedestals.creative_key"));
+            }
+            if (itemStack.isOf(LOCKPICK)) {
+                if (CONFIG.enableLockpicks()){
+                    list.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l1"));
+                    list.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l2"));
+                }
+                else {
+                    list.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l1").formatted(Formatting.BOLD, Formatting.RED));
+                    list.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l2").formatted(Formatting.BOLD, Formatting.RED));
+                }
+            }
+        });
+    }
 }

@@ -3,9 +3,8 @@ package net.chris.pedestals;
 import net.chris.pedestals.block.entity.ModBlockEntities;
 import net.chris.pedestals.block.ModBlocks;
 import net.chris.pedestals.components.ModComponents;
+import net.chris.pedestals.config.PedestalsConfig;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
-import net.chris.pedestals.gamerules.ModGameRules;
 import net.chris.pedestals.item.ModItemGroups;
 import net.chris.pedestals.item.ModItems;
 import net.chris.pedestals.recipes.ModRecipeSerializers;
@@ -31,9 +30,12 @@ public class Pedestals121 implements ModInitializer {
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final PedestalsConfig CONFIG = PedestalsConfig.createAndLoad();
+
 	@Override
 	public void onInitialize() {
 
+		// Initialize all mod elements.
 		ModCriteria.initialize();
 		ModItemGroups.initialize();
 		ModSoundEvents.initialize();
@@ -42,18 +44,15 @@ public class Pedestals121 implements ModInitializer {
 		ModBlockEntities.initialize();
 		ModComponents.initialize();
 		ModRecipeSerializers.initialize();
-		ModGameRules.initialize();
-		ModGameRuleCache.initialize();
 
-        /// Register custom villager trade:
-        //noinspection CodeBlock2Expr
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 3, factories -> {
-            factories.add(((entity, random) -> new TradeOffer(
-                    new TradedItem(EMERALD, 10),
-                    Optional.of(new TradedItem(IRON_INGOT, 2)),
-                    new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2)));
-        });
+        // Register custom villager trade.
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 3, factories ->
+				factories.add(((entity, random) -> new TradeOffer(
+                new TradedItem(EMERALD, 10),
+                Optional.of(new TradedItem(IRON_INGOT, 2)),
+                new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2))));
 
-
+		// Register item tooltips. Can you believe I actually bothered to re-implement them?
+		ModItems.registerItemTooltips();
 	}
 }

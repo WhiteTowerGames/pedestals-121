@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lockpick_left_down"
+        "recipe": "pedestals:lockpick_left_down"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lockpick_left_down"
+      "pedestals:lockpick_left_down"
     ]
   }
 }

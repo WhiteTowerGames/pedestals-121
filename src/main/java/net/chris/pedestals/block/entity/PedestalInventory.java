@@ -13,10 +13,12 @@ public interface PedestalInventory extends Inventory {
         return getItems().getFirst().isEmpty();
     }
 
+    @Deprecated
     default ItemStack getStack() {
         return getItems().getFirst();
     }
 
+    @Deprecated
     default void setStack(ItemStack stack) {
         getItems().set(0, stack);
     }

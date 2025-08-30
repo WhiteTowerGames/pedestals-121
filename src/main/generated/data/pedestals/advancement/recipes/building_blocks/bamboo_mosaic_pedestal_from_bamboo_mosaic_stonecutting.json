@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bamboo_mosaic_pedestal_from_bamboo_mosaic_stonecutting"
+        "recipe": "pedestals:bamboo_mosaic_pedestal_from_bamboo_mosaic_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bamboo_mosaic_pedestal_from_bamboo_mosaic_stonecutting"
+      "pedestals:bamboo_mosaic_pedestal_from_bamboo_mosaic_stonecutting"
     ]
   }
 }

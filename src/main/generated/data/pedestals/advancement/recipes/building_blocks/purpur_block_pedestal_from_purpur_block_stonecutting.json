@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purpur_block_pedestal_from_purpur_block_stonecutting"
+        "recipe": "pedestals:purpur_block_pedestal_from_purpur_block_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purpur_block_pedestal_from_purpur_block_stonecutting"
+      "pedestals:purpur_block_pedestal_from_purpur_block_stonecutting"
     ]
   }
 }

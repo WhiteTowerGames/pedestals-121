@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mossy_stone_brick_pedestal_from_mossy_stone_bricks_stonecutting"
+        "recipe": "pedestals:mossy_stone_brick_pedestal_from_mossy_stone_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mossy_stone_brick_pedestal_from_mossy_stone_bricks_stonecutting"
+      "pedestals:mossy_stone_brick_pedestal_from_mossy_stone_bricks_stonecutting"
     ]
   }
 }

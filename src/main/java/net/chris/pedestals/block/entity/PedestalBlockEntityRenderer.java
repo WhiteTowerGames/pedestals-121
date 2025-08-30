@@ -50,7 +50,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         double maxDistance = 5.0;
         Vec3d endPos = eyePos.add(lookVec.x * maxDistance, lookVec.y * maxDistance, lookVec.z * maxDistance);
 
-        //Does said ray actually intersect the floating item's hitbox?
+        //Does the aforementioned ray actually intersect the floating item's hitbox?
         try {
             return itemBox.raycast(eyePos, endPos).isPresent();
         } catch (Exception e) {
