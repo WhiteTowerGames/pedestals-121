@@ -56,6 +56,7 @@ public class LockpickItem extends Item{
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         PlayerEntity playerEntity = context.getPlayer();
+        if (!CONFIG.enableLockpicks()) return ActionResult.FAIL;
         if (playerEntity != null && this.getHitResult(playerEntity).getType() == HitResult.Type.BLOCK && context.getWorld().getBlockState(context.getBlockPos()).isOf(PEDESTAL_EXTENSION)) {
             playerEntity.setCurrentHand(context.getHand());
             return ActionResult.CONSUME;
@@ -113,7 +114,7 @@ public class LockpickItem extends Item{
         if (user instanceof PlayerEntity player && this.getHitResult(player) instanceof BlockHitResult blockHitResult){
             BlockEntity blockEntity = world.getBlockEntity(blockHitResult.getBlockPos().down());
             if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
-                return tryLockpick(world, player, pedestalBlockEntity, stack, blockHitResult.getBlockPos()) ? stack : ItemStack.EMPTY;
+                tryLockpick(world, player, pedestalBlockEntity, stack, blockHitResult.getBlockPos());
             }
         }
         return stack;
@@ -123,15 +124,13 @@ public class LockpickItem extends Item{
         return ProjectileUtil.getCollision(user, EntityPredicates.CAN_HIT, user.getBlockInteractionRange());
     }
 
-    private boolean tryLockpick(World world, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack stack, BlockPos pos){
-        boolean lockpickResult = false;
+    private void tryLockpick(World world, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack stack, BlockPos pos){
         int easterEggChance = world.getRandom().nextInt(50);
         int roll = world.getRandom().nextInt(100);
         if (roll < CONFIG.percentLockpickSuccessChance()) { //Lockpicking succeeded
             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5,
                     pedestalBlockEntity.getStoredLockbox(), 0.0, 0.2, 0.0);
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-            lockpickResult = true;
             if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
                 if (easterEggChance >= 1) { //Normal lockpicking response
                     serverPlayer.sendMessage(Text.translatable("messages.pedestals.lockpicking_success"), true);
@@ -154,7 +153,6 @@ public class LockpickItem extends Item{
                 ModCriteria.BREAK_LOCKPICK.trigger(serverPlayer);
             }
         }
-        return lockpickResult;
     }
 
     private void playEasterEgg(PlayerEntity player, int skillLevel, World world, BlockPos pos){
