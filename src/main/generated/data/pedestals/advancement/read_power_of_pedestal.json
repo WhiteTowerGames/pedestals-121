@@ -1,12 +1,16 @@
 {
   "parent": "pedestals:get_pedestal",
   "criteria": {
-    "chiseled_bookshelf": {
+    "any_pedestal": {
       "conditions": {
         "location": [
           {
-            "block": "pedestals:stone_brick_pedestal",
-            "condition": "minecraft:block_state_property"
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#pedestals:pedestal_blocks"
+              }
+            }
           },
           {
             "condition": "minecraft:any_of",
@@ -166,18 +170,18 @@
     "description": {
       "translate": "advancement.pedestals.read_power_of_pedestal_desc"
     },
+    "frame": "goal",
     "icon": {
       "count": 1,
       "id": "minecraft:comparator"
     },
-    "frame": "goal",
     "title": {
       "translate": "advancement.pedestals.read_power_of_pedestal_title"
     }
   },
   "requirements": [
     [
-      "chiseled_bookshelf",
+      "any_pedestal",
       "comparator"
     ]
   ],

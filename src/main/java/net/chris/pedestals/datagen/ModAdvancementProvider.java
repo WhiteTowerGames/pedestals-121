@@ -7,14 +7,21 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.*;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.ItemCriterion;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ComparatorBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.condition.*;
 import net.minecraft.predicate.BlockPredicate;
+import net.minecraft.predicate.StatePredicate;
+import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -70,6 +77,52 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
     public static final Text fully_clean_lockbox_title = Text.translatable("advancement.pedestals.fully_clean_lockbox_title");
     public static final Text fully_clean_lockbox_desc = Text.translatable("advancement.pedestals.fully_clean_lockbox_desc");
 
+    private static AdvancementCriterion<ItemCriterion.Conditions> requirePlacedBlockReadByComparator(
+            RegistryEntryLookup<Block> blockRegistry
+    ) {
+        // Ensure the placed block matches the tag (at origin)
+        LootCondition.Builder placedMatchesTag = LocationCheckLootCondition.builder(
+                LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().tag(blockRegistry, ModBlockTagProvider.PEDESTAL_BLOCKS)),
+                new BlockPos(0, 0, 0)
+        );
+
+        // Ensure a comparator is reading the placed block from any facing
+        LootCondition.Builder[] builders = ComparatorBlock.FACING.getValues().stream().map(facing -> {
+            StatePredicate.Builder state = StatePredicate.Builder.create()
+                    .exactMatch(ComparatorBlock.FACING, facing);
+            BlockPredicate.Builder comparatorPred = BlockPredicate.Builder.create()
+                    .blocks(blockRegistry, Blocks.COMPARATOR)
+                    .state(state);
+            return LocationCheckLootCondition.builder(
+                    LocationPredicate.Builder.create().block(comparatorPred),
+                    new BlockPos(facing.getOpposite().getVector())
+            );
+        }).toArray(LootCondition.Builder[]::new);
+
+        return ItemCriterion.Conditions.createPlacedBlock(placedMatchesTag, AnyOfLootCondition.builder(builders));
+    }
+
+    private static AdvancementCriterion<ItemCriterion.Conditions> requirePlacedComparatorReadingBlock(
+            RegistryEntryLookup<Block> blockRegistry
+    ) {
+        // Placing a comparator that reads a block in the given tag in front of it (any facing)
+        LootCondition.Builder[] builders = ComparatorBlock.FACING.getValues().stream().map(facing -> {
+            StatePredicate.Builder state = StatePredicate.Builder.create()
+                    .exactMatch(ComparatorBlock.FACING, facing);
+            BlockStatePropertyLootCondition.Builder placedIsComparator =
+                    new BlockStatePropertyLootCondition.Builder(Blocks.COMPARATOR).properties(state);
+
+            LootCondition.Builder targetHasTag = LocationCheckLootCondition.builder(
+                    LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().tag(blockRegistry, ModBlockTagProvider.PEDESTAL_BLOCKS)),
+                    new BlockPos(facing.getVector())
+            );
+
+            return AllOfLootCondition.builder(placedIsComparator, targetHasTag);
+        }).toArray(LootCondition.Builder[]::new);
+
+        return ItemCriterion.Conditions.createPlacedBlock(AnyOfLootCondition.builder(builders));
+    }
+
     @SuppressWarnings("unused")
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
@@ -84,7 +137,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
         ItemPredicate pedestalItemPredicate = ItemPredicate.Builder.create()
                 .tag(itemLookup, ModItemTagProvider.PEDESTAL_BLOCK_ITEMS)
                 .build();
-        
+
         ItemPredicate fancyCarpetItemPredicate = ItemPredicate.Builder.create()
                 .tag(itemLookup, ModItemTagProvider.FANCY_CARPET_BLOCK_ITEMS)
                 .build();
@@ -107,8 +160,25 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 .criterion("got_pedestal", InventoryChangedCriterion.Conditions.items(pedestalItemPredicate))
                 .build(consumer, Pedestals121.MOD_ID + ":get_pedestal");
 
-        @SuppressWarnings("removal")AdvancementEntry place_epic_item = Advancement.Builder.create()
-                .parent(Identifier.of(Pedestals121.MOD_ID, "read_power_of_pedestal"))
+        AdvancementEntry read_power_of_pedestal = Advancement.Builder.create()
+                .parent(get_pedestal)
+                .display(
+                        Blocks.COMPARATOR,
+                        read_power_of_pedestal_title,
+                        read_power_of_pedestal_desc,
+                        null,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .criteriaMerger(AdvancementRequirements.CriterionMerger.OR)
+                .criterion("any_pedestal", requirePlacedBlockReadByComparator(blockLookup))
+                .criterion("comparator", requirePlacedComparatorReadingBlock(blockLookup))
+                .build(consumer, Pedestals121.MOD_ID + ":read_power_of_pedestal");
+
+        AdvancementEntry place_epic_item = Advancement.Builder.create()
+                .parent(read_power_of_pedestal)
                 .display(
                         Items.NETHER_STAR,
                         place_epic_item_title,
@@ -164,7 +234,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
         });
 
         builder.build(consumer, Pedestals121.MOD_ID + ":collect_all_pedestals");
-        
+
         AdvancementEntry get_fancy_carpet = Advancement.Builder.create()
                 .parent(get_pedestal)
                 .display(RED_GILDED_CARPET,
@@ -229,7 +299,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                         false)
                 .criterion("get_lockbox", InventoryChangedCriterion.Conditions.items(lockboxItemPredicate))
                 .build(consumer, Pedestals121.MOD_ID + ":get_lockbox");
-        
+
         AdvancementEntry use_key = Advancement.Builder.create()
                 .parent(get_lockbox)
                 .display(LOCKBOX_KEY,
@@ -300,6 +370,6 @@ public class ModAdvancementProvider extends FabricAdvancementProvider{
                 .criterion("fully_clean_lockbox", ModCriteria.FULLY_CLEAN_LOCKBOX.create(
                         new FullyCleanLockboxCriterion.Conditions(Optional.empty())
                 )).build(consumer, Pedestals121.MOD_ID + ":fully_clean_lockbox");
-        
+
     }
 }
