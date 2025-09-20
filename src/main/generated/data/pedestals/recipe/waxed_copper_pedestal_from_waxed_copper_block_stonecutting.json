@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:waxed_copper_block",
-  "result": {
-    "count": 1,
-    "id": "pedestals:waxed_copper_pedestal"
-  }
-}

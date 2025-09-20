@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:crimson_stem",
-  "result": {
-    "count": 1,
-    "id": "pedestals:crimson_log_pedestal"
-  }
-}

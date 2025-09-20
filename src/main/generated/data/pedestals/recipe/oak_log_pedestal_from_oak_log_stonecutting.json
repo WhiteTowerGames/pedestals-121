@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:oak_log",
-  "result": {
-    "count": 1,
-    "id": "pedestals:oak_log_pedestal"
-  }
-}

@@ -36,17 +36,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void generate() {
 
-                PEDESTAL_TO_BLOCK_MAP.forEach((pedestal, block) -> {
-                    createShaped(RecipeCategory.BUILDING_BLOCKS, pedestal)
-                            .pattern("B")
-                            .pattern("B")
-                            .input('B', block)
-                            .criterion(hasItem(block), conditionsFromItem(block))
-                            .offerTo(recipeExporter);
-
-                    offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                            pedestal, block);
-                });
+                PEDESTAL_TO_BLOCK_MAP.forEach((pedestal, block) -> createShaped(RecipeCategory.BUILDING_BLOCKS, pedestal)
+                        .pattern("B")
+                        .pattern("B")
+                        .input('B', block)
+                        .criterion(hasItem(block), conditionsFromItem(block))
+                        .offerTo(recipeExporter));
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
                         STONE_BRICK_PEDESTAL, Blocks.STONE);
