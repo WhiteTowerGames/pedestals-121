@@ -53,6 +53,7 @@ public class Pedestals121 implements ModInitializer {
                 new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2))));
 
 		// Register item tooltips. Can you believe I actually bothered to re-implement them?
-		ModItems.registerItemTooltips();
+		// Leaving this here as a reminder: TOOLTIPS ARE CLIENT SIDE!
+		//ModItems.registerItemTooltips();
 	}
 }

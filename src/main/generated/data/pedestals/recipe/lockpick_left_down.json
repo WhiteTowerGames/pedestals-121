@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
+  "group": "lockpick",
   "key": {
     "B": "minecraft:iron_bars",
     "I": "minecraft:iron_ingot"
