@@ -113,7 +113,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider, Invento
     }
 
     @Override
-    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos, Direction direction) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity){
             switch (pedestalBlockEntity.getStoredItem().getRarity()){
@@ -191,7 +191,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider, Invento
         world.playSound(null, pos, getRemoveItemSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
         pedestalBlockEntity.setStoredItem(ItemStack.EMPTY);
         world.updateListeners(pos, state, state, 0);
-        if (!world.isClient) {
+        if (!world.isClient()) {
             return ActionResult.SUCCESS_SERVER;
         }
         return ActionResult.SUCCESS;

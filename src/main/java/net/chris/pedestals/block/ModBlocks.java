@@ -732,7 +732,7 @@ public class ModBlocks {
     }
 
     public static void initialize(){
-        Pedestals121.LOGGER.info("Registering Mod Blocks for Pedestals 1.21 (source: "+Pedestals121.MOD_ID+").");
+        Pedestals121.LOGGER.info("Registering Mod Blocks for Pedestals 1.21");
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> ALL_PEDESTALS.forEach(entries::add));
 

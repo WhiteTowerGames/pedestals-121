@@ -8,8 +8,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -17,9 +17,10 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
+import java.util.Objects;
+
 import static net.chris.pedestals.item.ModItems.*;
 
-@SuppressWarnings({"IntegerDivisionInFloatingPointContext", "DataFlowIssue"})
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity>{
 
     private final TextRenderer textRenderer;
@@ -50,7 +51,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         double maxDistance = 5.0;
         Vec3d endPos = eyePos.add(lookVec.x * maxDistance, lookVec.y * maxDistance, lookVec.z * maxDistance);
 
-        //Does said ray actually intersect the floating item's hitbox?
+        //Does the aforementioned ray actually intersect the floating item's hitbox?
         try {
             return itemBox.raycast(eyePos, endPos).isPresent();
         } catch (Exception e) {
@@ -93,7 +94,6 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     protected int getItemRarityColor(ItemStack stack){
         switch (stack.getRarity()) {
-            case COMMON -> {return Colors.WHITE;}
             case UNCOMMON -> {return  Colors.YELLOW;}
             case RARE -> {return Colors.CYAN;}
             case EPIC -> {return 0xEA55E8;}
@@ -101,7 +101,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         }
     }
 
-    protected void renderCarpetIfPresent(PedestalBlockEntity entity, ItemStack carpet, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay) {
+    protected void renderCarpetIfPresent(PedestalBlockEntity entity, ItemStack carpet, MatrixStack matrices,
+                                         VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay) {
         matrices.push();
 
         matrices.translate(0.5f, 1.29f, 0.51f);
@@ -109,27 +110,29 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
 
-        itemRenderer.renderItem(carpet, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+        itemRenderer.renderItem(carpet, ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
 
         matrices.pop();
 
     }
 
-    protected void renderLockboxIfPresent(PedestalBlockEntity entity, ItemStack lockbox, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer, int overlay, double higherIfHasCarpet) {
+    protected void renderLockboxIfPresent(PedestalBlockEntity entity, ItemStack lockbox, MatrixStack matrices,
+                                          VertexConsumerProvider vertexConsumers, int light, ItemRenderer itemRenderer,
+                                          int overlay, double higherIfHasCarpet) {
         matrices.push();
 
         matrices.translate(0.5f, 1.85f + higherIfHasCarpet, 0.5f);
         matrices.scale(1.1f,1.1f,1.1f);
 
-        itemRenderer.renderItem(lockbox, ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+        itemRenderer.renderItem(lockbox, ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
         matrices.scale(1.01f,1.01f,1.01f);
-        int dustLevel = lockbox.get(ModComponents.LOCKBOX_DUST_COMPONENT).dustLevel();
+        int dustLevel = Objects.requireNonNull(lockbox.get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
         if (dustLevel > 0) {
             switch (dustLevel) {
-                case 1 -> itemRenderer.renderItem(DUST_1.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-                case 2 -> itemRenderer.renderItem(DUST_2.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-                case 3 -> itemRenderer.renderItem(DUST_3.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
-                case 4 -> itemRenderer.renderItem(DUST_4.getDefaultStack(), ModelTransformationMode.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 1 -> itemRenderer.renderItem(DUST_1.getDefaultStack(), ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 2 -> itemRenderer.renderItem(DUST_2.getDefaultStack(), ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 3 -> itemRenderer.renderItem(DUST_3.getDefaultStack(), ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
+                case 4 -> itemRenderer.renderItem(DUST_4.getDefaultStack(), ItemDisplayContext.FIXED, light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             }
         }
         matrices.pop();
@@ -138,8 +141,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
 
     @Override
-    public void render(PedestalBlockEntity entity, float tickDelta, MatrixStack matrices,
-                       VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(PedestalBlockEntity entity, float tickProgress, MatrixStack matrices,
+                       VertexConsumerProvider vertexConsumers, int light, int overlay, Vec3d cameraPos) {
         ItemStack stack = entity.getStoredItem().copy();
         ItemStack carpet = entity.getStoredCarpet().copy();
         ItemStack lockbox = entity.getStoredLockbox().copy();
@@ -148,14 +151,15 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         matrices.push();
             // Make the item float higher (and even higher if the pedestal has a carpet)
-            double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickDelta) / 8.0);
-            double higherIfHasCarpet = entity.hasStoredCarpet() ? 0.053 : 0;
-            matrices.translate(0.5, yOffset + higherIfHasCarpet, 0.5);
-            float rotation = (System.currentTimeMillis() / 20) % 360;
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
-            ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-            matrices.scale(1.2f,1.2f,1.2f);
-        itemRenderer.renderItem(stack, net.minecraft.item.ModelTransformationMode.GROUND,
+        assert entity.getWorld() != null;
+        double yOffset = 1.55 + 0.05 * Math.sin((entity.getWorld().getTime() + tickProgress) / 8.0);
+        double higherIfHasCarpet = entity.hasStoredCarpet() ? 0.053 : 0;
+        matrices.translate(0.5, yOffset + higherIfHasCarpet, 0.5);
+        float rotation = (System.currentTimeMillis() / 20f) % 360;
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
+        ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+        matrices.scale(1.2f,1.2f,1.2f);
+        itemRenderer.renderItem(stack, net.minecraft.item.ItemDisplayContext.GROUND,
                     light, overlay, matrices, vertexConsumers, entity.getWorld(), 0);
             matrices.pop();
 
@@ -169,4 +173,5 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             renderLockboxIfPresent(entity, lockbox, matrices, vertexConsumers, light, itemRenderer, overlay, higherIfHasCarpet);
         }
     }
+
 }

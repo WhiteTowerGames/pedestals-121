@@ -236,7 +236,7 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         addText(translationBuilder, ModAdvancementProvider.get_fancy_carpet_desc, "Η γιαγιά μου είχε ένα τέτοιο σε κάθε τραπεζάκι της.");
 
         addText(translationBuilder, ModAdvancementProvider.get_lockbox_title, "Ενισχυμένες Προθήκες!");
-        addText(translationBuilder, ModAdvancementProvider.get_lockbox_desc, "Μία στιβαρή γυάλινη προθήκη, ενισχυμένο με διαμάντι για έξτρα ασφάλεια. Καλή τύχη να τη διαρρήξεις!");
+        addText(translationBuilder, ModAdvancementProvider.get_lockbox_desc, "Μία στιβαρή γυάλινη προθήκη, ενισχυμένη με διαμάντι για έξτρα ασφάλεια. Καλή τύχη να τη διαρρήξεις!");
 
         addText(translationBuilder, ModAdvancementProvider.use_key_title, "Το Κλειδί του Παραδείσου");
         addText(translationBuilder, ModAdvancementProvider.use_key_desc, "Τα εγγεγραμμένα κλειδιά και οι προθήκες μπορούν να αντιγραφούν μέσω κατασκευής.");

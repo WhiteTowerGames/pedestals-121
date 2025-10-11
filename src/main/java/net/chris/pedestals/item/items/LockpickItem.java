@@ -94,7 +94,7 @@ public class LockpickItem extends Item{
                     }
                 }
             } else {
-                if (!world.isClient) {
+                if (!world.isClient()) {
                     finishUsing(stack, world, user);
                 }
             }
@@ -103,7 +103,7 @@ public class LockpickItem extends Item{
 
     @Override
     public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (user instanceof PlayerEntity player && !world.isClient) {
+        if (user instanceof PlayerEntity player && !world.isClient()) {
             breakLockpick(stack, player, world);
         }
         return true;
@@ -131,7 +131,7 @@ public class LockpickItem extends Item{
             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5,
                     pedestalBlockEntity.getStoredLockbox(), 0.0, 0.2, 0.0);
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-            if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
+            if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
                 if (easterEggChance >= 1) { //Normal lockpicking response
                     serverPlayer.sendMessage(Text.translatable("messages.pedestals.lockpicking_success"), true);
                 } else { //Play the Easter egg!
@@ -157,7 +157,7 @@ public class LockpickItem extends Item{
 
     private void playEasterEgg(PlayerEntity player, int skillLevel, World world, BlockPos pos){
 
-        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
+        if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
             world.playSound(null, pos, ModSoundEvents.LOCKPICKING_INCREASE, SoundCategory.PLAYERS, 1f, 1f);
             serverPlayer.networkHandler.sendPacket(new TitleFadeS2CPacket(20, 25, 15));
             serverPlayer.networkHandler.sendPacket(new TitleS2CPacket(Text.literal("")));

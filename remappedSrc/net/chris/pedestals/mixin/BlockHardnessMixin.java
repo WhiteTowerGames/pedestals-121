@@ -1,7 +1,7 @@
 package net.chris.pedestals.mixin;
 
+import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -34,7 +34,7 @@ public class BlockHardnessMixin {
 
             if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
                 if (pedestalBlockEntity.hasStoredLockbox()) {
-                    cir.setReturnValue(ModGameRuleCache.areLockedPedestalsUnbreakable() ? -1f : hardness * 50f);
+                    cir.setReturnValue(Pedestals121.CONFIG.lockedPedestalsUnbreakable() ? -1f : hardness * 50f);
                 }
             }
         }

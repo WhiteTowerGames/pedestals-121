@@ -78,7 +78,7 @@ public class KeyItem extends Item{
         stack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true, isStackCopy));
         lockboxStack.set(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(lockboxUUID, true));
         world.playSound(null, pos, getRegisterSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-        if (!world.isClient) {
+        if (!world.isClient()) {
             assert player != null;
             player.sendMessage(Text.translatable("messages.pedestals.key_map"), true);
         }
@@ -86,7 +86,7 @@ public class KeyItem extends Item{
     }
 
     private void wrongKey(World world, PlayerEntity player, BlockPos pos) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             assert player != null;
             player.sendMessage(Text.translatable("messages.pedestals.key_wrong"), true);
         }
@@ -97,7 +97,7 @@ public class KeyItem extends Item{
         pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
         ItemEntity itemEntity = new ItemEntity(world, pos.getX()+0.5, pos.getY()+0.75, pos.getZ()+0.5,
                 lockboxStack, 0.0, 0.2, 0.0);
-        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
+        if (!world.isClient() && player instanceof ServerPlayerEntity serverPlayer) {
             serverPlayer.sendMessage(Text.translatable("messages.pedestals.key_open"), true);
             ModCriteria.USE_KEY_ON_LOCKBOX.trigger(serverPlayer);
         }

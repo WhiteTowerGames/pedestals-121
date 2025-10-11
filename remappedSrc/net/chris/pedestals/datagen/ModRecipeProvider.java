@@ -36,17 +36,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void generate() {
 
-                PEDESTAL_TO_BLOCK_MAP.forEach((pedestal, block) -> {
-                    createShaped(RecipeCategory.BUILDING_BLOCKS, pedestal)
-                            .pattern("B")
-                            .pattern("B")
-                            .input('B', block)
-                            .criterion(hasItem(block), conditionsFromItem(block))
-                            .offerTo(recipeExporter);
-
-                    offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
-                            pedestal, block);
-                });
+                PEDESTAL_TO_BLOCK_MAP.forEach((pedestal, block) -> createShaped(RecipeCategory.BUILDING_BLOCKS, pedestal)
+                        .pattern("B")
+                        .pattern("B")
+                        .input('B', block)
+                        .criterion(hasItem(block), conditionsFromItem(block))
+                        .offerTo(recipeExporter));
 
                 offerStonecuttingRecipe( RecipeCategory.BUILDING_BLOCKS,
                         STONE_BRICK_PEDESTAL, Blocks.STONE);
@@ -189,6 +184,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.IRON_BARS)
                         .input('I', Items.IRON_INGOT)
                         .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .group("lockpick")
                         .offerTo(recipeExporter, "lockpick_right_down");
 
                 createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
@@ -197,6 +193,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.IRON_BARS)
                         .input('I', Items.IRON_INGOT)
                         .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .group("lockpick")
                         .offerTo(recipeExporter, "lockpick_left_down");
 
                 createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
@@ -205,6 +202,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.IRON_BARS)
                         .input('I', Items.IRON_INGOT)
                         .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .group("lockpick")
                         .offerTo(recipeExporter, "lockpick_right_up");
 
                 createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)
@@ -213,6 +211,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.IRON_BARS)
                         .input('I', Items.IRON_INGOT)
                         .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                        .group("lockpick")
                         .offerTo(recipeExporter, "lockpick_left_up");
 
                 /// Special duping recipes (produce blank json)

@@ -243,7 +243,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     @Override
     public void tick() {
-        if(this.world != null && !this.world.isClient) {
+        if(this.world != null && !this.world.isClient()) {
             tickCount++;
             if (tickCount % 5 == 0) {
                 getStoredItem();
@@ -291,7 +291,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
             ENCHANTED_GOLDEN_APPLE, ParticleTypes.ENCHANT,
             WITHER_SKELETON_SKULL, ParticleTypes.SMOKE,
             SCULK_CATALYST, ParticleTypes.SCULK_SOUL,
-            DRAGON_EGG, ParticleTypes.DRAGON_BREATH,
+            DRAGON_EGG, ParticleTypes.ASH,
             NETHER_STAR, ParticleTypes.END_ROD,
             HEART_OF_THE_SEA, ParticleTypes.NAUTILUS
     ));

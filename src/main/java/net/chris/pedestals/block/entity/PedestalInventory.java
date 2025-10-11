@@ -37,14 +37,4 @@ public interface PedestalInventory extends Inventory {
     default void markDirty() {
         // Required for compatibility, but doesn't need custom behavior
     }
-
-    @Override
-    default void onOpen(PlayerEntity player) {
-        // No behavior needed
-    }
-
-    @Override
-    default void onClose(PlayerEntity player) {
-        // No behavior needed
-    }
 }

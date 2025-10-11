@@ -79,7 +79,7 @@ public class PedestalExtensionBlock extends Block {
 
     @Override
     protected void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             player.sendMessage(Text.translatable("messages.pedestals.try_break_lockbox"), true);
         }
     }

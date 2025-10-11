@@ -1,7 +1,6 @@
 package net.chris.pedestals.mixin;
 
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
@@ -15,6 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
+import static net.chris.pedestals.Pedestals121.CONFIG;
+
 @Mixin(ExplosionBehavior.class)
 public class ExplosionBehaviorMixin {
 
@@ -24,7 +25,7 @@ public class ExplosionBehaviorMixin {
 
         if (world.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
             if (pedestalBlockEntity.hasStoredLockbox()) {
-                cir.setReturnValue(Optional.of(ModGameRuleCache.areLockedPedestalsUnbreakable() ? 3600000f : blockState.getBlock().getBlastResistance() + 3f));
+                cir.setReturnValue(Optional.of(CONFIG.lockedPedestalsUnbreakable() ? 3600000f : blockState.getBlock().getBlastResistance() + 3f));
             }
         }
 

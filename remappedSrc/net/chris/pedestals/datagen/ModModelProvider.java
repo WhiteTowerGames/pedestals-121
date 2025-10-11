@@ -7,8 +7,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.data.*;
+import net.minecraft.client.render.model.json.ModelVariant;
+import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.Pool;
+
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
 import static net.chris.pedestals.models.CustomModels.*;
@@ -115,23 +119,26 @@ public class ModModelProvider extends FabricModelProvider {
 
     public static void registerPedestal(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
         Identifier pedestalModel = PEDESTAL_MODEL.upload(pedestalBlock, textures, generator.modelCollector);
+        WeightedVariant weightedVariant = new WeightedVariant(Pool.of(new ModelVariant(pedestalModel)));
 
         generator.registerParentedItemModel(pedestalBlock, pedestalModel);
-        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, weightedVariant));
     }
 
     public static void registerPedestalWood(BlockStateModelGenerator generator, Block pedestalBlock, TextureMap textures){
         Identifier pedestalModel = PEDESTAL_MODEL_MORE.upload(pedestalBlock, textures, generator.modelCollector);
+        WeightedVariant weightedVariant = new WeightedVariant(Pool.of(new ModelVariant(pedestalModel)));
 
         generator.registerParentedItemModel(pedestalBlock, pedestalModel);
-        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, pedestalModel));
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(pedestalBlock, weightedVariant));
     }
 
     public static void registerFancyCarpet(BlockStateModelGenerator generator, Block fancyCarpetBlock, TextureMap textures){
         Identifier fancyCarpetModel = FANCY_CARPET_MODEL.upload(fancyCarpetBlock, textures, generator.modelCollector);
+        WeightedVariant weightedVariant = new WeightedVariant(Pool.of(new ModelVariant(fancyCarpetModel)));
 
         generator.registerParentedItemModel(fancyCarpetBlock, fancyCarpetModel);
-        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(fancyCarpetBlock, fancyCarpetModel));
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(fancyCarpetBlock, weightedVariant));
     }
 
     public static void registerLockbox(BlockStateModelGenerator generator, Item lockboxItem, TextureMap textures) {

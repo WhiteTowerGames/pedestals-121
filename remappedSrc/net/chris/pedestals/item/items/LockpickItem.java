@@ -2,7 +2,6 @@ package net.chris.pedestals.item.items;
 
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.criteria.ModCriteria;
-import net.chris.pedestals.gamerules.ModGameRuleCache;
 import net.chris.pedestals.sounds.ModSoundEvents;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
@@ -14,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.consume.UseAction;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.network.packet.s2c.play.SubtitleS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleFadeS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
@@ -32,11 +30,10 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
-
+import static net.chris.pedestals.Pedestals121.CONFIG;
 import static net.chris.pedestals.block.ModBlocks.PEDESTAL_EXTENSION;
 
-public class LockpickItem extends Item {
+public class LockpickItem extends Item{
 
     public LockpickItem(net.minecraft.item.Item.Settings settings) {
         super(settings);
@@ -59,6 +56,7 @@ public class LockpickItem extends Item {
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         PlayerEntity playerEntity = context.getPlayer();
+        if (!CONFIG.enableLockpicks()) return ActionResult.FAIL;
         if (playerEntity != null && this.getHitResult(playerEntity).getType() == HitResult.Type.BLOCK && context.getWorld().getBlockState(context.getBlockPos()).isOf(PEDESTAL_EXTENSION)) {
             playerEntity.setCurrentHand(context.getHand());
             return ActionResult.CONSUME;
@@ -68,7 +66,7 @@ public class LockpickItem extends Item {
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        if (user instanceof PlayerEntity player) {
+        if (user instanceof PlayerEntity player && CONFIG.enableLockpicks()) {
 
             HitResult hitResult = this.getHitResult(player);
 
@@ -116,7 +114,7 @@ public class LockpickItem extends Item {
         if (user instanceof PlayerEntity player && this.getHitResult(player) instanceof BlockHitResult blockHitResult){
             BlockEntity blockEntity = world.getBlockEntity(blockHitResult.getBlockPos().down());
             if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
-                return tryLockpick(world, player, pedestalBlockEntity, stack, blockHitResult.getBlockPos()) ? stack : ItemStack.EMPTY;
+                tryLockpick(world, player, pedestalBlockEntity, stack, blockHitResult.getBlockPos());
             }
         }
         return stack;
@@ -126,19 +124,17 @@ public class LockpickItem extends Item {
         return ProjectileUtil.getCollision(user, EntityPredicates.CAN_HIT, user.getBlockInteractionRange());
     }
 
-    private boolean tryLockpick(World world, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack stack, BlockPos pos){
-        boolean lockpickResult = false;
+    private void tryLockpick(World world, PlayerEntity player, PedestalBlockEntity pedestalBlockEntity, ItemStack stack, BlockPos pos){
         int easterEggChance = world.getRandom().nextInt(50);
         int roll = world.getRandom().nextInt(100);
-        if (roll < ModGameRuleCache.getPercentLockpickSuccessChance()) { //Lockpicking succeeded
+        if (roll < CONFIG.percentLockpickSuccessChance()) { //Lockpicking succeeded
             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5,
                     pedestalBlockEntity.getStoredLockbox(), 0.0, 0.2, 0.0);
             pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-            lockpickResult = true;
             if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer) {
                 if (easterEggChance >= 1) { //Normal lockpicking response
                     serverPlayer.sendMessage(Text.translatable("messages.pedestals.lockpicking_success"), true);
-                } else { //Play the easter egg!
+                } else { //Play the Easter egg!
                     playEasterEgg(player, world.getRandom().nextBetween(25, 70), world, pos);
                 }
                 ModCriteria.USE_LOCKPICK.trigger(serverPlayer);
@@ -157,7 +153,6 @@ public class LockpickItem extends Item {
                 ModCriteria.BREAK_LOCKPICK.trigger(serverPlayer);
             }
         }
-        return lockpickResult;
     }
 
     private void playEasterEgg(PlayerEntity player, int skillLevel, World world, BlockPos pos){
@@ -177,16 +172,5 @@ public class LockpickItem extends Item {
         }
     }
 
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
 
-        boolean isEnabled = ModGameRuleCache.areLockpicksEnabled();
-        if (!isEnabled){
-            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l1").formatted(Formatting.RED, Formatting.BOLD));
-            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_disabled.l2").formatted(Formatting.RED, Formatting.BOLD));
-        } else {
-            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l1"));
-            tooltip.add(Text.translatable("itemtooltip.pedestals.lockpick_enabled.l2"));
-        }
-    }
 }

@@ -48,7 +48,6 @@ public class ModComponents {
     ///
     /// See also:
     /// <ul>
-    /// <li>{@link net.chris.pedestals.gamerules.ModGameRules#INFINITE_KEY_DUPING INFINITE_KEY_DUPING} for the game rule controlling key duplication.</li>
     /// <li>{@link net.chris.pedestals.recipes.KeyDuplicationRecipe KeyDuplicationRecipe} for the recipe involved in key duplication.</li>
     /// </ul>
     /// ---
@@ -72,7 +71,7 @@ public class ModComponents {
     /// ### Summary:
     /// - This custom data component stores a `UUID` and two `boolean` flags.
     /// - The second `boolean` (`isCopy`) is optional and exists to balance `KeyItem` duplication.
-    /// - Key duplication can be controlled via the gamerule {@link net.chris.pedestals.gamerules.ModGameRules#INFINITE_KEY_DUPING INFINITE_KEY_DUPING}.
+    /// - Key duplication can be controlled via config.
     public static final ComponentType<LockAndKeyDataComponent> LOCK_AND_KEY_DATA = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(Pedestals121.MOD_ID, "lockbox_data"),
