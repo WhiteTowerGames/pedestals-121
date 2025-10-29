@@ -19,13 +19,13 @@ public class ModItemGroups {
             Identifier.of(Pedestals121.MOD_ID, "pedestals"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.STONE_BRICK_PEDESTAL))
                     .displayName(Text.translatable("itemgroup.pedestals.pedestals"))
-                    .entries((displayContext, entries) -> ALL_PEDESTALS.forEach(entries::add)).build());
+                    .entries((displayContext, entries) -> PEDESTAL_TO_BLOCK_MAP.keySet().forEach(entries::add)).build());
 
     public static final ItemGroup FANCY_CARPETS_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(Pedestals121.MOD_ID, "fancy_carpets"),
                     FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.RED_GILDED_CARPET))
                             .displayName(Text.translatable("itemgroup.pedestals.fancycarpets"))
-                            .entries((displayContext, entries) -> ALL_FANCY_CARPETS.forEach(entries::add)).build());
+                            .entries((displayContext, entries) -> GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(entries::add)).build());
 
     public static final ItemGroup LOCKBOXES_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(Pedestals121.MOD_ID, "lockboxes"),

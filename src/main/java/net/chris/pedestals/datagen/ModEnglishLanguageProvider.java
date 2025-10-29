@@ -173,11 +173,11 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
             String actualName = getActualName(i);
 
             /// Gilded Carpets:
-            translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Gilded Carpet");
-            translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Gilded Carpet");
+            translationBuilder.add(GILDED_TO_NORMAL_CARPET_MAP.keySet().stream().toList().get(i), actualName+" Gilded Carpet");
+            translationBuilder.add(GILDED_TO_NORMAL_CARPET_MAP.keySet().stream().toList().get(i).asItem(), actualName+" Gilded Carpet");
 
             /// Reinforced Lockboxes:
-            translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Reinforced Lockbox");
+            translationBuilder.add(STAINED_LOCKBOX_TO_GLASS_MAP.keySet().stream().toList().get(i), actualName+" Reinforced Lockbox");
         }
 
         /// Keys:

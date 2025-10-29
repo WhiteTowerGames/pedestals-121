@@ -26,7 +26,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
-        ALL_PEDESTALS.forEach(block -> valueLookupBuilder(PEDESTAL_BLOCKS).add(block));
+        PEDESTAL_TO_BLOCK_MAP.keySet().forEach(block -> valueLookupBuilder(PEDESTAL_BLOCKS).add(block));
 
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.STONE_BRICK_PEDESTAL)

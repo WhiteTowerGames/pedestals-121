@@ -177,11 +177,11 @@ public class ModGreekLanguageProvider extends FabricLanguageProvider {
         for (int i = 0; i<=15; i++){
             /// Gilded Carpets:
             actualName = allColorsGreek[i];
-            translationBuilder.add(ALL_FANCY_CARPETS.get(i), actualName+" Επίχρυσο Σεμεδάκι");
-            translationBuilder.add(ALL_FANCY_CARPETS.get(i).asItem(), actualName+" Επίχρυσο Σεμεδάκι");
+            translationBuilder.add(GILDED_TO_NORMAL_CARPET_MAP.keySet().stream().toList().get(i), actualName+" Επίχρυσο Σεμεδάκι");
+            translationBuilder.add(GILDED_TO_NORMAL_CARPET_MAP.keySet().stream().toList().get(i).asItem(), actualName+" Επίχρυσο Σεμεδάκι");
             /// Reinforced Lockboxes:
             actualName = allColorsGreekFeminine[i];
-            translationBuilder.add(ALL_COLORED_LOCKBOXES.get(i), actualName+" Ενισχυμένη Προθήκη");
+            translationBuilder.add(STAINED_LOCKBOX_TO_GLASS_MAP.keySet().stream().toList().get(i), actualName+" Ενισχυμένη Προθήκη");
         }
         /// Keys:
         translationBuilder.add(LOCKBOX_KEY, "Κλειδί Προθήκης");

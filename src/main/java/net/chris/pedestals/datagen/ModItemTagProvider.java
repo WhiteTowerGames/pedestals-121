@@ -29,7 +29,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
-        ALL_PEDESTALS.forEach(block -> valueLookupBuilder(PEDESTAL_BLOCK_ITEMS).add(block.asItem()));
+        PEDESTAL_TO_BLOCK_MAP.keySet().forEach(block -> valueLookupBuilder(PEDESTAL_BLOCK_ITEMS).add(block.asItem()));
 
         GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> valueLookupBuilder(FANCY_CARPET_BLOCK_ITEMS).add(block.asItem()));
 

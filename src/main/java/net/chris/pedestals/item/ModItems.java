@@ -26,7 +26,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
@@ -125,25 +124,6 @@ public class ModItems {
             .maxCount(1)
             .component(ModComponents.LOCK_AND_KEY_DATA, new LockAndKeyDataComponent(UUID.randomUUID(), false)).component(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent()));
 
-    public static final List<Item> ALL_COLORED_LOCKBOXES = List.of(
-            WHITE_LOCKBOX,
-            LIGHT_GRAY_LOCKBOX,
-            GRAY_LOCKBOX,
-            BLACK_LOCKBOX,
-            BROWN_LOCKBOX,
-            RED_LOCKBOX,
-            ORANGE_LOCKBOX,
-            YELLOW_LOCKBOX,
-            LIME_LOCKBOX,
-            GREEN_LOCKBOX,
-            CYAN_LOCKBOX,
-            LIGHT_BLUE_LOCKBOX,
-            BLUE_LOCKBOX,
-            PURPLE_LOCKBOX,
-            MAGENTA_LOCKBOX,
-            PINK_LOCKBOX
-    );
-
     public static final HashMap<Item, Block> STAINED_LOCKBOX_TO_GLASS_MAP = new HashMap<>(Map.ofEntries(
             Map.entry(WHITE_LOCKBOX, WHITE_STAINED_GLASS),
             Map.entry(LIGHT_GRAY_LOCKBOX, LIGHT_GRAY_STAINED_GLASS),
@@ -162,7 +142,6 @@ public class ModItems {
             Map.entry(MAGENTA_LOCKBOX, MAGENTA_STAINED_GLASS),
             Map.entry(PINK_LOCKBOX, PINK_STAINED_GLASS)
     ));
-
 
     public static Item registerItem(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pedestals121.MOD_ID, name));

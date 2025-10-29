@@ -6,8 +6,7 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.chris.pedestals.block.ModBlocks.ALL_FANCY_CARPETS;
-import static net.chris.pedestals.block.ModBlocks.ALL_PEDESTALS;
+import static net.chris.pedestals.block.ModBlocks.*;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
@@ -18,8 +17,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
-        ALL_PEDESTALS.forEach(this::addDrop);
+        PEDESTAL_TO_BLOCK_MAP.keySet().forEach(this::addDrop);
 
-        ALL_FANCY_CARPETS.forEach(this::addDrop);
+        GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(this::addDrop);
     }
 }
