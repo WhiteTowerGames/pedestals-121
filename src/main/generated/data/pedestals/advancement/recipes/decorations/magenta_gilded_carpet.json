@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_magenta_wool": {
+    "has_magenta_carpet": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:magenta_wool"
+            "items": "minecraft:magenta_carpet"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_magenta_wool"
+      "has_magenta_carpet"
     ]
   ],
   "rewards": {

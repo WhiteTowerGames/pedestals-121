@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": "minecraft:orange_wool",
+    "C": "minecraft:orange_carpet",
     "N": "minecraft:gold_nugget"
   },
   "pattern": [

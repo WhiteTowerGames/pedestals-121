@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cyan_wool": {
+    "has_cyan_carpet": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:cyan_wool"
+            "items": "minecraft:cyan_carpet"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cyan_wool"
+      "has_cyan_carpet"
     ]
   ],
   "rewards": {

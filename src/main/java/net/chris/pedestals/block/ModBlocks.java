@@ -613,22 +613,22 @@ public class ModBlocks {
             STRIPPED_WARPED_LOG_PEDESTAL);
 
     public static final HashMap<Block, Block> GILDED_TO_NORMAL_CARPET_MAP = new HashMap<>(Map.ofEntries(
-            Map.entry(WHITE_GILDED_CARPET, WHITE_WOOL),
-            Map.entry(LIGHT_GRAY_GILDED_CARPET, LIGHT_GRAY_WOOL),
-            Map.entry(GRAY_GILDED_CARPET, GRAY_WOOL),
-            Map.entry(BLACK_GILDED_CARPET, BLACK_WOOL),
-            Map.entry(BROWN_GILDED_CARPET, BROWN_WOOL),
-            Map.entry(RED_GILDED_CARPET, RED_WOOL),
-            Map.entry(ORANGE_GILDED_CARPET, ORANGE_WOOL),
-            Map.entry(YELLOW_GILDED_CARPET, YELLOW_WOOL),
-            Map.entry(LIME_GILDED_CARPET, LIME_WOOL),
-            Map.entry(GREEN_GILDED_CARPET, GREEN_WOOL),
-            Map.entry(CYAN_GILDED_CARPET, CYAN_WOOL),
-            Map.entry(LIGHT_BLUE_GILDED_CARPET, LIGHT_BLUE_WOOL),
-            Map.entry(BLUE_GILDED_CARPET, BLUE_WOOL),
-            Map.entry(PURPLE_GILDED_CARPET, PURPLE_WOOL),
-            Map.entry(MAGENTA_GILDED_CARPET, MAGENTA_WOOL),
-            Map.entry(PINK_GILDED_CARPET, PINK_WOOL)
+            Map.entry(WHITE_GILDED_CARPET, WHITE_CARPET),
+            Map.entry(LIGHT_GRAY_GILDED_CARPET, LIGHT_GRAY_CARPET),
+            Map.entry(GRAY_GILDED_CARPET, GRAY_CARPET),
+            Map.entry(BLACK_GILDED_CARPET, BLACK_CARPET),
+            Map.entry(BROWN_GILDED_CARPET, BROWN_CARPET),
+            Map.entry(RED_GILDED_CARPET, RED_CARPET),
+            Map.entry(ORANGE_GILDED_CARPET, ORANGE_CARPET),
+            Map.entry(YELLOW_GILDED_CARPET, YELLOW_CARPET),
+            Map.entry(LIME_GILDED_CARPET, LIME_CARPET),
+            Map.entry(GREEN_GILDED_CARPET, GREEN_CARPET),
+            Map.entry(CYAN_GILDED_CARPET, CYAN_CARPET),
+            Map.entry(LIGHT_BLUE_GILDED_CARPET, LIGHT_BLUE_CARPET),
+            Map.entry(BLUE_GILDED_CARPET, BLUE_CARPET),
+            Map.entry(PURPLE_GILDED_CARPET, PURPLE_CARPET),
+            Map.entry(MAGENTA_GILDED_CARPET, MAGENTA_CARPET),
+            Map.entry(PINK_GILDED_CARPET, PINK_CARPET)
     ));
 
     public static final HashMap<Block, Block> WAXED_TO_UNWAXED_COPPER_PEDESTAL_MAP = new HashMap<>(Map.ofEntries(
