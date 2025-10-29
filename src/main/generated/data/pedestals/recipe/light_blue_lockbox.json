@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "lockbox",
   "key": {
     "B": "minecraft:diamond",
     "G": "minecraft:light_blue_stained_glass",

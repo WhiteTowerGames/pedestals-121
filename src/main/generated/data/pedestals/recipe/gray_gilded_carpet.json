@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "gilded_carpet",
   "key": {
-    "C": "minecraft:gray_wool",
+    "C": "minecraft:gray_carpet",
     "N": "minecraft:gold_nugget"
   },
   "pattern": [

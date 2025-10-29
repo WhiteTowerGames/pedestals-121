@@ -1,8 +1,8 @@
-// 1.21.8	-999999999-01-01T00:00:00	Pedestals - Display your items!/Advancements
-9e4ca73fa5539278a687a4df1891fddee9fddb6f data/pedestals/advancement/all_the_colors.json
+// 1.21.10	-999999999-01-01T00:00:00	Pedestals - Display your items!/Advancements
+5503bc9380c3a3778905949578abb35104e00c67 data/pedestals/advancement/all_the_colors.json
 0f4fe07c4026296d8401f99ecd005d190bfd0f7f data/pedestals/advancement/break_lockpick.json
 d6d4db04146e200e7641f000d85d2e798640335a data/pedestals/advancement/carpet_lock_artifact.json
-0609f55c546c95244abd1870ca8a54efab636da5 data/pedestals/advancement/collect_all_pedestals.json
+05029c0f5486672636eca7501e62a2d7369a2766 data/pedestals/advancement/collect_all_pedestals.json
 258f42c55714cda3189f4a71e40f75e4912cb51f data/pedestals/advancement/fully_clean_lockbox.json
 7508d5e6898ea6c62c10dc37a15f52181baaa02b data/pedestals/advancement/get_fancy_carpet.json
 3455e0cc7b58c6b6a84761d8c5ebc05ac455ef88 data/pedestals/advancement/get_lockbox.json

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "lockbox_key",
   "key": {
     "G": "minecraft:gold_ingot",
     "N": "minecraft:gold_nugget"

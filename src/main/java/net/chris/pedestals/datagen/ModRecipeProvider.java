@@ -140,6 +140,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('C', normal)
                         .input('N', Items.GOLD_NUGGET)
                         .criterion(hasItem(normal), conditionsFromItem(normal))
+                        .group("gilded_carpet")
                         .offerTo(recipeExporter));
 
                 createShaped(RecipeCategory.DECORATIONS, GLASS_LOCKBOX)
@@ -150,6 +151,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.DIAMOND)
                         .input('G', GLASS)
                         .criterion(hasItem(GLASS), conditionsFromItem(GLASS))
+                        .group("lockbox")
                         .offerTo(recipeExporter);
 
                 STAINED_LOCKBOX_TO_GLASS_MAP.forEach((item, block) -> createShaped(RecipeCategory.DECORATIONS, item)
@@ -160,6 +162,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('B', Items.DIAMOND)
                         .input('G', block)
                         .criterion(hasItem(block), conditionsFromItem(block))
+                        .group("lockbox")
                         .offerTo(recipeExporter));
 
                 createShaped(RecipeCategory.MISC, ModItems.LOCKBOX_KEY)
@@ -168,6 +171,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('G', Items.GOLD_INGOT)
                         .input('N', Items.GOLD_NUGGET)
                         .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                        .group("lockbox_key")
                         .offerTo(recipeExporter, String.valueOf(Identifier.of(Pedestals121.MOD_ID, "lockbox_key_right")));
 
                 createShaped(RecipeCategory.MISC, ModItems.LOCKBOX_KEY)
@@ -176,6 +180,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('G', Items.GOLD_INGOT)
                         .input('N', Items.GOLD_NUGGET)
                         .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                        .group("lockbox_key")
                         .offerTo(recipeExporter, String.valueOf(Identifier.of(Pedestals121.MOD_ID, "lockbox_key_left")));
 
                 createShaped(RecipeCategory.TOOLS, ModItems.LOCKPICK)

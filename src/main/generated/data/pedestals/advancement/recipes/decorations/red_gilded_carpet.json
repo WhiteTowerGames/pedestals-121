@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_red_wool": {
+    "has_red_carpet": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:red_wool"
+            "items": "minecraft:red_carpet"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_red_wool"
+      "has_red_carpet"
     ]
   ],
   "rewards": {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_light_gray_wool": {
+    "has_light_gray_carpet": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:light_gray_wool"
+            "items": "minecraft:light_gray_carpet"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_light_gray_wool"
+      "has_light_gray_carpet"
     ]
   ],
   "rewards": {

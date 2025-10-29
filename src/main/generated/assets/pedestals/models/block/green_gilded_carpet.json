@@ -2,6 +2,6 @@
   "parent": "pedestals:block/fancy_carpet",
   "textures": {
     "gold": "minecraft:block/gold_block",
-    "wool": "minecraft:block/green_wool"
+    "wool": "minecraft:block/green_carpet"
   }
 }
