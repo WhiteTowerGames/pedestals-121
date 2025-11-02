@@ -14,4 +14,6 @@ public class PedestalsConfigModel {
     public boolean lockedPedestalsUnbreakable = false;
     public boolean dustyLockboxes = true;
     public boolean displayedItemParticles = true;
+
+    public boolean pedestalsPowerBlockBelow = true;
 }

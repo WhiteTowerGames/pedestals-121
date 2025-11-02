@@ -2,6 +2,7 @@ package net.chris.pedestals.block.blocks;
 
 import com.mojang.serialization.MapCodec;
 import com.strippableblocksapi.inventory.InventoryPreservingBlock;
+import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.entity.ModBlockEntities;
 import net.chris.pedestals.criteria.ModCriteria;
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
@@ -252,7 +253,7 @@ public class PedestalBlock extends Block implements BlockEntityProvider, Invento
     @Override
     protected int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if(blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && direction == Direction.UP){
+        if(blockEntity instanceof PedestalBlockEntity pedestalBlockEntity && direction == Direction.UP && Pedestals121.CONFIG.pedestalsPowerBlockBelow()){
             ItemStack storedItem = pedestalBlockEntity.getStoredItem();
             if (PedestalBlockEntity.ITEM_PARTICLE_MAP.containsKey(pedestalBlockEntity.getStoredItem().getItem())) {
                 return 15;
