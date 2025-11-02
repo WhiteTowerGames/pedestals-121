@@ -560,6 +560,25 @@ public class ModBlocks {
             Map.entry(PINK_GILDED_CARPET, PINK_CARPET)
     ));
 
+    public static final HashMap<Block, Block> GILDED_TO_WOOL_MAP = new HashMap<>(Map.ofEntries(
+            Map.entry(WHITE_GILDED_CARPET, WHITE_WOOL),
+            Map.entry(LIGHT_GRAY_GILDED_CARPET, LIGHT_GRAY_WOOL),
+            Map.entry(GRAY_GILDED_CARPET, GRAY_WOOL),
+            Map.entry(BLACK_GILDED_CARPET, BLACK_WOOL),
+            Map.entry(BROWN_GILDED_CARPET, BROWN_WOOL),
+            Map.entry(RED_GILDED_CARPET, RED_WOOL),
+            Map.entry(ORANGE_GILDED_CARPET, ORANGE_WOOL),
+            Map.entry(YELLOW_GILDED_CARPET, YELLOW_WOOL),
+            Map.entry(LIME_GILDED_CARPET, LIME_WOOL),
+            Map.entry(GREEN_GILDED_CARPET, GREEN_WOOL),
+            Map.entry(CYAN_GILDED_CARPET, CYAN_WOOL),
+            Map.entry(LIGHT_BLUE_GILDED_CARPET, LIGHT_BLUE_WOOL),
+            Map.entry(BLUE_GILDED_CARPET, BLUE_WOOL),
+            Map.entry(PURPLE_GILDED_CARPET, PURPLE_WOOL),
+            Map.entry(MAGENTA_GILDED_CARPET, MAGENTA_WOOL),
+            Map.entry(PINK_GILDED_CARPET, PINK_WOOL)
+    ));
+
     public static final HashMap<Block, Block> WAXED_TO_UNWAXED_COPPER_PEDESTAL_MAP = new HashMap<>(Map.ofEntries(
             Map.entry(WAXED_COPPER_PEDESTAL, COPPER_PEDESTAL),
             Map.entry(WAXED_EXPOSED_COPPER_PEDESTAL, EXPOSED_COPPER_PEDESTAL),

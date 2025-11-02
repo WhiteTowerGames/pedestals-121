@@ -1,20 +1,20 @@
 {
   "values": [
-    "pedestals:black_gilded_carpet",
-    "pedestals:yellow_gilded_carpet",
-    "pedestals:brown_gilded_carpet",
     "pedestals:blue_gilded_carpet",
     "pedestals:white_gilded_carpet",
-    "pedestals:magenta_gilded_carpet",
-    "pedestals:purple_gilded_carpet",
-    "pedestals:pink_gilded_carpet",
-    "pedestals:red_gilded_carpet",
-    "pedestals:cyan_gilded_carpet",
     "pedestals:gray_gilded_carpet",
-    "pedestals:lime_gilded_carpet",
     "pedestals:green_gilded_carpet",
-    "pedestals:light_gray_gilded_carpet",
+    "pedestals:pink_gilded_carpet",
+    "pedestals:lime_gilded_carpet",
+    "pedestals:cyan_gilded_carpet",
     "pedestals:light_blue_gilded_carpet",
-    "pedestals:orange_gilded_carpet"
+    "pedestals:orange_gilded_carpet",
+    "pedestals:magenta_gilded_carpet",
+    "pedestals:black_gilded_carpet",
+    "pedestals:brown_gilded_carpet",
+    "pedestals:purple_gilded_carpet",
+    "pedestals:yellow_gilded_carpet",
+    "pedestals:light_gray_gilded_carpet",
+    "pedestals:red_gilded_carpet"
   ]
 }

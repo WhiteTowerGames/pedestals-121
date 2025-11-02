@@ -111,9 +111,15 @@ public class ModModelProvider extends FabricModelProvider {
         registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
         registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
 
-        GILDED_TO_NORMAL_CARPET_MAP.forEach((gilded, normal) -> registerFancyCarpet(blockStateModelGenerator, gilded, fancyCarpetMap(normal)));
+        GILDED_TO_WOOL_MAP.forEach((gilded, woolEquivalent) -> registerFancyCarpet(
+                blockStateModelGenerator,
+                gilded,
+                fancyCarpetMap(woolEquivalent)));
 
-        STAINED_LOCKBOX_TO_GLASS_MAP.forEach((lockbox, glass) -> registerLockbox(blockStateModelGenerator, lockbox, lockboxMap(glass)));
+        STAINED_LOCKBOX_TO_GLASS_MAP.forEach((lockbox, glass) -> registerLockbox(
+                blockStateModelGenerator,
+                lockbox,
+                lockboxMap(glass)));
     }
 
 

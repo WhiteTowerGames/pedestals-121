@@ -4,5 +4,5 @@ af8c7173eb1c26e86a2399b93b5ae09c3eebaed5 data/minecraft/tags/block/incorrect_for
 f318417729d5a7f051837d760c4e97c56e24a9d3 data/minecraft/tags/block/mineable/axe.json
 46f46053f9910dfc5d68a16288d85661f56c6226 data/minecraft/tags/block/mineable/pickaxe.json
 af8c7173eb1c26e86a2399b93b5ae09c3eebaed5 data/minecraft/tags/block/needs_stone_tool.json
-8a7a6f9eca8c44ade2bc5ce0a5abc5d43386f4bb data/minecraft/tags/block/wool_carpets.json
-18f7df1a2943d0f7a384a2722f3a111e03c6be78 data/pedestals/tags/block/pedestal_blocks.json
+5286a7469b5773fb8ff148e2cef9251f20d0a4ea data/minecraft/tags/block/wool_carpets.json
+c0f9664168ccc0eb580f094bba723819d6c843f5 data/pedestals/tags/block/pedestal_blocks.json
