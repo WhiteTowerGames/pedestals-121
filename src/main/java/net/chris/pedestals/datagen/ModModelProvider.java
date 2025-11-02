@@ -13,10 +13,27 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.Pool;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
 import static net.chris.pedestals.models.CustomModels.*;
-import static net.minecraft.block.Blocks.GLASS;
+import static net.minecraft.block.Blocks.*;
+import static net.minecraft.block.Blocks.BLACK_WOOL;
+import static net.minecraft.block.Blocks.BLUE_WOOL;
+import static net.minecraft.block.Blocks.BROWN_WOOL;
+import static net.minecraft.block.Blocks.CYAN_WOOL;
+import static net.minecraft.block.Blocks.GRAY_WOOL;
+import static net.minecraft.block.Blocks.GREEN_WOOL;
+import static net.minecraft.block.Blocks.LIGHT_BLUE_WOOL;
+import static net.minecraft.block.Blocks.LIME_WOOL;
+import static net.minecraft.block.Blocks.MAGENTA_WOOL;
+import static net.minecraft.block.Blocks.ORANGE_WOOL;
+import static net.minecraft.block.Blocks.PINK_WOOL;
+import static net.minecraft.block.Blocks.PURPLE_WOOL;
+import static net.minecraft.block.Blocks.RED_WOOL;
+import static net.minecraft.block.Blocks.YELLOW_WOOL;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -111,7 +128,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
         registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
 
-        GILDED_TO_NORMAL_CARPET_MAP.forEach((gilded, normal) -> registerFancyCarpet(blockStateModelGenerator, gilded, fancyCarpetMap(normal)));
+        GILDED_TO_WOOL_MAP.forEach((gilded, woolEquivalent) -> registerFancyCarpet(blockStateModelGenerator, gilded, fancyCarpetMap(woolEquivalent)));
 
         STAINED_LOCKBOX_TO_GLASS_MAP.forEach((lockbox, glass) -> registerLockbox(blockStateModelGenerator, lockbox, lockboxMap(glass)));
     }
@@ -160,4 +177,23 @@ public class ModModelProvider extends FabricModelProvider {
     public String getName() {
         return "Pedestals Model Provider";
     }
+
+    public static final HashMap<Block, Block> GILDED_TO_WOOL_MAP = new HashMap<>(Map.ofEntries(
+            Map.entry(WHITE_GILDED_CARPET, WHITE_WOOL),
+            Map.entry(LIGHT_GRAY_GILDED_CARPET, LIGHT_GRAY_WOOL),
+            Map.entry(GRAY_GILDED_CARPET, GRAY_WOOL),
+            Map.entry(BLACK_GILDED_CARPET, BLACK_WOOL),
+            Map.entry(BROWN_GILDED_CARPET, BROWN_WOOL),
+            Map.entry(RED_GILDED_CARPET, RED_WOOL),
+            Map.entry(ORANGE_GILDED_CARPET, ORANGE_WOOL),
+            Map.entry(YELLOW_GILDED_CARPET, YELLOW_WOOL),
+            Map.entry(LIME_GILDED_CARPET, LIME_WOOL),
+            Map.entry(GREEN_GILDED_CARPET, GREEN_WOOL),
+            Map.entry(CYAN_GILDED_CARPET, CYAN_WOOL),
+            Map.entry(LIGHT_BLUE_GILDED_CARPET, LIGHT_BLUE_WOOL),
+            Map.entry(BLUE_GILDED_CARPET, BLUE_WOOL),
+            Map.entry(PURPLE_GILDED_CARPET, PURPLE_WOOL),
+            Map.entry(MAGENTA_GILDED_CARPET, MAGENTA_WOOL),
+            Map.entry(PINK_GILDED_CARPET, PINK_WOOL)
+    ));
 }

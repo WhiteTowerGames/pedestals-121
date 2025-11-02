@@ -337,16 +337,19 @@
   },
   "requirements": [
     [
-      "blue_gilded_carpet"
-    ],
-    [
       "purple_gilded_carpet"
     ],
     [
-      "cyan_gilded_carpet"
+      "green_gilded_carpet"
     ],
     [
-      "white_gilded_carpet"
+      "red_gilded_carpet"
+    ],
+    [
+      "orange_gilded_carpet"
+    ],
+    [
+      "yellow_gilded_carpet"
     ],
     [
       "brown_gilded_carpet"
@@ -358,19 +361,7 @@
       "light_gray_gilded_carpet"
     ],
     [
-      "light_blue_gilded_carpet"
-    ],
-    [
-      "pink_gilded_carpet"
-    ],
-    [
-      "green_gilded_carpet"
-    ],
-    [
-      "yellow_gilded_carpet"
-    ],
-    [
-      "black_gilded_carpet"
+      "white_gilded_carpet"
     ],
     [
       "gray_gilded_carpet"
@@ -379,16 +370,22 @@
       "lime_gilded_carpet"
     ],
     [
-      "red_gilded_carpet"
+      "black_gilded_carpet"
     ],
     [
-      "orange_gilded_carpet"
+      "light_blue_gilded_carpet"
     ],
     [
-      "lime_lockbox"
+      "blue_gilded_carpet"
     ],
     [
-      "purple_lockbox"
+      "pink_gilded_carpet"
+    ],
+    [
+      "cyan_gilded_carpet"
+    ],
+    [
+      "gray_lockbox"
     ],
     [
       "white_lockbox"
@@ -397,40 +394,43 @@
       "green_lockbox"
     ],
     [
-      "black_lockbox"
+      "yellow_lockbox"
     ],
     [
-      "brown_lockbox"
-    ],
-    [
-      "cyan_lockbox"
-    ],
-    [
-      "gray_lockbox"
+      "purple_lockbox"
     ],
     [
       "orange_lockbox"
     ],
     [
-      "blue_lockbox"
-    ],
-    [
-      "red_lockbox"
-    ],
-    [
-      "yellow_lockbox"
-    ],
-    [
-      "magenta_lockbox"
+      "lime_lockbox"
     ],
     [
       "pink_lockbox"
     ],
     [
-      "light_gray_lockbox"
+      "blue_lockbox"
     ],
     [
       "light_blue_lockbox"
+    ],
+    [
+      "magenta_lockbox"
+    ],
+    [
+      "cyan_lockbox"
+    ],
+    [
+      "red_lockbox"
+    ],
+    [
+      "light_gray_lockbox"
+    ],
+    [
+      "brown_lockbox"
+    ],
+    [
+      "black_lockbox"
     ]
   ],
   "rewards": {

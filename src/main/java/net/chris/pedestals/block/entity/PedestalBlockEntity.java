@@ -161,30 +161,21 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
     }
 
     public void transferAllInventories(World world, BlockPos pos, Block blockToSet) {
-        System.out.println("[Pedestals] Attempting to transfer inventories at " + pos);
 
         PedestalBlockEntity oldPedestal = this;
         ItemStack[] itemsToTransfer = oldPedestal.getAllInventories();
 
-        System.out.println("[Pedestals] Items to transfer:");
-        for (int i = 0; i < itemsToTransfer.length; i++) {
-            System.out.println("  Slot " + i + ": " + itemsToTransfer[i]);
-        }
-
         boolean success = world.setBlockState(pos, blockToSet.getDefaultState(), 3);
-        System.out.println("[Pedestals] Block state set to " + blockToSet.getTranslationKey() + "? " + success);
+
+        if (!success) return;
 
         // Optional: force remove/create the block entity
         world.removeBlockEntity(pos);
         world.addBlockEntity(ModBlockEntities.PEDESTAL_BLOCK_ENTITY.instantiate(pos, blockToSet.getDefaultState()));
 
         PedestalBlockEntity newPedestal = (PedestalBlockEntity) world.getBlockEntity(pos);
-        if (newPedestal == null) {
-            System.out.println("[Pedestals] FAILED to retrieve new pedestal block entity at " + pos);
-            return;
-        }
+        if (newPedestal == null) return;
 
-        System.out.println("[Pedestals] Transferring items to new pedestal");
         newPedestal.setStoredItem(itemsToTransfer[0]);
         newPedestal.setStoredCarpet(itemsToTransfer[1]);
         newPedestal.setStoredLockbox(itemsToTransfer[2]);
