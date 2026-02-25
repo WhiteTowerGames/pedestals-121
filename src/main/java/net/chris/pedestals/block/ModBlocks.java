@@ -1,6 +1,5 @@
 package net.chris.pedestals.block;
 
-import com.strippableblocksapi.StrippableCustomRegistry;
 import net.chris.pedestals.Pedestals121;
 import net.chris.pedestals.block.blocks.FancyCarpetBlock;
 import net.chris.pedestals.block.blocks.OxidizablePedestalBlock;
@@ -645,19 +644,21 @@ public class ModBlocks {
         GILDED_TO_NORMAL_CARPET_MAP.keySet().forEach(block -> FlammableBlockRegistry.getDefaultInstance().add(block, 60, 20));
     }
 
+    public static final Map<Block, Block> STRIPPABLE_PEDESTALS_MAP = new HashMap<>();
+
     private static void registerStrippableBlocks(){
-        StrippableCustomRegistry.register(OAK_LOG_PEDESTAL, STRIPPED_OAK_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(BIRCH_LOG_PEDESTAL, STRIPPED_BIRCH_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(SPRUCE_LOG_PEDESTAL, STRIPPED_SPRUCE_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(JUNGLE_LOG_PEDESTAL, STRIPPED_JUNGLE_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(DARK_OAK_LOG_PEDESTAL, STRIPPED_DARK_OAK_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(ACACIA_LOG_PEDESTAL, STRIPPED_ACACIA_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(MANGROVE_LOG_PEDESTAL, STRIPPED_MANGROVE_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(CHERRY_LOG_PEDESTAL, STRIPPED_CHERRY_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(BAMBOO_LOG_PEDESTAL, STRIPPED_BAMBOO_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(PALE_OAK_LOG_PEDESTAL, STRIPPED_PALE_OAK_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(CRIMSON_LOG_PEDESTAL, STRIPPED_CRIMSON_LOG_PEDESTAL);
-        StrippableCustomRegistry.register(WARPED_LOG_PEDESTAL, STRIPPED_WARPED_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(OAK_LOG_PEDESTAL, STRIPPED_OAK_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(BIRCH_LOG_PEDESTAL, STRIPPED_BIRCH_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(SPRUCE_LOG_PEDESTAL, STRIPPED_SPRUCE_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(JUNGLE_LOG_PEDESTAL, STRIPPED_JUNGLE_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(DARK_OAK_LOG_PEDESTAL, STRIPPED_DARK_OAK_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(ACACIA_LOG_PEDESTAL, STRIPPED_ACACIA_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(MANGROVE_LOG_PEDESTAL, STRIPPED_MANGROVE_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(CHERRY_LOG_PEDESTAL, STRIPPED_CHERRY_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(BAMBOO_LOG_PEDESTAL, STRIPPED_BAMBOO_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(PALE_OAK_LOG_PEDESTAL, STRIPPED_PALE_OAK_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(CRIMSON_LOG_PEDESTAL, STRIPPED_CRIMSON_LOG_PEDESTAL);
+        STRIPPABLE_PEDESTALS_MAP.put(WARPED_LOG_PEDESTAL, STRIPPED_WARPED_LOG_PEDESTAL);
     }
 
     public static void initialize(){

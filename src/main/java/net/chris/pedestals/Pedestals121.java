@@ -47,7 +47,7 @@ public class Pedestals121 implements ModInitializer {
 
         // Register custom villager trade.
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 3, factories ->
-				factories.add(((entity, random) -> new TradeOffer(
+				factories.add(((world,entity, random) -> new TradeOffer(
                 new TradedItem(EMERALD, 10),
                 Optional.of(new TradedItem(IRON_INGOT, 2)),
                 new ItemStack(LOCKPICK, 1), 6, 10, 4, 0.06f, 2))));

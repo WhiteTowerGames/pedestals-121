@@ -63,6 +63,16 @@ public class AxeItemMixin {
             cir.setReturnValue(ActionResult.SUCCESS);
         }
 
+        if (ModBlocks.STRIPPABLE_PEDESTALS_MAP.containsKey(block)){
+            BlockState newState = ModBlocks.STRIPPABLE_PEDESTALS_MAP.get(block).getDefaultState();
+            PedestalBlockEntity pedestalBlockEntity = (PedestalBlockEntity) world.getBlockEntity(pos);
+            assert pedestalBlockEntity != null;
+            pedestalBlockEntity.transferAllInventories(world, pos, newState.getBlock());
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(context.getPlayer(), world.getBlockState(pos)));
+            world.playSound(null, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS);
+            context.getStack().damage(1, context.getPlayer());
+            cir.setReturnValue(ActionResult.SUCCESS);
+        }
     }
 
 }

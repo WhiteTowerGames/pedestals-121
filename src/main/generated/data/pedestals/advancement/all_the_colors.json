@@ -340,7 +340,37 @@
       "blue_gilded_carpet"
     ],
     [
+      "magenta_gilded_carpet"
+    ],
+    [
+      "lime_gilded_carpet"
+    ],
+    [
+      "yellow_gilded_carpet"
+    ],
+    [
+      "pink_gilded_carpet"
+    ],
+    [
+      "light_blue_gilded_carpet"
+    ],
+    [
+      "brown_gilded_carpet"
+    ],
+    [
+      "black_gilded_carpet"
+    ],
+    [
       "white_gilded_carpet"
+    ],
+    [
+      "light_gray_gilded_carpet"
+    ],
+    [
+      "purple_gilded_carpet"
+    ],
+    [
+      "red_gilded_carpet"
     ],
     [
       "gray_gilded_carpet"
@@ -349,61 +379,19 @@
       "green_gilded_carpet"
     ],
     [
-      "pink_gilded_carpet"
-    ],
-    [
-      "lime_gilded_carpet"
-    ],
-    [
       "cyan_gilded_carpet"
-    ],
-    [
-      "light_blue_gilded_carpet"
     ],
     [
       "orange_gilded_carpet"
     ],
     [
-      "magenta_gilded_carpet"
+      "light_blue_lockbox"
     ],
     [
-      "black_gilded_carpet"
-    ],
-    [
-      "brown_gilded_carpet"
-    ],
-    [
-      "purple_gilded_carpet"
-    ],
-    [
-      "yellow_gilded_carpet"
-    ],
-    [
-      "light_gray_gilded_carpet"
-    ],
-    [
-      "red_gilded_carpet"
-    ],
-    [
-      "cyan_lockbox"
-    ],
-    [
-      "red_lockbox"
-    ],
-    [
-      "light_gray_lockbox"
+      "yellow_lockbox"
     ],
     [
       "green_lockbox"
-    ],
-    [
-      "brown_lockbox"
-    ],
-    [
-      "lime_lockbox"
-    ],
-    [
-      "blue_lockbox"
     ],
     [
       "purple_lockbox"
@@ -415,22 +403,34 @@
       "orange_lockbox"
     ],
     [
-      "yellow_lockbox"
+      "pink_lockbox"
     ],
     [
-      "light_blue_lockbox"
+      "black_lockbox"
+    ],
+    [
+      "lime_lockbox"
+    ],
+    [
+      "light_gray_lockbox"
+    ],
+    [
+      "cyan_lockbox"
+    ],
+    [
+      "blue_lockbox"
+    ],
+    [
+      "red_lockbox"
+    ],
+    [
+      "brown_lockbox"
     ],
     [
       "magenta_lockbox"
     ],
     [
       "white_lockbox"
-    ],
-    [
-      "black_lockbox"
-    ],
-    [
-      "pink_lockbox"
     ]
   ],
   "rewards": {
