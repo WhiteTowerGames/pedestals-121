@@ -139,6 +139,12 @@ public class ModComponents {
             ComponentType.<LockboxDustComponent>builder().codec(LockboxDustComponent.LOCKBOX_DUST_COMPONENT).build()
     );
 
+    public static final ComponentType<WaxedCaseDataComponent> CASE_WAX_STATUS = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(Pedestals121.MOD_ID, "case_wax_status"),
+            ComponentType.<WaxedCaseDataComponent>builder().codec(WaxedCaseDataComponent.CODEC).build()
+    );
+
     public static void initialize() {
         Pedestals121.LOGGER.info("Registering components for Pedestals");
     }

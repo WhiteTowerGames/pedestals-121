@@ -11,6 +11,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -99,14 +100,18 @@ public class PedestalExtensionBlock extends Block {
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos.down());
         if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
-            if (stack.contains(ModComponents.UNLOCKS_LOCKBOXES_COMPONENT) && pedestalBlockEntity.hasStoredLockbox()) {
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5, pedestalBlockEntity.getStoredLockbox());
-                pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
-                world.spawnEntity(itemEntity);
-                itemEntity.setVelocity(0.0, 0.13, 0.0);
-                world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
-                return ActionResult.SUCCESS;
-            }
+            if (pedestalBlockEntity.hasStoredLockbox())
+                if (stack.contains(ModComponents.UNLOCKS_LOCKBOXES_COMPONENT)) {
+                    ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5, pedestalBlockEntity.getStoredLockbox());
+                    pedestalBlockEntity.setStoredLockbox(ItemStack.EMPTY);
+                    world.spawnEntity(itemEntity);
+                    itemEntity.setVelocity(0.0, 0.13, 0.0);
+                    world.playSound(null, pos, getUnlockSound(), SoundCategory.BLOCKS, 1.0f, 0.8f);
+                    return ActionResult.SUCCESS;
+                }
+                else if (stack.isOf(Items.HONEYCOMB)) {
+
+                }
         }
         return ActionResult.FAIL;
     }
