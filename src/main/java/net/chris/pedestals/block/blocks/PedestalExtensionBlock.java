@@ -2,6 +2,7 @@ package net.chris.pedestals.block.blocks;
 
 import net.chris.pedestals.block.entity.PedestalBlockEntity;
 import net.chris.pedestals.components.ModComponents;
+import net.chris.pedestals.components.WaxedCaseDataComponent;
 import net.chris.pedestals.datagen.ModBlockTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -12,6 +13,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -26,7 +28,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldEvents;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.tick.ScheduledTickView;
 
 public class PedestalExtensionBlock extends Block {
@@ -96,6 +100,7 @@ public class PedestalExtensionBlock extends Block {
         return world.getBlockState(pos.down()).isIn(ModBlockTagProvider.PEDESTAL_BLOCKS);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos.down());
@@ -110,7 +115,33 @@ public class PedestalExtensionBlock extends Block {
                     return ActionResult.SUCCESS;
                 }
                 else if (stack.isOf(Items.HONEYCOMB)) {
+                    var lockbox = pedestalBlockEntity.getStoredLockbox();
+                    if (!lockbox.getComponents().contains(ModComponents.CASE_WAX_STATUS))
+                        return ActionResult.PASS;
 
+                    var isWaxed = lockbox.get(ModComponents.CASE_WAX_STATUS).isWaxed();
+                    if (isWaxed) return ActionResult.PASS;
+
+                    lockbox.set(ModComponents.CASE_WAX_STATUS, new WaxedCaseDataComponent(true));
+                    world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, world.getBlockState(pos)));
+                    world.syncWorldEvent(player, WorldEvents.BLOCK_WAXED, pos, 0);
+
+                    return ActionResult.SUCCESS;
+                }
+                else if (stack.isIn(ItemTags.AXES))
+                {
+                    var lockbox = pedestalBlockEntity.getStoredLockbox();
+                    if (!lockbox.getComponents().contains(ModComponents.CASE_WAX_STATUS))
+                        return ActionResult.PASS;
+
+                    var isWaxed = lockbox.get(ModComponents.CASE_WAX_STATUS).isWaxed();
+                    if (!isWaxed) return ActionResult.PASS;
+
+                    lockbox.set(ModComponents.CASE_WAX_STATUS, new WaxedCaseDataComponent(false));
+                    world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, world.getBlockState(pos)));
+                    world.syncWorldEvent(player, WorldEvents.BLOCK_SCRAPED, pos, 0);
+
+                    return ActionResult.SUCCESS;
                 }
         }
         return ActionResult.FAIL;

@@ -103,7 +103,7 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
 
     public ItemStack getStoredItem() {
         if (!getItems().isEmpty()) {
-            return getItems().getFirst();  // Ensure you're returning 'storedItem', not items[0] or other values
+            return getItems().getFirst();
         }
         return ItemStack.EMPTY;
     }
@@ -257,20 +257,17 @@ public class PedestalBlockEntity extends BlockEntity implements PedestalInventor
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private void tryDust(World world) {
-        int currentDust = Objects.requireNonNull(getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel();
-        if (currentDust < 4) {
-            // If dustDelay is 0, run the random chance
+        int currentDust = getStoredLockbox().get(ModComponents.LOCKBOX_DUST_COMPONENT).dustLevel();
+        boolean isWaxed = getStoredLockbox().get(ModComponents.CASE_WAX_STATUS).isWaxed();
+        if (currentDust < 4 && !isWaxed) {
             if (dustDelay == 0) {
-                // Only trigger the dust level increment 10% of the time
                 if (world.getRandom().nextInt(100) < 10) {
-                    // Increase dust level by 1
                     getStoredLockbox().set(ModComponents.LOCKBOX_DUST_COMPONENT, new LockboxDustComponent(currentDust + 1));
                 }
-                // Reset the dustDelay to run the random check again after a set amount of ticks
-                dustDelay = 2400;  //This number of ticks represents the interval at which lockboxes roll to get dustier.
+                dustDelay = 2400;
             } else {
-                // Decrease the delay counter every tick
                 dustDelay--;
             }
         }

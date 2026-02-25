@@ -12,6 +12,7 @@ import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.Pool;
+import org.jspecify.annotations.NonNull;
 
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
@@ -25,7 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+    public void generateBlockStateModels(@NonNull BlockStateModelGenerator blockStateModelGenerator) {
 
         registerPedestal(blockStateModelGenerator, ModBlocks.STONE_BRICK_PEDESTAL, pedestalMap(Blocks.STONE_BRICKS));
         registerPedestal(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_PEDESTAL, pedestalMap(Blocks.MOSSY_STONE_BRICKS));
@@ -159,7 +160,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.LOCKBOX_KEY, Models.GENERATED);
         itemModelGenerator.register(ModItems.LOCKPICK, Models.GENERATED);
         itemModelGenerator.registerWithTextureSource(ModItems.CREATIVE_KEY, ModItems.LOCKPICK, Models.GENERATED);
-
     }
 
     @Override

@@ -26,6 +26,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.Objects;
 
@@ -52,6 +53,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
                                   @Nullable ModelCommandRenderer.CrumblingOverlayCommand crumblingOverlay
     ) {
         BlockEntityRenderer.super.updateRenderState(blockEntity, state, tickProgress, cameraPos, crumblingOverlay);
+        assert blockEntity.getWorld() != null;
+
         state.displayedItem = blockEntity.getStoredItem();
         state.carpetItem = blockEntity.getStoredCarpet();
         state.lockboxItem = blockEntity.getStoredLockbox();
@@ -61,65 +64,57 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         state.hasLockbox = blockEntity.hasStoredLockbox();
 
         if (state.hasLockbox) {
-            state.dustToRender = switch (Objects.requireNonNull(state.lockboxItem.get(ModComponents.LOCKBOX_DUST_COMPONENT)).dustLevel()){
-                case 1 -> new ItemStack(ModItems.DUST_1);
-                case 2 -> new ItemStack(ModItems.DUST_2);
-                case 3 -> new ItemStack(ModItems.DUST_3);
-                case 4 -> new ItemStack(ModItems.DUST_4);
-                default -> ItemStack.EMPTY;
-            };
+            var dustComponent = state.lockboxItem.get(ModComponents.LOCKBOX_DUST_COMPONENT);
+            if (dustComponent != null) {
+                state.dustToRender = switch (dustComponent.dustLevel()) {
+                    case 1 -> new ItemStack(ModItems.DUST_1);
+                    case 2 -> new ItemStack(ModItems.DUST_2);
+                    case 3 -> new ItemStack(ModItems.DUST_3);
+                    case 4 -> new ItemStack(ModItems.DUST_4);
+                    default -> ItemStack.EMPTY;
+                };
+            }
         }
 
         if (state.hasItem) {
-            var itemRenderState = new ItemRenderState();
             this.itemModelManager
                     .clearAndUpdate(
-                            itemRenderState, state.displayedItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong())
+                            state.itemRenderState, state.displayedItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong())
                     );
-            state.displayItemStackState.add(itemRenderState);
-        } else state.displayItemStackState.add(new ItemRenderState());
+        }
 
         if (state.hasCarpet) {
-            var itemRenderState = new ItemRenderState();
             this.itemModelManager
                     .clearAndUpdate(
-                            itemRenderState, state.carpetItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 1)
+                            state.carpetRenderState, state.carpetItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 1)
                     );
-            state.displayItemStackState.add(itemRenderState);
-        } else state.displayItemStackState.add(new ItemRenderState());
+        }
 
         if (state.hasLockbox) {
-            var itemRenderState = new ItemRenderState();
             this.itemModelManager
                     .clearAndUpdate(
-                            itemRenderState, state.lockboxItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 2)
+                            state.lockboxRenderState, state.lockboxItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 2)
                     );
-            state.displayItemStackState.add(itemRenderState);
-        } else state.displayItemStackState.add(new ItemRenderState());
+        }
 
-        var dustRenderState = new ItemRenderState();
-        this.itemModelManager
-                .clearAndUpdate(
-                        dustRenderState, state.dustToRender, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 3)
-                );
-        state.displayItemStackState.add(dustRenderState);
+        if (!state.dustToRender.isEmpty()) {
+            this.itemModelManager
+                    .clearAndUpdate(
+                            state.dustRenderState, state.dustToRender, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 3)
+                    );
+        }
 
-        state.rotationDegrees = ((blockEntity.getWorld() != null ? blockEntity.getWorld().getTime()/2f : System.currentTimeMillis() / 50f)
+        state.rotationDegrees = ((blockEntity.getWorld() != null ? blockEntity.getWorld().getTime()/2f : tickProgress / 50f)
                 + tickProgress) * 4.0f % 360f;
-
-        assert blockEntity.getWorld() != null;
         state.displayOffset = 1.55 + 0.05 * Math.sin((blockEntity.getWorld().getTime() + tickProgress) / 8.0);
     }
 
     @Override
     public void render(PedestalBlockEntityRenderState state, MatrixStack matrices, OrderedRenderCommandQueue queue, CameraRenderState cameraState) {
+        if (!state.hasItem && !state.hasCarpet && !state.hasLockbox) return;
+
         var entity = (PedestalBlockEntity) state.type.get(MinecraftClient.getInstance().world, state.pos);
         if (entity == null) return;
-        assert entity.getWorld() != null;
-
-        var item = state.displayedItem;
-
-        if (!state.hasItem && !state.hasCarpet && !state.hasLockbox) return;
 
         matrices.push();
 
@@ -130,12 +125,11 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         matrices.scale(1.2f,1.2f,1.2f);
 
-        assert state.displayItemStackState != null;
-        state.displayItemStackState.getFirst().render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+        state.itemRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
 
         matrices.pop();
 
-        if (item.getCustomName() != null && isLookingAtItem(entity)) {
+        if (state.displayedItem.getCustomName() != null && isLookingAtItem(entity)) {
             renderCustomNameIfPresent(state.displayedItem, matrices, queue);
         }
 
@@ -145,23 +139,34 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             matrices.translate(0.5f, 1.063f, 0.51f);
             matrices.scale(4f,4f,4f);
 
-            state.displayItemStackState.get(1).render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+            state.carpetRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
 
             matrices.pop();
         }
 
         if (state.hasLockbox) {
+            // 1. Render the lockbox in complete isolation
             matrices.push();
-
             matrices.translate(0.5f, 1.563f + (state.hasCarpet ? 0.053 : 0), 0.51f);
-            matrices.scale(2.25f,2.25f,2.25f);
+            matrices.scale(2.25f, 2.25f, 2.25f);
 
-            state.displayItemStackState.get(2).render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+            state.lockboxRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
 
-            matrices.scale(1.01f,1.01f,1.01f);
-            state.displayItemStackState.get(3).render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+            matrices.pop(); // POP IMMEDIATELY! This freezes the matrix state for the deferred queue.
 
-            matrices.pop();
+            // 2. Render the dust in complete isolation
+            if (!state.dustToRender.isEmpty()) {
+                matrices.push();
+                matrices.translate(0.5f, 1.563f + (state.hasCarpet ? 0.053 : 0), 0.51f);
+
+                // Pre-calculate the combined scale so it remains 1% larger than the 2.25 lockbox
+                float dustScale = 2.25f * 1.01f;
+                matrices.scale(dustScale, dustScale, dustScale);
+
+                state.dustRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+
+                matrices.pop();
+            }
         }
     }
 
