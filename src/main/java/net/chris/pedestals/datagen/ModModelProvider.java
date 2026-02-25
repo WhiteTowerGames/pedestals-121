@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.data.*;
+import net.minecraft.client.render.item.tint.CustomModelDataTintSource;
 import net.minecraft.client.render.model.json.ModelVariant;
 import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.item.Item;
@@ -107,10 +108,10 @@ public class ModModelProvider extends FabricModelProvider {
 
         registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(GLASS));
 
-        registerLockbox(blockStateModelGenerator, DUST_1, dustMap("dust1"));
-        registerLockbox(blockStateModelGenerator, DUST_2, dustMap("dust2"));
-        registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
-        registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
+//        registerLockbox(blockStateModelGenerator, DUST_1, dustMap("dust1"));
+//        registerLockbox(blockStateModelGenerator, DUST_2, dustMap("dust2"));
+//        registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
+//        registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
 
         GILDED_TO_WOOL_MAP.forEach((gilded, woolEquivalent) -> registerFancyCarpet(
                 blockStateModelGenerator,
@@ -151,7 +152,10 @@ public class ModModelProvider extends FabricModelProvider {
     public static void registerLockbox(BlockStateModelGenerator generator, Item lockboxItem, TextureMap textures) {
         Identifier lockboxModel = LOCKBOX_MODEL.upload(lockboxItem, textures, generator.modelCollector);
 
-        generator.registerItemModel(lockboxItem, lockboxModel);
+        generator.itemModelOutput.accept(
+                lockboxItem,
+                ItemModels.tinted(lockboxModel, new CustomModelDataTintSource(0, 0xFFFFFF))
+        );
     }
 
 

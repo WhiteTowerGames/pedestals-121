@@ -1,7 +1,0 @@
-{
-  "render_type": "minecraft:translucent",
-  "parent": "pedestals:item/lockbox",
-  "textures": {
-    "all": "pedestals:item/lockbox_dust_2"
-  }
-}

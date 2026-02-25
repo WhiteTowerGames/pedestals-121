@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pedestals:item/red_lockbox"
+    "model": "pedestals:item/red_lockbox",
+    "tints": [
+      {
+        "type": "minecraft:custom_model_data",
+        "default": 0
+      }
+    ]
   }
 }

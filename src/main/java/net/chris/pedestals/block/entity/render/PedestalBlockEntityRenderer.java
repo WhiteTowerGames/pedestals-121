@@ -15,9 +15,10 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.command.ModelCommandRenderer;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-import net.minecraft.client.render.item.ItemRenderState;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Colors;
@@ -26,8 +27,8 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
 
+import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("ClassCanBeRecord")
@@ -66,13 +67,16 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         if (state.hasLockbox) {
             var dustComponent = state.lockboxItem.get(ModComponents.LOCKBOX_DUST_COMPONENT);
             if (dustComponent != null) {
-                state.dustToRender = switch (dustComponent.dustLevel()) {
-                    case 1 -> new ItemStack(ModItems.DUST_1);
-                    case 2 -> new ItemStack(ModItems.DUST_2);
-                    case 3 -> new ItemStack(ModItems.DUST_3);
-                    case 4 -> new ItemStack(ModItems.DUST_4);
-                    default -> ItemStack.EMPTY;
+                int hexColor = switch (dustComponent.dustLevel()) {
+                  case 1 -> 0xDDDDDD;
+                  case 2 -> 0xBBBBBB;
+                  case 3 -> 0x888888;
+                  case 4 -> 0x555555;
+                  default -> 0xFFFFFF;
                 };
+
+                var customData = new CustomModelDataComponent(List.of(), List.of(), List.of(), List.of(hexColor));
+                state.lockboxItem.set(DataComponentTypes.CUSTOM_MODEL_DATA, customData);
             }
         }
 
@@ -106,6 +110,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         state.rotationDegrees = ((blockEntity.getWorld() != null ? blockEntity.getWorld().getTime()/2f : tickProgress / 50f)
                 + tickProgress) * 4.0f % 360f;
+        assert blockEntity.getWorld() != null;
         state.displayOffset = 1.55 + 0.05 * Math.sin((blockEntity.getWorld().getTime() + tickProgress) / 8.0);
     }
 
@@ -155,18 +160,18 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
             matrices.pop(); // POP IMMEDIATELY! This freezes the matrix state for the deferred queue.
 
             // 2. Render the dust in complete isolation
-            if (!state.dustToRender.isEmpty()) {
-                matrices.push();
-                matrices.translate(0.5f, 1.563f + (state.hasCarpet ? 0.053 : 0), 0.51f);
-
-                // Pre-calculate the combined scale so it remains 1% larger than the 2.25 lockbox
-                float dustScale = 2.25f * 1.01f;
-                matrices.scale(dustScale, dustScale, dustScale);
-
-                state.dustRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
-
-                matrices.pop();
-            }
+//            if (!state.dustToRender.isEmpty()) {
+//                matrices.push();
+//                matrices.translate(0.5f, 1.563f + (state.hasCarpet ? 0.053 : 0), 0.51f);
+//
+//                // Pre-calculate the combined scale so it remains 1% larger than the 2.25 lockbox
+//                float dustScale = 2.25f * 1.01f;
+//                matrices.scale(dustScale, dustScale, dustScale);
+//
+//                state.dustRenderState.render(matrices, queue, state.lightmapCoordinates, OverlayTexture.DEFAULT_UV, 0);
+//
+//                matrices.pop();
+//            }
         }
     }
 
