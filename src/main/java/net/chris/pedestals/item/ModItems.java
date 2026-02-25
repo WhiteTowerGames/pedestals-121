@@ -46,11 +46,6 @@ public class ModItems {
             .maxDamage(1)
             .rarity(Rarity.UNCOMMON));
 
-    public static final Item DUST_1 = registerItem("dust_1", Item::new, new Item.Settings());
-    public static final Item DUST_2 = registerItem("dust_2", Item::new, new Item.Settings());
-    public static final Item DUST_3 = registerItem("dust_3", Item::new, new Item.Settings());
-    public static final Item DUST_4 = registerItem("dust_4", Item::new, new Item.Settings());
-
     /// Lockboxes:
 
     public static final Item GLASS_LOCKBOX = registerItem("glass_lockbox", LockboxItem::new, new Item.Settings()

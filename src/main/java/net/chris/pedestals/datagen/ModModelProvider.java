@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.data.*;
+import net.minecraft.client.render.item.model.ItemModel;
+import net.minecraft.client.render.item.property.numeric.CustomModelDataFloatProperty;
 import net.minecraft.client.render.item.tint.CustomModelDataTintSource;
 import net.minecraft.client.render.model.json.ModelVariant;
 import net.minecraft.client.render.model.json.WeightedVariant;
@@ -14,6 +16,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.Pool;
 import org.jspecify.annotations.NonNull;
+
+import java.util.List;
 
 import static net.chris.pedestals.block.ModBlocks.*;
 import static net.chris.pedestals.item.ModItems.*;
@@ -108,10 +112,10 @@ public class ModModelProvider extends FabricModelProvider {
 
         registerLockbox(blockStateModelGenerator, GLASS_LOCKBOX, lockboxMap(GLASS));
 
-//        registerLockbox(blockStateModelGenerator, DUST_1, dustMap("dust1"));
-//        registerLockbox(blockStateModelGenerator, DUST_2, dustMap("dust2"));
-//        registerLockbox(blockStateModelGenerator, DUST_3, dustMap("dust3"));
-//        registerLockbox(blockStateModelGenerator, DUST_4, dustMap("dust4"));
+        LOCKBOX_MODEL.upload(Identifier.of("pedestals", "item/lockbox_dust_1"), dustMap("dust1"), blockStateModelGenerator.modelCollector);
+        LOCKBOX_MODEL.upload(Identifier.of("pedestals", "item/lockbox_dust_2"), dustMap("dust2"), blockStateModelGenerator.modelCollector);
+        LOCKBOX_MODEL.upload(Identifier.of("pedestals", "item/lockbox_dust_3"), dustMap("dust3"), blockStateModelGenerator.modelCollector);
+        LOCKBOX_MODEL.upload(Identifier.of("pedestals", "item/lockbox_dust_4"), dustMap("dust4"), blockStateModelGenerator.modelCollector);
 
         GILDED_TO_WOOL_MAP.forEach((gilded, woolEquivalent) -> registerFancyCarpet(
                 blockStateModelGenerator,
@@ -150,11 +154,29 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     public static void registerLockbox(BlockStateModelGenerator generator, Item lockboxItem, TextureMap textures) {
-        Identifier lockboxModel = LOCKBOX_MODEL.upload(lockboxItem, textures, generator.modelCollector);
+        Identifier lockboxModelId = LOCKBOX_MODEL.upload(lockboxItem, textures, generator.modelCollector);
+        ItemModel.Unbaked baseModel = ItemModels.basic(lockboxModelId);
+
+        ItemModel.Unbaked dust1 = ItemModels.basic(Identifier.of("pedestals", "item/lockbox_dust_1"));
+        ItemModel.Unbaked dust2 = ItemModels.basic(Identifier.of("pedestals", "item/lockbox_dust_2"));
+        ItemModel.Unbaked dust3 = ItemModels.basic(Identifier.of("pedestals", "item/lockbox_dust_3"));
+        ItemModel.Unbaked dust4 = ItemModels.basic(Identifier.of("pedestals", "item/lockbox_dust_4"));
+
+        ItemModel.Unbaked composite1 = ItemModels.composite(baseModel, dust1);
+        ItemModel.Unbaked composite2 = ItemModels.composite(baseModel, dust2);
+        ItemModel.Unbaked composite3 = ItemModels.composite(baseModel, dust3);
+        ItemModel.Unbaked composite4 = ItemModels.composite(baseModel, dust4);
 
         generator.itemModelOutput.accept(
                 lockboxItem,
-                ItemModels.tinted(lockboxModel, new CustomModelDataTintSource(0, 0xFFFFFF))
+                ItemModels.rangeDispatch(
+                        new CustomModelDataFloatProperty(0),
+                        baseModel,
+                        List.of(ItemModels.rangeDispatchEntry(composite1, 1f),
+                                ItemModels.rangeDispatchEntry(composite2, 2f),
+                                ItemModels.rangeDispatchEntry(composite3, 3f),
+                                ItemModels.rangeDispatchEntry(composite4, 4f))
+                )
         );
     }
 

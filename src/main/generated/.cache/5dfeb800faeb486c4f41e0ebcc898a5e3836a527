@@ -1,4 +1,4 @@
 // 1.21.11	-999999999-01-01T00:00:00	Pedestals - Display your items!/Tags for minecraft:item
-86e8aa72f838d0dfbebfe6ce20964ae9060f92bf data/pedestals/tags/item/fancy_carpet_block_items.json
-780ca58c499c8327f32b8c5af6ae7300df977906 data/pedestals/tags/item/lockbox_block_items.json
-1670a1fc2f97459e8b35e7f5a753e663d579919d data/pedestals/tags/item/pedestal_block_items.json
+0c8025aa526f8f180e9bc1d64c057522773c6d53 data/pedestals/tags/item/fancy_carpet_block_items.json
+db8e7ed8fa98cd2ec5440754f0383b6e25a275a0 data/pedestals/tags/item/lockbox_block_items.json
+5278421619833d0aa98a891900a27239c5a4a906 data/pedestals/tags/item/pedestal_block_items.json

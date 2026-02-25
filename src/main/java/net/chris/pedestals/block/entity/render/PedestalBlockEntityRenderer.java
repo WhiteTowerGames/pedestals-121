@@ -58,7 +58,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
         state.displayedItem = blockEntity.getStoredItem();
         state.carpetItem = blockEntity.getStoredCarpet();
-        state.lockboxItem = blockEntity.getStoredLockbox();
+        state.lockboxItem = blockEntity.getStoredLockbox().copy();
 
         state.hasItem = blockEntity.hasStoredItem();
         state.hasCarpet = blockEntity.hasStoredCarpet();
@@ -67,15 +67,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         if (state.hasLockbox) {
             var dustComponent = state.lockboxItem.get(ModComponents.LOCKBOX_DUST_COMPONENT);
             if (dustComponent != null) {
-                int hexColor = switch (dustComponent.dustLevel()) {
-                  case 1 -> 0xDDDDDD;
-                  case 2 -> 0xBBBBBB;
-                  case 3 -> 0x888888;
-                  case 4 -> 0x555555;
-                  default -> 0xFFFFFF;
-                };
-
-                var customData = new CustomModelDataComponent(List.of(), List.of(), List.of(), List.of(hexColor));
+                float dustLevel = (float)dustComponent.dustLevel();
+                var customData = new CustomModelDataComponent(List.of(dustLevel), List.of(), List.of(), List.of());
                 state.lockboxItem.set(DataComponentTypes.CUSTOM_MODEL_DATA, customData);
             }
         }
@@ -100,13 +93,13 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
                             state.lockboxRenderState, state.lockboxItem, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 2)
                     );
         }
-
-        if (!state.dustToRender.isEmpty()) {
-            this.itemModelManager
-                    .clearAndUpdate(
-                            state.dustRenderState, state.dustToRender, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 3)
-                    );
-        }
+//
+//        if (!state.dustToRender.isEmpty()) {
+//            this.itemModelManager
+//                    .clearAndUpdate(
+//                            state.dustRenderState, state.dustToRender, ItemDisplayContext.GROUND, blockEntity.getWorld(), null, (int) (blockEntity.getPos().asLong() + 3)
+//                    );
+//        }
 
         state.rotationDegrees = ((blockEntity.getWorld() != null ? blockEntity.getWorld().getTime()/2f : tickProgress / 50f)
                 + tickProgress) * 4.0f % 360f;

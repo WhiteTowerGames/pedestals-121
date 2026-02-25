@@ -8,13 +8,13 @@ public class PedestalBlockEntityRenderState extends BlockEntityRenderState {
     public final ItemRenderState itemRenderState = new ItemRenderState();
     public final ItemRenderState carpetRenderState = new ItemRenderState();
     public final ItemRenderState lockboxRenderState = new ItemRenderState();
-    public final ItemRenderState dustRenderState = new ItemRenderState();
+//    public final ItemRenderState dustRenderState = new ItemRenderState();
 
     public ItemStack displayedItem = ItemStack.EMPTY;
     public ItemStack carpetItem = ItemStack.EMPTY;
     public ItemStack lockboxItem = ItemStack.EMPTY;
 
-    public ItemStack dustToRender = ItemStack.EMPTY;
+//    public ItemStack dustToRender = ItemStack.EMPTY;
 
     public boolean hasItem = false;
     public boolean hasCarpet = false;
